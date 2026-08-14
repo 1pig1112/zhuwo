@@ -9,124 +9,235 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
- margin:0;background:#f5f6f8;color:#222;
+ margin:0;
+ background:#f5f6f8;
+ color:#222;
  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif
 }
+
 header{
- background:#111;color:#fff;padding:20px 16px 14px;
- position:sticky;top:0;z-index:3
+ background:#111;
+ color:#fff;
+ padding:20px 16px 14px;
+ position:sticky;
+ top:0;
+ z-index:3
 }
+
 h1{margin:0;font-size:22px}
 .sub{opacity:.7;font-size:12px;margin-top:4px}
 
 nav{
- position:sticky;top:72px;z-index:2;background:#fff;
- display:flex;gap:7px;overflow:auto;padding:9px;
+ position:sticky;
+ top:72px;
+ z-index:2;
+ background:#fff;
+ display:flex;
+ gap:7px;
+ overflow:auto;
+ padding:9px;
  border-bottom:1px solid #eee
 }
-nav button{
- border:0;border-radius:18px;padding:8px 13px;
- white-space:nowrap;background:#f0f1f3
-}
-nav button.on{background:#111;color:#fff}
 
-main{max-width:700px;margin:auto;padding:12px}
+nav button{
+ border:0;
+ border-radius:18px;
+ padding:8px 13px;
+ white-space:nowrap;
+ background:#f0f1f3
+}
+
+nav button.on{
+ background:#111;
+ color:#fff
+}
+
+main{
+ max-width:700px;
+ margin:auto;
+ padding:12px
+}
+
 .page{display:none}
 .page.on{display:block}
 
 .card{
- background:#fff;border-radius:16px;padding:15px;
- margin-bottom:12px;box-shadow:0 2px 10px #00000008
+ background:#fff;
+ border-radius:16px;
+ padding:15px;
+ margin-bottom:12px;
+ box-shadow:0 2px 10px #00000008
 }
-h2{font-size:16px;margin:0 0 12px}
+
+h2{
+ font-size:16px;
+ margin:0 0 12px
+}
 
 .grid{
- display:grid;grid-template-columns:1fr 1fr;gap:9px
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:9px
 }
+
 label{
- font-size:12px;color:#777;display:block;margin-bottom:5px
+ font-size:12px;
+ color:#777;
+ display:block;
+ margin-bottom:5px
 }
 
 input,textarea,select{
- width:100%;padding:10px;border:1px solid #ddd;
- border-radius:10px;font-size:14px;background:#fff
+ width:100%;
+ padding:10px;
+ border:1px solid #ddd;
+ border-radius:10px;
+ font-size:14px;
+ background:#fff
 }
+
 textarea{min-height:75px}
 
 .primary{
- width:100%;border:0;border-radius:11px;background:#111;
- color:#fff;padding:11px;margin-top:10px;font-size:14px
-}
-.secondary{
- border:1px solid #ddd;background:#fff;
- border-radius:9px;padding:8px 10px
-}
-
-.photoBtn{
- width:100%;border:1px dashed #bbb;background:#fafafa;
- border-radius:12px;padding:14px;margin-bottom:10px;
+ width:100%;
+ border:0;
+ border-radius:11px;
+ background:#111;
+ color:#fff;
+ padding:11px;
+ margin-top:10px;
  font-size:14px
 }
 
+.secondary{
+ border:1px solid #ddd;
+ background:#fff;
+ border-radius:9px;
+ padding:8px 10px
+}
+
+.photoGrid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:10px;
+ margin-top:10px
+}
+
+.photoBtn{
+ border:1px dashed #aaa;
+ background:#fafafa;
+ border-radius:12px;
+ padding:15px 10px;
+ font-size:14px;
+ text-align:center
+}
+
+.photoBtn:active{
+ background:#eee
+}
+
 .preview{
- width:100%;max-height:300px;object-fit:contain;
- border-radius:12px;margin-top:8px;display:none;
+ width:100%;
+ max-height:300px;
+ object-fit:contain;
+ border-radius:12px;
+ margin-top:10px;
+ display:none;
  background:#f5f5f5
 }
 
 .status{
- background:#f7f7f7;border-radius:10px;
- padding:10px;font-size:12px;color:#666;
- margin-top:10px;display:none
+ background:#f7f7f7;
+ border-radius:10px;
+ padding:10px;
+ font-size:12px;
+ color:#666;
+ margin-top:10px;
+ display:none
 }
 
 .kpi{
- display:grid;grid-template-columns:repeat(3,1fr);gap:8px
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:8px
 }
-.kpi div{background:#fafafa;border-radius:12px;padding:10px}
-.kpi b{display:block;font-size:18px;margin-top:3px}
 
-.muted{color:#888;font-size:12px}
+.kpi div{
+ background:#fafafa;
+ border-radius:12px;
+ padding:10px
+}
+
+.kpi b{
+ display:block;
+ font-size:18px;
+ margin-top:3px
+}
+
+.muted{
+ color:#888;
+ font-size:12px
+}
 
 .row{
- display:flex;justify-content:space-between;gap:10px;
- padding:10px 0;border-bottom:1px solid #eee
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ padding:10px 0;
+ border-bottom:1px solid #eee
 }
+
 .row:last-child{border:0}
 
 .badge{
- font-size:11px;background:#f1f1f1;padding:4px 7px;
- border-radius:7px;display:inline-block;margin-top:4px
+ font-size:11px;
+ background:#f1f1f1;
+ padding:4px 7px;
+ border-radius:7px;
+ display:inline-block;
+ margin-top:4px
 }
 
-.empty{text-align:center;color:#999;padding:15px;font-size:13px}
-
-.resultBox{
- background:#fafafa;border-radius:12px;
- padding:10px;margin-top:10px
-}
-
-.resultItem{
- background:#fff;border:1px solid #eee;
- border-radius:10px;padding:10px;margin-bottom:8px
-}
-
-.resultItem:last-child{margin-bottom:0}
-
-.recognizing{
- text-align:center;padding:15px;color:#777;
+.empty{
+ text-align:center;
+ color:#999;
+ padding:15px;
  font-size:13px
 }
 
+.resultBox{
+ background:#fafafa;
+ border-radius:12px;
+ padding:10px;
+ margin-top:10px
+}
+
+.resultItem{
+ background:#fff;
+ border:1px solid #eee;
+ border-radius:10px;
+ padding:10px;
+ margin-bottom:8px
+}
+
+.resultItem:last-child{
+ margin-bottom:0
+}
+
 .smallBtn{
- border:1px solid #ddd;background:#fff;
- border-radius:8px;padding:6px 9px;font-size:12px
+ border:1px solid #ddd;
+ background:#fff;
+ border-radius:8px;
+ padding:6px 9px;
+ font-size:12px
 }
 
 @media(max-width:430px){
  .grid{grid-template-columns:1fr}
  .kpi{grid-template-columns:1fr 1fr}
+ .photoGrid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -149,13 +260,13 @@ textarea{min-height:75px}
 
 <main>
 
-<!-- 首页 -->
 <section id="home" class="page on">
 
 <div class="card">
 <h2>我的装修项目</h2>
 
 <div class="kpi">
+
 <div>
 <span class="muted">预算</span>
 <b id="budget">¥95,000</b>
@@ -170,6 +281,7 @@ textarea{min-height:75px}
 <span class="muted">待处理</span>
 <b id="todo">0</b>
 </div>
+
 </div>
 </div>
 
@@ -182,33 +294,56 @@ textarea{min-height:75px}
 <div class="row">最终结算以双方确认记录为准</div>
 
 </div>
+
 </section>
 
 
-<!-- 报价 -->
 <section id="quote" class="page">
 
 <div class="card">
 
-<h2>📷 拍照识别报价单</h2>
+<h2>📷 识别报价单</h2>
 
-<label class="photo" for="quoteFile">
-📷 拍照 / 从相册选择
-</label>
+<div class="photoGrid">
+
+<button class="photoBtn"
+onclick="document.getElementById('quoteCamera').click()">
+📷<br>
+拍照
+</button>
+
+<button class="photoBtn"
+onclick="document.getElementById('quoteGallery').click()">
+🖼️<br>
+从相册选择
+</button>
+
+</div>
 
 <input
-id="quoteFile"
+id="quoteCamera"
 type="file"
 accept="image/*"
 capture="environment"
-style="display:none"
+hidden
+>
+
+<input
+id="quoteGallery"
+type="file"
+accept="image/*"
+hidden
 >
 
 <img id="quotePreview" class="preview">
 
 <div id="quoteStatus" class="status"></div>
 
-<button id="quoteOCRBtn" class="primary" style="display:none" onclick="recognizeQuote()">
+<button
+id="quoteOCRBtn"
+class="primary"
+style="display:none"
+onclick="recognizeQuote()">
 开始识别报价单
 </button>
 
@@ -256,7 +391,7 @@ style="display:none"
 <h2>识别结果</h2>
 
 <div id="quoteResults">
-<div class="empty">拍照后自动识别报价项目</div>
+<div class="empty">拍照或选择报价单后自动识别</div>
 </div>
 
 </div>
@@ -269,24 +404,52 @@ style="display:none"
 </section>
 
 
-<!-- 合同 -->
 <section id="contract" class="page">
 
 <div class="card">
 
-<h2>📷 拍照识别合同</h2>
+<h2>📷 识别合同</h2>
 
-<button class="photoBtn" onclick="document.getElementById('contractPhoto').click()">
-📷 拍照 / 上传合同页面
+<div class="photoGrid">
+
+<button class="photoBtn"
+onclick="document.getElementById('contractCamera').click()">
+📷<br>
+拍照
 </button>
 
-<input id="contractPhoto" type="file" accept="image/*" capture="environment" hidden>
+<button class="photoBtn"
+onclick="document.getElementById('contractGallery').click()">
+🖼️<br>
+从相册选择
+</button>
+
+</div>
+
+<input
+id="contractCamera"
+type="file"
+accept="image/*"
+capture="environment"
+hidden
+>
+
+<input
+id="contractGallery"
+type="file"
+accept="image/*"
+hidden
+>
 
 <img id="contractPreview" class="preview">
 
 <div id="contractStatus" class="status"></div>
 
-<button id="contractOCRBtn" class="primary" style="display:none" onclick="recognizeContract()">
+<button
+id="contractOCRBtn"
+class="primary"
+style="display:none"
+onclick="recognizeContract()">
 开始识别合同
 </button>
 
@@ -306,16 +469,19 @@ style="display:none"
 
 <div>
 <label>状态</label>
+
 <select id="cs">
 <option>必须修改</option>
 <option>待确认</option>
 <option>已通过</option>
 </select>
+
 </div>
 
 </div>
 
 <label style="margin-top:9px">我的要求</label>
+
 <textarea id="cr"></textarea>
 
 <button class="primary" onclick="addContract()">保存</button>
@@ -328,7 +494,7 @@ style="display:none"
 <h2>识别出的合同重点</h2>
 
 <div id="contractResults">
-<div class="empty">拍照合同后自动分析</div>
+<div class="empty">拍照或选择合同页面后自动分析</div>
 </div>
 
 </div>
@@ -341,7 +507,6 @@ style="display:none"
 </section>
 
 
-<!-- 增项 -->
 <section id="change" class="page">
 
 <div class="card">
@@ -384,24 +549,52 @@ style="display:none"
 </section>
 
 
-<!-- 沟通 -->
 <section id="notes" class="page">
 
 <div class="card">
 
-<h2>📷 截图识别沟通记录</h2>
+<h2>📷 识别聊天记录</h2>
 
-<button class="photoBtn" onclick="document.getElementById('notePhoto').click()">
-📷 拍聊天截图 / 上传图片
+<div class="photoGrid">
+
+<button class="photoBtn"
+onclick="document.getElementById('noteCamera').click()">
+📷<br>
+拍照
 </button>
 
-<input id="notePhoto" type="file" accept="image/*" capture="environment" hidden>
+<button class="photoBtn"
+onclick="document.getElementById('noteGallery').click()">
+🖼️<br>
+从相册选择
+</button>
+
+</div>
+
+<input
+id="noteCamera"
+type="file"
+accept="image/*"
+capture="environment"
+hidden
+>
+
+<input
+id="noteGallery"
+type="file"
+accept="image/*"
+hidden
+>
 
 <img id="notePreview" class="preview">
 
 <div id="noteStatus" class="status"></div>
 
-<button id="noteOCRBtn" class="primary" style="display:none" onclick="recognizeNote()">
+<button
+id="noteOCRBtn"
+class="primary"
+style="display:none"
+onclick="recognizeNote()">
 开始识别聊天记录
 </button>
 
@@ -447,7 +640,6 @@ style="display:none"
 </section>
 
 
-<!-- 设置 -->
 <section id="settings" class="page">
 
 <div class="card">
@@ -489,7 +681,6 @@ style="display:none"
 </main>
 
 
-<!-- OCR -->
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 
 <script>
@@ -538,17 +729,160 @@ b.classList.add("on");
 });
 
 
+/* 文件处理 */
+
+function setupImage(inputId,previewId,buttonId,statusId){
+
+const input=document.getElementById(inputId);
+
+input.addEventListener("change",function(){
+
+const file=this.files[0];
+
+if(!file)return;
+
+const preview=document.getElementById(previewId);
+
+preview.src=URL.createObjectURL(file);
+preview.style.display="block";
+
+document.getElementById(buttonId).style.display="block";
+
+const status=document.getElementById(statusId);
+
+status.style.display="block";
+status.textContent="图片已准备好，可以开始识别。";
+
+});
+
+}
+
+
 /* 报价 */
+
+setupImage(
+"quoteCamera",
+"quotePreview",
+"quoteOCRBtn",
+"quoteStatus"
+);
+
+setupImage(
+"quoteGallery",
+"quotePreview",
+"quoteOCRBtn",
+"quoteStatus"
+);
+
+
+/* 合同 */
+
+setupImage(
+"contractCamera",
+"contractPreview",
+"contractOCRBtn",
+"contractStatus"
+);
+
+setupImage(
+"contractGallery",
+"contractPreview",
+"contractOCRBtn",
+"contractStatus"
+);
+
+
+/* 沟通 */
+
+setupImage(
+"noteCamera",
+"notePreview",
+"noteOCRBtn",
+"noteStatus"
+);
+
+setupImage(
+"noteGallery",
+"notePreview",
+"noteOCRBtn",
+"noteStatus"
+);
+
+
+/* 获取图片 */
+
+function getSelectedFile(cameraId,galleryId){
+
+const camera=document.getElementById(cameraId);
+const gallery=document.getElementById(galleryId);
+
+if(camera.files.length)return camera.files[0];
+
+if(gallery.files.length)return gallery.files[0];
+
+return null;
+
+}
+
+
+/* OCR */
+
+async function runOCR(file,statusId){
+
+const status=document.getElementById(statusId);
+
+status.style.display="block";
+status.textContent="正在准备识别……";
+
+try{
+
+const result=await Tesseract.recognize(
+file,
+"chi_sim+eng",
+{
+logger:m=>{
+
+if(m.status==="recognizing text"){
+
+status.textContent=
+"正在识别文字 "+
+Math.round(m.progress*100)+
+"%";
+
+}
+
+}
+}
+);
+
+status.textContent="识别完成";
+
+return result.data.text;
+
+}catch(e){
+
+console.error(e);
+
+status.textContent="识别失败，请换一张清晰的图片再试";
+
+return "";
+
+}
+
+}
+
+
+/* 报价手动保存 */
 
 function addQuote(){
 
 if(!qn.value)return;
 
 d.q.push([
- qn.value,
- +qp.value||0,
- qq.value,
- qs.value
+qn.value,
++qp.value||0,
+qq.value,
+qs.value
 ]);
 
 qn.value="";
@@ -560,190 +894,21 @@ save();
 }
 
 
-/* 合同 */
-
-function addContract(){
-
-if(!cn.value)return;
-
-d.c.push([
- cn.value,
- cr.value,
- cs.value
-]);
-
-cn.value="";
-cr.value="";
-
-save();
-
-}
-
-
-/* 增项 */
-
-function addChange(){
-
-if(!xn.value)return;
-
-d.x.push([
- xn.value,
- +xp.value||0,
- xr.value,
- xs.value
-]);
-
-xn.value="";
-xp.value="";
-xr.value="";
-
-save();
-
-}
-
-
-/* 沟通 */
-
-function addNote(){
-
-if(!nt.value)return;
-
-d.n.push([
- nd.value,
- nt.value,
- ns.value,
- nn.value
-]);
-
-nt.value="";
-ns.value="";
-nn.value="";
-
-save();
-
-}
-
-
-/* 删除 */
-
-function del(a,i){
-
-if(confirm("删除这条记录？")){
-
-d[a].splice(i,1);
-save();
-
-}
-
-}
-
-
-/* 图片预览 */
-
-function setupPhoto(inputId,previewId,buttonId,statusId){
-
-const input=document.getElementById(inputId);
-
-input.onchange=e=>{
-
-const file=e.target.files[0];
-
-if(!file)return;
-
-const url=URL.createObjectURL(file);
-
-const img=document.getElementById(previewId);
-
-img.src=url;
-img.style.display="block";
-
-document.getElementById(buttonId).style.display="block";
-
-const status=document.getElementById(statusId);
-
-status.style.display="block";
-status.textContent="图片已准备好，可以开始识别。";
-
-};
-
-}
-
-setupPhoto(
- "quotePhoto",
- "quotePreview",
- "quoteOCRBtn",
- "quoteStatus"
-);
-
-setupPhoto(
- "contractPhoto",
- "contractPreview",
- "contractOCRBtn",
- "contractStatus"
-);
-
-setupPhoto(
- "notePhoto",
- "notePreview",
- "noteOCRBtn",
- "noteStatus"
-);
-
-
-/* OCR基础功能 */
-
-async function runOCR(file,statusId){
-
-const status=document.getElementById(statusId);
-
-status.style.display="block";
-status.textContent="正在识别图片，请稍等……";
-
-try{
-
-const result=await Tesseract.recognize(
- file,
- "chi_sim+eng",
- {
- logger:m=>{
-
- if(m.status==="recognizing text"){
-
- status.textContent=
- "正在识别文字 "+Math.round(m.progress*100)+"%";
-
- }
-
- }
- }
-);
-
-status.textContent="识别完成";
-
-return result.data.text;
-
-}catch(e){
-
-console.error(e);
-
-status.textContent="识别失败，请重新拍照或选择图片";
-
-return "";
-
-}
-
-}
-
-
-/* 报价识别 */
+/* 报价OCR */
 
 async function recognizeQuote(){
 
-const file=document.getElementById("quotePhoto").files[0];
+const file=getSelectedFile(
+"quoteCamera",
+"quoteGallery"
+);
 
 if(!file)return;
 
-const text=await runOCR(file,"quoteStatus");
+const text=await runOCR(
+file,
+"quoteStatus"
+);
 
 if(!text)return;
 
@@ -756,50 +921,44 @@ const results=[];
 
 lines.forEach(line=>{
 
-/*
- 尝试从一行文字中找金额
- */
-
 const money=line.match(
- /(?:¥|￥)?\s*(\d+(?:\.\d{1,2})?)/g
- );
+/(?:¥|￥)?\s*(\d+(?:\.\d{1,2})?)/g
+);
 
-if(money){
+if(!money)return;
 
 let amount=money[money.length-1]
 .replace(/[¥￥,\s]/g,"");
 
 amount=parseFloat(amount);
 
-if(amount>0 && amount<1000000){
+if(amount<=0 || amount>=1000000)return;
 
 let name=line
-.replace(/(?:¥|￥)?\s*\d+(?:\.\d{1,2})?/g,"")
+.replace(
+/(?:¥|￥)?\s*\d+(?:\.\d{1,2})?/g,
+""
+)
 .trim();
 
 if(name.length>0){
 
 results.push({
- name:name,
- amount:amount,
- unit:""
- });
-
-}
-
-}
+name:name,
+amount:amount,
+unit:""
+});
 
 }
 
 });
-
 
 showQuoteResults(results);
 
 }
 
 
-/* 显示报价识别结果 */
+/* 报价识别结果 */
 
 function showQuoteResults(results){
 
@@ -808,7 +967,7 @@ const box=document.getElementById("quoteResults");
 if(!results.length){
 
 box.innerHTML=
-'<div class="empty">没有自动识别出明确的报价金额。<br>可以尝试拍得更清晰、正面一些。</div>';
+'<div class="empty">没有自动识别出明确的报价金额。<br>请尽量拍正、拍清楚报价单。</div>';
 
 return;
 
@@ -832,13 +991,15 @@ box.innerHTML=results.map((x,i)=>`
 
 </div>
 
-<label style="margin-top:8px">数量/单位</label>
+<label style="margin-top:8px">
+数量/单位
+</label>
 
 <input id="rq_unit_${i}" value="${escapeHtml(x.unit)}">
 
 <button class="primary"
 onclick="saveRecognizedQuote(${i})">
-保存这项
+加入报价
 </button>
 
 </div>
@@ -848,23 +1009,24 @@ onclick="saveRecognizedQuote(${i})">
 }
 
 
-/* 保存识别报价 */
-
 function saveRecognizedQuote(i){
 
-const name=document.getElementById("rq_name_"+i).value;
+const name=
+document.getElementById("rq_name_"+i).value;
 
-const amount=+document.getElementById("rq_amount_"+i).value||0;
+const amount=
++document.getElementById("rq_amount_"+i).value||0;
 
-const unit=document.getElementById("rq_unit_"+i).value;
+const unit=
+document.getElementById("rq_unit_"+i).value;
 
 if(!name)return;
 
 d.q.push([
- name,
- amount,
- unit,
- "待核价"
+name,
+amount,
+unit,
+"待核价"
 ]);
 
 save();
@@ -874,17 +1036,20 @@ alert("报价项目已加入");
 }
 
 
-/* 合同识别 */
+/* 合同 */
 
 async function recognizeContract(){
 
-const file=document.getElementById("contractPhoto").files[0];
+const file=getSelectedFile(
+"contractCamera",
+"contractGallery"
+);
 
 if(!file)return;
 
 const text=await runOCR(
- file,
- "contractStatus"
+file,
+"contractStatus"
 );
 
 if(!text)return;
@@ -895,24 +1060,28 @@ const lines=text
 .filter(x=>x.length>5);
 
 const keywords=[
- "增项",
- "加项",
- "变更",
- "付款",
- "验收",
- "保修",
- "违约",
- "工期",
- "材料",
- "品牌",
- "型号",
- "水电",
- "防水",
- "隐蔽工程",
- "结算",
- "合同",
- "延期",
- "赔偿"
+"增项",
+"加项",
+"变更",
+"付款",
+"验收",
+"保修",
+"违约",
+"工期",
+"材料",
+"品牌",
+"型号",
+"水电",
+"防水",
+"隐蔽工程",
+"结算",
+"合同",
+"延期",
+"赔偿",
+"甲方",
+"乙方",
+"装修",
+"施工"
 ];
 
 const found=[];
@@ -932,16 +1101,17 @@ showContractResults(found);
 }
 
 
-/* 显示合同结果 */
+/* 合同结果 */
 
 function showContractResults(items){
 
-const box=document.getElementById("contractResults");
+const box=
+document.getElementById("contractResults");
 
 if(!items.length){
 
 box.innerHTML=
-'<div class="empty">没有自动找到明显的合同重点。<br>可以拍下一页继续识别。</div>';
+'<div class="empty">没有自动找到明显的合同重点。<br>可以继续拍下一页。</div>';
 
 return;
 
@@ -967,32 +1137,41 @@ window.contractOCRResults=items;
 }
 
 
-/* 加入合同 */
+/* 合同加入 */
 
 function useContractResult(i){
 
-const text=window.contractOCRResults[i];
+const text=
+window.contractOCRResults[i];
 
 cn.value=text;
-cr.value="请确认该条款是否需要修改。";
+
+cr.value=
+"请确认该条款是否需要修改。";
+
 cs.value="待确认";
 
-document.querySelector('nav button[data-p="contract"]').click();
+document
+.querySelector('nav button[data-p="contract"]')
+.click();
 
 }
 
 
-/* 沟通截图识别 */
+/* 沟通OCR */
 
 async function recognizeNote(){
 
-const file=document.getElementById("notePhoto").files[0];
+const file=getSelectedFile(
+"noteCamera",
+"noteGallery"
+);
 
 if(!file)return;
 
 const text=await runOCR(
- file,
- "noteStatus"
+file,
+"noteStatus"
 );
 
 if(!text)return;
@@ -1002,11 +1181,12 @@ showNoteResults(text);
 }
 
 
-/* 显示沟通识别 */
+/* 沟通结果 */
 
 function showNoteResults(text){
 
-const box=document.getElementById("noteResults");
+const box=
+document.getElementById("noteResults");
 
 box.innerHTML=`
 
@@ -1033,11 +1213,13 @@ onclick="useNoteOCR()">
 
 function useNoteOCR(){
 
-const text=document.getElementById("ocrNoteText").value;
+const text=
+document.getElementById("ocrNoteText").value;
 
 ns.value=text;
 
-nn.value="请根据聊天内容确认下一步。";
+nn.value=
+"请根据聊天内容确认下一步。";
 
 if(!nd.value){
 
@@ -1050,12 +1232,93 @@ String(now.getDate()).padStart(2,"0");
 
 }
 
-document.querySelector('nav button[data-p="notes"]').click();
+document
+.querySelector('nav button[data-p="notes"]')
+.click();
 
 }
 
 
-/* 防止识别文字破坏HTML */
+/* 合同手动保存 */
+
+function addContract(){
+
+if(!cn.value)return;
+
+d.c.push([
+cn.value,
+cr.value,
+cs.value
+]);
+
+cn.value="";
+cr.value="";
+
+save();
+
+}
+
+
+/* 增项 */
+
+function addChange(){
+
+if(!xn.value)return;
+
+d.x.push([
+xn.value,
++xp.value||0,
+xr.value,
+xs.value
+]);
+
+xn.value="";
+xp.value="";
+xr.value="";
+
+save();
+
+}
+
+
+/* 沟通 */
+
+function addNote(){
+
+if(!nt.value)return;
+
+d.n.push([
+nd.value,
+nt.value,
+ns.value,
+nn.value
+]);
+
+nt.value="";
+ns.value="";
+nn.value="";
+
+save();
+
+}
+
+
+/* 删除 */
+
+function del(a,i){
+
+if(confirm("删除这条记录？")){
+
+d[a].splice(i,1);
+
+save();
+
+}
+
+}
+
+
+/* 防止HTML注入 */
 
 function escapeHtml(str){
 
@@ -1069,7 +1332,7 @@ return String(str||"")
 }
 
 
-/* 页面数据 */
+/* 页面渲染 */
 
 function render(){
 
@@ -1230,7 +1493,9 @@ d.n.slice().reverse().map((x,i)=>`
 
 <span>
 
-<b>${escapeHtml(x[0])} · ${escapeHtml(x[1])}</b>
+<b>
+${escapeHtml(x[0])} · ${escapeHtml(x[1])}
+</b>
 
 <br>
 
@@ -1276,6 +1541,8 @@ pm.value;
 
 save();
 
+alert("设置已保存");
+
 }
 
 
@@ -1293,6 +1560,7 @@ new Blob(
 let a=document.createElement("a");
 
 a.href=u;
+
 a.download="猪窝备份.json";
 
 a.click();
@@ -1311,6 +1579,10 @@ file.click();
 }
 
 file.onchange=e=>{
+
+const selected=e.target.files[0];
+
+if(!selected)return;
 
 let r=new FileReader();
 
@@ -1332,7 +1604,7 @@ alert("备份文件无效");
 
 };
 
-r.readAsText(e.target.files[0]);
+r.readAsText(selected);
 
 };
 
