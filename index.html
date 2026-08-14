@@ -192,11 +192,17 @@ textarea{min-height:75px}
 
 <h2>📷 拍照识别报价单</h2>
 
-<button class="photoBtn" onclick="document.getElementById('quotePhoto').click()">
-📷 拍照 / 从相册选择报价单
-</button>
+<label class="photo" for="quoteFile">
+📷 拍照 / 从相册选择
+</label>
 
-<input id="quotePhoto" type="file" accept="image/*" capture="environment" hidden>
+<input
+id="quoteFile"
+type="file"
+accept="image/*"
+capture="environment"
+style="display:none"
+>
 
 <img id="quotePreview" class="preview">
 
