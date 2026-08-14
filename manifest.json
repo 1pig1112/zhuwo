@@ -1,0 +1,9 @@
+{
+  "name": "猪窝",
+  "short_name": "猪窝",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f6f8",
+  "theme_color": "#111111",
+  "description": "你的专属装修管家"
+}
