@@ -9,235 +9,192 @@
 
 <style>
 *{box-sizing:border-box}
-
 body{
- margin:0;
- background:#f5f6f8;
- color:#222;
- font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif
+margin:0;background:#f5f6f8;color:#222;
+font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif
 }
-
 header{
- background:#111;
- color:#fff;
- padding:20px 16px 14px;
- position:sticky;
- top:0;
- z-index:3
+background:#111;color:#fff;padding:20px 16px 14px;
+position:sticky;top:0;z-index:3
 }
-
 h1{margin:0;font-size:22px}
 .sub{opacity:.7;font-size:12px;margin-top:4px}
 
 nav{
- position:sticky;
- top:72px;
- z-index:2;
- background:#fff;
- display:flex;
- gap:7px;
- overflow:auto;
- padding:9px;
- border-bottom:1px solid #eee
+position:sticky;top:72px;z-index:2;background:#fff;
+display:flex;gap:7px;overflow:auto;padding:9px;
+border-bottom:1px solid #eee
 }
-
 nav button{
- border:0;
- border-radius:18px;
- padding:8px 13px;
- white-space:nowrap;
- background:#f0f1f3
+border:0;border-radius:18px;padding:8px 13px;
+white-space:nowrap;background:#f0f1f3
 }
+nav button.on{background:#111;color:#fff}
 
-nav button.on{
- background:#111;
- color:#fff
-}
-
-main{
- max-width:700px;
- margin:auto;
- padding:12px
-}
-
+main{max-width:700px;margin:auto;padding:12px}
 .page{display:none}
 .page.on{display:block}
 
 .card{
- background:#fff;
- border-radius:16px;
- padding:15px;
- margin-bottom:12px;
- box-shadow:0 2px 10px #00000008
+background:#fff;border-radius:16px;padding:15px;
+margin-bottom:12px;box-shadow:0 2px 10px #00000008
 }
 
-h2{
- font-size:16px;
- margin:0 0 12px
-}
+h2{font-size:16px;margin:0 0 12px}
 
 .grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:9px
+display:grid;grid-template-columns:1fr 1fr;gap:9px
 }
 
 label{
- font-size:12px;
- color:#777;
- display:block;
- margin-bottom:5px
+font-size:12px;color:#777;display:block;margin-bottom:5px
 }
 
 input,textarea,select{
- width:100%;
- padding:10px;
- border:1px solid #ddd;
- border-radius:10px;
- font-size:14px;
- background:#fff
+width:100%;padding:10px;border:1px solid #ddd;
+border-radius:10px;font-size:14px;background:#fff
 }
 
 textarea{min-height:75px}
 
 .primary{
- width:100%;
- border:0;
- border-radius:11px;
- background:#111;
- color:#fff;
- padding:11px;
- margin-top:10px;
- font-size:14px
+width:100%;border:0;border-radius:11px;background:#111;
+color:#fff;padding:11px;margin-top:10px;font-size:14px
 }
 
 .secondary{
- border:1px solid #ddd;
- background:#fff;
- border-radius:9px;
- padding:8px 10px
+border:1px solid #ddd;background:#fff;
+border-radius:9px;padding:8px 10px
 }
 
 .photoGrid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:10px;
- margin-top:10px
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:10px
 }
 
 .photoBtn{
- border:1px dashed #aaa;
- background:#fafafa;
- border-radius:12px;
- padding:15px 10px;
- font-size:14px;
- text-align:center
+border:1px dashed #aaa;
+background:#fafafa;
+border-radius:12px;
+padding:15px 10px;
+font-size:14px;
+text-align:center
 }
 
-.photoBtn:active{
- background:#eee
-}
+.photoBtn:active{background:#eee}
 
 .preview{
- width:100%;
- max-height:300px;
- object-fit:contain;
- border-radius:12px;
- margin-top:10px;
- display:none;
- background:#f5f5f5
+width:100%;
+max-height:300px;
+object-fit:contain;
+border-radius:12px;
+margin-top:10px;
+display:none;
+background:#f5f5f5
 }
 
 .status{
- background:#f7f7f7;
- border-radius:10px;
- padding:10px;
- font-size:12px;
- color:#666;
- margin-top:10px;
- display:none
+background:#f7f7f7;
+border-radius:10px;
+padding:10px;
+font-size:12px;
+color:#666;
+margin-top:10px;
+display:none
 }
 
 .kpi{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:8px
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px
 }
 
 .kpi div{
- background:#fafafa;
- border-radius:12px;
- padding:10px
+background:#fafafa;
+border-radius:12px;
+padding:10px
 }
 
 .kpi b{
- display:block;
- font-size:18px;
- margin-top:3px
+display:block;
+font-size:18px;
+margin-top:3px
 }
 
-.muted{
- color:#888;
- font-size:12px
-}
+.muted{color:#888;font-size:12px}
 
 .row{
- display:flex;
- justify-content:space-between;
- gap:10px;
- padding:10px 0;
- border-bottom:1px solid #eee
+display:flex;
+justify-content:space-between;
+gap:10px;
+padding:10px 0;
+border-bottom:1px solid #eee
 }
 
 .row:last-child{border:0}
 
 .badge{
- font-size:11px;
- background:#f1f1f1;
- padding:4px 7px;
- border-radius:7px;
- display:inline-block;
- margin-top:4px
+font-size:11px;
+background:#f1f1f1;
+padding:4px 7px;
+border-radius:7px;
+display:inline-block;
+margin-top:4px
 }
 
 .empty{
- text-align:center;
- color:#999;
- padding:15px;
- font-size:13px
-}
-
-.resultBox{
- background:#fafafa;
- border-radius:12px;
- padding:10px;
- margin-top:10px
+text-align:center;
+color:#999;
+padding:15px;
+font-size:13px
 }
 
 .resultItem{
- background:#fff;
- border:1px solid #eee;
- border-radius:10px;
- padding:10px;
- margin-bottom:8px
+background:#fff;
+border:1px solid #eee;
+border-radius:10px;
+padding:10px;
+margin-bottom:8px
 }
 
-.resultItem:last-child{
- margin-bottom:0
-}
+.resultItem:last-child{margin-bottom:0}
 
 .smallBtn{
- border:1px solid #ddd;
- background:#fff;
- border-radius:8px;
- padding:6px 9px;
- font-size:12px
+border:1px solid #ddd;
+background:#fff;
+border-radius:8px;
+padding:6px 9px;
+font-size:12px
+}
+
+.checkRow{
+display:flex;
+align-items:center;
+gap:8px;
+font-size:13px;
+margin-bottom:8px
+}
+
+.checkRow input{
+width:20px;
+height:20px
+}
+
+.notice{
+background:#fff8e8;
+border-radius:10px;
+padding:10px;
+font-size:12px;
+color:#805f00;
+margin-top:10px
 }
 
 @media(max-width:430px){
- .grid{grid-template-columns:1fr}
- .kpi{grid-template-columns:1fr 1fr}
- .photoGrid{grid-template-columns:1fr 1fr}
+.grid{grid-template-columns:1fr}
+.kpi{grid-template-columns:1fr 1fr}
+.photoGrid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -308,14 +265,12 @@ textarea{min-height:75px}
 
 <button class="photoBtn"
 onclick="document.getElementById('quoteCamera').click()">
-📷<br>
-拍照
+📷<br>拍照
 </button>
 
 <button class="photoBtn"
 onclick="document.getElementById('quoteGallery').click()">
-🖼️<br>
-从相册选择
+🖼️<br>从相册选择
 </button>
 
 </div>
@@ -391,7 +346,9 @@ onclick="recognizeQuote()">
 <h2>识别结果</h2>
 
 <div id="quoteResults">
-<div class="empty">拍照或选择报价单后自动识别</div>
+<div class="empty">
+拍照或选择报价单后自动识别
+</div>
 </div>
 
 </div>
@@ -414,14 +371,12 @@ onclick="recognizeQuote()">
 
 <button class="photoBtn"
 onclick="document.getElementById('contractCamera').click()">
-📷<br>
-拍照
+📷<br>拍照
 </button>
 
 <button class="photoBtn"
 onclick="document.getElementById('contractGallery').click()">
-🖼️<br>
-从相册选择
+🖼️<br>从相册选择
 </button>
 
 </div>
@@ -481,7 +436,6 @@ onclick="recognizeContract()">
 </div>
 
 <label style="margin-top:9px">我的要求</label>
-
 <textarea id="cr"></textarea>
 
 <button class="primary" onclick="addContract()">保存</button>
@@ -494,7 +448,9 @@ onclick="recognizeContract()">
 <h2>识别出的合同重点</h2>
 
 <div id="contractResults">
-<div class="empty">拍照或选择合同页面后自动分析</div>
+<div class="empty">
+拍照或选择合同页面后自动分析
+</div>
 </div>
 
 </div>
@@ -559,14 +515,12 @@ onclick="recognizeContract()">
 
 <button class="photoBtn"
 onclick="document.getElementById('noteCamera').click()">
-📷<br>
-拍照
+📷<br>拍照
 </button>
 
 <button class="photoBtn"
 onclick="document.getElementById('noteGallery').click()">
-🖼️<br>
-从相册选择
+🖼️<br>从相册选择
 </button>
 
 </div>
@@ -627,7 +581,9 @@ onclick="recognizeNote()">
 <h2>识别结果</h2>
 
 <div id="noteResults">
-<div class="empty">上传聊天截图后自动提取文字</div>
+<div class="empty">
+上传聊天截图后自动提取文字
+</div>
 </div>
 
 </div>
@@ -655,7 +611,9 @@ onclick="recognizeNote()">
 <label style="margin-top:9px">备注</label>
 <textarea id="pm"></textarea>
 
-<button class="primary" onclick="saveSettings()">保存设置</button>
+<button class="primary" onclick="saveSettings()">
+保存设置
+</button>
 
 </div>
 
@@ -668,9 +626,13 @@ onclick="recognizeNote()">
 在 Safari 打开后，点“分享”→“添加到主屏幕”，即可像 App 一样使用。数据保存在本机。
 </p>
 
-<button class="secondary" onclick="exportData()">备份数据</button>
+<button class="secondary" onclick="exportData()">
+备份数据
+</button>
 
-<button class="secondary" onclick="importData()">恢复数据</button>
+<button class="secondary" onclick="importData()">
+恢复数据
+</button>
 
 <input id="file" type="file" accept=".json" hidden>
 
@@ -688,22 +650,33 @@ onclick="recognizeNote()">
 const K="zhuwoPWA";
 
 let d=JSON.parse(localStorage.getItem(K)||"null")||{
- name:"我的装修项目",
- budget:95000,
- memo:"",
- q:[],
- c:[
- ["增项必须书面确认","未经我书面确认，不得施工或收费。","必须修改"],
- ["品牌/型号不得随意替换","任何替换先取得书面同意。","必须修改"],
- ["隐蔽工程封闭前验收","水电、防水、暗装花洒预埋等封闭前验收。","待确认"]
- ],
- x:[],
- n:[]
+name:"我的装修项目",
+budget:95000,
+memo:"",
+q:[],
+c:[
+["增项必须书面确认",
+"未经我书面确认，不得施工或收费。",
+"必须修改"],
+
+["品牌/型号不得随意替换",
+"任何替换先取得书面同意。",
+"必须修改"],
+
+["隐蔽工程封闭前验收",
+"水电、防水、暗装花洒预埋等封闭前验收。",
+"待确认"]
+],
+x:[],
+n:[]
 };
 
+
+/* 保存 */
+
 const save=()=>{
- localStorage.setItem(K,JSON.stringify(d));
- render();
+localStorage.setItem(K,JSON.stringify(d));
+render();
 };
 
 
@@ -729,7 +702,7 @@ b.classList.add("on");
 });
 
 
-/* 文件处理 */
+/* 图片设置 */
 
 function setupImage(inputId,previewId,buttonId,statusId){
 
@@ -758,7 +731,7 @@ status.textContent="图片已准备好，可以开始识别。";
 }
 
 
-/* 报价 */
+/* 报价图片 */
 
 setupImage(
 "quoteCamera",
@@ -775,7 +748,7 @@ setupImage(
 );
 
 
-/* 合同 */
+/* 合同图片 */
 
 setupImage(
 "contractCamera",
@@ -792,7 +765,7 @@ setupImage(
 );
 
 
-/* 沟通 */
+/* 沟通图片 */
 
 setupImage(
 "noteCamera",
@@ -816,9 +789,11 @@ function getSelectedFile(cameraId,galleryId){
 const camera=document.getElementById(cameraId);
 const gallery=document.getElementById(galleryId);
 
-if(camera.files.length)return camera.files[0];
+if(camera.files.length)
+return camera.files[0];
 
-if(gallery.files.length)return gallery.files[0];
+if(gallery.files.length)
+return gallery.files[0];
 
 return null;
 
@@ -846,8 +821,7 @@ if(m.status==="recognizing text"){
 
 status.textContent=
 "正在识别文字 "+
-Math.round(m.progress*100)+
-"%";
+Math.round(m.progress*100)+"%";
 
 }
 
@@ -863,7 +837,8 @@ return result.data.text;
 
 console.error(e);
 
-status.textContent="识别失败，请换一张清晰的图片再试";
+status.textContent=
+"识别失败，请换一张清晰的图片再试";
 
 return "";
 
@@ -872,7 +847,7 @@ return "";
 }
 
 
-/* 报价手动保存 */
+/* 手动添加报价 */
 
 function addQuote(){
 
@@ -967,58 +942,159 @@ const box=document.getElementById("quoteResults");
 if(!results.length){
 
 box.innerHTML=
-'<div class="empty">没有自动识别出明确的报价金额。<br>请尽量拍正、拍清楚报价单。</div>';
+'<div class="empty">没有自动识别出明确的报价项目。<br>请尽量拍正、拍清楚报价单。</div>';
 
 return;
 
 }
 
-box.innerHTML=results.map((x,i)=>`
+window.quoteOCRResults=results;
+
+box.innerHTML=`
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px
+">
+
+<b>共识别 ${results.length} 项</b>
+
+<button
+class="smallBtn"
+onclick="toggleAllQuotes()">
+全选/取消
+</button>
+
+</div>
+
+<div class="notice">
+识别结果已经自动整理。确认无误后，可以一次性加入报价。
+</div>
+
+<div id="quoteBatchList">
+
+${results.map((x,i)=>`
 
 <div class="resultItem">
+
+<label class="checkRow">
+
+<input
+type="checkbox"
+class="quoteCheck"
+data-index="${i}"
+checked
+>
+
+<span>加入这项报价</span>
+
+</label>
 
 <div class="grid">
 
 <div>
 <label>项目</label>
-<input id="rq_name_${i}" value="${escapeHtml(x.name)}">
+
+<input
+id="rq_name_${i}"
+value="${escapeHtml(x.name)}"
+>
+
 </div>
 
 <div>
+
 <label>金额</label>
-<input id="rq_amount_${i}" type="number" value="${x.amount}">
+
+<input
+id="rq_amount_${i}"
+type="number"
+value="${x.amount}"
+>
+
 </div>
 
 </div>
 
 <label style="margin-top:8px">
-数量/单位
+数量 / 单位
 </label>
 
-<input id="rq_unit_${i}" value="${escapeHtml(x.unit)}">
-
-<button class="primary"
-onclick="saveRecognizedQuote(${i})">
-加入报价
-</button>
+<input
+id="rq_unit_${i}"
+value="${escapeHtml(x.unit)}"
+>
 
 </div>
 
-`).join("");
+`).join("")}
+
+</div>
+
+<button
+class="primary"
+onclick="saveAllRecognizedQuotes()">
+
+✅ 确认并加入全部
+
+</button>
+
+`;
 
 }
 
 
-function saveRecognizedQuote(i){
+/* 全选 */
+
+function toggleAllQuotes(){
+
+const checks=
+document.querySelectorAll(".quoteCheck");
+
+if(!checks.length)return;
+
+const allChecked=
+Array.from(checks).every(x=>x.checked);
+
+checks.forEach(x=>{
+x.checked=!allChecked;
+});
+
+}
+
+
+/* 批量保存 */
+
+function saveAllRecognizedQuotes(){
+
+const checks=
+document.querySelectorAll(".quoteCheck");
+
+let count=0;
+
+checks.forEach(check=>{
+
+if(!check.checked)return;
+
+const i=
+parseInt(check.dataset.index);
 
 const name=
-document.getElementById("rq_name_"+i).value;
+document.getElementById(
+"rq_name_"+i
+).value.trim();
 
 const amount=
-+document.getElementById("rq_amount_"+i).value||0;
++document.getElementById(
+"rq_amount_"+i
+).value||0;
 
 const unit=
-document.getElementById("rq_unit_"+i).value;
+document.getElementById(
+"rq_unit_"+i
+).value.trim();
 
 if(!name)return;
 
@@ -1029,14 +1105,40 @@ unit,
 "待核价"
 ]);
 
+count++;
+
+});
+
+if(!count){
+
+alert("没有选择要加入的项目");
+
+return;
+
+}
+
 save();
 
-alert("报价项目已加入");
+document.getElementById("quoteResults").innerHTML=`
+
+<div class="resultItem">
+
+<b>✅ 已加入 ${count} 个报价项目</b>
+
+<br>
+
+<span class="muted">
+已自动保存到「报价」列表。
+</span>
+
+</div>
+
+`;
 
 }
 
 
-/* 合同 */
+/* 合同OCR */
 
 async function recognizeContract(){
 
@@ -1088,11 +1190,8 @@ const found=[];
 
 lines.forEach(line=>{
 
-if(keywords.some(k=>line.includes(k))){
-
+if(keywords.some(k=>line.includes(k)))
 found.push(line);
-
-}
 
 });
 
@@ -1123,7 +1222,8 @@ box.innerHTML=items.map((x,i)=>`
 
 <b>${escapeHtml(x)}</b>
 
-<button class="primary"
+<button
+class="primary"
 onclick="useContractResult(${i})">
 加入合同检查项
 </button>
@@ -1137,7 +1237,7 @@ window.contractOCRResults=items;
 }
 
 
-/* 合同加入 */
+/* 使用合同识别结果 */
 
 function useContractResult(i){
 
@@ -1194,10 +1294,13 @@ box.innerHTML=`
 
 <label>识别出的聊天内容</label>
 
-<textarea id="ocrNoteText"
-style="min-height:150px">${escapeHtml(text)}</textarea>
+<textarea
+id="ocrNoteText"
+style="min-height:150px"
+>${escapeHtml(text)}</textarea>
 
-<button class="primary"
+<button
+class="primary"
 onclick="useNoteOCR()">
 填入沟通记录
 </button>
@@ -1209,7 +1312,7 @@ onclick="useNoteOCR()">
 }
 
 
-/* 自动填入沟通 */
+/* 使用沟通OCR */
 
 function useNoteOCR(){
 
@@ -1318,7 +1421,7 @@ save();
 }
 
 
-/* 防止HTML注入 */
+/* 防止HTML问题 */
 
 function escapeHtml(str){
 
@@ -1358,7 +1461,7 @@ ql.innerHTML=d.q.length?
 
 d.q.map((x,i)=>`
 
-<div class=row>
+<div class="row">
 
 <span>
 
@@ -1366,13 +1469,13 @@ d.q.map((x,i)=>`
 
 <br>
 
-<span class=muted>
+<span class="muted">
 ${escapeHtml(x[2])}
 </span>
 
 <br>
 
-<span class=badge>
+<span class="badge">
 ${escapeHtml(x[3])}
 </span>
 
@@ -1384,7 +1487,8 @@ ${escapeHtml(x[3])}
 
 <br>
 
-<button class=secondary
+<button
+class="secondary"
 onclick="del('q',${i})">
 删除
 </button>
@@ -1404,7 +1508,7 @@ onclick="del('q',${i})">
 
 cl.innerHTML=d.c.map((x,i)=>`
 
-<div class=row>
+<div class="row">
 
 <span>
 
@@ -1412,19 +1516,20 @@ cl.innerHTML=d.c.map((x,i)=>`
 
 <br>
 
-<span class=muted>
+<span class="muted">
 ${escapeHtml(x[1])}
 </span>
 
 <br>
 
-<span class=badge>
+<span class="badge">
 ${escapeHtml(x[2])}
 </span>
 
 </span>
 
-<button class=secondary
+<button
+class="secondary"
 onclick="del('c',${i})">
 删除
 </button>
@@ -1440,7 +1545,7 @@ xl.innerHTML=d.x.length?
 
 d.x.map((x,i)=>`
 
-<div class=row>
+<div class="row">
 
 <span>
 
@@ -1448,13 +1553,13 @@ d.x.map((x,i)=>`
 
 <br>
 
-<span class=muted>
+<span class="muted">
 ${escapeHtml(x[2])}
 </span>
 
 <br>
 
-<span class=badge>
+<span class="badge">
 ${escapeHtml(x[3])}
 </span>
 
@@ -1467,7 +1572,8 @@ ${x[1]>=0?"+":""}
 
 <br>
 
-<button class=secondary
+<button
+class="secondary"
 onclick="del('x',${i})">
 删除
 </button>
@@ -1487,9 +1593,9 @@ onclick="del('x',${i})">
 
 nl.innerHTML=d.n.length?
 
-d.n.slice().reverse().map((x,i)=>`
+d.n.slice().reverse().map(x=>`
 
-<div class=row>
+<div class="row">
 
 <span>
 
@@ -1503,7 +1609,7 @@ ${escapeHtml(x[2])}
 
 <br>
 
-<span class=muted>
+<span class="muted">
 下一步：${escapeHtml(x[3])}
 </span>
 
@@ -1560,7 +1666,6 @@ new Blob(
 let a=document.createElement("a");
 
 a.href=u;
-
 a.download="猪窝备份.json";
 
 a.click();
@@ -1574,11 +1679,11 @@ URL.revokeObjectURL(u);
 
 function importData(){
 
-file.click();
+document.getElementById("file").click();
 
 }
 
-file.onchange=e=>{
+document.getElementById("file").onchange=e=>{
 
 const selected=e.target.files[0];
 
