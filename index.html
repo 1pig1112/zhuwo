@@ -8,449 +8,398 @@
 <title>猪窝</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
- margin:0;
- background:#f5f6f8;
- color:#222;
- font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",
- "Microsoft YaHei",sans-serif;
+  margin:0;
+  background:#f5f6f8;
+  color:#222;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",
+  "Microsoft YaHei",sans-serif;
 }
 
 header{
- background:#111;
- color:#fff;
- padding:20px 16px 14px;
- position:sticky;
- top:0;
- z-index:10;
+  background:#111;
+  color:#fff;
+  padding:20px 16px 14px;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
 h1{
- margin:0;
- font-size:22px;
+  margin:0;
+  font-size:23px;
 }
 
 .sub{
- opacity:.7;
- font-size:12px;
- margin-top:4px;
+  opacity:.65;
+  font-size:12px;
+  margin-top:4px;
 }
 
 nav{
- position:sticky;
- top:72px;
- z-index:9;
- background:#fff;
- display:flex;
- gap:7px;
- overflow:auto;
- padding:9px;
- border-bottom:1px solid #eee;
+  position:sticky;
+  top:70px;
+  z-index:9;
+  background:#fff;
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding:9px;
+  border-bottom:1px solid #eee;
 }
 
 nav button{
- border:0;
- border-radius:18px;
- padding:8px 13px;
- white-space:nowrap;
- background:#f0f1f3;
- font-size:13px;
+  border:0;
+  border-radius:18px;
+  padding:8px 14px;
+  white-space:nowrap;
+  background:#f0f1f3;
+  font-size:13px;
 }
 
 nav button.on{
- background:#111;
- color:#fff;
+  background:#111;
+  color:#fff;
 }
 
 main{
- max-width:760px;
- margin:auto;
- padding:12px;
+  max-width:760px;
+  margin:auto;
+  padding:12px;
 }
 
 .page{
- display:none;
+  display:none;
 }
 
 .page.on{
- display:block;
+  display:block;
 }
 
 .card{
- background:#fff;
- border-radius:16px;
- padding:15px;
- margin-bottom:12px;
- box-shadow:0 2px 10px #00000008;
+  background:#fff;
+  border-radius:16px;
+  padding:15px;
+  margin-bottom:12px;
+  box-shadow:0 2px 10px #00000008;
 }
 
 h2{
- font-size:16px;
- margin:0 0 12px;
+  font-size:16px;
+  margin:0 0 12px;
 }
 
 h3{
- font-size:14px;
- margin:0 0 8px;
+  font-size:14px;
+  margin:0 0 8px;
 }
 
 .grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:9px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
 }
 
 label{
- font-size:12px;
- color:#777;
- display:block;
- margin-bottom:5px;
+  display:block;
+  font-size:12px;
+  color:#777;
+  margin-bottom:5px;
 }
 
 input,
 textarea,
 select{
- width:100%;
- padding:10px;
- border:1px solid #ddd;
- border-radius:10px;
- font-size:14px;
- background:#fff;
+  width:100%;
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:14px;
+  background:#fff;
 }
 
 textarea{
- min-height:80px;
+  min-height:85px;
+}
+
+button{
+  font-family:inherit;
 }
 
 .primary{
- width:100%;
- border:0;
- border-radius:11px;
- background:#111;
- color:#fff;
- padding:12px;
- margin-top:10px;
- font-size:14px;
+  width:100%;
+  border:0;
+  border-radius:11px;
+  background:#111;
+  color:#fff;
+  padding:11px;
+  margin-top:10px;
+  font-size:14px;
 }
 
 .secondary{
- border:1px solid #ddd;
- background:#fff;
- border-radius:9px;
- padding:8px 10px;
- font-size:13px;
+  border:1px solid #ddd;
+  background:#fff;
+  border-radius:9px;
+  padding:8px 11px;
+}
+
+.danger{
+  border:1px solid #f0cccc;
+  background:#fff5f5;
+  color:#c33;
+  border-radius:9px;
+  padding:8px 11px;
 }
 
 .photoBtn{
- width:100%;
- border:1px dashed #aaa;
- background:#fafafa;
- border-radius:12px;
- padding:16px;
- font-size:14px;
+  width:100%;
+  border:1px dashed #aaa;
+  background:#fafafa;
+  border-radius:12px;
+  padding:16px;
+  font-size:14px;
 }
 
-.preview{
- width:100%;
- max-height:330px;
- object-fit:contain;
- border-radius:12px;
- margin-top:10px;
- display:none;
- background:#f5f5f5;
+.previewGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:10px;
+}
+
+.previewItem{
+  position:relative;
+}
+
+.previewItem img{
+  width:100%;
+  height:100px;
+  object-fit:cover;
+  border-radius:10px;
+  background:#eee;
+}
+
+.previewItem button{
+  position:absolute;
+  right:4px;
+  top:4px;
+  width:25px;
+  height:25px;
+  border:0;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
 }
 
 .status{
- background:#f7f7f7;
- border-radius:10px;
- padding:10px;
- font-size:12px;
- color:#666;
- margin-top:10px;
- display:none;
+  background:#f7f7f7;
+  border-radius:10px;
+  padding:10px;
+  margin-top:10px;
+  font-size:12px;
+  color:#666;
 }
 
 .kpi{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:8px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
 }
 
 .kpi div{
- background:#fafafa;
- border-radius:12px;
- padding:10px;
+  background:#fafafa;
+  border-radius:12px;
+  padding:11px;
 }
 
 .kpi b{
- display:block;
- font-size:18px;
- margin-top:3px;
+  display:block;
+  font-size:18px;
+  margin-top:4px;
 }
 
 .muted{
- color:#888;
- font-size:12px;
+  color:#888;
+  font-size:12px;
 }
 
 .row{
- display:flex;
- justify-content:space-between;
- gap:10px;
- padding:10px 0;
- border-bottom:1px solid #eee;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:11px 0;
+  border-bottom:1px solid #eee;
 }
 
 .row:last-child{
- border:0;
+  border-bottom:0;
 }
 
 .badge{
- font-size:11px;
- background:#f1f1f1;
- padding:4px 7px;
- border-radius:7px;
- display:inline-block;
- margin-top:4px;
+  display:inline-block;
+  font-size:11px;
+  padding:4px 7px;
+  border-radius:7px;
+  background:#eee;
+  margin-top:4px;
+}
+
+.badge.red{
+  background:#ffe5e5;
+  color:#b40000;
+}
+
+.badge.orange{
+  background:#fff0d9;
+  color:#a15a00;
+}
+
+.badge.green{
+  background:#e6f7e8;
+  color:#287a32;
+}
+
+.badge.blue{
+  background:#e7f0ff;
+  color:#315f9c;
 }
 
 .empty{
- text-align:center;
- color:#999;
- padding:18px 10px;
- font-size:13px;
+  text-align:center;
+  color:#999;
+  padding:18px;
+  font-size:13px;
 }
 
 .resultBox{
- background:#fafafa;
- border-radius:12px;
- padding:10px;
- margin-top:10px;
+  background:#f8f8f8;
+  border-radius:12px;
+  padding:10px;
+  margin-top:10px;
 }
 
 .resultItem{
- background:#fff;
- border:1px solid #eee;
- border-radius:12px;
- padding:12px;
- margin-bottom:9px;
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:11px;
+  margin-bottom:9px;
 }
 
 .resultItem:last-child{
- margin-bottom:0;
+  margin-bottom:0;
 }
 
-.analysisSummary{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:7px;
+.resultActions{
+  display:flex;
+  gap:7px;
+  margin-top:9px;
 }
 
-.analysisSummary div{
- border-radius:11px;
- padding:10px;
- background:#fafafa;
+.resultActions button{
+  flex:1;
 }
 
-.analysisSummary b{
- display:block;
- font-size:18px;
- margin-top:3px;
-}
-
-.green{
- background:#edf8ef!important;
-}
-
-.yellow{
- background:#fff8df!important;
-}
-
-.orange{
- background:#fff0df!important;
-}
-
-.red{
- background:#fff0f0!important;
-}
-
-.analysisTitle{
- font-size:14px;
- font-weight:600;
- margin-bottom:6px;
-}
-
-.analysisText{
- font-size:13px;
- line-height:1.65;
-}
-
-.quoteTable{
- width:100%;
- border-collapse:collapse;
- font-size:12px;
-}
-
-.quoteTable th{
- background:#f6f6f6;
- padding:8px 5px;
- text-align:left;
- white-space:nowrap;
-}
-
-.quoteTable td{
- padding:9px 5px;
- border-bottom:1px solid #eee;
- vertical-align:top;
-}
-
-.quoteTable tr:last-child td{
- border-bottom:0;
-}
-
-.tableWrap{
- overflow-x:auto;
-}
-
-.priceTag{
- display:inline-block;
- padding:4px 7px;
- border-radius:7px;
- font-size:11px;
- white-space:nowrap;
-}
-
-.tagNormal{
- background:#eaf7ed;
-}
-
-.tagAttention{
- background:#fff5d6;
-}
-
-.tagHigh{
- background:#ffe9e9;
-}
-
-.tagAdd{
- background:#fff0df;
-}
-
-.suggest{
- background:#fafafa;
- border-left:3px solid #111;
- padding:10px;
- margin-top:8px;
- border-radius:0 9px 9px 0;
- font-size:13px;
- line-height:1.65;
-}
-
-.chat{
- background:#f7f7f7;
- border-radius:12px;
- padding:12px;
- font-size:13px;
- line-height:1.7;
-}
-
-.sectionTitle{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:8px;
- margin-bottom:10px;
-}
-
-.count{
- background:#eee;
- padding:3px 7px;
- border-radius:10px;
- font-size:11px;
-}
-
-.rawText{
- white-space:pre-wrap;
- background:#fafafa;
- border-radius:10px;
- padding:12px;
- font-size:12px;
- line-height:1.6;
- max-height:400px;
- overflow:auto;
+.notice{
+  padding:11px;
+  border-radius:11px;
+  background:#f5f5f5;
+  font-size:13px;
+  line-height:1.6;
 }
 
 .warning{
- background:#fff5e8;
- border:1px solid #f2d4a8;
- border-radius:11px;
- padding:11px;
- font-size:12px;
- line-height:1.6;
- margin-bottom:10px;
+  background:#fff4e5;
+  color:#8a5600;
 }
 
-.bigTotal{
- font-size:28px;
- font-weight:700;
+.success{
+  background:#edf8ef;
+  color:#287332;
 }
 
-.actionGrid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:8px;
+.dangerBox{
+  background:#fff0f0;
+  color:#a00000;
 }
 
-.actionBtn{
- border:1px solid #ddd;
- background:#fff;
- border-radius:10px;
- padding:10px;
- font-size:12px;
+.infoBox{
+  background:#edf4ff;
+  color:#285b9c;
 }
 
-.smallBtn{
- border:1px solid #ddd;
- background:#fff;
- border-radius:8px;
- padding:6px 9px;
- font-size:11px;
+.tableWrap{
+  overflow-x:auto;
 }
 
-.progress{
- height:7px;
- background:#eee;
- border-radius:10px;
- overflow:hidden;
- margin-top:8px;
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:620px;
+  font-size:12px;
 }
 
-.progress div{
- height:100%;
- width:0%;
- background:#111;
- transition:.2s;
+th,
+td{
+  padding:9px 7px;
+  border-bottom:1px solid #eee;
+  text-align:left;
+  vertical-align:top;
+}
+
+th{
+  background:#f7f7f7;
+}
+
+.total{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.bigButton{
+  padding:14px;
+  border-radius:12px;
+  border:0;
+  background:#111;
+  color:#fff;
+  width:100%;
+  font-size:14px;
+}
+
+.buttonGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.small{
+  font-size:11px;
+}
+
+hr{
+  border:0;
+  border-top:1px solid #eee;
+  margin:13px 0;
 }
 
 @media(max-width:430px){
 
- .grid{
-  grid-template-columns:1fr;
- }
+  .grid{
+    grid-template-columns:1fr;
+  }
 
- .kpi{
-  grid-template-columns:1fr 1fr;
- }
+  .kpi{
+    grid-template-columns:1fr 1fr;
+  }
 
- .analysisSummary{
-  grid-template-columns:1fr 1fr;
- }
-
- .quoteTable{
-  min-width:600px;
- }
+  .previewGrid{
+    grid-template-columns:repeat(3,1fr);
+  }
 }
 </style>
 </head>
@@ -459,13 +408,13 @@ textarea{
 
 <header>
 <h1>猪窝</h1>
-<div class="sub">装修报价 · 合同 · 增项 · 沟通 · 验收</div>
+<div class="sub">让装修少踩坑 · 报价 · 合同 · 增项 · 沟通 · 验收</div>
 </header>
 
 <nav id="nav">
 
 <button class="on" data-p="home">首页</button>
-<button data-p="quote">报价分析</button>
+<button data-p="quote">报价</button>
 <button data-p="contract">合同</button>
 <button data-p="change">增项</button>
 <button data-p="notes">沟通</button>
@@ -481,7 +430,7 @@ textarea{
 
 <div class="card">
 
-<h2>我的装修项目</h2>
+<h2 id="projectTitle">我的装修项目</h2>
 
 <div class="kpi">
 
@@ -491,7 +440,7 @@ textarea{
 </div>
 
 <div>
-<span class="muted">当前报价</span>
+<span class="muted">报价</span>
 <b id="quoteTotal">¥0</b>
 </div>
 
@@ -507,12 +456,23 @@ textarea{
 
 <div class="card">
 
-<h2>猪窝提醒</h2>
+<h2>项目状态</h2>
 
-<div id="homeWarning">
+<div class="kpi">
 
-<div class="empty">
-上传报价单后，猪窝会在这里告诉你重点问题。
+<div>
+<span class="muted">报价项目</span>
+<b id="quoteCount">0</b>
+</div>
+
+<div>
+<span class="muted">合同风险</span>
+<b id="contractTodo">0</b>
+</div>
+
+<div>
+<span class="muted">待处理</span>
+<b id="todo">0</b>
 </div>
 
 </div>
@@ -542,260 +502,62 @@ textarea{
 
 </div>
 
-</section>
-
-
-<!-- ================= 报价分析 ================= -->
-
-<section id="quote" class="page">
-
 
 <div class="card">
 
-<h2>📷 上传装修报价单</h2>
+<h2>猪窝提醒</h2>
 
-<div class="warning">
-<strong>建议：</strong>
-一张一张拍，尽量让报价单占满屏幕，文字越清晰，识别结果越准确。
+<div id="homeAdvice"></div>
+
 </div>
 
-<label for="quoteFile" class="photoBtn">
-📷 拍照 / 从相册选择报价单
-</label>
+</section>
+
+
+<!-- ================= 报价 ================= -->
+
+<section id="quote" class="page">
+
+<div class="card">
+
+<h2>📷 批量识别报价单</h2>
+
+<div class="notice infoBox">
+可以一次选择多张报价单照片。
+<br>
+猪窝会先保留<strong>完整原始文字</strong>，再尝试整理出项目、数量、单位、单价、金额。
+</div>
+
+<br>
+
+<button class="photoBtn"
+onclick="document.getElementById('quoteFiles').click()">
+
+📷 拍照 / 从相册选择多张报价单
+
+</button>
 
 <input
-id="quoteFile"
+id="quoteFiles"
 type="file"
 accept="image/*"
+multiple
 capture="environment"
-style="display:none"
+hidden
 >
 
-<img id="quotePreview" class="preview">
+<div id="quotePreviews" class="previewGrid"></div>
 
-<div id="quoteStatus" class="status"></div>
-
-<div class="progress">
-<div id="quoteProgress"></div>
-</div>
+<div id="quoteStatus" class="status" style="display:none"></div>
 
 <button
 id="quoteOCRBtn"
 class="primary"
 style="display:none"
-onclick="recognizeQuote()"
->
-开始识别并分析
-</button>
+onclick="recognizeQuotes()">
 
-</div>
+开始识别全部报价单
 
-
-<!-- 分析总览 -->
-
-<div id="quoteAnalysis" style="display:none">
-
-
-<div class="card">
-
-<div class="sectionTitle">
-
-<h2>📊 报价分析</h2>
-
-<span class="count" id="itemCount">
-0 项
-</span>
-
-</div>
-
-<div>
-<span class="muted">识别出的报价总额</span>
-
-<div class="bigTotal" id="analysisTotal">
-¥0
-</div>
-</div>
-
-<br>
-
-<div class="analysisSummary">
-
-<div class="green">
-<span class="muted">暂正常</span>
-<b id="normalCount">0</b>
-</div>
-
-<div class="yellow">
-<span class="muted">需关注</span>
-<b id="attentionCount">0</b>
-</div>
-
-<div class="red">
-<span class="muted">偏高参考</span>
-<b id="highCount">0</b>
-</div>
-
-<div class="orange">
-<span class="muted">易增项</span>
-<b id="addCount">0</b>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- 报价表 -->
-
-<div class="card">
-
-<div class="sectionTitle">
-
-<h2>📋 自动整理报价表</h2>
-
-<button
-class="smallBtn"
-onclick="saveAllRecognizedQuotes()"
->
-全部加入报价库
-</button>
-
-</div>
-
-<div class="tableWrap">
-
-<table class="quoteTable">
-
-<thead>
-
-<tr>
-<th>项目</th>
-<th>数量</th>
-<th>单位</th>
-<th>单价</th>
-<th>金额</th>
-<th>猪窝判断</th>
-<th>操作</th>
-</tr>
-
-</thead>
-
-<tbody id="quoteTableBody"></tbody>
-
-</table>
-
-</div>
-
-</div>
-
-
-<!-- 建议 -->
-
-<div class="card">
-
-<h2>💡 猪窝建议</h2>
-
-<div id="quoteAdvice"></div>
-
-</div>
-
-
-<!-- 谈价 -->
-
-<div class="card">
-
-<h2>🗣️ 和装修公司怎么说</h2>
-
-<div id="talkingAdvice"></div>
-
-</div>
-
-
-<!-- 漏项 -->
-
-<div class="card">
-
-<h2>⚠️ 可能漏项 / 容易产生增项</h2>
-
-<div id="missingAdvice"></div>
-
-</div>
-
-
-<!-- 原始文字 -->
-
-<div class="card">
-
-<div class="sectionTitle">
-
-<h2>📄 原始识别文字</h2>
-
-<button
-class="smallBtn"
-onclick="copyRawText()"
->
-复制
-</button>
-
-</div>
-
-<div id="rawText" class="rawText">
-还没有识别内容
-</div>
-
-</div>
-
-</div>
-
-
-<!-- 手动增加 -->
-
-<div class="card">
-
-<h2>➕ 手动添加报价项目</h2>
-
-<div class="grid">
-
-<div>
-
-<label>项目</label>
-
-<input id="qn">
-
-</div>
-
-<div>
-
-<label>金额</label>
-
-<input id="qp" type="number">
-
-</div>
-
-</div>
-
-<label style="margin-top:9px">
-数量 / 单位
-</label>
-
-<input id="qq">
-
-<label style="margin-top:9px">
-判断
-</label>
-
-<select id="qs">
-
-<option>待核价</option>
-<option>正常</option>
-<option>偏高</option>
-<option>容易增项</option>
-<option>疑似漏项</option>
-
-</select>
-
-<button class="primary" onclick="addQuote()">
-保存
 </button>
 
 </div>
@@ -803,7 +565,80 @@ onclick="copyRawText()"
 
 <div class="card">
 
-<h2>我的报价库</h2>
+<h2>📋 报价识别结果</h2>
+
+<div id="quoteResults">
+
+<div class="empty">
+上传报价单后，这里会生成明细表
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>💡 报价分析</h2>
+
+<div id="quoteAdvice">
+
+<div class="empty">
+识别报价后自动生成建议
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>原始 OCR 文字</h2>
+
+<div id="quoteRaw">
+
+<div class="empty">
+这里会保留所有识别出来的原始文字
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="buttonGrid">
+
+<button class="bigButton"
+onclick="saveAllRecognizedQuotes()">
+一键保存全部报价
+</button>
+
+<button class="danger"
+onclick="clearQuoteResults()">
+清空识别结果
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>已保存报价</h2>
+
+<div class="buttonGrid">
+
+<button class="secondary"
+onclick="deleteAllQuotes()">
+一键删除全部报价
+</button>
+
+</div>
 
 <div id="ql"></div>
 
@@ -818,31 +653,44 @@ onclick="copyRawText()"
 
 <div class="card">
 
-<h2>📷 拍照识别合同</h2>
+<h2>📷 批量识别装修合同</h2>
 
-<label for="contractPhoto" class="photoBtn">
-📷 拍照 / 从相册选择合同页面
-</label>
+<div class="notice infoBox">
+可以一次上传合同多张照片。
+<br>
+猪窝会保留原文，并自动寻找：付款、增项、违约、工期、材料、品牌、验收、保修、结算等重点。
+</div>
+
+<br>
+
+<button class="photoBtn"
+onclick="document.getElementById('contractFiles').click()">
+
+📷 拍照 / 从相册选择多张合同照片
+
+</button>
 
 <input
-id="contractPhoto"
+id="contractFiles"
 type="file"
 accept="image/*"
+multiple
 capture="environment"
-style="display:none"
+hidden
 >
 
-<img id="contractPreview" class="preview">
+<div id="contractPreviews" class="previewGrid"></div>
 
-<div id="contractStatus" class="status"></div>
+<div id="contractStatus" class="status" style="display:none"></div>
 
 <button
 id="contractOCRBtn"
 class="primary"
 style="display:none"
-onclick="recognizeContract()"
->
-开始识别合同
+onclick="recognizeContracts()">
+
+开始识别全部合同
+
 </button>
 
 </div>
@@ -850,55 +698,12 @@ onclick="recognizeContract()"
 
 <div class="card">
 
-<h2>合同检查项</h2>
-
-<div class="grid">
-
-<div>
-
-<label>检查项</label>
-
-<input id="cn">
-
-</div>
-
-<div>
-
-<label>状态</label>
-
-<select id="cs">
-
-<option>必须修改</option>
-<option>待确认</option>
-<option>已通过</option>
-
-</select>
-
-</div>
-
-</div>
-
-<label style="margin-top:9px">
-我的要求
-</label>
-
-<textarea id="cr"></textarea>
-
-<button class="primary" onclick="addContract()">
-保存
-</button>
-
-</div>
-
-
-<div class="card">
-
-<h2>合同重点</h2>
+<h2>⚠️ 合同风险分析</h2>
 
 <div id="contractResults">
 
 <div class="empty">
-拍照合同后自动分析重点条款
+上传合同后自动分析
 </div>
 
 </div>
@@ -907,6 +712,51 @@ onclick="recognizeContract()"
 
 
 <div class="card">
+
+<h2>合同原始文字</h2>
+
+<div id="contractRaw">
+
+<div class="empty">
+这里会保留完整 OCR 文字
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="buttonGrid">
+
+<button class="bigButton"
+onclick="saveAllContracts()">
+一键保存全部合同检查项
+</button>
+
+<button class="danger"
+onclick="clearContractResults()">
+清空识别结果
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>已保存合同检查项</h2>
+
+<div class="buttonGrid">
+
+<button class="danger"
+onclick="deleteAllContracts()">
+一键删除全部合同检查项
+</button>
+
+</div>
 
 <div id="cl"></div>
 
@@ -921,54 +771,80 @@ onclick="recognizeContract()"
 
 <div class="card">
 
-<h2>增项 / 减项</h2>
+<h2>➕ 增项 / 减项</h2>
+
+<div class="notice warning">
+
+所有新增项目建议先记录金额，再施工。
+<br>
+状态为“待确认”的项目会计入首页待处理事项。
+
+</div>
+
+<br>
 
 <div class="grid">
 
 <div>
-
 <label>项目</label>
-
 <input id="xn">
-
 </div>
 
 <div>
-
 <label>金额（减项填负数）</label>
-
 <input id="xp" type="number">
-
 </div>
 
 </div>
 
-<label style="margin-top:9px">
-原因
-</label>
-
+<label style="margin-top:9px">原因</label>
 <textarea id="xr"></textarea>
 
-<label style="margin-top:9px">
-状态
-</label>
+<label style="margin-top:9px">状态</label>
 
 <select id="xs">
-
 <option>待确认</option>
 <option>已确认</option>
 <option>拒绝</option>
-
 </select>
 
-<button class="primary" onclick="addChange()">
-保存
+<button class="primary"
+onclick="addChange()">
+
+保存增减项
+
 </button>
 
 </div>
 
 
 <div class="card">
+
+<h2>增减项汇总</h2>
+
+<div class="total" id="changeTotal">
+¥0
+</div>
+
+<div class="muted">
+正数 = 增项，负数 = 减项
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="buttonGrid">
+
+<button class="danger"
+onclick="deleteAllChanges()">
+
+一键删除全部增减项
+
+</button>
+
+</div>
 
 <div id="xl"></div>
 
@@ -983,32 +859,60 @@ onclick="recognizeContract()"
 
 <div class="card">
 
-<h2>📷 截图识别沟通记录</h2>
+<h2>📷 批量识别聊天记录</h2>
 
-<label for="notePhoto" class="photoBtn">
-📷 拍聊天截图 / 从相册选择
-</label>
+<div class="notice infoBox">
+把微信、短信、装修群聊天截图一次上传。
+<br>
+猪窝会提取原始聊天内容，并帮助整理成“对方说了什么 / 下一步做什么”。
+</div>
+
+<br>
+
+<button class="photoBtn"
+onclick="document.getElementById('noteFiles').click()">
+
+📷 拍聊天截图 / 从相册选择多张
+
+</button>
 
 <input
-id="notePhoto"
+id="noteFiles"
 type="file"
 accept="image/*"
+multiple
 capture="environment"
-style="display:none"
+hidden
 >
 
-<img id="notePreview" class="preview">
+<div id="notePreviews" class="previewGrid"></div>
 
-<div id="noteStatus" class="status"></div>
+<div id="noteStatus" class="status" style="display:none"></div>
 
 <button
 id="noteOCRBtn"
 class="primary"
 style="display:none"
-onclick="recognizeNote()"
->
-开始识别聊天记录
+onclick="recognizeNotes()">
+
+开始识别全部聊天截图
+
 </button>
+
+</div>
+
+
+<div class="card">
+
+<h2>识别结果</h2>
+
+<div id="noteResults">
+
+<div class="empty">
+上传聊天截图后自动提取
+</div>
+
+</div>
 
 </div>
 
@@ -1017,15 +921,19 @@ onclick="recognizeNote()"
 
 <h2>沟通记录</h2>
 
+<div class="grid">
+
+<div>
 <label>日期</label>
-
 <input id="nd" type="date">
+</div>
 
-<label style="margin-top:9px">
-项目
-</label>
-
+<div>
+<label>项目</label>
 <input id="nt">
+</div>
+
+</div>
 
 <label style="margin-top:9px">
 对方说了什么
@@ -1039,8 +947,11 @@ onclick="recognizeNote()"
 
 <textarea id="nn"></textarea>
 
-<button class="primary" onclick="addNote()">
-保存
+<button class="primary"
+onclick="addNote()">
+
+保存沟通记录
+
 </button>
 
 </div>
@@ -1048,20 +959,12 @@ onclick="recognizeNote()"
 
 <div class="card">
 
-<h2>识别结果</h2>
+<button class="danger"
+onclick="deleteAllNotes()">
 
-<div id="noteResults">
+一键删除全部沟通记录
 
-<div class="empty">
-上传聊天截图后提取文字
-</div>
-
-</div>
-
-</div>
-
-
-<div class="card">
+</button>
 
 <div id="nl"></div>
 
@@ -1076,17 +979,21 @@ onclick="recognizeNote()"
 
 <div class="card">
 
-<h2>项目设置</h2>
+<h2>🏠 项目设置</h2>
 
 <label>项目名称</label>
 
-<input id="pn" value="我的装修项目">
+<input id="pn"
+value="我的装修项目">
 
 <label style="margin-top:9px">
 预算
 </label>
 
-<input id="pb" type="number" value="95000">
+<input
+id="pb"
+type="number"
+value="95000">
 
 <label style="margin-top:9px">
 备注
@@ -1094,8 +1001,11 @@ onclick="recognizeNote()"
 
 <textarea id="pm"></textarea>
 
-<button class="primary" onclick="saveSettings()">
-保存设置
+<button class="primary"
+onclick="saveSettings()">
+
+保存项目设置
+
 </button>
 
 </div>
@@ -1103,31 +1013,55 @@ onclick="recognizeNote()"
 
 <div class="card">
 
-<h2>手机使用</h2>
+<h2>💾 数据管理</h2>
 
-<p class="muted">
-在 Safari 打开后，点“分享”→“添加到主屏幕”，即可像 App 一样使用。
-数据保存在本机。
-</p>
+<div class="notice">
 
-<div class="actionGrid">
+数据默认保存在当前手机浏览器。
+<br>
+建议装修过程中定期备份。
 
-<button class="actionBtn" onclick="exportData()">
+</div>
+
+<div class="buttonGrid"
+style="margin-top:10px">
+
+<button class="secondary"
+onclick="exportData()">
+
 备份数据
+
 </button>
 
-<button class="actionBtn" onclick="importData()">
+<button class="secondary"
+onclick="document.getElementById('backupFile').click()">
+
 恢复数据
+
 </button>
 
 </div>
 
 <input
-id="file"
+id="backupFile"
 type="file"
 accept=".json"
 hidden
 >
+
+</div>
+
+
+<div class="card">
+
+<h2>⚠️ 危险操作</h2>
+
+<button class="danger"
+onclick="clearAllData()">
+
+删除全部项目数据
+
+</button>
 
 </div>
 
@@ -1136,62 +1070,46 @@ hidden
 </main>
 
 
-<!-- Tesseract OCR -->
-
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-
 
 <script>
 
 /* =========================================================
-   猪窝 2.0
    数据
 ========================================================= */
 
-const K="zhuwoPWA";
+const K="zhuwoPWA_v3";
 
 let d=JSON.parse(localStorage.getItem(K)||"null")||{
 
- name:"我的装修项目",
+  name:"我的装修项目",
 
- budget:95000,
+  budget:95000,
 
- memo:"",
+  memo:"",
 
- q:[],
+  q:[],
 
- c:[
-  [
-   "增项必须书面确认",
-   "未经我书面确认，不得施工或收费。",
-   "必须修改"
-  ],
-  [
-   "品牌/型号不得随意替换",
-   "任何替换先取得书面同意。",
-   "必须修改"
-  ],
-  [
-   "隐蔽工程封闭前验收",
-   "水电、防水、暗装花洒预埋等封闭前验收。",
-   "待确认"
-  ]
- ],
+  c:[],
 
- x:[],
+  x:[],
 
- n:[]
+  n:[]
 
 };
 
 
-/* 当前识别结果 */
+/* =========================================================
+   临时识别数据
+========================================================= */
+
+let quoteFiles=[];
+let contractFiles=[];
+let noteFiles=[];
 
 let recognizedQuotes=[];
-
-let rawQuoteText="";
-
-let contractOCRResults=[];
+let recognizedContracts=[];
+let recognizedNotes=[];
 
 
 /* =========================================================
@@ -1200,12 +1118,9 @@ let contractOCRResults=[];
 
 function save(){
 
- localStorage.setItem(
-  K,
-  JSON.stringify(d)
- );
+  localStorage.setItem(K,JSON.stringify(d));
 
- render();
+  render();
 
 }
 
@@ -1214,78 +1129,1068 @@ function save(){
    页面切换
 ========================================================= */
 
-document.querySelectorAll("nav button").forEach(b=>{
+document.querySelectorAll("nav button").forEach(btn=>{
 
- b.onclick=()=>{
+  btn.onclick=()=>{
 
-  document.querySelectorAll(".page")
-  .forEach(x=>x.classList.remove("on"));
+    document.querySelectorAll(".page")
+    .forEach(p=>p.classList.remove("on"));
 
-  document
-  .getElementById(b.dataset.p)
-  .classList.add("on");
+    document.getElementById(btn.dataset.p)
+    .classList.add("on");
 
-  document.querySelectorAll("nav button")
-  .forEach(x=>x.classList.remove("on"));
+    document.querySelectorAll("nav button")
+    .forEach(x=>x.classList.remove("on"));
 
-  b.classList.add("on");
+    btn.classList.add("on");
 
- };
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  };
 
 });
 
 
 /* =========================================================
-   报价手动添加
+   HTML安全
 ========================================================= */
 
-function addQuote(){
+function escapeHtml(str){
 
- if(!document.getElementById("qn").value)return;
-
- d.q.push([
-
-  document.getElementById("qn").value,
-
-  +document.getElementById("qp").value||0,
-
-  document.getElementById("qq").value,
-
-  document.getElementById("qs").value
-
- ]);
-
- document.getElementById("qn").value="";
- document.getElementById("qp").value="";
- document.getElementById("qq").value="";
-
- save();
+  return String(str||"")
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
 
 }
 
 
 /* =========================================================
-   合同
+   金额
 ========================================================= */
 
-function addContract(){
+function money(n){
 
- if(!document.getElementById("cn").value)return;
+  return "¥"+Number(n||0).toLocaleString();
 
- d.c.push([
+}
 
-  document.getElementById("cn").value,
 
-  document.getElementById("cr").value,
+/* =========================================================
+   状态样式
+========================================================= */
 
-  document.getElementById("cs").value
+function badgeClass(text){
 
- ]);
+  if(
+    text.includes("偏高")||
+    text.includes("必须")||
+    text.includes("风险")
+  ){
+    return "badge red";
+  }
 
- document.getElementById("cn").value="";
- document.getElementById("cr").value="";
+  if(
+    text.includes("增项")||
+    text.includes("待确认")||
+    text.includes("疑似")
+  ){
+    return "badge orange";
+  }
 
- save();
+  if(
+    text.includes("正常")||
+    text.includes("通过")||
+    text.includes("已确认")
+  ){
+    return "badge green";
+  }
+
+  return "badge blue";
+
+}
+
+
+/* =========================================================
+   文件预览
+========================================================= */
+
+function setupMultiFile(inputId,previewId,type){
+
+  const input=document.getElementById(inputId);
+
+  input.onchange=()=>{
+
+    const files=[...input.files];
+
+    if(type==="quote") quoteFiles=files;
+
+    if(type==="contract") contractFiles=files;
+
+    if(type==="note") noteFiles=files;
+
+    const box=document.getElementById(previewId);
+
+    box.innerHTML="";
+
+    files.forEach((file,index)=>{
+
+      const item=document.createElement("div");
+
+      item.className="previewItem";
+
+      const img=document.createElement("img");
+
+      img.src=URL.createObjectURL(file);
+
+      const del=document.createElement("button");
+
+      del.textContent="×";
+
+      del.onclick=()=>{
+
+        if(type==="quote") quoteFiles.splice(index,1);
+
+        if(type==="contract") contractFiles.splice(index,1);
+
+        if(type==="note") noteFiles.splice(index,1);
+
+        renderPreviews(type);
+
+      };
+
+      item.appendChild(img);
+      item.appendChild(del);
+      box.appendChild(item);
+
+    });
+
+    document.getElementById(
+      type==="quote"
+      ?"quoteOCRBtn"
+      :type==="contract"
+      ?"contractOCRBtn"
+      :"noteOCRBtn"
+    ).style.display=files.length?"block":"none";
+
+  };
+
+}
+
+
+function renderPreviews(type){
+
+  let files=[];
+
+  let boxId="";
+
+  if(type==="quote"){
+    files=quoteFiles;
+    boxId="quotePreviews";
+  }
+
+  if(type==="contract"){
+    files=contractFiles;
+    boxId="contractPreviews";
+  }
+
+  if(type==="note"){
+    files=noteFiles;
+    boxId="notePreviews";
+  }
+
+  const box=document.getElementById(boxId);
+
+  box.innerHTML="";
+
+  files.forEach((file,index)=>{
+
+    const item=document.createElement("div");
+
+    item.className="previewItem";
+
+    const img=document.createElement("img");
+
+    img.src=URL.createObjectURL(file);
+
+    const del=document.createElement("button");
+
+    del.textContent="×";
+
+    del.onclick=()=>{
+
+      files.splice(index,1);
+
+      renderPreviews(type);
+
+    };
+
+    item.appendChild(img);
+    item.appendChild(del);
+
+    box.appendChild(item);
+
+  });
+
+}
+
+
+setupMultiFile(
+  "quoteFiles",
+  "quotePreviews",
+  "quote"
+);
+
+setupMultiFile(
+  "contractFiles",
+  "contractPreviews",
+  "contract"
+);
+
+setupMultiFile(
+  "noteFiles",
+  "notePreviews",
+  "note"
+);
+
+
+/* =========================================================
+   OCR
+========================================================= */
+
+async function runOCR(file,statusId,index,total){
+
+  const status=document.getElementById(statusId);
+
+  status.style.display="block";
+
+  status.textContent=
+  "正在识别第 "+(index+1)+" / "+total+" 张图片……";
+
+  try{
+
+    const result=await Tesseract.recognize(
+
+      file,
+
+      "chi_sim+eng",
+
+      {
+
+        logger:m=>{
+
+          if(m.status==="recognizing text"){
+
+            status.textContent=
+            "正在识别第 "+
+            (index+1)+
+            " / "+
+            total+
+            " 张 · "+
+            Math.round(m.progress*100)+
+            "%";
+
+          }
+
+        }
+
+      }
+
+    );
+
+    return result.data.text||"";
+
+  }catch(e){
+
+    console.error(e);
+
+    return "";
+
+  }
+
+}
+
+
+/* =========================================================
+   报价 OCR
+========================================================= */
+
+async function recognizeQuotes(){
+
+  if(!quoteFiles.length){
+
+    alert("请先选择报价单照片");
+
+    return;
+
+  }
+
+  recognizedQuotes=[];
+
+  let raw=[];
+
+  for(let i=0;i<quoteFiles.length;i++){
+
+    const text=await runOCR(
+      quoteFiles[i],
+      "quoteStatus",
+      i,
+      quoteFiles.length
+    );
+
+    raw.push(
+      "===== 第 "+(i+1)+" 张报价单 =====\n"+
+      text
+    );
+
+    parseQuoteText(text);
+
+  }
+
+  document.getElementById("quoteRaw").innerHTML=
+  `<div class="resultItem">
+  <pre style="white-space:pre-wrap;font-size:12px">${escapeHtml(raw.join("\n\n"))}</pre>
+  </div>`;
+
+  showQuoteResults();
+
+  analyzeQuotes();
+
+  document.getElementById("quoteStatus").textContent=
+  "全部报价单识别完成，共识别 "+
+  recognizedQuotes.length+
+  " 条可能的报价明细。";
+
+}
+
+
+/* =========================================================
+   报价文字解析
+========================================================= */
+
+function parseQuoteText(text){
+
+  const lines=text
+  .split(/\n/)
+  .map(x=>x.trim())
+  .filter(x=>x);
+
+  lines.forEach(line=>{
+
+    /*
+      尝试识别：
+      项目 + 数量 + 单位 + 金额
+    */
+
+    const nums=[
+      ...line.matchAll(
+        /(\d+(?:\.\d+)?)\s*(元|㎡|m²|平方|米|项|套|个|只|米|人工)?/gi
+      )
+    ];
+
+    if(!nums.length)return;
+
+    const moneyMatches=[
+      ...line.matchAll(
+        /(?:¥|￥)?\s*(\d+(?:,\d{3})*(?:\.\d{1,2})?)/g
+      )
+    ];
+
+    if(!moneyMatches.length)return;
+
+    const last=
+      moneyMatches[moneyMatches.length-1];
+
+    const amount=
+      parseFloat(
+        last[1].replace(/,/g,"")
+      );
+
+    if(!amount)return;
+
+    let name=line
+      .replace(
+        /(?:¥|￥)?\s*\d+(?:,\d{3})*(?:\.\d{1,2})?/g,
+        ""
+      )
+      .trim();
+
+    /*
+      保留原始项目名称
+    */
+
+    if(name.length<2)return;
+
+    let unit="";
+
+    const unitMatch=
+      line.match(
+        /(㎡|m²|平方|米|项|套|个|只|人工)/i
+      );
+
+    if(unitMatch){
+
+      unit=unitMatch[1];
+
+    }
+
+    const exists=
+      recognizedQuotes.some(
+        x=>x.raw===line
+      );
+
+    if(!exists){
+
+      recognizedQuotes.push({
+
+        name:name,
+
+        amount:amount,
+
+        unit:unit,
+
+        judgment:"待核价",
+
+        raw:line,
+
+        suggestion:"建议核对施工内容、品牌、规格和数量"
+
+      });
+
+    }
+
+  });
+
+}
+
+
+/* =========================================================
+   报价显示
+========================================================= */
+
+function showQuoteResults(){
+
+  const box=
+    document.getElementById("quoteResults");
+
+  if(!recognizedQuotes.length){
+
+    box.innerHTML=
+    `<div class="empty">
+    OCR 已完成，但没有自动提取出明确金额。
+    <br><br>
+    请查看下面的“原始 OCR 文字”，所有识别文字都保留在那里。
+    </div>`;
+
+    return;
+
+  }
+
+  box.innerHTML=`
+
+  <div class="notice success">
+  共识别 ${recognizedQuotes.length} 条报价明细。
+  <br>
+  下面可以直接修改后一次性保存。
+  </div>
+
+  <div class="tableWrap">
+
+  <table>
+
+  <thead>
+
+  <tr>
+  <th>项目</th>
+  <th>数量/单位</th>
+  <th>金额</th>
+  <th>判断</th>
+  <th>建议</th>
+  </tr>
+
+  </thead>
+
+  <tbody>
+
+  ${recognizedQuotes.map((x,i)=>`
+
+  <tr>
+
+  <td>
+  <input
+  id="rq_name_${i}"
+  value="${escapeHtml(x.name)}">
+  </td>
+
+  <td>
+  <input
+  id="rq_unit_${i}"
+  value="${escapeHtml(x.unit)}">
+  </td>
+
+  <td>
+  <input
+  id="rq_amount_${i}"
+  type="number"
+  value="${x.amount}">
+  </td>
+
+  <td>
+
+  <select id="rq_j_${i}">
+
+  <option ${x.judgment==="待核价"?"selected":""}>
+  待核价
+  </option>
+
+  <option ${x.judgment==="正常"?"selected":""}>
+  正常
+  </option>
+
+  <option ${x.judgment==="偏高"?"selected":""}>
+  偏高
+  </option>
+
+  <option ${x.judgment==="容易增项"?"selected":""}>
+  容易增项
+  </option>
+
+  <option ${x.judgment==="疑似漏项"?"selected":""}>
+  疑似漏项
+  </option>
+
+  </select>
+
+  </td>
+
+  <td>
+  ${escapeHtml(x.suggestion)}
+  </td>
+
+  </tr>
+
+  `).join("")}
+
+  </tbody>
+
+  </table>
+
+  </div>
+
+  <div class="notice infoBox" style="margin-top:10px">
+
+  这版不会因为无法判断价格就删除项目。
+  <br>
+  <strong>原始 OCR 明细会完整保留。</strong>
+
+  </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   报价分析
+========================================================= */
+
+function analyzeQuotes(){
+
+  const box=
+    document.getElementById("quoteAdvice");
+
+  if(!recognizedQuotes.length){
+
+    box.innerHTML=
+    `<div class="empty">
+    暂时无法分析
+    </div>`;
+
+    return;
+
+  }
+
+  let total=
+    recognizedQuotes.reduce(
+      (a,x)=>a+Number(x.amount||0),
+      0
+    );
+
+  let advice=[];
+
+  const keywordsHigh=[
+    "拆除",
+    "美缝",
+    "乳胶漆",
+    "防水",
+    "水电",
+    "吊顶",
+    "砌墙",
+    "瓷砖",
+    "贴砖"
+  ];
+
+  const keywordsChange=[
+    "人工",
+    "辅材",
+    "搬运",
+    "保护",
+    "开槽",
+    "找平",
+    "修补",
+    "运输"
+  ];
+
+  recognizedQuotes.forEach(x=>{
+
+    if(
+      keywordsHigh.some(
+        k=>x.name.includes(k)
+      )
+    ){
+
+      x.judgment="容易重点核价";
+
+      x.suggestion=
+      "建议确认施工面积、材料品牌、施工工艺和是否包含辅材。";
+
+    }
+
+    if(
+      keywordsChange.some(
+        k=>x.name.includes(k)
+      )
+    ){
+
+      x.judgment="容易增项";
+
+      x.suggestion=
+      "重点确认报价是否已经包含人工、辅材、运输、垃圾清运等。";
+
+    }
+
+  });
+
+  const names=
+    recognizedQuotes
+    .map(x=>x.name)
+    .join(" ");
+
+  const possibleMissing=[
+
+    ["水电","建议确认水电改造是否按实际发生结算"],
+    ["防水","建议确认防水面积、遍数、闭水试验是否包含"],
+    ["拆除","建议确认拆除、装袋、清运是否全部包含"],
+    ["瓷砖","建议确认瓷砖铺贴人工、辅材、找平是否包含"],
+    ["吊顶","建议确认龙骨、板材、灯槽、检修口是否包含"],
+    ["乳胶漆","建议确认腻子、底漆、面漆和修补是否包含"]
+
+  ];
+
+  possibleMissing.forEach(item=>{
+
+    if(!names.includes(item[0])){
+
+      advice.push(
+        "⚠️ "+item[1]
+      );
+
+    }
+
+  });
+
+  advice.push(
+    "💰 当前识别报价合计："+money(total)
+  );
+
+  advice.push(
+    "📌 不建议只比较单价，要同时比较施工范围、材料品牌、规格和包含项目。"
+  );
+
+  advice.push(
+    "📌 所有“暂定”“按实际发生”“另计”“现场确定”建议重点检查，这些位置最容易产生增项。"
+  );
+
+  box.innerHTML=
+  advice.map(x=>
+    `<div class="notice warning" style="margin-bottom:7px">
+    ${escapeHtml(x)}
+    </div>`
+  ).join("");
+
+}
+
+
+/* =========================================================
+   一键保存全部报价
+========================================================= */
+
+function saveAllRecognizedQuotes(){
+
+  if(!recognizedQuotes.length){
+
+    alert("目前没有可保存的识别报价");
+
+    return;
+
+  }
+
+  let count=0;
+
+  recognizedQuotes.forEach((x,i)=>{
+
+    const name=
+      document.getElementById("rq_name_"+i)?.value
+      ||x.name;
+
+    const amount=
+      Number(
+        document.getElementById("rq_amount_"+i)?.value
+        ||x.amount
+      );
+
+    const unit=
+      document.getElementById("rq_unit_"+i)?.value
+      ||x.unit;
+
+    const judgment=
+      document.getElementById("rq_j_"+i)?.value
+      ||x.judgment;
+
+    if(name){
+
+      d.q.push({
+
+        name:name,
+
+        amount:amount,
+
+        unit:unit,
+
+        judgment:judgment,
+
+        source:"OCR报价单",
+
+        time:new Date().toLocaleString()
+
+      });
+
+      count++;
+
+    }
+
+  });
+
+  save();
+
+  alert(
+    "已保存 "+count+" 条报价项目"
+  );
+
+}
+
+
+/* =========================================================
+   合同 OCR
+========================================================= */
+
+async function recognizeContracts(){
+
+  if(!contractFiles.length){
+
+    alert("请先选择合同照片");
+
+    return;
+
+  }
+
+  recognizedContracts=[];
+
+  let raw=[];
+
+  for(let i=0;i<contractFiles.length;i++){
+
+    const text=
+      await runOCR(
+        contractFiles[i],
+        "contractStatus",
+        i,
+        contractFiles.length
+      );
+
+    raw.push(
+      "===== 合同第 "+(i+1)+" 张 =====\n"+
+      text
+    );
+
+    analyzeContractText(text);
+
+  }
+
+  document.getElementById("contractRaw").innerHTML=
+  `<div class="resultItem">
+
+  <pre style="white-space:pre-wrap;font-size:12px">${escapeHtml(raw.join("\n\n"))}</pre>
+
+  </div>`;
+
+  showContractResults();
+
+  document.getElementById("contractStatus").textContent=
+  "全部合同照片识别完成。";
+
+}
+
+
+/* =========================================================
+   合同风险分析
+========================================================= */
+
+function analyzeContractText(text){
+
+  const lines=
+    text.split(/\n/)
+    .map(x=>x.trim())
+    .filter(x=>x.length>=5);
+
+  const rules=[
+
+    {
+      keys:["增项","增加项目","变更项目"],
+      title:"增项条款",
+      advice:"建议明确：增项必须提前报价，并经甲方书面确认后才能施工。"
+    },
+
+    {
+      keys:["付款","付款方式","支付"],
+      title:"付款条款",
+      advice:"建议确认每期付款对应的工程节点，避免提前支付过多。"
+    },
+
+    {
+      keys:["工期","延期","延误"],
+      title:"工期条款",
+      advice:"建议明确开工日期、竣工日期以及延期责任。"
+    },
+
+    {
+      keys:["违约","违约金"],
+      title:"违约责任",
+      advice:"建议确认装修公司延期、质量问题时承担什么责任。"
+    },
+
+    {
+      keys:["材料","主材","辅材"],
+      title:"材料条款",
+      advice:"建议写明品牌、型号、规格、环保等级以及替换流程。"
+    },
+
+    {
+      keys:["品牌","型号"],
+      title:"品牌型号",
+      advice:"建议明确未经书面同意不得更换品牌、型号或规格。"
+    },
+
+    {
+      keys:["验收","隐蔽"],
+      title:"验收条款",
+      advice:"水电、防水、暗装花洒等隐蔽工程建议封闭前验收。"
+    },
+
+    {
+      keys:["保修","质保"],
+      title:"保修条款",
+      advice:"建议明确保修期限、维修响应时间和责任承担。"
+    },
+
+    {
+      keys:["结算","最终结算"],
+      title:"结算条款",
+      advice:"建议明确最终结算以双方签字确认的变更记录为准。"
+    }
+
+  ];
+
+  lines.forEach(line=>{
+
+    rules.forEach(rule=>{
+
+      if(
+        rule.keys.some(k=>line.includes(k))
+      ){
+
+        recognizedContracts.push({
+
+          title:rule.title,
+
+          text:line,
+
+          advice:rule.advice,
+
+          status:"待确认"
+
+        });
+
+      }
+
+    });
+
+  });
+
+}
+
+
+/* =========================================================
+   合同显示
+========================================================= */
+
+function showContractResults(){
+
+  const box=
+    document.getElementById("contractResults");
+
+  if(!recognizedContracts.length){
+
+    box.innerHTML=
+    `<div class="empty">
+    没有自动发现明显风险条款。
+    <br><br>
+    但原始合同文字已经完整保留。
+    </div>`;
+
+    return;
+
+  }
+
+  box.innerHTML=
+
+  `<div class="notice warning">
+  自动发现 ${recognizedContracts.length} 个需要重点检查的位置。
+  </div>`+
+
+  recognizedContracts.map((x,i)=>`
+
+  <div class="resultItem">
+
+  <h3>
+  ${escapeHtml(x.title)}
+  </h3>
+
+  <div class="notice dangerBox">
+
+  ${escapeHtml(x.text)}
+
+  </div>
+
+  <p class="muted">
+
+  建议：
+  ${escapeHtml(x.advice)}
+
+  </p>
+
+  <select id="rc_${i}">
+
+  <option>必须修改</option>
+  <option>待确认</option>
+  <option>已通过</option>
+
+  </select>
+
+  </div>
+
+  `).join("");
+
+}
+
+
+/* =========================================================
+   一键保存合同
+========================================================= */
+
+function saveAllContracts(){
+
+  if(!recognizedContracts.length){
+
+    alert("目前没有合同检查项");
+
+    return;
+
+  }
+
+  let count=0;
+
+  recognizedContracts.forEach((x,i)=>{
+
+    const status=
+      document.getElementById("rc_"+i)?.value
+      ||"待确认";
+
+    d.c.push({
+
+      title:x.title,
+
+      text:x.text,
+
+      advice:x.advice,
+
+      status:status,
+
+      time:new Date().toLocaleString()
+
+    });
+
+    count++;
+
+  });
+
+  save();
+
+  alert(
+    "已保存 "+count+" 条合同检查项"
+  );
+
+}
+
+
+/* =========================================================
+   合同清空
+========================================================= */
+
+function clearContractResults(){
+
+  recognizedContracts=[];
+
+  document.getElementById("contractResults").innerHTML=
+  `<div class="empty">识别结果已清空</div>`;
+
+  document.getElementById("contractRaw").innerHTML=
+  `<div class="empty">原始文字已清空</div>`;
+
+}
+
+
+/* =========================================================
+   报价清空
+========================================================= */
+
+function clearQuoteResults(){
+
+  recognizedQuotes=[];
+
+  document.getElementById("quoteResults").innerHTML=
+  `<div class="empty">识别结果已清空</div>`;
+
+  document.getElementById("quoteAdvice").innerHTML=
+  `<div class="empty">暂无分析</div>`;
+
+  document.getElementById("quoteRaw").innerHTML=
+  `<div class="empty">原始文字已清空</div>`;
 
 }
 
@@ -1296,1358 +2201,39 @@ function addContract(){
 
 function addChange(){
 
- if(!document.getElementById("xn").value)return;
+  const name=
+    document.getElementById("xn").value.trim();
 
- d.x.push([
+  if(!name){
 
-  document.getElementById("xn").value,
+    alert("请填写项目");
 
-  +document.getElementById("xp").value||0,
+    return;
 
-  document.getElementById("xr").value,
+  }
 
-  document.getElementById("xs").value
+  d.x.push({
 
- ]);
+    name:name,
 
- document.getElementById("xn").value="";
- document.getElementById("xp").value="";
- document.getElementById("xr").value="";
+    amount:
+      Number(document.getElementById("xp").value)||0,
 
- save();
+    reason:
+      document.getElementById("xr").value,
 
-}
+    status:
+      document.getElementById("xs").value,
 
+    time:new Date().toLocaleString()
 
-/* =========================================================
-   沟通
-========================================================= */
+  });
 
-function addNote(){
-
- if(!document.getElementById("nt").value)return;
-
- d.n.push([
-
-  document.getElementById("nd").value,
-
-  document.getElementById("nt").value,
-
-  document.getElementById("ns").value,
-
-  document.getElementById("nn").value
-
- ]);
-
- document.getElementById("nt").value="";
- document.getElementById("ns").value="";
- document.getElementById("nn").value="";
-
- save();
-
-}
-
-
-/* =========================================================
-   删除
-========================================================= */
-
-function del(a,i){
-
- if(confirm("删除这条记录？")){
-
-  d[a].splice(i,1);
+  document.getElementById("xn").value="";
+  document.getElementById("xp").value="";
+  document.getElementById("xr").value="";
 
   save();
-
- }
-
-}
-
-
-/* =========================================================
-   图片上传
-========================================================= */
-
-function setupPhoto(
- inputId,
- previewId,
- buttonId,
- statusId
-){
-
- const input=document.getElementById(inputId);
-
- if(!input)return;
-
- input.onchange=e=>{
-
-  const file=e.target.files[0];
-
-  if(!file)return;
-
-  const url=URL.createObjectURL(file);
-
-  const img=document.getElementById(previewId);
-
-  img.src=url;
-
-  img.style.display="block";
-
-  document.getElementById(buttonId).style.display="block";
-
-  const status=document.getElementById(statusId);
-
-  status.style.display="block";
-
-  status.textContent=
-  "图片已准备好，可以开始识别。";
-
- };
-
-}
-
-
-setupPhoto(
- "quoteFile",
- "quotePreview",
- "quoteOCRBtn",
- "quoteStatus"
-);
-
-setupPhoto(
- "contractPhoto",
- "contractPreview",
- "contractOCRBtn",
- "contractStatus"
-);
-
-setupPhoto(
- "notePhoto",
- "notePreview",
- "noteOCRBtn",
- "noteStatus"
-);
-
-
-/* =========================================================
-   OCR
-========================================================= */
-
-async function runOCR(file,statusId,progressId){
-
- const status=document.getElementById(statusId);
-
- status.style.display="block";
-
- status.textContent=
- "正在准备识别，请稍等……";
-
- try{
-
-  const result=await Tesseract.recognize(
-
-   file,
-
-   "chi_sim+eng",
-
-   {
-
-    logger:m=>{
-
-     if(
-      m.status==="recognizing text"
-     ){
-
-      const p=Math.round(
-       m.progress*100
-      );
-
-      status.textContent=
-       "正在识别文字 "+p+"%";
-
-      if(progressId){
-
-       document
-       .getElementById(progressId)
-       .style.width=p+"%";
-
-      }
-
-     }
-
-    }
-
-   }
-
-  );
-
-  status.textContent=
-   "识别完成，正在整理报价单……";
-
-  if(progressId){
-
-   document
-   .getElementById(progressId)
-   .style.width="100%";
-
-  }
-
-  return result.data.text||"";
-
- }catch(e){
-
-  console.error(e);
-
-  status.textContent=
-   "识别失败，请重新拍照。";
-
-  return "";
-
- }
-
-}
-
-
-/* =========================================================
-   数字处理
-========================================================= */
-
-function cleanNumber(s){
-
- if(!s)return 0;
-
- return parseFloat(
-  String(s)
-  .replace(/,/g,"")
-  .replace(/，/g,"")
-  .replace(/[¥￥元]/g,"")
-  .trim()
- )||0;
-
-}
-
-
-/* =========================================================
-   识别数字
-========================================================= */
-
-function extractNumbers(line){
-
- const matches=
- line.match(
-  /(?:¥|￥)?\s*\d+(?:[,.]\d+)?/g
- );
-
- if(!matches)return[];
-
- return matches
- .map(cleanNumber)
- .filter(n=>n>0);
-
-}
-
-
-/* =========================================================
-   判断是否像报价项目
-========================================================= */
-
-function looksLikeQuoteLine(line){
-
- if(!line)return false;
-
- if(line.length<2)return false;
-
- const badWords=[
-  "合计",
-  "总计",
-  "报价单",
-  "客户",
-  "公司名称",
-  "地址",
-  "电话",
-  "日期",
-  "备注",
-  "说明"
- ];
-
- if(
-  badWords.some(x=>line===x)
- )return false;
-
- return true;
-
-}
-
-
-/* =========================================================
-   自动判断项目类型
-========================================================= */
-
-function analyzeItem(name,amount){
-
- const text=
-  String(name||"").toLowerCase();
-
- /* 易增项 */
-
- const addWords=[
-  "按实际",
-  "实测",
-  "据实",
-  "另计",
-  "另算",
-  "暂估",
-  "不含",
-  "未含",
-  "现场",
-  "开槽",
-  "拆除",
-  "垃圾",
-  "清运",
-  "搬运",
-  "保护",
-  "成品保护",
-  "加钱",
-  "增项",
-  "水电改造",
-  "水电"
- ];
-
- if(
-  addWords.some(x=>text.includes(x))
- ){
-
-  return{
-   type:"add",
-   label:"容易增项",
-   cls:"tagAdd",
-   reason:
-   "这一类项目比较容易因为实际工程量、施工条件或材料差异产生追加费用。",
-   advice:
-   "建议要求装修公司明确计算方式、单价以及最终结算上限。"
-  };
-
- }
-
-
- /* 明显需要关注 */
-
- const attentionWords=[
-  "品牌",
-  "型号",
-  "材料",
-  "主材",
-  "辅材",
-  "防水",
-  "电线",
-  "水管",
-  "开关",
-  "插座",
-  "花洒",
-  "龙头",
-  "瓷砖",
-  "岩板",
-  "地漏",
-  "五金"
- ];
-
- if(
-  attentionWords.some(x=>text.includes(x))
- ){
-
-  return{
-   type:"attention",
-   label:"需关注",
-   cls:"tagAttention",
-   reason:
-   "材料或设备类项目需要核对品牌、型号、规格和包含范围。",
-   advice:
-   "要求把品牌、型号、规格写进报价单或合同，避免后期被替换。"
-  };
-
- }
-
-
- /* 价格参考 */
-
- if(amount>=5000){
-
-  return{
-   type:"attention",
-   label:"需关注",
-   cls:"tagAttention",
-   reason:
-   "金额较大，建议单独核对数量、单价、材料和施工范围。",
-   advice:
-   "金额较大的项目建议要求装修公司拆分材料费和人工费。"
-  };
-
- }
-
-
- return{
-  type:"normal",
-  label:"暂正常",
-  cls:"tagNormal",
-  reason:
-  "目前根据文字内容没有发现明显风险。",
-  advice:
-  "仍建议和合同、施工范围一起核对。"
- };
-
-}
-
-
-/* =========================================================
-   报价 OCR
-========================================================= */
-
-async function recognizeQuote(){
-
- const input=
- document.getElementById("quoteFile");
-
- const file=input.files[0];
-
- if(!file){
-
-  alert("请先上传报价单");
-
-  return;
-
- }
-
- const text=await runOCR(
-  file,
-  "quoteStatus",
-  "quoteProgress"
- );
-
- if(!text)return;
-
- rawQuoteText=text;
-
- document.getElementById("rawText").textContent=text;
-
- const lines=
- text
- .split(/\n+/)
- .map(x=>x.trim())
- .filter(x=>x);
-
- recognizedQuotes=[];
-
- /*
-  不再像以前一样把没有识别到数字的明细全部过滤掉。
-
-  每一行都尽量保留下来。
- */
-
- lines.forEach(line=>{
-
-  const nums=extractNumbers(line);
-
-  let name=line;
-
-  let amount=0;
-
-  let unit="";
-
-  let qty="";
-
-  if(nums.length){
-
-   amount=nums[nums.length-1];
-
-   /*
-    去掉金额后尝试得到项目名称
-   */
-
-   name=line
-    .replace(
-     /(?:¥|￥)?\s*\d+(?:[,.]\d+)?/g,
-     " "
-    )
-    .replace(
-     /\s+/g,
-     " "
-    )
-    .trim();
-
-   /*
-    常见数量+单位
-   */
-
-   const qtyMatch=
-    line.match(
-     /(\d+(?:\.\d+)?)\s*(㎡|m²|m2|米|项|个|套|组|块|片|根|间|处|点|只|扇|樘|公斤|kg|元)/i
-    );
-
-   if(qtyMatch){
-
-    qty=qtyMatch[1];
-
-    unit=qtyMatch[2];
-
-   }
-
-  }
-
-  /*
-   即使没有金额，也保留原始项目
-  */
-
-  if(
-   looksLikeQuoteLine(name)
-  ){
-
-   const analysis=
-    analyzeItem(name,amount);
-
-   recognizedQuotes.push({
-
-    name:name||line,
-
-    qty:qty,
-
-    unit:unit,
-
-    price:0,
-
-    amount:amount,
-
-    analysis:analysis,
-
-    original:line,
-
-    saved:false
-
-   });
-
-  }
-
- });
-
-
- /*
-  去除过短、明显重复的内容
- */
-
- recognizedQuotes=
- removeDuplicateItems(
-  recognizedQuotes
- );
-
-
- showQuoteAnalysis();
-
-}
-
-
-/* =========================================================
-   去重
-========================================================= */
-
-function removeDuplicateItems(items){
-
- const seen=new Set();
-
- return items.filter(x=>{
-
-  const key=
-   x.original
-   .replace(/\s+/g,"")
-   .toLowerCase();
-
-  if(seen.has(key))return false;
-
-  seen.add(key);
-
-  return true;
-
- });
-
-}
-
-
-/* =========================================================
-   显示报价分析
-========================================================= */
-
-function showQuoteAnalysis(){
-
- const box=
- document.getElementById(
-  "quoteAnalysis"
- );
-
- box.style.display="block";
-
- const total=
- recognizedQuotes.reduce(
-  (a,x)=>a+(x.amount||0),
-  0
- );
-
- document.getElementById(
-  "analysisTotal"
- ).textContent=
- "¥"+total.toLocaleString();
-
- document.getElementById(
-  "itemCount"
- ).textContent=
- recognizedQuotes.length+" 项";
-
- const normal=
- recognizedQuotes.filter(
-  x=>x.analysis.type==="normal"
- ).length;
-
- const attention=
- recognizedQuotes.filter(
-  x=>x.analysis.type==="attention"
- ).length;
-
- const high=
- recognizedQuotes.filter(
-  x=>x.analysis.type==="high"
- ).length;
-
- const add=
- recognizedQuotes.filter(
-  x=>x.analysis.type==="add"
- ).length;
-
- document.getElementById(
-  "normalCount"
- ).textContent=normal;
-
- document.getElementById(
-  "attentionCount"
- ).textContent=attention;
-
- document.getElementById(
-  "highCount"
- ).textContent=high;
-
- document.getElementById(
-  "addCount"
- ).textContent=add;
-
- renderQuoteTable();
-
- generateAdvice();
-
-}
-
-
-/* =========================================================
-   报价表
-========================================================= */
-
-function renderQuoteTable(){
-
- const body=
- document.getElementById(
-  "quoteTableBody"
- );
-
- if(!recognizedQuotes.length){
-
-  body.innerHTML=
-   `<tr>
-    <td colspan="7">
-    <div class="empty">
-    没有识别到报价内容
-    </div>
-    </td>
-   </tr>`;
-
-  return;
-
- }
-
- body.innerHTML=
- recognizedQuotes.map((x,i)=>{
-
-  const a=x.analysis;
-
-  return`
-
-  <tr>
-
-   <td>
-    <input
-     id="ri_name_${i}"
-     value="${escapeHtml(x.name)}"
-     style="min-width:150px"
-    >
-   </td>
-
-   <td>
-    <input
-     id="ri_qty_${i}"
-     value="${escapeHtml(x.qty)}"
-     style="width:70px"
-    >
-   </td>
-
-   <td>
-    <input
-     id="ri_unit_${i}"
-     value="${escapeHtml(x.unit)}"
-     style="width:65px"
-    >
-   </td>
-
-   <td>
-    ${x.price?
-     "¥"+x.price.toLocaleString():
-     "—"}
-   </td>
-
-   <td>
-    <input
-     id="ri_amount_${i}"
-     type="number"
-     value="${x.amount||0}"
-     style="width:90px"
-    >
-   </td>
-
-   <td>
-
-    <span class="priceTag ${a.cls}">
-     ${a.label}
-    </span>
-
-   </td>
-
-   <td>
-
-    <button
-     class="smallBtn"
-     onclick="saveRecognizedItem(${i})"
-    >
-     加入
-    </button>
-
-   </td>
-
-  </tr>
-
-  `;
-
- }).join("");
-
-}
-
-
-/* =========================================================
-   保存单个识别项目
-========================================================= */
-
-function saveRecognizedItem(i){
-
- const x=recognizedQuotes[i];
-
- const name=
- document.getElementById(
-  "ri_name_"+i
- ).value;
-
- const qty=
- document.getElementById(
-  "ri_qty_"+i
- ).value;
-
- const unit=
- document.getElementById(
-  "ri_unit_"+i
- ).value;
-
- const amount=
- +document.getElementById(
-  "ri_amount_"+i
- ).value||0;
-
- if(!name)return;
-
- d.q.push([
-
-  name,
-
-  amount,
-
-  (qty+" "+unit).trim(),
-
-  x.analysis.label
-
- ]);
-
- x.saved=true;
-
- save();
-
- alert("已加入猪窝报价库");
-
-}
-
-
-/* =========================================================
-   全部加入
-========================================================= */
-
-function saveAllRecognizedQuotes(){
-
- let count=0;
-
- recognizedQuotes.forEach((x,i)=>{
-
-  if(x.saved)return;
-
-  const name=
-   document.getElementById(
-    "ri_name_"+i
-   ).value;
-
-  const qty=
-   document.getElementById(
-    "ri_qty_"+i
-   ).value;
-
-  const unit=
-   document.getElementById(
-    "ri_unit_"+i
-   ).value;
-
-  const amount=
-   +document.getElementById(
-    "ri_amount_"+i
-   ).value||0;
-
-  if(name){
-
-   d.q.push([
-
-    name,
-
-    amount,
-
-    (qty+" "+unit).trim(),
-
-    x.analysis.label
-
-   ]);
-
-   x.saved=true;
-
-   count++;
-
-  }
-
- });
-
- save();
-
- alert(
-  "已加入 "+count+" 个报价项目"
- );
-
-}
-
-
-/* =========================================================
-   生成建议
-========================================================= */
-
-function generateAdvice(){
-
- const box=
- document.getElementById(
-  "quoteAdvice"
- );
-
- const addItems=
- recognizedQuotes.filter(
-  x=>x.analysis.type==="add"
- );
-
- const attentionItems=
- recognizedQuotes.filter(
-  x=>x.analysis.type==="attention"
- );
-
- const highItems=
- recognizedQuotes.filter(
-  x=>x.analysis.type==="high"
- );
-
- let html="";
-
- if(highItems.length){
-
-  html+=`
-
-  <div class="resultItem red">
-
-   <div class="analysisTitle">
-   🔴 建议优先核对 ${highItems.length} 项
-   </div>
-
-   <div class="analysisText">
-
-   金额较高或存在明显价格风险的项目，
-   建议不要只看总价，而要拆分材料、人工、
-   数量和施工范围。
-
-   </div>
-
-  </div>
-
-  `;
-
- }
-
- if(addItems.length){
-
-  html+=`
-
-  <div class="resultItem orange">
-
-   <div class="analysisTitle">
-   🟠 ${addItems.length} 项可能容易产生增项
-   </div>
-
-   <div class="analysisText">
-
-   ${addItems.slice(0,8).map(x=>
-    "• "+escapeHtml(x.name)
-   ).join("<br>")}
-
-   <div class="suggest">
-
-   建议统一要求装修公司写清：
-   <br>
-   ① 计算方式
-   <br>
-   ② 单价
-   <br>
-   ③ 工程量如何确认
-   <br>
-   ④ 超出报价后的处理方式
-   <br>
-   ⑤ 是否需要甲方书面确认
-
-   </div>
-
-   </div>
-
-  </div>
-
-  `;
-
- }
-
- if(attentionItems.length){
-
-  html+=`
-
-  <div class="resultItem yellow">
-
-   <div class="analysisTitle">
-   🟡 ${attentionItems.length} 项需要核对材料/规格
-   </div>
-
-   <div class="analysisText">
-
-   ${attentionItems.slice(0,8).map(x=>
-    "• "+escapeHtml(x.name)
-   ).join("<br>")}
-
-   </div>
-
-  </div>
-
-  `;
-
- }
-
- if(!html){
-
-  html=`
-
-  <div class="resultItem green">
-
-   <div class="analysisTitle">
-   🟢 暂时没有发现明显风险
-   </div>
-
-   <div class="analysisText">
-   但这不代表报价一定合理。
-   仍建议结合当地市场价格、施工面积、
-   材料品牌和合同条款进行核对。
-   </div>
-
-  </div>
-
-  `;
-
- }
-
- box.innerHTML=html;
-
- generateTalkingAdvice();
-
- generateMissingAdvice();
-
-}
-
-
-/* =========================================================
-   谈价话术
-========================================================= */
-
-function generateTalkingAdvice(){
-
- const box=
- document.getElementById(
-  "talkingAdvice"
- );
-
- const items=
- recognizedQuotes.filter(
-  x=>
-   x.analysis.type==="add"||
-   x.analysis.type==="attention"||
-   x.analysis.type==="high"
- );
-
- if(!items.length){
-
-  box.innerHTML=`
-
-  <div class="chat">
-
-  目前没有发现需要重点谈价的项目。
-
-  </div>
-
-  `;
-
-  return;
-
- }
-
- let html="";
-
- items.slice(0,8).forEach(x=>{
-
-  html+=`
-
-  <div class="resultItem">
-
-  <b>
-  ${escapeHtml(x.name)}
-  </b>
-
-  <div class="suggest">
-
-  “这个项目我希望你们把
-  <strong>材料、规格、施工范围、计算方式和最终结算方式</strong>
-  写清楚。
-
-  如果后面需要增加费用，
-  请先给我书面报价，
-  我确认以后再施工。”
-
-  </div>
-
-  </div>
-
-  `;
-
- });
-
- box.innerHTML=html;
-
-}
-
-
-/* =========================================================
-   漏项分析
-========================================================= */
-
-function generateMissingAdvice(){
-
- const box=
- document.getElementById(
-  "missingAdvice"
- );
-
- const allText=
- recognizedQuotes
- .map(x=>x.name)
- .join(" ");
-
- const possible=[
-
-  {
-   keys:["水电"],
-   name:"水电改造",
-   advice:"确认水电是否按实际发生量结算，以及是否设置封顶金额。"
-  },
-
-  {
-   keys:["防水"],
-   name:"防水",
-   advice:"确认防水材料、施工遍数、闭水试验是否包含。"
-  },
-
-  {
-   keys:["垃圾","清运"],
-   name:"垃圾清运",
-   advice:"确认装修垃圾清运是否包含，避免后期单独收费。"
-  },
-
-  {
-   keys:["保护","成品"],
-   name:"成品保护",
-   advice:"确认地面、门窗、电梯、公共区域保护是否包含。"
-  },
-
-  {
-   keys:["保洁","开荒"],
-   name:"开荒保洁",
-   advice:"确认竣工后的开荒保洁是否包含。"
-  },
-
-  {
-   keys:["搬运"],
-   name:"材料搬运",
-   advice:"确认楼层搬运、二次搬运是否包含。"
-  },
-
-  {
-   keys:["验收"],
-   name:"隐蔽工程验收",
-   advice:"水电、防水、暗装花洒等封闭前应安排验收。"
-  },
-
-  {
-   keys:["美缝"],
-   name:"美缝",
-   advice:"确认瓷砖美缝是否包含，材料和施工范围需要写清。"
-  }
-
- ];
-
- const missing=[];
-
- possible.forEach(x=>{
-
-  if(
-   !x.keys.some(k=>
-    allText.includes(k)
-   )
-  ){
-
-   missing.push(x);
-
-  }
-
- });
-
- if(!missing.length){
-
-  box.innerHTML=`
-
-  <div class="resultItem green">
-
-  暂时没有发现明显的常见漏项。
-
-  </div>
-
-  `;
-
-  return;
-
- }
-
- box.innerHTML=
-
- missing.slice(0,8).map(x=>`
-
-  <div class="resultItem">
-
-   <b>可能需要确认：${x.name}</b>
-
-   <div class="analysisText"
-   style="margin-top:6px">
-
-   ${x.advice}
-
-   </div>
-
-  </div>
-
- `).join("");
-
-}
-
-
-/* =========================================================
-   原始文字复制
-========================================================= */
-
-function copyRawText(){
-
- if(!rawQuoteText){
-
-  alert("目前没有原始文字");
-
-  return;
-
- }
-
- navigator.clipboard
- .writeText(rawQuoteText)
- .then(()=>alert("已复制"));
-
-}
-
-
-/* =========================================================
-   合同 OCR
-========================================================= */
-
-async function recognizeContract(){
-
- const file=
- document.getElementById(
-  "contractPhoto"
- ).files[0];
-
- if(!file)return;
-
- const text=
- await runOCR(
-  file,
-  "contractStatus"
- );
-
- if(!text)return;
-
- const lines=
- text
- .split(/\n+/)
- .map(x=>x.trim())
- .filter(x=>x.length>4);
-
- const keywords=[
-
-  "增项",
-  "加项",
-  "变更",
-  "付款",
-  "验收",
-  "保修",
-  "违约",
-  "工期",
-  "材料",
-  "品牌",
-  "型号",
-  "水电",
-  "防水",
-  "隐蔽工程",
-  "结算",
-  "延期",
-  "赔偿",
-  "甲方",
-  "乙方",
-  "质保",
-  "合同"
- ];
-
- contractOCRResults=
- lines.filter(line=>
-  keywords.some(k=>
-   line.includes(k)
-  )
- );
-
- showContractResults();
-
-}
-
-
-function showContractResults(){
-
- const box=
- document.getElementById(
-  "contractResults"
- );
-
- if(!contractOCRResults.length){
-
-  box.innerHTML=
-  `<div class="empty">
-  没有找到明显的重点条款。
-  可以继续拍下一页。
-  </div>`;
-
-  return;
-
- }
-
- box.innerHTML=
- contractOCRResults.map((x,i)=>`
-
-  <div class="resultItem">
-
-  <b>${escapeHtml(x)}</b>
-
-  <div class="suggest">
-
-  建议重点确认这一条是否会影响
-  最终费用、工期、验收或后期维修。
-
-  </div>
-
-  <button
-   class="primary"
-   onclick="useContractResult(${i})"
-  >
-   加入合同检查项
-  </button>
-
-  </div>
-
- `).join("");
-
-}
-
-
-function useContractResult(i){
-
- const text=
- contractOCRResults[i];
-
- document.getElementById("cn").value=text;
-
- document.getElementById("cr").value=
- "请装修公司明确该条款的具体执行方式，涉及增项、费用、工期或材料变更的，应提前书面确认。";
-
- document.getElementById("cs").value=
- "待确认";
-
- document
- .querySelector(
-  'nav button[data-p="contract"]'
- )
- .click();
 
 }
 
@@ -2656,466 +2242,254 @@ function useContractResult(i){
    沟通 OCR
 ========================================================= */
 
-async function recognizeNote(){
+async function recognizeNotes(){
 
- const file=
- document.getElementById(
-  "notePhoto"
- ).files[0];
+  if(!noteFiles.length){
 
- if(!file)return;
+    alert("请先选择聊天截图");
 
- const text=
- await runOCR(
-  file,
-  "noteStatus"
- );
+    return;
 
- if(!text)return;
+  }
 
- showNoteResults(text);
+  recognizedNotes=[];
 
-}
+  for(let i=0;i<noteFiles.length;i++){
 
+    const text=
+      await runOCR(
+        noteFiles[i],
+        "noteStatus",
+        i,
+        noteFiles.length
+      );
 
-function showNoteResults(text){
+    if(text.trim()){
 
- const box=
- document.getElementById(
-  "noteResults"
- );
+      recognizedNotes.push(text.trim());
 
- box.innerHTML=`
+    }
 
- <div class="resultItem">
+  }
 
- <label>
- 识别出的聊天内容
- </label>
-
- <textarea
- id="ocrNoteText"
- style="min-height:180px"
- >${escapeHtml(text)}</textarea>
-
- <button
- class="primary"
- onclick="useNoteOCR()"
- >
- 填入沟通记录
- </button>
-
- </div>
-
- `;
-
-}
-
-
-function useNoteOCR(){
-
- const text=
- document.getElementById(
-  "ocrNoteText"
- ).value;
-
- document.getElementById("ns").value=text;
-
- document.getElementById("nn").value=
- "请根据聊天内容确认下一步，并尽量形成书面记录。";
-
- if(
-  !document.getElementById("nd").value
- ){
-
-  const now=new Date();
-
-  document.getElementById("nd").value=
-
-   now.getFullYear()+"-"+
-   String(now.getMonth()+1).padStart(2,"0")+"-"+
-   String(now.getDate()).padStart(2,"0");
-
- }
-
- document
- .querySelector(
-  'nav button[data-p="notes"]'
- )
- .click();
+  showNoteResults();
 
 }
 
 
 /* =========================================================
-   防止 HTML 注入
+   沟通显示
 ========================================================= */
 
-function escapeHtml(str){
+function showNoteResults(){
 
- return String(str||"")
+  const box=
+    document.getElementById("noteResults");
 
- .replace(/&/g,"&amp;")
- .replace(/</g,"&lt;")
- .replace(/>/g,"&gt;")
- .replace(/"/g,"&quot;")
- .replace(/'/g,"&#039;");
+  if(!recognizedNotes.length){
 
-}
+    box.innerHTML=
+    `<div class="empty">
+    没有识别出聊天文字
+    </div>`;
 
+    return;
 
-/* =========================================================
-   页面渲染
-========================================================= */
-
-function render(){
-
- const budget=
- +d.budget||0;
-
- document.getElementById(
-  "budget"
- ).textContent=
- "¥"+budget.toLocaleString();
-
-
- const quoteTotal=
- d.q.reduce(
-  (a,x)=>a+(+x[1]||0),
-  0
- );
-
- document.getElementById(
-  "quoteTotal"
- ).textContent=
- "¥"+quoteTotal.toLocaleString();
-
-
- const changeTotal=
- d.x.reduce(
-  (a,x)=>a+(+x[1]||0),
-  0
- );
-
- document.getElementById(
-  "changes"
- ).textContent=
- "¥"+changeTotal.toLocaleString();
-
-
- /* 报价列表 */
-
- const ql=
- document.getElementById("ql");
-
- if(!d.q.length){
-
-  ql.innerHTML=
-   '<div class="empty">还没有报价项目</div>';
-
- }else{
-
-  ql.innerHTML=
-  d.q.map((x,i)=>`
-
-   <div class="row">
-
-   <span>
-
-   <b>
-   ${escapeHtml(x[0])}
-   </b>
-
-   <br>
-
-   <span class="muted">
-   ${escapeHtml(x[2])}
-   </span>
-
-   <br>
-
-   <span class="badge">
-   ${escapeHtml(x[3])}
-   </span>
-
-   </span>
-
-   <span>
-
-   ¥${(+x[1]||0).toLocaleString()}
-
-   <br>
-
-   <button
-    class="secondary"
-    onclick="del('q',${i})"
-   >
-   删除
-   </button>
-
-   </span>
-
-   </div>
-
-  `).join("");
-
- }
-
-
- /* 合同 */
-
- const cl=
- document.getElementById("cl");
-
- cl.innerHTML=
- d.c.map((x,i)=>`
-
- <div class="row">
-
- <span>
-
- <b>
- ${escapeHtml(x[0])}
- </b>
-
- <br>
-
- <span class="muted">
- ${escapeHtml(x[1])}
- </span>
-
- <br>
-
- <span class="badge">
- ${escapeHtml(x[2])}
- </span>
-
- </span>
-
- <button
-  class="secondary"
-  onclick="del('c',${i})"
- >
- 删除
- </button>
-
- </div>
-
- `).join("");
-
-
- /* 增项 */
-
- const xl=
- document.getElementById("xl");
-
- if(!d.x.length){
-
-  xl.innerHTML=
-  '<div class="empty">还没有增减项</div>';
-
- }else{
-
-  xl.innerHTML=
-  d.x.map((x,i)=>`
-
-  <div class="row">
-
-  <span>
-
-  <b>
-  ${escapeHtml(x[0])}
-  </b>
-
-  <br>
-
-  <span class="muted">
-  ${escapeHtml(x[2])}
-  </span>
-
-  <br>
-
-  <span class="badge">
-  ${escapeHtml(x[3])}
-  </span>
-
-  </span>
-
-  <span>
-
-  ${x[1]>=0?"+":""}
-  ¥${(+x[1]||0).toLocaleString()}
-
-  <br>
-
-  <button
-   class="secondary"
-   onclick="del('x',${i})"
-  >
-  删除
-  </button>
-
-  </span>
-
-  </div>
-
-  `).join("");
-
- }
-
-
- /* 沟通 */
-
- const nl=
- document.getElementById("nl");
-
- if(!d.n.length){
-
-  nl.innerHTML=
-  '<div class="empty">还没有沟通记录</div>';
-
- }else{
-
-  nl.innerHTML=
-  d.n.slice().reverse().map(x=>`
-
-  <div class="row">
-
-  <span>
-
-  <b>
-  ${escapeHtml(x[0])}
-  ·
-  ${escapeHtml(x[1])}
-  </b>
-
-  <br>
-
-  ${escapeHtml(x[2])}
-
-  <br>
-
-  <span class="muted">
-  下一步：
-  ${escapeHtml(x[3])}
-  </span>
-
-  </span>
-
-  </div>
-
-  `).join("");
-
- }
-
-
- /* 设置 */
-
- document.getElementById(
-  "pn"
- ).value=d.name;
-
- document.getElementById(
-  "pb"
- ).value=d.budget;
-
- document.getElementById(
-  "pm"
- ).value=d.memo;
-
-
- updateHomeWarning();
-
-}
-
-
-/* =========================================================
-   首页提醒
-========================================================= */
-
-function updateHomeWarning(){
-
- const box=
- document.getElementById(
-  "homeWarning"
- );
-
- if(!d.q.length){
+  }
 
   box.innerHTML=
-  `<div class="empty">
-  上传报价单后，这里会显示猪窝发现的问题。
-  </div>`;
+  recognizedNotes.map((text,i)=>`
 
-  return;
+  <div class="resultItem">
 
- }
+  <label>
+  第 ${i+1} 张聊天截图
+  </label>
 
- const high=
- d.q.filter(x=>
-  x[3]==="偏高"
- ).length;
+  <textarea
+  id="rn_${i}"
+  style="min-height:160px">${escapeHtml(text)}</textarea>
 
- const add=
- d.q.filter(x=>
-  x[3]==="容易增项"
- ).length;
+  <button class="primary"
+  onclick="useNote(${i})">
 
- const wait=
- d.q.filter(x=>
-  x[3]==="待核价"
- ).length;
+  填入沟通记录
 
- let html="";
+  </button>
 
- if(high){
-
-  html+=`
-
-  <div class="resultItem red">
-  🔴 有 <b>${high}</b> 个项目标记为偏高参考，
-  建议优先核价。
   </div>
 
-  `;
+  `).join("");
 
- }
+}
 
- if(add){
 
-  html+=`
+/* =========================================================
+   使用聊天识别结果
+========================================================= */
 
-  <div class="resultItem orange">
-  🟠 有 <b>${add}</b> 个项目容易产生增项，
-  重点确认结算方式。
-  </div>
+function useNote(i){
 
-  `;
+  const text=
+    document.getElementById("rn_"+i).value;
 
- }
+  document.getElementById("ns").value=text;
 
- if(wait){
+  document.getElementById("nn").value=
+    "请根据聊天内容确认下一步，并保留书面记录。";
 
-  html+=`
+  if(!document.getElementById("nd").value){
 
-  <div class="resultItem yellow">
-  🟡 还有 <b>${wait}</b> 个项目等待核价。
-  </div>
+    const now=new Date();
 
-  `;
+    document.getElementById("nd").value=
+      now.getFullYear()+"-"+
+      String(now.getMonth()+1).padStart(2,"0")+"-"+
+      String(now.getDate()).padStart(2,"0");
 
- }
+  }
 
- if(!html){
+  document.querySelector(
+    'nav button[data-p="notes"]'
+  ).click();
 
-  html=
-  `<div class="resultItem green">
-  🟢 当前报价库暂时没有待处理风险。
-  </div>`;
+}
 
- }
 
- box.innerHTML=html;
+/* =========================================================
+   添加沟通
+========================================================= */
+
+function addNote(){
+
+  const project=
+    document.getElementById("nt").value.trim();
+
+  if(!project){
+
+    alert("请填写项目");
+
+    return;
+
+  }
+
+  d.n.push({
+
+    date:
+      document.getElementById("nd").value,
+
+    project:project,
+
+    say:
+      document.getElementById("ns").value,
+
+    next:
+      document.getElementById("nn").value,
+
+    time:new Date().toLocaleString()
+
+  });
+
+  document.getElementById("nt").value="";
+  document.getElementById("ns").value="";
+  document.getElementById("nn").value="";
+
+  save();
+
+}
+
+
+/* =========================================================
+   删除单条
+========================================================= */
+
+function deleteItem(type,index){
+
+  if(!confirm("确定删除这条记录吗？"))return;
+
+  d[type].splice(index,1);
+
+  save();
+
+}
+
+
+/* =========================================================
+   全部删除
+========================================================= */
+
+function deleteAllQuotes(){
+
+  if(!d.q.length){
+
+    alert("目前没有报价");
+
+    return;
+
+  }
+
+  if(!confirm("确定删除全部报价吗？"))return;
+
+  d.q=[];
+
+  save();
+
+}
+
+
+function deleteAllContracts(){
+
+  if(!d.c.length){
+
+    alert("目前没有合同检查项");
+
+    return;
+
+  }
+
+  if(!confirm("确定删除全部合同检查项吗？"))return;
+
+  d.c=[];
+
+  save();
+
+}
+
+
+function deleteAllChanges(){
+
+  if(!d.x.length){
+
+    alert("目前没有增减项");
+
+    return;
+
+  }
+
+  if(!confirm("确定删除全部增减项吗？"))return;
+
+  d.x=[];
+
+  save();
+
+}
+
+
+function deleteAllNotes(){
+
+  if(!d.n.length){
+
+    alert("目前没有沟通记录");
+
+    return;
+
+  }
+
+  if(!confirm("确定删除全部沟通记录吗？"))return;
+
+  d.n=[];
+
+  save();
 
 }
 
@@ -3126,130 +2500,625 @@ function updateHomeWarning(){
 
 function saveSettings(){
 
- d.name=
- document.getElementById("pn").value||
- "我的装修项目";
+  d.name=
+    document.getElementById("pn").value||
+    "我的装修项目";
 
- d.budget=
- +document.getElementById("pb").value||0;
+  d.budget=
+    Number(document.getElementById("pb").value)||0;
 
- d.memo=
- document.getElementById("pm").value;
+  d.memo=
+    document.getElementById("pm").value;
 
- save();
+  save();
 
- alert("设置已保存");
+  alert("项目设置已保存");
 
 }
 
 
 /* =========================================================
-   导出
+   备份
 ========================================================= */
 
 function exportData(){
 
- const u=
- URL.createObjectURL(
+  const blob=
+    new Blob(
+      [JSON.stringify(d,null,2)],
+      {type:"application/json"}
+    );
 
-  new Blob(
+  const url=
+    URL.createObjectURL(blob);
 
-   [JSON.stringify(
-    d,
-    null,
-    2
-   )],
+  const a=
+    document.createElement("a");
 
-   {
-    type:"application/json"
-   }
+  a.href=url;
 
-  )
+  a.download=
+    "猪窝_"+d.name+"_备份.json";
 
- );
+  a.click();
 
- const a=
- document.createElement("a");
-
- a.href=u;
-
- a.download="猪窝备份.json";
-
- a.click();
-
- URL.revokeObjectURL(u);
+  URL.revokeObjectURL(url);
 
 }
 
 
 /* =========================================================
-   导入
+   恢复
 ========================================================= */
 
-function importData(){
+document.getElementById("backupFile")
+.onchange=function(e){
 
- document
- .getElementById("file")
- .click();
+  const file=e.target.files[0];
 
-}
+  if(!file)return;
 
+  const reader=new FileReader();
 
-document
-.getElementById("file")
-.onchange=e=>{
+  reader.onload=function(){
 
- const target=e.target;
+    try{
 
- const selectedFile=
- target.files[0];
+      d=JSON.parse(reader.result);
 
- if(!selectedFile)return;
+      save();
 
- const r=
- new FileReader();
+      alert("数据恢复成功");
 
- r.onload=()=>{
+    }catch{
 
-  try{
+      alert("备份文件无效");
 
-   d=
-   JSON.parse(
-    r.result
-   );
+    }
 
-   save();
+  };
 
-   alert("恢复成功");
-
-  }catch{
-
-   alert("备份文件无效");
-
-  }
-
- };
-
- r.readAsText(
-  selectedFile
- );
+  reader.readAsText(file);
 
 };
 
 
 /* =========================================================
-   初始化
+   删除全部项目
+========================================================= */
+
+function clearAllData(){
+
+  if(!confirm(
+    "确定删除整个猪窝项目的全部数据吗？此操作不可恢复。"
+  ))return;
+
+  localStorage.removeItem(K);
+
+  location.reload();
+
+}
+
+
+/* =========================================================
+   首页建议
+========================================================= */
+
+function renderHomeAdvice(){
+
+  const box=
+    document.getElementById("homeAdvice");
+
+  const advice=[];
+
+  const waitingQuotes=
+    d.q.filter(
+      x=>
+        (x.judgment||"")!=="正常"
+    ).length;
+
+  const waitingContracts=
+    d.c.filter(
+      x=>
+        (x.status||"待确认")!=="已通过"
+    ).length;
+
+  const waitingChanges=
+    d.x.filter(
+      x=>
+        (x.status||"待确认")==="待确认"
+    ).length;
+
+  if(waitingQuotes){
+
+    advice.push(
+      `报价还有 ${waitingQuotes} 项需要核价。`
+    );
+
+  }
+
+  if(waitingContracts){
+
+    advice.push(
+      `合同还有 ${waitingContracts} 项需要处理。`
+    );
+
+  }
+
+  if(waitingChanges){
+
+    advice.push(
+      `有 ${waitingChanges} 个增项还没有确认。`
+    );
+
+  }
+
+  if(!advice.length){
+
+    advice.push(
+      "目前没有明显待处理事项，可以继续推进装修。"
+    );
+
+  }
+
+  box.innerHTML=
+    advice.map(x=>
+      `<div class="notice warning"
+      style="margin-bottom:7px">
+      ${escapeHtml(x)}
+      </div>`
+    ).join("");
+
+}
+
+
+/* =========================================================
+   主渲染
+========================================================= */
+
+function render(){
+
+  document.getElementById("projectTitle")
+  .textContent=d.name;
+
+  document.getElementById("budget")
+  .textContent=money(d.budget);
+
+  /*
+    报价合计
+  */
+
+  const quoteTotal=
+    d.q.reduce(
+      (sum,x)=>
+        sum+
+        Number(
+          x.amount!==undefined
+          ?x.amount
+          :x[1]||0
+        ),
+      0
+    );
+
+  document.getElementById("quoteTotal")
+  .textContent=money(quoteTotal);
+
+  /*
+    增减项
+  */
+
+  const changeTotal=
+    d.x.reduce(
+      (sum,x)=>
+        sum+
+        Number(
+          x.amount!==undefined
+          ?x.amount
+          :x[1]||0
+        ),
+      0
+    );
+
+  document.getElementById("changes")
+  .textContent=money(changeTotal);
+
+  document.getElementById("changeTotal")
+  .textContent=money(changeTotal);
+
+  document.getElementById("quoteCount")
+  .textContent=d.q.length;
+
+  const contractTodo=
+    d.c.filter(
+      x=>
+        (x.status||x[2]||"待确认")!=="已通过"
+    ).length;
+
+  document.getElementById("contractTodo")
+  .textContent=contractTodo;
+
+  const quoteTodo=
+    d.q.filter(
+      x=>
+        (x.judgment||x[3]||"待核价")!=="正常"
+    ).length;
+
+  const changeTodo=
+    d.x.filter(
+      x=>
+        (x.status||x[3]||"待确认")==="待确认"
+    ).length;
+
+  document.getElementById("todo")
+  .textContent=
+    quoteTodo+
+    contractTodo+
+    changeTodo;
+
+
+  /* ================= 报价列表 ================= */
+
+  const ql=
+    document.getElementById("ql");
+
+  if(!d.q.length){
+
+    ql.innerHTML=
+      `<div class="empty">
+      还没有保存报价
+      </div>`;
+
+  }else{
+
+    ql.innerHTML=
+
+      d.q.map((x,i)=>{
+
+        const name=
+          x.name!==undefined
+          ?x.name
+          :x[0];
+
+        const amount=
+          x.amount!==undefined
+          ?x.amount
+          :x[1];
+
+        const unit=
+          x.unit!==undefined
+          ?x.unit
+          :x[2];
+
+        const judgment=
+          x.judgment!==undefined
+          ?x.judgment
+          :x[3];
+
+        return `
+
+        <div class="row">
+
+        <span>
+
+        <b>${escapeHtml(name)}</b>
+
+        <br>
+
+        <span class="muted">
+        ${escapeHtml(unit)}
+        </span>
+
+        <br>
+
+        <span class="${badgeClass(judgment)}">
+        ${escapeHtml(judgment)}
+        </span>
+
+        </span>
+
+        <span>
+
+        <b>${money(amount)}</b>
+
+        <br>
+
+        <button
+        class="secondary"
+        onclick="deleteItem('q',${i})">
+
+        删除
+
+        </button>
+
+        </span>
+
+        </div>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+  /* ================= 合同 ================= */
+
+  const cl=
+    document.getElementById("cl");
+
+  if(!d.c.length){
+
+    cl.innerHTML=
+      `<div class="empty">
+      还没有保存合同检查项
+      </div>`;
+
+  }else{
+
+    cl.innerHTML=
+
+      d.c.map((x,i)=>{
+
+        const title=
+          x.title!==undefined
+          ?x.title
+          :x[0];
+
+        const text=
+          x.text!==undefined
+          ?x.text
+          :x[1];
+
+        const advice=
+          x.advice||"";
+
+        const status=
+          x.status!==undefined
+          ?x.status
+          :x[2];
+
+        return `
+
+        <div class="row">
+
+        <span>
+
+        <b>${escapeHtml(title)}</b>
+
+        <br>
+
+        <span class="muted">
+        ${escapeHtml(text)}
+        </span>
+
+        <br>
+
+        <span class="${badgeClass(status)}">
+        ${escapeHtml(status)}
+        </span>
+
+        ${advice?
+        `<br><span class="muted">
+        建议：${escapeHtml(advice)}
+        </span>`:""}
+
+        </span>
+
+        <button
+        class="danger"
+        onclick="deleteItem('c',${i})">
+
+        删除
+
+        </button>
+
+        </div>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+  /* ================= 增项 ================= */
+
+  const xl=
+    document.getElementById("xl");
+
+  if(!d.x.length){
+
+    xl.innerHTML=
+      `<div class="empty">
+      还没有增减项
+      </div>`;
+
+  }else{
+
+    xl.innerHTML=
+
+      d.x.map((x,i)=>{
+
+        const name=
+          x.name!==undefined
+          ?x.name
+          :x[0];
+
+        const amount=
+          x.amount!==undefined
+          ?x.amount
+          :x[1];
+
+        const reason=
+          x.reason!==undefined
+          ?x.reason
+          :x[2];
+
+        const status=
+          x.status!==undefined
+          ?x.status
+          :x[3];
+
+        return `
+
+        <div class="row">
+
+        <span>
+
+        <b>${escapeHtml(name)}</b>
+
+        <br>
+
+        <span class="muted">
+        ${escapeHtml(reason)}
+        </span>
+
+        <br>
+
+        <span class="${badgeClass(status)}">
+        ${escapeHtml(status)}
+        </span>
+
+        </span>
+
+        <span>
+
+        <b>
+        ${amount>=0?"+":""}${money(amount)}
+        </b>
+
+        <br>
+
+        <button
+        class="danger"
+        onclick="deleteItem('x',${i})">
+
+        删除
+
+        </button>
+
+        </span>
+
+        </div>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+  /* ================= 沟通 ================= */
+
+  const nl=
+    document.getElementById("nl");
+
+  if(!d.n.length){
+
+    nl.innerHTML=
+      `<div class="empty">
+      还没有沟通记录
+      </div>`;
+
+  }else{
+
+    nl.innerHTML=
+
+      d.n.slice().reverse().map((x,index)=>{
+
+        const realIndex=
+          d.n.length-1-index;
+
+        const date=
+          x.date!==undefined
+          ?x.date
+          :x[0];
+
+        const project=
+          x.project!==undefined
+          ?x.project
+          :x[1];
+
+        const say=
+          x.say!==undefined
+          ?x.say
+          :x[2];
+
+        const next=
+          x.next!==undefined
+          ?x.next
+          :x[3];
+
+        return `
+
+        <div class="row">
+
+        <span>
+
+        <b>
+        ${escapeHtml(date)}
+        ·
+        ${escapeHtml(project)}
+        </b>
+
+        <br>
+
+        ${escapeHtml(say)}
+
+        <br><br>
+
+        <span class="muted">
+        下一步：
+        ${escapeHtml(next)}
+        </span>
+
+        </span>
+
+        <button
+        class="danger"
+        onclick="deleteItem('n',${realIndex})">
+
+        删除
+
+        </button>
+
+        </div>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+  /* ================= 设置 ================= */
+
+  document.getElementById("pn").value=d.name;
+  document.getElementById("pb").value=d.budget;
+  document.getElementById("pm").value=d.memo;
+
+
+  renderHomeAdvice();
+
+}
+
+
+/* =========================================================
+   启动
 ========================================================= */
 
 render();
 
-if(
- "serviceWorker" in navigator
-){
 
- navigator.serviceWorker.register(
-  "sw.js"
- );
+/*
+  如果你的 GitHub Pages 已经有 sw.js，
+  继续使用即可。
+*/
+
+if("serviceWorker" in navigator){
+
+  navigator.serviceWorker.register("sw.js")
+  .catch(()=>{});
 
 }
 
