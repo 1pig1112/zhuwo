@@ -21,8 +21,9 @@ progress:45
 records:{},
 
 
-photos:
-data.records[date].photos || [],
+photos:{}
+
+};
 
 
 
@@ -42,7 +43,9 @@ JSON.stringify(data)
 
 
 
-// 页面切换
+// =======================
+// 页面切换（修复版）
+// =======================
 
 
 function openPage(id){
@@ -50,7 +53,7 @@ function openPage(id){
 
 document
 .querySelectorAll(".page")
-.forEach(page=>{
+.forEach(function(page){
 
 page.classList.remove("active");
 
@@ -60,6 +63,7 @@ page.classList.remove("active");
 
 let target =
 document.getElementById(id);
+
 
 
 if(target){
@@ -75,6 +79,7 @@ if(id==="calendar"){
 renderCalendar();
 
 }
+
 
 
 window.scrollTo(0,0);
@@ -97,7 +102,12 @@ openPage("home");
 
 
 
+
+
+// =======================
 // 首页初始化
+// =======================
+
 
 
 function init(){
@@ -123,36 +133,57 @@ Math.floor(
 
 
 
-let dayBox =
+let daysBox =
 document.getElementById("days");
 
 
-if(dayBox){
+if(daysBox){
 
-dayBox.innerText =
+daysBox.innerText =
 days;
 
 }
 
 
 
-document.getElementById("stage")
-.innerText =
+let stage =
+document.getElementById("stage");
+
+
+if(stage){
+
+stage.innerText =
 data.project.stage;
 
+}
 
 
 
-document.getElementById("progressBar")
-.style.width =
+
+let bar =
+document.getElementById("progressBar");
+
+
+if(bar){
+
+bar.style.width =
 data.project.progress+"%";
 
+}
 
 
 
-document.getElementById("progressNum")
-.innerText =
+let num =
+document.getElementById("progressNum");
+
+
+if(num){
+
+num.innerText =
 data.project.progress+"%";
+
+}
+
 
 
 }
@@ -163,9 +194,36 @@ data.project.progress+"%";
 
 
 
-// =================
+
+
+// =======================
+// 日期工具
+// =======================
+
+
+function formatDate(y,m,d){
+
+
+return y+
+"-"+
+String(m).padStart(2,"0")
++
+"-"+
+String(d).padStart(2,"0");
+
+
+}
+
+
+
+
+
+
+
+
+// =======================
 // 日历系统
-// =================
+// =======================
 
 
 let currentMonth =
@@ -187,26 +245,6 @@ renderCalendar();
 
 
 }
-
-
-
-
-
-
-
-function formatDate(y,m,d){
-
-
-return y+
-"-"+
-String(m).padStart(2,"0")
-+
-"-"+
-String(d).padStart(2,"0");
-
-
-}
-
 
 
 
@@ -242,15 +280,22 @@ currentMonth.getMonth();
 
 
 
+let title =
 document.getElementById(
 "monthTitle"
-)
-.innerText =
+);
 
+
+
+if(title){
+
+title.innerText =
 year+
 "年"+
 (month+1)+
 "月";
+
+}
 
 
 
@@ -263,7 +308,6 @@ month,
 1
 )
 .getDay();
-
 
 
 
@@ -294,12 +338,12 @@ box.innerHTML +=
 
 
 
-
 for(
 let d=1;
 d<=total;
 d++
 ){
+
 
 
 let date =
@@ -336,12 +380,12 @@ ${d}
 }
 
 
+
 }
 
-// =================
-// 装修日记记录
-// =================
-
+// =======================
+// 装修记录
+// =======================
 
 
 function newDiary(){
@@ -349,7 +393,6 @@ function newDiary(){
 
 let today =
 new Date();
-
 
 
 let date =
@@ -362,7 +405,6 @@ today.getMonth()+1,
 today.getDate()
 
 );
-
 
 
 openRecord(date);
@@ -389,12 +431,19 @@ date;
 
 
 
+let title =
 document.getElementById(
 "recordTitle"
-)
-.innerText =
+);
+
+
+
+if(title){
+
+title.innerText =
 date+" 装修日记";
 
+}
 
 
 
@@ -403,46 +452,50 @@ data.records[date];
 
 
 
-
 if(old){
 
 
+
+let stage =
 document.getElementById(
 "recordStage"
-)
-.value =
+);
+
+
+
+if(stage){
+
+stage.value =
 old.stage || "水电施工";
+
+}
 
 
 
 document.getElementById(
 "recordDone"
-)
-.value =
+).value =
 old.done || "";
 
 
 
 document.getElementById(
 "recordProblem"
-)
-.value =
+).value =
 old.problem || "";
 
 
 
 document.getElementById(
 "recordChat"
-)
-.value =
+).value =
 old.chat || "";
 
 
 
 document.getElementById(
 "recordMoney"
-)
-.value =
+).value =
 old.money || "";
 
 
@@ -458,11 +511,15 @@ clearRecord();
 }
 
 
+
 showPreview(date);
 
-showPhotos(date);
-}
 
+showPhotos(date);
+
+
+
+}
 
 
 
@@ -473,7 +530,7 @@ showPhotos(date);
 function clearRecord(){
 
 
-let ids=[
+let list=[
 
 "recordDone",
 
@@ -486,12 +543,12 @@ let ids=[
 ];
 
 
-ids.forEach(id=>{
+
+list.forEach(function(id){
 
 
 let el =
 document.getElementById(id);
-
 
 
 if(el){
@@ -513,6 +570,7 @@ el.value="";
 
 
 
+
 // 保存记录
 
 
@@ -525,7 +583,33 @@ window.currentRecord;
 
 
 
-if(!date)return;
+if(!date){
+
+alert("请选择日期");
+
+return;
+
+}
+
+
+
+let oldPhotos =
+[];
+
+
+
+
+if(data.records[date]
+&&
+data.records[date].photos){
+
+
+oldPhotos =
+data.records[date].photos;
+
+}
+
+
 
 
 
@@ -574,7 +658,7 @@ document.getElementById(
 
 photos:
 
-data.records[date]?.photos || [],
+oldPhotos,
 
 
 
@@ -584,7 +668,10 @@ new Date()
 .toLocaleString()
 
 
+
 };
+
+
 
 
 
@@ -593,15 +680,17 @@ saveData();
 
 
 alert(
-"🐷 今天的装修记录保存好啦"
+"🐷 装修记录保存成功"
 );
+
+
+
+renderCalendar();
 
 
 
 openPage("calendar");
 
-
-renderCalendar();
 
 
 showPreview(date);
@@ -617,11 +706,13 @@ showPreview(date);
 
 
 
-// 日历预览卡
+// =======================
+// 日历预览
+// =======================
+
 
 
 function showPreview(date){
-
 
 
 let box =
@@ -642,6 +733,7 @@ data.records[date];
 
 
 
+
 if(!r){
 
 
@@ -652,7 +744,7 @@ box.innerHTML=`
 🐷
 
 <p>
-这一天还没有装修记录哦
+这一天还没有记录哦
 
 </p>
 
@@ -668,26 +760,34 @@ return;
 
 
 
+
 box.innerHTML=`
 
 <div class="diary-card">
 
 
 <h3>
+
 🌸 ${date}
+
 </h3>
 
 
+
 <p>
-🔨 ${r.stage}
+🔨 阶段：
+${r.stage || "暂无"}
+
 </p>
+
 
 
 <p>
 ✨ 完成：
-${r.done || "暂无记录"}
+${r.done || "暂无"}
 
 </p>
+
 
 
 <p>
@@ -697,11 +797,13 @@ ${r.problem || "暂无"}
 </p>
 
 
+
 <p>
 💬 沟通：
 ${r.chat || "暂无"}
 
 </p>
+
 
 
 <p>
@@ -713,12 +815,11 @@ ${r.money || 0} 元
 
 
 <p>
-
 📷照片：
-
 ${r.photos ? r.photos.length : 0} 张
 
 </p>
+
 
 
 </div>
@@ -729,76 +830,13 @@ ${r.photos ? r.photos.length : 0} 张
 
 }
 
-// =================
+// =======================
 // 照片系统
-// =================
+// =======================
+
 
 
 function addDailyPhotos(event){
-
-let files = event.target.files;
-
-let date = window.currentRecord;
-
-if(!date)return;
-
-
-if(!data.records[date]){
-
-data.records[date]={
-stage:"水电施工",
-done:"",
-problem:"",
-chat:"",
-money:"",
-photos:[]
-};
-
-}
-
-
-
-if(!data.records[date].photos){
-
-data.records[date].photos=[];
-
-}
-
-
-
-Array.from(files).forEach(file=>{
-
-
-let reader = new FileReader();
-
-
-reader.onload=function(e){
-
-
-data.records[date].photos.push(
-e.target.result
-);
-
-
-
-saveData();
-
-
-showPhotos(date);
-
-
-};
-
-
-
-reader.readAsDataURL(file);
-
-
-
-});
-
-
-}
 
 
 
@@ -812,11 +850,19 @@ window.currentRecord;
 
 
 
-if(!date)return;
+if(!date){
+
+alert("请先选择日期");
+
+return;
+
+}
+
 
 
 
 if(!data.records[date]){
+
 
 data.records[date]={
 
@@ -834,6 +880,7 @@ photos:[]
 
 };
 
+
 }
 
 
@@ -841,16 +888,18 @@ photos:[]
 
 if(!data.records[date].photos){
 
+
 data.records[date].photos=[];
+
 
 }
 
 
 
 
-
 Array.from(files)
-.forEach(file=>{
+.forEach(function(file){
+
 
 
 let reader =
@@ -859,6 +908,7 @@ new FileReader();
 
 
 reader.onload=function(e){
+
 
 
 data.records[date]
@@ -872,7 +922,9 @@ e.target.result
 saveData();
 
 
+
 showPhotos(date);
+
 
 
 };
@@ -888,6 +940,7 @@ reader.readAsDataURL(file);
 
 
 }
+
 
 
 
@@ -921,39 +974,27 @@ data.records[date]?.photos || [];
 
 
 
-photos.forEach(src=>{
+photos.forEach(function(src){
+
 
 
 let img =
 document.createElement("img");
 
 
-img.src=src;
+
+img.src =
+src;
+
 
 
 box.appendChild(img);
 
 
+
 });
 
 
-}
-
-
-
-
-
-
-
-
-// 点击记录后显示照片
-
-
-function loadPhotos(date){
-
-
-showPhotos(date);
-
 
 }
 
@@ -963,8 +1004,11 @@ showPhotos(date);
 
 
 
-// 页面打开后初始化
 
+
+// =======================
+// 页面启动
+// =======================
 
 
 window.onload=function(){
