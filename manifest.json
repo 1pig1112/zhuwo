@@ -4,8 +4,8 @@
   "start_url": "./",
   "display": "standalone",
   "background_color": "#fff5f8",
-  "theme_color": "#f48fb1",
-  "description": "我的粉色小猪装修管家",
+  "theme_color": "#f6a6bd",
+  "description": "陪你记录家的成长",
   "icons": [
     {
       "src": "icon.png",
