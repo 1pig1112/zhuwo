@@ -1,6 +1,4 @@
-
-const KEY = "zhuwo35";
-
+const KEY = "zhuwo36";
 
 
 let data =
@@ -27,7 +25,28 @@ progress:45
 
 
 
-records:{}
+records:{},
+
+
+
+checks:{},
+
+
+
+money:{
+
+
+contract:95000,
+
+
+paid:30000,
+
+
+extra:0
+
+
+}
+
 
 
 };
@@ -65,6 +84,7 @@ JSON.stringify(data)
 // =====================
 
 
+
 function openPage(id){
 
 
@@ -78,6 +98,7 @@ page.classList.remove("active");
 
 
 });
+
 
 
 
@@ -108,8 +129,17 @@ renderCalendar();
 
 
 
-window.scrollTo(0,0);
+if(id==="work"){
 
+
+renderChecks();
+
+
+}
+
+
+
+window.scrollTo(0,0);
 
 
 }
@@ -137,7 +167,7 @@ openPage("home");
 
 
 // =====================
-// 首页初始化
+// 首页
 // =====================
 
 
@@ -153,15 +183,16 @@ data.project.start
 
 
 
-let now =
+let today =
 new Date();
 
 
 
 let days =
 Math.floor(
-(now-start)/86400000
+(today-start)/86400000
 )+1;
+
 
 
 
@@ -185,6 +216,8 @@ days;
 
 
 
+
+
 let stage =
 document.getElementById("stage");
 
@@ -203,6 +236,9 @@ data.project.stage;
 
 
 
+
+
+
 let bar =
 document.getElementById("progressBar");
 
@@ -216,6 +252,8 @@ data.project.progress+"%";
 
 
 }
+
+
 
 
 
@@ -248,7 +286,7 @@ data.project.progress+"%";
 
 
 // =====================
-// 日期工具
+// 日期
 // =====================
 
 
@@ -290,8 +328,8 @@ new Date();
 
 
 
-function changeMonth(num){
 
+function changeMonth(num){
 
 
 currentMonth.setMonth(
@@ -305,10 +343,7 @@ currentMonth.getMonth()+num
 renderCalendar();
 
 
-
 }
-
-
 
 
 
@@ -331,7 +366,9 @@ if(!box)return;
 
 
 
+
 box.innerHTML="";
+
 
 
 
@@ -369,6 +406,7 @@ y+"年"+(m+1)+"月";
 
 
 
+
 let first =
 new Date(
 y,
@@ -376,6 +414,7 @@ m,
 1
 )
 .getDay();
+
 
 
 
@@ -438,6 +477,7 @@ data.records[date];
 
 
 
+
 box.innerHTML += `
 
 <div
@@ -463,13 +503,12 @@ ${d}
 
 
 // =====================
-// 装修日记
+// 施工记录
 // =====================
 
 
 
 function newDiary(){
-
 
 
 let now =
@@ -495,6 +534,7 @@ openRecord(date);
 
 
 }
+
 
 
 
@@ -528,10 +568,12 @@ if(title){
 
 
 title.innerText =
-date+" 装修日记";
+date+" 施工记录";
 
 
 }
+
+
 
 
 
@@ -541,7 +583,6 @@ if(!data.records[date]){
 
 
 data.records[date]={
-
 
 
 stage:"水电施工",
@@ -556,7 +597,10 @@ problem:"",
 chat:"",
 
 
-money:"",
+money:0,
+
+
+summary:"",
 
 
 photos:[]
@@ -570,7 +614,6 @@ photos:[]
 saveData();
 
 
-
 }
 
 
@@ -580,7 +623,6 @@ saveData();
 
 let r =
 data.records[date];
-
 
 
 
@@ -630,6 +672,24 @@ r.money || "";
 
 
 
+let summary =
+document.getElementById(
+"recordSummary"
+);
+
+
+
+if(summary){
+
+summary.value =
+r.summary || "";
+
+}
+
+
+
+
+
 
 
 setTimeout(function(){
@@ -654,7 +714,7 @@ renderPhotos(date);
 
 
 
-// 保存装修记录
+// 保存施工记录
 
 
 
@@ -674,7 +734,8 @@ if(!date)return;
 
 
 
-let photos =
+
+let oldPhotos =
 [];
 
 
@@ -684,13 +745,24 @@ if(data.records[date]
 data.records[date].photos){
 
 
-
-photos =
+oldPhotos =
 data.records[date].photos;
 
 
 }
 
+
+
+
+
+
+let money =
+Number(
+document.getElementById(
+"recordMoney"
+).value
+||0
+);
 
 
 
@@ -710,11 +782,13 @@ document.getElementById(
 
 
 
+
 done:
 
 document.getElementById(
 "recordDone"
 ).value,
+
 
 
 
@@ -728,6 +802,7 @@ document.getElementById(
 
 
 
+
 chat:
 
 document.getElementById(
@@ -737,16 +812,27 @@ document.getElementById(
 
 
 
-money:
+
+money:money,
+
+
+
+
+
+summary:
 
 document.getElementById(
-"recordMoney"
+"recordSummary"
 ).value,
 
 
 
 
-photos:photos,
+
+photos:
+
+oldPhotos,
+
 
 
 
@@ -766,16 +852,22 @@ new Date()
 
 
 
+// 同步账本增项
+
+
+
+data.money.extra += money;
+
+
+
 saveData();
 
 
 
 
-
 alert(
-"🐷 保存成功啦"
+"🐷 今日施工记录保存成功"
 );
-
 
 
 
@@ -788,8 +880,6 @@ renderCalendar();
 openPage("calendar");
 
 
-
-showPreview(date);
 
 
 
@@ -826,7 +916,6 @@ if(!box)return;
 
 
 
-
 let r =
 data.records[date];
 
@@ -835,7 +924,6 @@ data.records[date];
 
 
 if(!r){
-
 
 
 box.innerHTML=
@@ -848,7 +936,7 @@ box.innerHTML=
 
 <p>
 
-暂无装修记录
+暂无记录
 
 </p>
 
@@ -857,10 +945,7 @@ box.innerHTML=
 `;
 
 
-
 return;
-
-
 
 }
 
@@ -885,11 +970,15 @@ box.innerHTML=
 </h3>
 
 
+
 <p>
 
-🔨 ${r.stage}
+🔨 阶段：
+
+${r.stage}
 
 </p>
+
 
 
 
@@ -903,6 +992,8 @@ ${r.done || "暂无"}
 
 
 
+
+
 <p>
 
 ⚠️ 问题：
@@ -913,23 +1004,16 @@ ${r.problem || "暂无"}
 
 
 
-<p>
-
-💬 沟通：
-
-${r.chat || "暂无"}
-
-</p>
-
 
 
 <p>
 
 💰 花费：
 
-${r.money || 0} 元
+${r.money} 元
 
 </p>
+
 
 
 
@@ -938,11 +1022,11 @@ ${r.money || 0} 元
 
 📷照片：
 
-${r.photos ? r.photos.length : 0}
-
-张
+${r.photos.length} 张
 
 </p>
+
+
 
 
 </div>
@@ -952,6 +1036,10 @@ ${r.photos ? r.photos.length : 0}
 
 
 }
+
+
+
+
 
 
 
@@ -987,37 +1075,42 @@ if(!date)return;
 
 
 
-
 if(!data.records[date]){
-
 
 
 data.records[date]={
 
-
 stage:"水电施工",
-
 
 done:"",
 
-
 problem:"",
-
 
 chat:"",
 
+money:0,
 
-money:"",
-
+summary:"",
 
 photos:[]
-
 
 };
 
 
 
 }
+
+
+
+
+
+
+
+let type =
+document.getElementById(
+"photoType"
+).value;
+
 
 
 
@@ -1041,8 +1134,6 @@ reader.onload=function(e){
 
 
 
-
-
 data.records[date]
 .photos
 .push({
@@ -1051,16 +1142,15 @@ data.records[date]
 src:e.target.result,
 
 
-type:
+type:type,
 
-document.getElementById(
-"photoType"
-).value
+
+time:new Date()
+.toLocaleString()
 
 
 
 });
-
 
 
 
@@ -1072,9 +1162,7 @@ saveData();
 
 
 
-
 renderPhotos(date);
-
 
 
 
@@ -1094,14 +1182,12 @@ reader.readAsDataURL(file);
 
 
 
-
 }
 
 
 // =====================
 // 图片显示
 // =====================
-
 
 
 function renderPhotos(date){
@@ -1130,24 +1216,7 @@ data.records[date]?.photos || [];
 
 
 
-
 photos.forEach(function(item){
-
-
-
-let src =
-typeof item === "string"
-
-?
-
-item
-
-:
-
-item.src;
-
-
-
 
 
 
@@ -1157,7 +1226,7 @@ document.createElement("img");
 
 
 img.src =
-src;
+item.src;
 
 
 
@@ -1166,11 +1235,10 @@ src;
 img.onclick=function(){
 
 
-openPhoto(src);
+openPhoto(item.src);
 
 
 };
-
 
 
 
@@ -1193,9 +1261,8 @@ box.appendChild(img);
 
 
 
-
 // =====================
-// 图片放大
+// 图片查看
 // =====================
 
 
@@ -1227,6 +1294,7 @@ img.src =
 src;
 
 
+
 viewer.style.display =
 "flex";
 
@@ -1236,7 +1304,6 @@ viewer.style.display =
 
 
 }
-
 
 
 
@@ -1277,7 +1344,95 @@ viewer.style.display =
 
 
 // =====================
-// 启动
+// 验收系统
+// =====================
+
+
+
+let checkItems=[
+
+
+"管线照片保存",
+
+"水管打压完成",
+
+"插座定位确认",
+
+"电箱回路检查",
+
+"水电图保存"
+
+
+];
+
+
+
+
+
+
+
+function renderChecks(){
+
+
+
+let box =
+document.querySelector(
+"#work .diary-card:nth-of-type(2)"
+);
+
+
+
+if(!box)return;
+
+
+
+}
+
+
+
+
+
+function saveCheck(index,status){
+
+
+
+if(!data.checks[index]){
+
+
+data.checks[index]={};
+
+
+}
+
+
+
+data.checks[index].done =
+status;
+
+
+
+data.checks[index].time =
+new Date()
+.toLocaleString();
+
+
+
+saveData();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================
+// 初始化
 // =====================
 
 
