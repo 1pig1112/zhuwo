@@ -10,9 +10,11 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <title>猪窝</title>
 
+
 <link rel="manifest" href="manifest.json">
 
 <link rel="stylesheet" href="style.css">
+
 
 </head>
 
@@ -51,6 +53,7 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 
 
+
 <main>
 
 
@@ -63,7 +66,6 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 <section id="home" class="page active">
 
 
-
 <div class="welcome-card">
 
 
@@ -74,11 +76,13 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 </div>
 
 
+
 <h2>
 
 我的家正在成长
 
 </h2>
+
 
 
 <p>
@@ -89,7 +93,6 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 
 </div>
-
 
 
 
@@ -137,6 +140,7 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 </p>
 
 
+
 <h3 id="stage">
 
 🔌 水电施工
@@ -145,13 +149,18 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 
 
+
+
 <div class="progress-bg">
+
 
 <div id="progressBar">
 
 </div>
 
+
 </div>
+
 
 
 
@@ -168,21 +177,18 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 </p>
 
 
-</div>
-
-
 
 </div>
 
 
 
+</div>
 
 
 
 
 
 
-<!-- 今日任务 -->
 
 
 <div class="diary-card">
@@ -205,6 +211,7 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 
 
+
 <div class="task-card done">
 
 ✅ 管线照片保存
@@ -213,11 +220,13 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 
 
+
 <div class="task-card">
 
 ⬜ 水管打压测试
 
 </div>
+
 
 
 
@@ -238,15 +247,12 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 
 
-<!-- 风险提醒 -->
-
-
 <div class="reminder-card">
 
 
 <h3>
 
-⚠️ 待处理
+⚠️ 待处理问题
 
 </h3>
 
@@ -267,10 +273,7 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 </div>
 
 
-
 </div>
-
-
 
 
 
@@ -283,7 +286,6 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 
 <div class="menu-item"
-
 onclick="openPage('calendar')">
 
 
@@ -315,9 +317,7 @@ onclick="openPage('calendar')">
 
 
 
-
 <div class="menu-item"
-
 onclick="openPage('progress')">
 
 
@@ -349,9 +349,7 @@ onclick="openPage('progress')">
 
 
 
-
 <div class="menu-item"
-
 onclick="openPage('photo')">
 
 
@@ -383,9 +381,7 @@ onclick="openPage('photo')">
 
 
 
-
 <div class="menu-item"
-
 onclick="openPage('problem')">
 
 
@@ -419,16 +415,13 @@ onclick="openPage('problem')">
 
 
 
-
-
-
 </section>
+
 
 <!-- 施工日志 -->
 
 
 <section id="calendar" class="page">
-
 
 
 <div class="page-title">
@@ -485,7 +478,6 @@ onclick="openPage('problem')">
 </button>
 
 
-
 </div>
 
 
@@ -537,7 +529,6 @@ class="calendar-days">
 
 
 
-
 <div id="recordPreview"
 
 class="record-preview">
@@ -545,11 +536,13 @@ class="record-preview">
 
 <div class="empty-state">
 
+
 🐷
+
 
 <p>
 
-选择日期查看施工情况
+选择日期查看施工记录
 
 </p>
 
@@ -558,7 +551,6 @@ class="record-preview">
 
 
 </div>
-
 
 
 
@@ -588,11 +580,377 @@ onclick="newDiary()">
 
 
 
-<!-- 进度管理 -->
+<!-- ⭐施工日志详情页 修复空白关键 -->
+
+
+<section id="record" class="page">
+
+
+
+<div class="page-title">
+
+
+<button onclick="openPage('calendar')">
+
+‹
+
+</button>
+
+
+
+<h2 id="recordTitle">
+
+施工日志
+
+</h2>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+
+🔨 当前阶段
+
+</h3>
+
+
+
+<select id="recordStage">
+
+
+<option>
+
+拆改
+
+</option>
+
+
+<option selected>
+
+水电施工
+
+</option>
+
+
+<option>
+
+防水
+
+</option>
+
+
+<option>
+
+瓦工
+
+</option>
+
+
+<option>
+
+木工
+
+</option>
+
+
+<option>
+
+油工
+
+</option>
+
+
+<option>
+
+安装
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+
+✨ 今日完成
+
+</h3>
+
+
+
+<textarea
+
+id="recordDone"
+
+placeholder="例如：厨房水电布线完成">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+
+⚠️ 发现问题
+
+</h3>
+
+
+
+<textarea
+
+id="recordProblem"
+
+placeholder="例如：插座位置需要调整">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+
+💬 沟通记录
+
+</h3>
+
+
+
+<textarea
+
+id="recordChat"
+
+placeholder="记录装修公司沟通内容">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+
+💰 今日费用
+
+</h3>
+
+
+
+<input
+
+id="recordMoney"
+
+type="number"
+
+placeholder="输入金额">
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+
+📝 今日总结
+
+</h3>
+
+
+
+<textarea
+
+id="recordSummary"
+
+placeholder="今天装修整体情况">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+
+📷 施工照片
+
+</h3>
+
+
+
+
+<select id="photoType">
+
+
+<option>
+
+施工过程
+
+</option>
+
+
+
+<option>
+
+验收照片
+
+</option>
+
+
+
+<option>
+
+问题照片
+
+</option>
+
+
+
+<option>
+
+材料照片
+
+</option>
+
+
+
+</select>
+
+
+
+
+
+
+
+
+<input
+
+type="file"
+
+id="dailyPhotos"
+
+accept="image/*"
+
+multiple
+
+onchange="addDailyPhotos(event)">
+
+
+
+
+
+<div id="photoPreview"
+
+class="photo-grid">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<button class="save-button"
+
+onclick="saveRecord()">
+
+
+🐷 保存今天记录
+
+
+</button>
+
+
+
+</section>
+
+
+<!-- 装修进度 -->
 
 
 <section id="progress" class="page">
-
 
 
 <div class="page-title">
@@ -625,20 +983,17 @@ onclick="newDiary()">
 
 <div class="progress-stage done">
 
-
 <h3>
 
 ✅ 拆改
 
 </h3>
 
-
 <p>
 
 已完成
 
 </p>
-
 
 </div>
 
@@ -665,17 +1020,7 @@ onclick="newDiary()">
 </p>
 
 
-<div class="small-progress">
-
-<div style="width:60%">
-
 </div>
-
-</div>
-
-
-</div>
-
 
 
 
@@ -738,31 +1083,6 @@ onclick="newDiary()">
 
 <h3>
 
-🪚 木工
-
-</h3>
-
-
-<p>
-
-等待开始
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="progress-stage">
-
-
-<h3>
-
 🎨 油工
 
 </h3>
@@ -776,7 +1096,6 @@ onclick="newDiary()">
 
 
 </div>
-
 
 
 
@@ -803,10 +1122,44 @@ onclick="newDiary()">
 </div>
 
 
-
 </div>
 
 
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- 照片中心 -->
+
+
+<section id="photo" class="page">
+
+
+<div class="page-title">
+
+
+<button onclick="backHome()">
+
+‹
+
+</button>
+
+
+<h2>
+
+📷 工地照片
+
+</h2>
+
+
+</div>
 
 
 
@@ -818,55 +1171,21 @@ onclick="newDiary()">
 
 <h3>
 
-🔌 当前阶段任务
+最近照片
 
 </h3>
 
 
 
-<div class="task-card done">
+<div id="allPhotos"
 
-✅ 开槽完成
-
-</div>
-
-
-
-<div class="task-card done">
-
-✅ 水电布管
-
-</div>
-
-
-
-<div class="task-card">
-
-⬜ 水管打压
-
-</div>
-
-
-
-<div class="task-card">
-
-⬜ 电路测试
-
-</div>
-
-
-
-<div class="task-card">
-
-⬜ 水电验收
+class="photo-grid">
 
 </div>
 
 
 
 </div>
-
-
 
 
 
@@ -884,7 +1203,6 @@ onclick="newDiary()">
 
 
 <section id="problem" class="page">
-
 
 
 <div class="page-title">
@@ -915,30 +1233,6 @@ onclick="newDiary()">
 <div class="problem-list">
 
 
-<div class="problem-item">
-
-
-<h3>
-
-厨房插座高度
-
-</h3>
-
-
-<p>
-
-发现时间：8月20日
-
-</p>
-
-
-<span>
-
-🟡 待确认
-
-</span>
-
-
 </div>
 
 
@@ -946,43 +1240,11 @@ onclick="newDiary()">
 
 
 
-<div class="problem-item">
 
+<button class="main-button"
 
-<h3>
+onclick="addProblem('新问题')">
 
-水电图纸保存
-
-</h3>
-
-
-<p>
-
-需要施工结束后归档
-
-</p>
-
-
-<span>
-
-🟢 已处理
-
-</span>
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-
-
-
-<button class="main-button">
 
 ➕ 添加问题
 
@@ -993,180 +1255,18 @@ onclick="newDiary()">
 
 </section>
 
-<!-- 工地照片 -->
 
 
-<section id="photo" class="page">
 
 
 
-<div class="page-title">
 
 
-<button onclick="backHome()">
 
-‹
-
-</button>
-
-
-<h2>
-
-📷 工地照片
-
-</h2>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="photo-folder">
-
-
-<div>
-
-🔌 水电施工
-
-</div>
-
-
-<span>
-
-查看照片
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="photo-folder">
-
-
-<div>
-
-💧 防水施工
-
-</div>
-
-
-<span>
-
-查看照片
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="photo-folder">
-
-
-<div>
-
-🧱 瓦工阶段
-
-</div>
-
-
-<span>
-
-查看照片
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="photo-folder">
-
-
-<div>
-
-🚪 安装阶段
-
-</div>
-
-
-<span>
-
-查看照片
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="diary-card">
-
-
-<h3>
-
-📷 最近照片
-
-</h3>
-
-
-
-<div id="allPhotos"
-
-class="photo-grid">
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- 账本 -->
+<!-- 费用 -->
 
 
 <section id="money" class="page">
-
 
 
 <div class="page-title">
@@ -1213,7 +1313,6 @@ class="photo-grid">
 
 
 
-
 <div>
 
 已付款
@@ -1225,7 +1324,6 @@ class="photo-grid">
 </b>
 
 </div>
-
 
 
 
@@ -1244,63 +1342,7 @@ class="photo-grid">
 </div>
 
 
-
-
-
-
-<div>
-
-剩余
-
-<b>
-
-¥65000
-
-</b>
-
 </div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="diary-card">
-
-
-<h3>
-
-➕ 增项记录
-
-</h3>
-
-
-
-<div class="problem-card">
-
-暂无增项
-
-</div>
-
-
-
-<button class="main-button">
-
-添加增项
-
-</button>
-
-
-
-</div>
-
-
 
 
 </section>
@@ -1313,11 +1355,10 @@ class="photo-grid">
 
 
 
-<!-- 资料 -->
+<!-- 资料中心 -->
 
 
 <section id="mine" class="page">
-
 
 
 <div class="page-title">
@@ -1357,13 +1398,11 @@ class="photo-grid">
 
 <div>
 
-
 <b>
 
 合同资料
 
 </b>
-
 
 <p>
 
@@ -1383,6 +1422,7 @@ class="photo-grid">
 
 
 
+
 <div class="folder-card">
 
 
@@ -1395,17 +1435,15 @@ class="photo-grid">
 
 <div>
 
-
 <b>
 
 报价资料
 
 </b>
 
-
 <p>
 
-价格记录
+备用查看
 
 </p>
 
@@ -1433,17 +1471,15 @@ class="photo-grid">
 
 <div>
 
-
 <b>
 
-材料型号
+材料资料
 
 </b>
 
-
 <p>
 
-品牌与规格
+品牌型号记录
 
 </p>
 
@@ -1452,46 +1488,6 @@ class="photo-grid">
 
 
 </div>
-
-
-
-
-
-
-
-<div class="folder-card">
-
-
-<div class="folder-icon">
-
-💬
-
-</div>
-
-
-<div>
-
-
-<b>
-
-沟通记录
-
-</b>
-
-
-<p>
-
-重要聊天整理
-
-</p>
-
-
-</div>
-
-
-</div>
-
-
 
 
 </section>
@@ -1504,7 +1500,7 @@ class="photo-grid">
 
 
 
-<!-- 图片查看 -->
+<!-- 图片放大 -->
 
 
 <div id="photoViewer"
@@ -1516,6 +1512,7 @@ onclick="closePhotoViewer()">
 
 
 <img id="bigPhoto">
+
 
 </div>
 
@@ -1621,7 +1618,8 @@ onclick="closePhotoViewer()">
 
 
 
-<script src="app.js?v=37"></script>
+
+<script src="app.js?v=371"></script>
 
 
 </body>
