@@ -1,10 +1,13 @@
+/* =====================
+   猪窝 3.7 基础样式
+===================== */
+
 
 *{
 
 box-sizing:border-box;
 
 }
-
 
 
 
@@ -18,8 +21,8 @@ background:
 
 linear-gradient(
 180deg,
-#fff4f8,
-#fffafc
+#fff3f8,
+#fffafd
 );
 
 
@@ -32,143 +35,13 @@ BlinkMacSystemFont,
 sans-serif;
 
 
-
-color:#6d4b58;
+color:#6d4d5a;
 
 
 padding-bottom:90px;
 
 
 }
-
-
-
-
-
-
-/* 顶部 */
-
-
-.pig-header{
-
-
-background:
-
-linear-gradient(
-135deg,
-#ffc3d8,
-#ffeaf1
-);
-
-
-
-padding:24px 20px;
-
-
-display:flex;
-
-
-align-items:center;
-
-
-gap:18px;
-
-
-
-border-radius:
-
-0 0 45px 45px;
-
-
-
-
-box-shadow:
-
-0 10px 30px rgba(230,120,160,.18);
-
-
-
-}
-
-
-
-
-
-
-
-.pig-avatar{
-
-
-width:88px;
-
-
-height:88px;
-
-
-border-radius:50%;
-
-
-background:white;
-
-
-display:flex;
-
-
-align-items:center;
-
-
-justify-content:center;
-
-
-font-size:50px;
-
-
-
-box-shadow:
-
-0 8px 20px rgba(255,150,190,.25);
-
-
-
-}
-
-
-
-
-
-.pig-header h1{
-
-
-margin:0;
-
-
-font-size:30px;
-
-
-color:#c65c83;
-
-
-}
-
-
-
-
-
-.pig-header p{
-
-
-margin:5px 0;
-
-
-color:#a97989;
-
-
-font-size:13px;
-
-
-}
-
-
 
 
 
@@ -190,6 +63,8 @@ padding:15px;
 
 
 
+
+/* 页面切换 */
 
 
 .page{
@@ -216,8 +91,128 @@ display:block;
 
 
 
+/* 顶部 */
 
-/* 卡片 */
+
+.pig-header{
+
+
+background:
+
+linear-gradient(
+135deg,
+#ffc1d8,
+#ffeaf2
+);
+
+
+padding:24px 20px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:18px;
+
+
+
+border-radius:
+
+0 0 45px 45px;
+
+
+
+box-shadow:
+
+0 10px 25px rgba(230,120,160,.18);
+
+
+}
+
+
+
+
+
+.pig-avatar{
+
+
+width:88px;
+
+
+height:88px;
+
+
+background:white;
+
+
+border-radius:50%;
+
+
+display:flex;
+
+
+justify-content:center;
+
+
+align-items:center;
+
+
+font-size:52px;
+
+
+
+box-shadow:
+
+0 8px 20px rgba(255,150,190,.25);
+
+
+}
+
+
+
+
+
+.pig-header h1{
+
+
+margin:0;
+
+
+font-size:30px;
+
+
+color:#c65a83;
+
+
+}
+
+
+
+.pig-header p{
+
+
+margin:5px 0;
+
+
+font-size:13px;
+
+
+color:#9d7180;
+
+
+}
+
+
+
+
+
+
+
+
+/* 通用卡片 */
 
 
 .welcome-card,
@@ -247,8 +242,9 @@ box-shadow:
 0 10px 25px rgba(255,150,190,.15);
 
 
-
 }
+
+
 
 
 
@@ -268,13 +264,16 @@ text-align:center;
 
 
 
+
 h2,h3{
 
 
-color:#c75b82;
+color:#c65a83;
 
 
 }
+
+
 
 
 
@@ -287,10 +286,7 @@ color:#c75b82;
 display:inline-block;
 
 
-background:#ffdbe8;
-
-
-color:#c65c83;
+background:#ffd9e8;
 
 
 padding:8px 16px;
@@ -302,6 +298,9 @@ border-radius:20px;
 font-size:13px;
 
 
+color:#c65a83;
+
+
 }
 
 
@@ -310,7 +309,55 @@ font-size:13px;
 
 
 
-/* 进度条 */
+
+/* 当前阶段 */
+
+
+.current-stage{
+
+
+background:#fff3f7;
+
+
+padding:15px;
+
+
+border-radius:22px;
+
+
+}
+
+
+
+.current-stage p{
+
+
+font-size:13px;
+
+
+color:#999;
+
+
+}
+
+
+
+.current-stage h3{
+
+
+margin:5px 0 15px;
+
+
+}
+
+
+
+
+
+
+
+
+/* 总进度 */
 
 
 .progress-bg{
@@ -319,7 +366,7 @@ font-size:13px;
 height:18px;
 
 
-background:#ffe4ed;
+background:#ffe3ed;
 
 
 border-radius:20px;
@@ -333,24 +380,22 @@ overflow:hidden;
 
 
 
-
 #progressBar{
 
 
 height:100%;
 
 
-width:45%;
+width:60%;
 
 
 background:
 
 linear-gradient(
 90deg,
-#f6aac4,
-#ff82ac
+#f5a5c0,
+#ff82ad
 );
-
 
 
 border-radius:20px;
@@ -368,13 +413,137 @@ border-radius:20px;
 text-align:center;
 
 
-color:#d05c85;
+color:#c65a83;
+
+
+}
+/* =====================
+   任务与提醒
+===================== */
+
+
+.task-card{
+
+
+background:#fff4f8;
+
+
+padding:14px;
+
+
+border-radius:18px;
+
+
+margin-bottom:10px;
+
+
+color:#c65a83;
 
 
 }
 
 
-/* 首页菜单 */
+
+
+.task-card.done{
+
+
+background:#eaf8ef;
+
+
+color:#5b9b69;
+
+
+}
+
+
+
+
+
+
+.problem-card{
+
+
+background:#fff1f3;
+
+
+padding:14px;
+
+
+border-radius:18px;
+
+
+margin-bottom:10px;
+
+
+color:#c65a83;
+
+
+}
+
+
+
+
+
+.problem-item{
+
+
+background:white;
+
+
+border-radius:22px;
+
+
+padding:18px;
+
+
+margin-bottom:12px;
+
+
+box-shadow:
+
+0 8px 20px rgba(255,150,190,.12);
+
+
+}
+
+
+
+
+
+.problem-item span{
+
+
+display:inline-block;
+
+
+margin-top:10px;
+
+
+background:#ffe0a8;
+
+
+padding:6px 12px;
+
+
+border-radius:15px;
+
+
+font-size:12px;
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+   菜单
+===================== */
 
 
 .menu-grid{
@@ -393,17 +562,16 @@ gap:14px;
 
 
 
-
 .menu-item{
 
 
 background:white;
 
 
-border-radius:28px;
-
-
 padding:18px;
+
+
+border-radius:28px;
 
 
 text-align:center;
@@ -415,7 +583,6 @@ box-shadow:
 
 
 }
-
 
 
 
@@ -438,7 +605,7 @@ display:block;
 margin-top:8px;
 
 
-color:#c65b82;
+color:#c65a83;
 
 
 }
@@ -462,33 +629,11 @@ color:#999;
 
 
 
-.reminder{
 
 
-background:#fff3f7;
-
-
-padding:14px;
-
-
-border-radius:18px;
-
-
-margin-bottom:10px;
-
-
-color:#c85c82;
-
-
-}
-
-
-
-
-
-
-
-/* 页面标题 */
+/* =====================
+   页面标题
+===================== */
 
 
 .page-title{
@@ -528,10 +673,10 @@ border-radius:50%;
 background:#ffdce8;
 
 
-color:#c65c83;
+color:#c65a83;
 
 
-font-size:25px;
+font-size:24px;
 
 
 }
@@ -543,8 +688,9 @@ font-size:25px;
 
 
 
-
-/* 日历 */
+/* =====================
+   日历
+===================== */
 
 
 .calendar-header{
@@ -566,13 +712,13 @@ align-items:center;
 .calendar-header button{
 
 
+border:0;
+
+
 width:40px;
 
 
 height:40px;
-
-
-border:0;
 
 
 border-radius:50%;
@@ -584,7 +730,7 @@ background:#ffe0eb;
 font-size:22px;
 
 
-color:#c65c83;
+color:#c65a83;
 
 
 }
@@ -623,11 +769,10 @@ text-align:center;
 font-size:12px;
 
 
-color:#c58b9e;
+color:#c58b9d;
 
 
 }
-
 
 
 
@@ -635,6 +780,12 @@ color:#c58b9e;
 
 
 aspect-ratio:1;
+
+
+background:#fff3f7;
+
+
+border-radius:18px;
 
 
 display:flex;
@@ -646,12 +797,6 @@ align-items:center;
 justify-content:center;
 
 
-background:#fff3f7;
-
-
-border-radius:18px;
-
-
 position:relative;
 
 
@@ -660,22 +805,19 @@ position:relative;
 
 
 
-
 .calendar-days .has-record{
 
 
-background:#ffd3e4;
+background:#ffd2e3;
 
 
-color:#c3537b;
+color:#c6537b;
 
 
 font-weight:bold;
 
 
 }
-
-
 
 
 
@@ -703,44 +845,26 @@ font-size:12px;
 
 
 
-
-/* 输入 */
-
-
-textarea,
-input,
-select{
+/* =====================
+   装修进度
+===================== */
 
 
-width:100%;
+.progress-card{
 
 
-padding:14px;
+background:white;
 
 
-border-radius:18px;
+border-radius:30px;
 
 
-border:1px solid #ffd3df;
+padding:20px;
 
 
-background:#fffafd;
+box-shadow:
 
-
-font-size:14px;
-
-
-}
-
-
-
-textarea{
-
-
-min-height:90px;
-
-
-resize:none;
+0 10px 25px rgba(255,150,190,.15);
 
 
 }
@@ -748,34 +872,72 @@ resize:none;
 
 
 
+.progress-stage{
 
 
-.main-button,
-.save-button{
+background:#fff4f8;
 
 
-width:100%;
+padding:16px;
 
 
-border:0;
+border-radius:22px;
 
 
-border-radius:25px;
+margin-bottom:12px;
 
 
-background:#f49ab8;
+}
 
 
-color:white;
+
+.progress-stage.active{
 
 
-padding:15px;
+background:#ffdce9;
 
 
-font-size:16px;
+}
 
 
-margin-top:12px;
+
+.progress-stage.done{
+
+
+background:#eaf8ef;
+
+
+}
+
+
+
+
+.small-progress{
+
+
+height:10px;
+
+
+background:#ffe3ed;
+
+
+border-radius:20px;
+
+
+overflow:hidden;
+
+
+}
+
+
+
+.small-progress div{
+
+
+height:100%;
+
+
+background:#f39bb8;
 
 
 }
@@ -787,7 +949,45 @@ margin-top:12px;
 
 
 
-/* 图片 */
+/* =====================
+   照片
+===================== */
+
+
+.photo-folder{
+
+
+background:white;
+
+
+padding:18px;
+
+
+border-radius:24px;
+
+
+margin-bottom:12px;
+
+
+display:flex;
+
+
+justify-content:space-between;
+
+
+align-items:center;
+
+
+color:#c65a83;
+
+
+box-shadow:
+
+0 8px 20px rgba(255,150,190,.12);
+
+
+}
+
 
 
 .photo-grid{
@@ -803,6 +1003,7 @@ gap:10px;
 
 
 }
+
 
 
 
@@ -826,6 +1027,11 @@ border-radius:18px;
 
 
 
+
+
+
+
+/* 图片查看 */
 
 
 .photo-viewer{
@@ -865,8 +1071,6 @@ justify-content:center;
 
 
 
-
-
 .photo-viewer img{
 
 
@@ -882,160 +1086,9 @@ border-radius:25px;
 }
 
 
-
-
-
-
-
-
-
-/* 施工阶段 */
-
-
-.stage-board{
-
-
-display:flex;
-
-
-flex-direction:column;
-
-
-gap:10px;
-
-
-}
-
-
-
-.stage-item{
-
-
-background:#fff4f8;
-
-
-padding:14px;
-
-
-border-radius:18px;
-
-
-}
-
-
-
-.stage-item.active{
-
-
-background:#ffd9e7;
-
-
-color:#c4537b;
-
-
-font-weight:bold;
-
-
-}
-
-
-
-.stage-item.done{
-
-
-background:#e9f8ee;
-
-
-color:#58a36d;
-
-
-}
-
-
-
-
-
-
-
-
-/* 施工任务 */
-
-
-.task-item{
-
-
-background:#fff5f8;
-
-
-padding:14px;
-
-
-border-radius:18px;
-
-
-margin-bottom:10px;
-
-
-}
-
-
-
-.task-item.done{
-
-
-background:#eaf8ef;
-
-
-color:#5a9b68;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* 验收 */
-
-
-.check-item{
-
-
-background:#fff4f8;
-
-
-padding:14px;
-
-
-border-radius:18px;
-
-
-margin-bottom:10px;
-
-
-}
-
-
-
-
-
-.check-item input{
-
-
-width:auto;
-
-
-margin-right:8px;
-
-
-}
-
-
-/* 钱包 */
+/* =====================
+   费用
+===================== */
 
 
 .wallet-card{
@@ -1051,7 +1104,6 @@ linear-gradient(
 
 
 }
-
 
 
 
@@ -1098,61 +1150,9 @@ margin-top:8px;
 
 
 
-
-/* 照片文件夹 */
-
-
-.photo-folder{
-
-
-background:#fff4f8;
-
-
-padding:16px;
-
-
-border-radius:20px;
-
-
-margin-bottom:12px;
-
-
-display:flex;
-
-
-justify-content:space-between;
-
-
-align-items:center;
-
-
-color:#c65c83;
-
-
-}
-
-
-
-.photo-folder span{
-
-
-font-size:13px;
-
-
-color:#999;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* 资料中心 */
+/* =====================
+   资料中心
+===================== */
 
 
 .folder-card{
@@ -1182,11 +1182,10 @@ margin-bottom:14px;
 
 box-shadow:
 
-0 8px 20px rgba(255,150,190,.15);
+0 8px 20px rgba(255,150,190,.12);
 
 
 }
-
 
 
 
@@ -1222,13 +1221,81 @@ color:#999;
 
 
 
-/* 工地小猪 */
 
 
-.worker-pig{
+/* =====================
+   通用按钮
+===================== */
 
 
-font-size:50px;
+.main-button,
+.save-button{
+
+
+width:100%;
+
+
+border:0;
+
+
+background:#f49ab8;
+
+
+color:white;
+
+
+padding:15px;
+
+
+border-radius:25px;
+
+
+font-size:16px;
+
+
+margin-top:12px;
+
+
+}
+
+
+
+
+
+textarea,
+input,
+select{
+
+
+width:100%;
+
+
+padding:14px;
+
+
+border-radius:18px;
+
+
+border:1px solid #ffd3df;
+
+
+background:#fffafd;
+
+
+font-size:14px;
+
+
+}
+
+
+
+textarea{
+
+
+min-height:90px;
+
+
+resize:none;
 
 
 }
@@ -1239,7 +1306,10 @@ font-size:50px;
 
 
 
-/* 底部导航 */
+
+/* =====================
+   底部导航
+===================== */
 
 
 .bottom-nav{
@@ -1272,7 +1342,11 @@ justify-content:space-around;
 align-items:center;
 
 
-border-top:1px solid #ffe0eb;
+
+border-top:
+
+1px solid #ffe0eb;
+
 
 
 
@@ -1281,11 +1355,11 @@ box-shadow:
 0 -5px 20px rgba(255,150,190,.15);
 
 
+
 z-index:50;
 
 
 }
-
 
 
 
@@ -1301,7 +1375,7 @@ background:none;
 font-size:22px;
 
 
-color:#c65c83;
+color:#c65a83;
 
 
 }
@@ -1329,7 +1403,9 @@ margin-top:3px;
 
 
 
-/* 空状态 */
+/* =====================
+   空状态
+===================== */
 
 
 .empty-state{
@@ -1341,15 +1417,10 @@ text-align:center;
 padding:30px;
 
 
-color:#c98da2;
-
-
-font-size:14px;
+color:#c78da1;
 
 
 }
-
-
 
 
 
@@ -1368,7 +1439,9 @@ font-size:40px;
 
 
 
-/* 手机适配 */
+/* =====================
+   手机优化
+===================== */
 
 
 @media(max-width:430px){
@@ -1409,6 +1482,7 @@ border-radius:24px;
 
 
 
+
 .calendar-days div{
 
 
@@ -1417,6 +1491,16 @@ border-radius:14px;
 
 }
 
+
+
+
+.pig-header h1{
+
+
+font-size:26px;
+
+
+}
 
 
 }
