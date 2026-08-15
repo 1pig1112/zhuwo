@@ -527,6 +527,68 @@ let currentCheck = "";
 
 function openCheck(type){
 
+currentCheck = type;
+
+
+if(!data.checks[type]){
+
+data.checks[type]={
+
+done:[]
+
+};
+
+saveData();
+
+}
+
+
+
+openPage("checkDetail");
+
+
+
+let title =
+document.getElementById(
+"checkTitle"
+);
+
+
+
+let titles={
+
+water:"🔌 水电验收",
+
+waterproof:"💧 防水验收",
+
+tile:"🧱 瓦工验收",
+
+paint:"🎨 油工验收",
+
+install:"🚪 安装验收"
+
+};
+
+
+
+if(title){
+
+title.innerText =
+titles[type];
+
+}
+
+
+
+renderCheckItems(type);
+
+
+
+renderCheckPhotos();
+
+
+
+}
 
 
 currentCheck = type;
