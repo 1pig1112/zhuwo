@@ -735,8 +735,71 @@ ${r.photos ? r.photos.length : 0} 张
 // =================
 
 
-
 function addDailyPhotos(event){
+
+let files = event.target.files;
+
+let date = window.currentRecord;
+
+if(!date)return;
+
+
+if(!data.records[date]){
+
+data.records[date]={
+stage:"水电施工",
+done:"",
+problem:"",
+chat:"",
+money:"",
+photos:[]
+};
+
+}
+
+
+
+if(!data.records[date].photos){
+
+data.records[date].photos=[];
+
+}
+
+
+
+Array.from(files).forEach(file=>{
+
+
+let reader = new FileReader();
+
+
+reader.onload=function(e){
+
+
+data.records[date].photos.push(
+e.target.result
+);
+
+
+
+saveData();
+
+
+showPhotos(date);
+
+
+};
+
+
+
+reader.readAsDataURL(file);
+
+
+
+});
+
+
+}
 
 
 
