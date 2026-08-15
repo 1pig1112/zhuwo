@@ -1,13 +1,18 @@
 
 *{
+
 box-sizing:border-box;
+
 }
+
 
 
 
 body{
 
+
 margin:0;
+
 
 background:
 
@@ -27,17 +32,22 @@ BlinkMacSystemFont,
 sans-serif;
 
 
+
 color:#6d4b58;
 
 
 padding-bottom:90px;
+
 
 }
 
 
 
 
+
+
 /* 顶部 */
+
 
 .pig-header{
 
@@ -46,12 +56,13 @@ background:
 
 linear-gradient(
 135deg,
-#ffc5d9,
-#ffe8ef
+#ffc3d8,
+#ffeaf1
 );
 
 
-padding:25px 20px;
+
+padding:24px 20px;
 
 
 display:flex;
@@ -63,17 +74,24 @@ align-items:center;
 gap:18px;
 
 
+
 border-radius:
 
-0 0 40px 40px;
+0 0 45px 45px;
+
 
 
 
 box-shadow:
 
-0 10px 25px rgba(240,130,170,.2);
+0 10px 30px rgba(230,120,160,.18);
+
+
 
 }
+
+
+
 
 
 
@@ -81,10 +99,10 @@ box-shadow:
 .pig-avatar{
 
 
-width:85px;
+width:88px;
 
 
-height:85px;
+height:88px;
 
 
 border-radius:50%;
@@ -102,14 +120,18 @@ align-items:center;
 justify-content:center;
 
 
-font-size:48px;
+font-size:50px;
+
 
 
 box-shadow:
 
-0 5px 20px rgba(255,150,190,.25);
+0 8px 20px rgba(255,150,190,.25);
+
+
 
 }
+
 
 
 
@@ -123,10 +145,11 @@ margin:0;
 font-size:30px;
 
 
-color:#c85d84;
+color:#c65c83;
 
 
 }
+
 
 
 
@@ -137,13 +160,14 @@ color:#c85d84;
 margin:5px 0;
 
 
+color:#a97989;
+
+
 font-size:13px;
 
 
-color:#a77989;
-
-
 }
+
 
 
 
@@ -170,7 +194,9 @@ padding:15px;
 
 .page{
 
+
 display:none;
+
 
 }
 
@@ -178,7 +204,9 @@ display:none;
 
 .page.active{
 
+
 display:block;
+
 
 }
 
@@ -189,16 +217,16 @@ display:block;
 
 
 
-/* 通用卡片 */
+/* 卡片 */
 
 
 .welcome-card,
 .home-card,
-.reminder-card,
 .diary-card,
 .calendar-card,
 .wallet-card,
-.work-card{
+.work-card,
+.reminder-card{
 
 
 background:white;
@@ -216,7 +244,9 @@ margin-bottom:16px;
 
 box-shadow:
 
-0 10px 25px rgba(255,160,190,.16);
+0 10px 25px rgba(255,150,190,.15);
+
+
 
 }
 
@@ -224,10 +254,10 @@ box-shadow:
 
 
 
-
 .big-pig{
 
-font-size:60px;
+
+font-size:65px;
 
 
 text-align:center;
@@ -238,11 +268,10 @@ text-align:center;
 
 
 
-h2,
-h3{
+h2,h3{
 
 
-color:#c85b82;
+color:#c75b82;
 
 
 }
@@ -258,16 +287,16 @@ color:#c85b82;
 display:inline-block;
 
 
-background:#ffd9e7;
+background:#ffdbe8;
 
 
-padding:8px 15px;
+color:#c65c83;
+
+
+padding:8px 16px;
 
 
 border-radius:20px;
-
-
-color:#c85b82;
 
 
 font-size:13px;
@@ -278,53 +307,11 @@ font-size:13px;
 
 
 
-.stage-card{
-
-
-background:#fff2f7;
-
-
-padding:15px;
-
-
-border-radius:20px;
-
-
-}
 
 
 
-.stage-card p{
+/* 进度条 */
 
-
-font-size:12px;
-
-
-color:#999;
-
-
-}
-
-
-
-.stage-card b{
-
-
-color:#d65c86;
-
-
-font-size:18px;
-
-
-}
-
-
-
-
-
-
-
-/* 进度 */
 
 .progress-bg{
 
@@ -332,7 +319,7 @@ font-size:18px;
 height:18px;
 
 
-background:#ffe2ec;
+background:#ffe4ed;
 
 
 border-radius:20px;
@@ -342,6 +329,8 @@ overflow:hidden;
 
 
 }
+
+
 
 
 
@@ -358,9 +347,10 @@ background:
 
 linear-gradient(
 90deg,
-#f7aac3,
-#ff82ad
+#f6aac4,
+#ff82ac
 );
+
 
 
 border-radius:20px;
@@ -370,19 +360,21 @@ border-radius:20px;
 
 
 
+
+
 .progress-text{
 
 
 text-align:center;
 
 
-color:#d5678d;
+color:#d05c85;
 
 
 }
 
 
-/* 首页入口 */
+/* 首页菜单 */
 
 
 .menu-grid{
@@ -398,7 +390,6 @@ gap:14px;
 
 
 }
-
 
 
 
@@ -420,7 +411,7 @@ text-align:center;
 
 box-shadow:
 
-0 8px 20px rgba(255,160,190,.15);
+0 8px 20px rgba(255,150,190,.15);
 
 
 }
@@ -447,11 +438,10 @@ display:block;
 margin-top:8px;
 
 
-color:#c85b82;
+color:#c65b82;
 
 
 }
-
 
 
 
@@ -465,6 +455,8 @@ color:#999;
 
 
 }
+
+
 
 
 
@@ -485,7 +477,7 @@ border-radius:18px;
 margin-bottom:10px;
 
 
-color:#c85b82;
+color:#c85c82;
 
 
 }
@@ -521,13 +513,13 @@ margin-bottom:15px;
 .page-title button{
 
 
+border:0;
+
+
 width:42px;
 
 
 height:42px;
-
-
-border:0;
 
 
 border-radius:50%;
@@ -536,13 +528,15 @@ border-radius:50%;
 background:#ffdce8;
 
 
+color:#c65c83;
+
+
 font-size:25px;
 
 
-color:#d05e85;
-
-
 }
+
+
 
 
 
@@ -569,7 +563,6 @@ align-items:center;
 
 
 
-
 .calendar-header button{
 
 
@@ -591,7 +584,7 @@ background:#ffe0eb;
 font-size:22px;
 
 
-color:#cf6087;
+color:#c65c83;
 
 
 }
@@ -620,6 +613,7 @@ margin-top:15px;
 
 
 
+
 .week div{
 
 
@@ -629,7 +623,7 @@ text-align:center;
 font-size:12px;
 
 
-color:#c58a9d;
+color:#c58b9e;
 
 
 }
@@ -643,12 +637,6 @@ color:#c58a9d;
 aspect-ratio:1;
 
 
-background:#fff3f7;
-
-
-border-radius:18px;
-
-
 display:flex;
 
 
@@ -656,6 +644,12 @@ align-items:center;
 
 
 justify-content:center;
+
+
+background:#fff3f7;
+
+
+border-radius:18px;
 
 
 position:relative;
@@ -666,19 +660,21 @@ position:relative;
 
 
 
+
 .calendar-days .has-record{
 
 
-background:#ffd4e4;
+background:#ffd3e4;
 
 
-color:#c65079;
+color:#c3537b;
 
 
 font-weight:bold;
 
 
 }
+
 
 
 
@@ -695,7 +691,7 @@ position:absolute;
 bottom:3px;
 
 
-font-size:13px;
+font-size:12px;
 
 
 }
@@ -707,7 +703,8 @@ font-size:13px;
 
 
 
-/* 记录 */
+
+/* 输入 */
 
 
 textarea,
@@ -737,8 +734,6 @@ font-size:14px;
 
 
 
-
-
 textarea{
 
 
@@ -754,6 +749,7 @@ resize:none;
 
 
 
+
 .main-button,
 .save-button{
 
@@ -762,6 +758,9 @@ width:100%;
 
 
 border:0;
+
+
+border-radius:25px;
 
 
 background:#f49ab8;
@@ -773,9 +772,6 @@ color:white;
 padding:15px;
 
 
-border-radius:25px;
-
-
 font-size:16px;
 
 
@@ -783,6 +779,7 @@ margin-top:12px;
 
 
 }
+
 
 
 
@@ -805,9 +802,6 @@ grid-template-columns:repeat(3,1fr);
 gap:10px;
 
 
-margin-top:12px;
-
-
 }
 
 
@@ -827,35 +821,11 @@ object-fit:cover;
 border-radius:18px;
 
 
-cursor:pointer;
-
-
 }
 
 
 
 
-
-
-
-.photo-tip{
-
-
-font-size:12px;
-
-
-color:#999;
-
-
-}
-
-
-
-
-
-
-
-/* 图片查看 */
 
 
 .photo-viewer{
@@ -909,46 +879,29 @@ max-height:85%;
 border-radius:25px;
 
 
-box-shadow:
-
-0 10px 30px rgba(0,0,0,.3);
-
-
-}
-
-
-/* 工地 */
-
-
-.worker-pig{
-
-
-font-size:45px;
-
-
 }
 
 
 
-.work-card{
+
+
+
+
+
+
+/* 施工阶段 */
+
+
+.stage-board{
 
 
 display:flex;
 
 
-align-items:center;
+flex-direction:column;
 
 
-gap:15px;
-
-
-background:
-
-linear-gradient(
-135deg,
-#ffe8d7,
-#fff5ed
-);
+gap:10px;
 
 
 }
@@ -967,11 +920,7 @@ padding:14px;
 border-radius:18px;
 
 
-margin-bottom:10px;
-
-
 }
-
 
 
 
@@ -981,7 +930,7 @@ margin-bottom:10px;
 background:#ffd9e7;
 
 
-color:#c9547e;
+color:#c4537b;
 
 
 font-weight:bold;
@@ -991,18 +940,57 @@ font-weight:bold;
 
 
 
-
-
 .stage-item.done{
 
 
-background:#eaf9ef;
+background:#e9f8ee;
 
 
-color:#58a36c;
+color:#58a36d;
 
 
 }
+
+
+
+
+
+
+
+
+/* 施工任务 */
+
+
+.task-item{
+
+
+background:#fff5f8;
+
+
+padding:14px;
+
+
+border-radius:18px;
+
+
+margin-bottom:10px;
+
+
+}
+
+
+
+.task-item.done{
+
+
+background:#eaf8ef;
+
+
+color:#5a9b68;
+
+
+}
+
 
 
 
@@ -1033,6 +1021,8 @@ margin-bottom:10px;
 
 
 
+
+
 .check-item input{
 
 
@@ -1043,6 +1033,65 @@ margin-right:8px;
 
 
 }
+
+
+/* 钱包 */
+
+
+.wallet-card{
+
+
+background:
+
+linear-gradient(
+135deg,
+#fff0d8,
+#fffaf0
+);
+
+
+}
+
+
+
+
+
+.wallet-card div{
+
+
+background:white;
+
+
+padding:16px;
+
+
+border-radius:22px;
+
+
+margin-bottom:12px;
+
+
+}
+
+
+
+.wallet-card b{
+
+
+display:block;
+
+
+font-size:25px;
+
+
+color:#d05b83;
+
+
+margin-top:8px;
+
+
+}
+
 
 
 
@@ -1065,7 +1114,7 @@ padding:16px;
 border-radius:20px;
 
 
-margin-bottom:10px;
+margin-bottom:12px;
 
 
 display:flex;
@@ -1077,7 +1126,7 @@ justify-content:space-between;
 align-items:center;
 
 
-color:#c85b82;
+color:#c65c83;
 
 
 }
@@ -1095,66 +1144,6 @@ color:#999;
 
 }
 
-
-
-
-
-
-
-/* 钱包 */
-
-
-.wallet-card{
-
-
-background:
-
-linear-gradient(
-135deg,
-#fff2d8,
-#fffaf0
-);
-
-
-}
-
-
-
-.wallet-card div{
-
-
-background:white;
-
-
-padding:15px;
-
-
-border-radius:20px;
-
-
-margin-bottom:10px;
-
-
-}
-
-
-
-.wallet-card b{
-
-
-display:block;
-
-
-font-size:24px;
-
-
-color:#d25b84;
-
-
-margin-top:8px;
-
-
-}
 
 
 
@@ -1193,10 +1182,11 @@ margin-bottom:14px;
 
 box-shadow:
 
-0 8px 20px rgba(255,160,190,.15);
+0 8px 20px rgba(255,150,190,.15);
 
 
 }
+
 
 
 
@@ -1204,13 +1194,10 @@ box-shadow:
 .folder-icon{
 
 
-font-size:35px;
+font-size:36px;
 
 
 }
-
-
-
 
 
 
@@ -1230,6 +1217,21 @@ color:#999;
 }
 
 
+
+
+
+
+
+/* 工地小猪 */
+
+
+.worker-pig{
+
+
+font-size:50px;
+
+
+}
 
 
 
@@ -1270,19 +1272,19 @@ justify-content:space-around;
 align-items:center;
 
 
-border-top:1px solid #ffe1eb;
+border-top:1px solid #ffe0eb;
+
 
 
 box-shadow:
 
-0 -5px 20px rgba(255,160,190,.15);
+0 -5px 20px rgba(255,150,190,.15);
 
 
 z-index:50;
 
 
 }
-
 
 
 
@@ -1299,12 +1301,10 @@ background:none;
 font-size:22px;
 
 
-color:#d16088;
+color:#c65c83;
 
 
 }
-
-
 
 
 
@@ -1328,6 +1328,46 @@ margin-top:3px;
 
 
 
+
+/* 空状态 */
+
+
+.empty-state{
+
+
+text-align:center;
+
+
+padding:30px;
+
+
+color:#c98da2;
+
+
+font-size:14px;
+
+
+}
+
+
+
+
+
+.empty-state:first-letter{
+
+
+font-size:40px;
+
+
+}
+
+
+
+
+
+
+
+
 /* 手机适配 */
 
 
@@ -1335,10 +1375,34 @@ margin-top:3px;
 
 
 
+main{
+
+
+padding:12px;
+
+
+}
+
+
+
+
 .menu-grid{
 
 
-grid-template-columns:1fr 1fr;
+gap:10px;
+
+
+}
+
+
+
+.menu-item{
+
+
+padding:15px;
+
+
+border-radius:24px;
 
 
 }
@@ -1348,7 +1412,7 @@ grid-template-columns:1fr 1fr;
 .calendar-days div{
 
 
-border-radius:15px;
+border-radius:14px;
 
 
 }
@@ -1356,6 +1420,3 @@ border-radius:15px;
 
 
 }
-
-
-
