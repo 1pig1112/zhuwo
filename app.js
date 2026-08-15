@@ -3,31 +3,22 @@ const KEY = "zhuwo34";
 
 let data = JSON.parse(
 localStorage.getItem(KEY)
-)
-||
-{
+) || {
 
 project:{
-
 start:"2026-08-01",
-
 stage:"水电施工",
-
 progress:45
-
 },
 
-
-records:{},
-
-
-photos:{}
+records:{}
 
 };
 
 
 
 
+// 保存数据
 
 function saveData(){
 
@@ -42,36 +33,28 @@ JSON.stringify(data)
 
 
 
-
-// =======================
-// 页面切换（修复版）
-// =======================
-
+// 页面切换
 
 function openPage(id){
 
-
 document
 .querySelectorAll(".page")
-.forEach(function(page){
+.forEach(function(p){
 
-page.classList.remove("active");
+p.classList.remove("active");
 
 });
 
 
-
-let target =
+let page =
 document.getElementById(id);
 
 
+if(page){
 
-if(target){
-
-target.classList.add("active");
+page.classList.add("active");
 
 }
-
 
 
 if(id==="calendar"){
@@ -79,7 +62,6 @@ if(id==="calendar"){
 renderCalendar();
 
 }
-
 
 
 window.scrollTo(0,0);
@@ -103,15 +85,9 @@ openPage("home");
 
 
 
-
-// =======================
-// 首页初始化
-// =======================
-
-
+// 首页
 
 function init(){
-
 
 
 let start =
@@ -120,26 +96,25 @@ data.project.start
 );
 
 
-
-let today =
+let now =
 new Date();
 
 
 
 let days =
 Math.floor(
-(today-start)/86400000
+(now-start)/86400000
 )+1;
 
 
 
-let daysBox =
+let d =
 document.getElementById("days");
 
 
-if(daysBox){
+if(d){
 
-daysBox.innerText =
+d.innerText =
 days;
 
 }
@@ -195,22 +170,14 @@ data.project.progress+"%";
 
 
 
-
-// =======================
-// 日期工具
-// =======================
-
+// 日期格式
 
 function formatDate(y,m,d){
 
-
-return y+
-"-"+
+return y+"-"+
 String(m).padStart(2,"0")
-+
-"-"+
++"-"+
 String(d).padStart(2,"0");
-
 
 }
 
@@ -218,13 +185,7 @@ String(d).padStart(2,"0");
 
 
 
-
-
-
-// =======================
-// 日历系统
-// =======================
-
+// 日历
 
 let currentMonth =
 new Date();
@@ -232,27 +193,21 @@ new Date();
 
 
 
-
-function changeMonth(num){
-
+function changeMonth(n){
 
 currentMonth.setMonth(
-currentMonth.getMonth()+num
+currentMonth.getMonth()+n
 );
 
 
 renderCalendar();
-
 
 }
 
 
 
 
-
-
 function renderCalendar(){
-
 
 
 let box =
@@ -265,17 +220,16 @@ document.getElementById(
 if(!box)return;
 
 
-
 box.innerHTML="";
 
 
 
-let year =
+let y =
 currentMonth.getFullYear();
 
 
 
-let month =
+let m =
 currentMonth.getMonth();
 
 
@@ -290,10 +244,7 @@ document.getElementById(
 if(title){
 
 title.innerText =
-year+
-"年"+
-(month+1)+
-"月";
+y+"年"+(m+1)+"月";
 
 }
 
@@ -302,32 +253,19 @@ year+
 
 
 let first =
-new Date(
-year,
-month,
-1
-)
+new Date(y,m,1)
 .getDay();
 
 
 
 let total =
-new Date(
-year,
-month+1,
-0
-)
+new Date(y,m+1,0)
 .getDate();
 
 
 
 
-
-for(
-let i=0;
-i<first;
-i++
-){
+for(let i=0;i<first;i++){
 
 box.innerHTML +=
 "<div></div>";
@@ -338,38 +276,28 @@ box.innerHTML +=
 
 
 
-for(
-let d=1;
-d<=total;
-d++
-){
-
+for(let d=1;d<=total;d++){
 
 
 let date =
 formatDate(
-year,
-month+1,
+y,
+m+1,
 d
 );
 
 
 
-let record =
+let has =
 data.records[date];
-
 
 
 
 box.innerHTML += `
 
-<div
+<div class="${has?'has-record':''}"
 
-class="${record?'has-record':''}"
-
-onclick="openRecord('${date}')"
-
->
+onclick="openRecord('${date}')">
 
 ${d}
 
@@ -391,19 +319,15 @@ ${d}
 function newDiary(){
 
 
-let today =
+let now =
 new Date();
 
 
 let date =
 formatDate(
-
-today.getFullYear(),
-
-today.getMonth()+1,
-
-today.getDate()
-
+now.getFullYear(),
+now.getMonth()+1,
+now.getDate()
 );
 
 
@@ -416,18 +340,15 @@ openRecord(date);
 
 
 
-
-
 function openRecord(date){
-
-
-
-openPage("record");
-
 
 
 window.currentRecord =
 date;
+
+
+
+openPage("record");
 
 
 
@@ -447,75 +368,88 @@ date+" 装修日记";
 
 
 
-let old =
+
+if(!data.records[date]){
+
+
+data.records[date]={
+
+stage:"水电施工",
+
+done:"",
+
+problem:"",
+
+chat:"",
+
+money:"",
+
+photos:[]
+
+};
+
+
+saveData();
+
+
+}
+
+
+
+
+
+
+let r =
 data.records[date];
 
 
 
-if(old){
 
 
-
-let stage =
 document.getElementById(
 "recordStage"
-);
-
-
-
-if(stage){
-
-stage.value =
-old.stage || "水电施工";
-
-}
+).value =
+r.stage || "水电施工";
 
 
 
 document.getElementById(
 "recordDone"
 ).value =
-old.done || "";
+r.done || "";
 
 
 
 document.getElementById(
 "recordProblem"
 ).value =
-old.problem || "";
+r.problem || "";
 
 
 
 document.getElementById(
 "recordChat"
 ).value =
-old.chat || "";
+r.chat || "";
 
 
 
 document.getElementById(
 "recordMoney"
 ).value =
-old.money || "";
+r.money || "";
 
 
 
-}
-
-else{
 
 
-clearRecord();
+// 关键：打开记录后加载图片
 
+setTimeout(function(){
 
-}
+renderPhotos(date);
 
-
-
-showPreview(date);
-
-
-showPhotos(date);
+},300);
 
 
 
@@ -526,56 +460,9 @@ showPhotos(date);
 
 
 
-
-function clearRecord(){
-
-
-let list=[
-
-"recordDone",
-
-"recordProblem",
-
-"recordChat",
-
-"recordMoney"
-
-];
-
-
-
-list.forEach(function(id){
-
-
-let el =
-document.getElementById(id);
-
-
-if(el){
-
-el.value="";
-
-}
-
-
-});
-
-
-}
-
-
-
-
-
-
-
-
-
-// 保存记录
 
 
 function saveRecord(){
-
 
 
 let date =
@@ -583,19 +470,12 @@ window.currentRecord;
 
 
 
-if(!date){
-
-alert("请选择日期");
-
-return;
-
-}
+if(!date)return;
 
 
 
 let oldPhotos =
 [];
-
 
 
 
@@ -607,6 +487,7 @@ data.records[date].photos){
 oldPhotos =
 data.records[date].photos;
 
+
 }
 
 
@@ -617,7 +498,6 @@ data.records[date]={
 
 
 stage:
-
 document.getElementById(
 "recordStage"
 ).value,
@@ -625,7 +505,6 @@ document.getElementById(
 
 
 done:
-
 document.getElementById(
 "recordDone"
 ).value,
@@ -633,7 +512,6 @@ document.getElementById(
 
 
 problem:
-
 document.getElementById(
 "recordProblem"
 ).value,
@@ -641,7 +519,6 @@ document.getElementById(
 
 
 chat:
-
 document.getElementById(
 "recordChat"
 ).value,
@@ -649,7 +526,6 @@ document.getElementById(
 
 
 money:
-
 document.getElementById(
 "recordMoney"
 ).value,
@@ -657,16 +533,12 @@ document.getElementById(
 
 
 photos:
-
 oldPhotos,
 
 
 
 time:
-
-new Date()
-.toLocaleString()
-
+new Date().toLocaleString()
 
 
 };
@@ -680,7 +552,7 @@ saveData();
 
 
 alert(
-"🐷 装修记录保存成功"
+"🐷 保存成功"
 );
 
 
@@ -688,12 +560,11 @@ alert(
 renderCalendar();
 
 
-
 openPage("calendar");
 
 
-
 showPreview(date);
+
 
 
 }
@@ -706,13 +577,11 @@ showPreview(date);
 
 
 
-// =======================
 // 日历预览
-// =======================
-
 
 
 function showPreview(date){
+
 
 
 let box =
@@ -732,19 +601,17 @@ data.records[date];
 
 
 
-
-
 if(!r){
 
-
-box.innerHTML=`
+box.innerHTML=
+`
 
 <div class="empty-state">
 
 🐷
 
 <p>
-这一天还没有记录哦
+暂无记录
 
 </p>
 
@@ -760,66 +627,46 @@ return;
 
 
 
+box.innerHTML=
 
-box.innerHTML=`
+`
 
 <div class="diary-card">
 
 
 <h3>
-
 🌸 ${date}
-
 </h3>
 
 
-
 <p>
-🔨 阶段：
-${r.stage || "暂无"}
-
+🔨 ${r.stage}
 </p>
 
 
-
 <p>
-✨ 完成：
-${r.done || "暂无"}
-
+✨ ${r.done || "暂无"}
 </p>
 
 
-
 <p>
-⚠️ 问题：
-${r.problem || "暂无"}
-
+⚠️ ${r.problem || "暂无"}
 </p>
 
 
-
 <p>
-💬 沟通：
-${r.chat || "暂无"}
-
+💬 ${r.chat || "暂无"}
 </p>
 
 
-
 <p>
-💰 花费：
-${r.money || 0} 元
-
+💰 ${r.money || 0} 元
 </p>
 
 
-
 <p>
-📷照片：
-${r.photos ? r.photos.length : 0} 张
-
+📷 ${r.photos ? r.photos.length : 0} 张照片
 </p>
-
 
 
 </div>
@@ -831,13 +678,11 @@ ${r.photos ? r.photos.length : 0} 张
 }
 
 // =======================
-// 照片系统
+// 图片系统
 // =======================
 
 
-
 function addDailyPhotos(event){
-
 
 
 let files =
@@ -852,12 +697,11 @@ window.currentRecord;
 
 if(!date){
 
-alert("请先选择日期");
+alert("请先打开当天记录");
 
 return;
 
 }
-
 
 
 
@@ -885,20 +729,17 @@ photos:[]
 
 
 
-
 if(!data.records[date].photos){
 
-
 data.records[date].photos=[];
-
 
 }
 
 
 
 
-Array.from(files)
-.forEach(function(file){
+
+Array.from(files).forEach(function(file){
 
 
 
@@ -923,7 +764,7 @@ saveData();
 
 
 
-showPhotos(date);
+renderPhotos(date);
 
 
 
@@ -947,8 +788,10 @@ reader.readAsDataURL(file);
 
 
 
+// 显示照片
 
-function showPhotos(date){
+
+function renderPhotos(date){
 
 
 
@@ -1007,14 +850,12 @@ box.appendChild(img);
 
 
 // =======================
-// 页面启动
+// 启动
 // =======================
 
 
 window.onload=function(){
 
-
 init();
-
 
 };
