@@ -860,7 +860,48 @@ box.appendChild(img);
 // 启动
 // =======================
 
+function openPhoto(src){
 
+let box =
+document.getElementById(
+"photoViewer"
+);
+
+
+let img =
+document.getElementById(
+"bigPhoto"
+);
+
+
+if(box && img){
+
+img.src=src;
+
+box.style.display="flex";
+
+}
+
+}
+
+
+
+
+function closePhotoViewer(){
+
+let box =
+document.getElementById(
+"photoViewer"
+);
+
+
+if(box){
+
+box.style.display="none";
+
+}
+
+}
 window.onload=function(){
 
 init();
