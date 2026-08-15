@@ -460,7 +460,7 @@ clearRecord();
 
 showPreview(date);
 
-
+showPhotos(date);
 }
 
 
