@@ -1,6 +1,8 @@
+
 *{
 box-sizing:border-box;
 }
+
 
 
 body{
@@ -8,20 +10,25 @@ body{
 margin:0;
 
 background:
+
 linear-gradient(
 180deg,
-#fff5f8 0%,
-#fffafc 100%
+#fff4f8,
+#fffafc
 );
 
-color:#6b4b57;
 
 font-family:
+
 -apple-system,
 BlinkMacSystemFont,
 "PingFang SC",
 "Microsoft YaHei",
 sans-serif;
+
+
+color:#6d4b58;
+
 
 padding-bottom:90px;
 
@@ -30,84 +37,114 @@ padding-bottom:90px;
 
 
 
-/* 顶部小猪 */
+/* 顶部 */
 
 .pig-header{
 
+
 background:
+
 linear-gradient(
 135deg,
-#ffc1d6,
-#ffe4ed
+#ffc5d9,
+#ffe8ef
 );
 
-padding:28px 20px;
+
+padding:25px 20px;
+
 
 display:flex;
 
+
 align-items:center;
 
+
 gap:18px;
+
 
 border-radius:
 
 0 0 40px 40px;
 
+
+
 box-shadow:
 
-0 8px 25px rgba(255,150,180,.25);
+0 10px 25px rgba(240,130,170,.2);
 
 }
+
 
 
 
 .pig-avatar{
 
-width:82px;
 
-height:82px;
+width:85px;
 
-background:#fff;
+
+height:85px;
+
 
 border-radius:50%;
 
+
+background:white;
+
+
 display:flex;
+
 
 align-items:center;
 
+
 justify-content:center;
 
-font-size:45px;
+
+font-size:48px;
+
 
 box-shadow:
 
-0 5px 15px rgba(255,160,190,.25);
+0 5px 20px rgba(255,150,190,.25);
 
 }
+
 
 
 
 .pig-header h1{
 
+
 margin:0;
+
 
 font-size:30px;
 
-color:#c75b82;
+
+color:#c85d84;
+
 
 }
+
 
 
 
 .pig-header p{
 
-margin:5px 0 0;
+
+margin:5px 0;
+
 
 font-size:13px;
 
-color:#a46d7c;
+
+color:#a77989;
+
 
 }
+
 
 
 
@@ -115,13 +152,18 @@ color:#a46d7c;
 
 main{
 
+
 max-width:700px;
+
 
 margin:auto;
 
+
 padding:15px;
 
+
 }
+
 
 
 
@@ -131,6 +173,7 @@ padding:15px;
 display:none;
 
 }
+
 
 
 .page.active{
@@ -145,61 +188,11 @@ display:block;
 
 
 
-/* 首页欢迎 */
-
-.welcome-card{
-
-
-background:
-
-linear-gradient(
-135deg,
-#ffffff,
-#fff0f5
-);
-
-
-padding:25px;
-
-border-radius:30px;
-
-text-align:center;
-
-margin-bottom:16px;
-
-
-box-shadow:
-
-0 10px 25px rgba(255,160,190,.18);
-
-
-}
-
-
-
-.big-pig{
-
-font-size:55px;
-
-}
-
-
-
-
-
-.welcome-card h2{
-
-color:#cf668b;
-
-}
-
-
-
-
 
 /* 通用卡片 */
 
 
+.welcome-card,
 .home-card,
 .reminder-card,
 .diary-card,
@@ -208,23 +201,39 @@ color:#cf668b;
 .work-card{
 
 
-background:#fff;
+background:white;
+
 
 border-radius:30px;
 
+
 padding:20px;
 
+
 margin-bottom:16px;
+
 
 
 box-shadow:
 
 0 10px 25px rgba(255,160,190,.16);
 
-
 }
 
 
+
+
+
+
+.big-pig{
+
+font-size:60px;
+
+
+text-align:center;
+
+
+}
 
 
 
@@ -232,73 +241,80 @@ box-shadow:
 h2,
 h3{
 
+
 color:#c85b82;
 
-margin-top:0;
 
 }
 
 
 
 
-
-/* 小标签 */
 
 
 .tag{
 
+
 display:inline-block;
 
-background:#ffd8e5;
 
-color:#c85b82;
+background:#ffd9e7;
+
 
 padding:8px 15px;
 
+
 border-radius:20px;
 
-font-size:14px;
+
+color:#c85b82;
+
+
+font-size:13px;
+
 
 }
 
 
-
-
-
-
-
-/* 阶段 */
 
 
 .stage-card{
 
-background:#fff1f6;
+
+background:#fff2f7;
+
 
 padding:15px;
 
+
 border-radius:20px;
 
-margin:15px 0;
 
 }
+
 
 
 .stage-card p{
 
-font-size:13px;
+
+font-size:12px;
+
 
 color:#999;
 
-margin:0 0 5px;
 
 }
 
 
+
 .stage-card b{
+
+
+color:#d65c86;
+
 
 font-size:18px;
 
-color:#e06d96;
 
 }
 
@@ -310,16 +326,20 @@ color:#e06d96;
 
 /* 进度 */
 
-
 .progress-bg{
+
 
 height:18px;
 
+
 background:#ffe2ec;
+
 
 border-radius:20px;
 
+
 overflow:hidden;
+
 
 }
 
@@ -327,7 +347,9 @@ overflow:hidden;
 
 #progressBar{
 
+
 height:100%;
+
 
 width:45%;
 
@@ -336,12 +358,13 @@ background:
 
 linear-gradient(
 90deg,
-#f8a5bf,
-#ff82aa
+#f7aac3,
+#ff82ad
 );
 
 
 border-radius:20px;
+
 
 }
 
@@ -349,45 +372,48 @@ border-radius:20px;
 
 .progress-text{
 
+
 text-align:center;
 
-color:#d76b91;
 
-}
-/* 首页功能入口 */
+color:#d5678d;
 
-.section-title{
-
-margin:20px 5px 12px;
-
-color:#c85b82;
 
 }
 
+
+/* 首页入口 */
 
 
 .menu-grid{
 
+
 display:grid;
 
-grid-template-columns:
 
-1fr 1fr;
+grid-template-columns:1fr 1fr;
+
 
 gap:14px;
 
+
 }
+
 
 
 
 
 .menu-item{
 
+
 background:white;
+
 
 border-radius:28px;
 
+
 padding:18px;
+
 
 text-align:center;
 
@@ -401,9 +427,12 @@ box-shadow:
 
 
 
+
 .menu-item div{
 
+
 font-size:38px;
+
 
 }
 
@@ -411,47 +440,57 @@ font-size:38px;
 
 .menu-item b{
 
+
 display:block;
 
-margin-top:10px;
+
+margin-top:8px;
+
 
 color:#c85b82;
 
-font-size:16px;
 
 }
+
 
 
 
 .menu-item span{
 
+
 font-size:12px;
 
+
 color:#999;
+
 
 }
 
 
 
-
-
-
-/* 提醒 */
 
 
 .reminder{
 
-background:#fff2f7;
+
+background:#fff3f7;
+
 
 padding:14px;
 
+
 border-radius:18px;
+
 
 margin-bottom:10px;
 
-color:#c95d82;
+
+color:#c85b82;
+
 
 }
+
+
 
 
 
@@ -462,13 +501,18 @@ color:#c95d82;
 
 .page-title{
 
+
 display:flex;
+
 
 align-items:center;
 
+
 gap:12px;
 
+
 margin-bottom:15px;
+
 
 }
 
@@ -476,19 +520,27 @@ margin-bottom:15px;
 
 .page-title button{
 
-width:40px;
 
-height:40px;
+width:42px;
+
+
+height:42px;
+
 
 border:0;
 
+
 border-radius:50%;
 
-background:#ffe1eb;
 
-font-size:24px;
+background:#ffdce8;
 
-color:#d26388;
+
+font-size:25px;
+
+
+color:#d05e85;
+
 
 }
 
@@ -503,48 +555,66 @@ color:#d26388;
 
 .calendar-header{
 
+
 display:flex;
+
 
 justify-content:space-between;
 
+
 align-items:center;
 
+
 }
+
 
 
 
 .calendar-header button{
 
+
+width:40px;
+
+
+height:40px;
+
+
 border:0;
 
-background:#ffe1eb;
-
-width:38px;
-
-height:38px;
 
 border-radius:50%;
 
+
+background:#ffe0eb;
+
+
 font-size:22px;
 
-color:#d26388;
+
+color:#cf6087;
+
 
 }
+
+
 
 
 
 .week,
 .calendar-days{
 
+
 display:grid;
 
-grid-template-columns:
 
-repeat(7,1fr);
+grid-template-columns:repeat(7,1fr);
+
 
 gap:8px;
 
+
 margin-top:15px;
+
 
 }
 
@@ -552,59 +622,81 @@ margin-top:15px;
 
 .week div{
 
+
 text-align:center;
+
 
 font-size:12px;
 
-color:#c38a9c;
+
+color:#c58a9d;
+
 
 }
+
 
 
 
 .calendar-days div{
 
+
 aspect-ratio:1;
+
 
 background:#fff3f7;
 
+
 border-radius:18px;
+
 
 display:flex;
 
+
 align-items:center;
+
 
 justify-content:center;
 
+
 position:relative;
 
-font-size:14px;
 
 }
+
 
 
 
 .calendar-days .has-record{
 
-background:#ffd5e4;
 
-color:#c84f79;
+background:#ffd4e4;
+
+
+color:#c65079;
+
 
 font-weight:bold;
 
+
 }
 
 
 
-.calendar-days .has-record::after{
+
+.calendar-days .has-record:after{
+
 
 content:"🐷";
 
+
 position:absolute;
 
-bottom:2px;
 
-font-size:12px;
+bottom:3px;
+
+
+font-size:13px;
+
 
 }
 
@@ -612,52 +704,10 @@ font-size:12px;
 
 
 
-/* 日历预览 */
-
-
-.record-preview{
-
-background:#fff;
-
-border-radius:28px;
-
-padding:20px;
-
-margin-top:15px;
-
-box-shadow:
-
-0 8px 20px rgba(255,160,190,.15);
-
-}
 
 
 
-.empty-state{
-
-text-align:center;
-
-color:#aaa;
-
-font-size:14px;
-
-padding:20px;
-
-}
-
-
-
-
-
-/* 装修日记 */
-
-
-.diary-card h3{
-
-font-size:16px;
-
-}
-
+/* 记录 */
 
 
 textarea,
@@ -667,18 +717,36 @@ select{
 
 width:100%;
 
+
 padding:14px;
+
 
 border-radius:18px;
 
-border:
 
-1px solid #ffd1df;
+border:1px solid #ffd3df;
 
 
 background:#fffafd;
 
+
 font-size:14px;
+
+
+}
+
+
+
+
+
+textarea{
+
+
+min-height:90px;
+
+
+resize:none;
+
 
 }
 
@@ -692,19 +760,27 @@ font-size:14px;
 
 width:100%;
 
+
 border:0;
 
-background:#f39ab7;
+
+background:#f49ab8;
+
 
 color:white;
 
+
 padding:15px;
 
-border-radius:22px;
+
+border-radius:25px;
+
 
 font-size:16px;
 
-margin-top:10px;
+
+margin-top:12px;
+
 
 }
 
@@ -714,20 +790,23 @@ margin-top:10px;
 
 
 
-/* 图片区域 */
+/* 图片 */
 
 
 .photo-grid{
 
+
 display:grid;
 
-grid-template-columns:
 
-repeat(3,1fr);
+grid-template-columns:repeat(3,1fr);
+
 
 gap:10px;
 
+
 margin-top:12px;
+
 
 }
 
@@ -735,99 +814,198 @@ margin-top:12px;
 
 .photo-grid img{
 
+
 width:100%;
+
 
 aspect-ratio:1;
 
+
 object-fit:cover;
+
 
 border-radius:18px;
 
+
+cursor:pointer;
+
+
 }
+
+
+
+
 
 
 
 .photo-tip{
 
+
 font-size:12px;
+
 
 color:#999;
 
+
 }
 
-/* 工地 */
 
-.work-card{
 
-background:
-linear-gradient(
-135deg,
-#ffe6d2,
-#fff4ea
-);
 
-border-radius:30px;
 
-padding:22px;
 
-display:flex;
+
+/* 图片查看 */
+
+
+.photo-viewer{
+
+
+display:none;
+
+
+position:fixed;
+
+
+left:0;
+
+
+right:0;
+
+
+top:0;
+
+
+bottom:0;
+
+
+background:rgba(0,0,0,.75);
+
+
+z-index:999;
+
 
 align-items:center;
 
-gap:15px;
 
-margin-bottom:16px;
+justify-content:center;
 
-box-shadow:
-
-0 8px 20px rgba(255,180,140,.18);
 
 }
 
+
+
+
+
+.photo-viewer img{
+
+
+max-width:92%;
+
+
+max-height:85%;
+
+
+border-radius:25px;
+
+
+box-shadow:
+
+0 10px 30px rgba(0,0,0,.3);
+
+
+}
+
+
+/* 工地 */
 
 
 .worker-pig{
 
+
 font-size:45px;
+
 
 }
 
+
+
+.work-card{
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:15px;
+
+
+background:
+
+linear-gradient(
+135deg,
+#ffe8d7,
+#fff5ed
+);
+
+
+}
 
 
 
 .stage-item{
 
+
 background:#fff4f8;
+
 
 padding:14px;
 
+
 border-radius:18px;
+
 
 margin-bottom:10px;
 
+
 }
+
 
 
 
 .stage-item.active{
 
-background:#ffd8e7;
 
-color:#cf557f;
+background:#ffd9e7;
+
+
+color:#c9547e;
+
 
 font-weight:bold;
 
+
 }
+
+
 
 
 
 .stage-item.done{
 
-background:#e9faef;
 
-color:#56a06c;
+background:#eaf9ef;
+
+
+color:#58a36c;
+
 
 }
+
+
+
 
 
 
@@ -835,15 +1013,21 @@ color:#56a06c;
 
 /* 验收 */
 
+
 .check-item{
+
 
 background:#fff4f8;
 
+
 padding:14px;
+
 
 border-radius:18px;
 
+
 margin-bottom:10px;
+
 
 }
 
@@ -851,9 +1035,12 @@ margin-bottom:10px;
 
 .check-item input{
 
+
 width:auto;
 
+
 margin-right:8px;
+
 
 }
 
@@ -863,26 +1050,35 @@ margin-right:8px;
 
 
 
-/* 照片档案 */
+/* 照片文件夹 */
 
 
 .photo-folder{
 
+
 background:#fff4f8;
 
-padding:15px;
+
+padding:16px;
+
 
 border-radius:20px;
 
+
 margin-bottom:10px;
+
 
 display:flex;
 
+
 justify-content:space-between;
+
 
 align-items:center;
 
+
 color:#c85b82;
+
 
 }
 
@@ -890,11 +1086,15 @@ color:#c85b82;
 
 .photo-folder span{
 
+
 font-size:13px;
+
 
 color:#999;
 
+
 }
+
 
 
 
@@ -906,13 +1106,15 @@ color:#999;
 
 .wallet-card{
 
+
 background:
 
 linear-gradient(
 135deg,
-#fff3d8,
-#fff9ed
+#fff2d8,
+#fffaf0
 );
+
 
 }
 
@@ -920,13 +1122,18 @@ linear-gradient(
 
 .wallet-card div{
 
+
 background:white;
+
 
 padding:15px;
 
+
 border-radius:20px;
 
+
 margin-bottom:10px;
+
 
 }
 
@@ -934,29 +1141,18 @@ margin-bottom:10px;
 
 .wallet-card b{
 
+
 display:block;
+
 
 font-size:24px;
 
-color:#d85d87;
+
+color:#d25b84;
+
 
 margin-top:8px;
 
-}
-
-
-
-
-
-.payment-box{
-
-background:#fff4f8;
-
-padding:18px;
-
-border-radius:22px;
-
-color:#c85b82;
 
 }
 
@@ -964,69 +1160,77 @@ color:#c85b82;
 
 
 
-/* 资料屋 */
+
+
+
+/* 资料中心 */
 
 
 .folder-card{
 
+
 background:white;
+
 
 padding:18px;
 
+
 border-radius:25px;
+
 
 display:flex;
 
+
 align-items:center;
 
+
 gap:15px;
+
 
 margin-bottom:14px;
 
 
+
 box-shadow:
 
-0 8px 20px rgba(255,160,190,.14);
+0 8px 20px rgba(255,160,190,.15);
+
 
 }
+
 
 
 
 .folder-icon{
 
+
 font-size:35px;
 
-}
-
-
-
-.folder-card div:nth-child(2){
-
-flex:1;
 
 }
+
+
+
+
 
 
 
 .folder-card p{
 
+
 margin:5px 0 0;
+
 
 font-size:12px;
 
+
 color:#999;
 
-}
-
-
-
-.folder-card span{
-
-font-size:25px;
-
-color:#ccc;
 
 }
+
+
+
 
 
 
@@ -1038,59 +1242,83 @@ color:#ccc;
 
 .bottom-nav{
 
+
 position:fixed;
+
 
 left:0;
 
+
 right:0;
+
 
 bottom:0;
 
+
 height:75px;
 
-background:#fff;
+
+background:white;
+
 
 display:flex;
 
+
 justify-content:space-around;
+
 
 align-items:center;
 
 
-border-top:
-
-1px solid #ffe0eb;
+border-top:1px solid #ffe1eb;
 
 
 box-shadow:
 
-0 -5px 20px rgba(255,160,190,.12);
+0 -5px 20px rgba(255,160,190,.15);
+
+
+z-index:50;
+
 
 }
+
+
 
 
 
 .bottom-nav button{
 
+
 border:0;
+
 
 background:none;
 
-font-size:23px;
 
-color:#d2668d;
+font-size:22px;
+
+
+color:#d16088;
+
 
 }
+
+
 
 
 
 .bottom-nav span{
 
+
 display:block;
+
 
 font-size:11px;
 
+
 margin-top:3px;
+
 
 }
 
@@ -1098,60 +1326,36 @@ margin-top:3px;
 
 
 
+
+
+/* 手机适配 */
 
 
 @media(max-width:430px){
 
 
+
 .menu-grid{
 
-grid-template-columns:
 
-1fr 1fr;
+grid-template-columns:1fr 1fr;
+
 
 }
+
 
 
 .calendar-days div{
 
+
 border-radius:15px;
 
-}
-
-
-}
-.photo-viewer{
-
-display:none;
-
-position:fixed;
-
-left:0;
-
-right:0;
-
-top:0;
-
-bottom:0;
-
-background:rgba(0,0,0,.75);
-
-z-index:999;
-
-align-items:center;
-
-justify-content:center;
 
 }
 
 
 
-.photo-viewer img{
-
-max-width:92%;
-
-max-height:85%;
-
-border-radius:20px;
-
 }
+
+
+
