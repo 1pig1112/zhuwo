@@ -1,27 +1,17 @@
-const KEY = "zhuwo_v32";
+const KEY = "zhuwo33";
 
 
+let data =
+JSON.parse(localStorage.getItem(KEY))
+||
+{
+ project:{
+  start:"2026-08-01",
+  stage:"水电施工",
+  progress:45
+ },
 
-let data = JSON.parse(
-localStorage.getItem(KEY)
-) || {
-
-
-project:{
-
-start:"2026-08-01",
-
-stage:"水电施工",
-
-progress:45
-
-},
-
-
-
-records:{}
-
-
+ records:{}
 
 };
 
@@ -29,7 +19,7 @@ records:{}
 
 
 
-function saveData(){
+function save(){
 
 localStorage.setItem(
 KEY,
@@ -42,7 +32,9 @@ JSON.stringify(data)
 
 
 
+
 // 页面切换
+
 
 function openPage(id){
 
@@ -55,16 +47,9 @@ p.classList.remove("active");
 });
 
 
-
-let page =
-document.getElementById(id);
-
-
-if(page){
-
-page.classList.add("active");
-
-}
+document
+.getElementById(id)
+.classList.add("active");
 
 
 
@@ -95,8 +80,7 @@ openPage("home");
 
 
 
-
-// 初始化首页
+// 首页初始化
 
 
 function init(){
@@ -117,14 +101,13 @@ Math.floor(
 
 
 
-let day =
+let d =
 document.getElementById("days");
 
 
-if(day){
+if(d){
 
-day.innerText =
-days+"天";
+d.innerText=days;
 
 }
 
@@ -137,14 +120,13 @@ data.project.stage;
 
 
 
-
-document.getElementById("progress")
+document.getElementById("progressBar")
 .style.width =
 data.project.progress+"%";
 
 
 
-document.getElementById("progressText")
+document.getElementById("progressNum")
 .innerText =
 data.project.progress+"%";
 
@@ -158,18 +140,35 @@ data.project.progress+"%";
 
 
 
+
 // 日历
 
 
-
-let currentDate =
+let calendarDate =
 new Date();
+
+
+
+
+function changeMonth(num){
+
+
+calendarDate.setMonth(
+calendarDate.getMonth()+num
+);
+
+
+renderCalendar();
+
+
+}
 
 
 
 
 
 function renderCalendar(){
+
 
 
 let box =
@@ -187,20 +186,21 @@ box.innerHTML="";
 
 
 let year =
-currentDate.getFullYear();
-
+calendarDate.getFullYear();
 
 
 let month =
-currentDate.getMonth();
+calendarDate.getMonth();
 
 
 
 document.getElementById(
 "monthTitle"
-).innerText =
+)
+.innerText =
 year+"年"+
 (month+1)+"月";
+
 
 
 
@@ -215,6 +215,7 @@ month,
 
 
 
+
 let total =
 new Date(
 year,
@@ -226,10 +227,10 @@ month+1,
 
 
 
+
 for(let i=0;i<first;i++){
 
-box.innerHTML+=
-"<div></div>";
+box.innerHTML+="<div></div>";
 
 }
 
@@ -240,7 +241,8 @@ box.innerHTML+=
 for(let d=1;d<=total;d++){
 
 
-let key =
+
+let date =
 formatDate(
 year,
 month+1,
@@ -250,28 +252,30 @@ d
 
 
 let has =
-data.records[key];
+data.records[date];
+
 
 
 
 box.innerHTML+=`
 
-<div class="calendar-day 
-${has?'has-record':''}"
+<div
 
-onclick="openRecord('${key}')">
+class="${has?'has-record':''}"
+
+onclick="openRecord('${date}')"
+
+>
 
 ${d}
-
-${has?'🐷':''}
 
 </div>
 
 `;
 
 
-}
 
+}
 
 
 }
@@ -282,11 +286,9 @@ ${has?'🐷':''}
 
 function formatDate(y,m,d){
 
-return y+
-"-"+
+return y+"-"+
 String(m).padStart(2,"0")
-+
-"-"+
++"-"+
 String(d).padStart(2,"0");
 
 }
@@ -297,42 +299,33 @@ String(d).padStart(2,"0");
 
 
 
+// 打开记录
 
-// 新建今天记录
 
 
 function newDiary(){
+
 
 let today =
 new Date();
 
 
 
-let key =
+openRecord(
+
 formatDate(
-
 today.getFullYear(),
-
 today.getMonth()+1,
-
 today.getDate()
+)
 
 );
-
-
-
-openRecord(key);
 
 
 }
 
 
 
-
-
-
-
-// 打开某一天记录
 
 
 function openRecord(date){
@@ -343,10 +336,17 @@ openPage("record");
 
 
 
+window.currentRecord =
+date;
+
+
+
 document.getElementById(
 "recordTitle"
-).innerText =
-date+" 装修记录";
+)
+.innerText =
+date+" 装修日记";
+
 
 
 
@@ -397,24 +397,45 @@ old.money || "";
 else{
 
 
-document.getElementById(
-"recordDone"
-).value="";
+clearRecord();
 
 
-document.getElementById(
-"recordProblem"
-).value="";
+}
 
 
-document.getElementById(
-"recordChat"
-).value="";
+}
 
 
-document.getElementById(
+
+
+
+
+
+function clearRecord(){
+
+
+[
+"recordDone",
+"recordProblem",
+"recordChat",
 "recordMoney"
-).value="";
+
+]
+.forEach(id=>{
+
+
+let el =
+document.getElementById(id);
+
+
+if(el){
+
+el.value="";
+
+}
+
+
+});
 
 
 }
@@ -422,20 +443,12 @@ document.getElementById(
 
 
 
-window.currentRecord =
-date;
-
-
-}
 
 
 
 
+// 保存记录
 
-
-
-
-// 保存每日记录
 
 
 function saveRecord(){
@@ -444,10 +457,6 @@ function saveRecord(){
 
 let date =
 window.currentRecord;
-
-
-
-if(!date)return;
 
 
 
@@ -460,10 +469,12 @@ document.getElementById(
 ).value,
 
 
+
 done:
 document.getElementById(
 "recordDone"
 ).value,
+
 
 
 problem:
@@ -472,16 +483,19 @@ document.getElementById(
 ).value,
 
 
+
 chat:
 document.getElementById(
 "recordChat"
 ).value,
 
 
+
 money:
 document.getElementById(
 "recordMoney"
 ).value,
+
 
 
 time:
@@ -493,19 +507,128 @@ new Date()
 
 
 
-saveData();
+save();
 
 
 
 alert(
-"🐷 今日装修记录保存成功"
+"🐷 保存成功啦"
 );
 
 
 
 openPage("calendar");
 
+showPreview(date);
+
+
+
 }
+
+
+
+
+
+
+
+
+// 日历下面显示摘要
+
+
+
+function showPreview(date){
+
+
+
+let box =
+document.getElementById(
+"recordPreview"
+);
+
+
+
+let r =
+data.records[date];
+
+
+
+if(!r)return;
+
+
+
+box.innerHTML=`
+
+<div class="diary-card">
+
+
+<h3>
+🌸 ${date}
+</h3>
+
+
+<p>
+🔨 ${r.stage}
+</p>
+
+
+<p>
+✨ 完成：
+${r.done || "暂无"}
+</p>
+
+
+<p>
+⚠️ 问题：
+${r.problem || "暂无"}
+</p>
+
+
+<p>
+💬 沟通：
+${r.chat || "暂无"}
+</p>
+
+
+<p>
+💰 花费：
+${r.money || 0} 元
+</p>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+// 点击日期时显示预览
+
+
+
+let oldOpenRecord =
+openRecord;
+
+
+
+openRecord=function(date){
+
+
+oldOpenRecord(date);
+
+
+showPreview(date);
+
+
+}
+
+
 
 
 
