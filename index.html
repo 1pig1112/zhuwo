@@ -10,11 +10,9 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <title>猪窝</title>
 
-
 <link rel="manifest" href="manifest.json">
 
 <link rel="stylesheet" href="style.css">
-
 
 </head>
 
@@ -38,11 +36,9 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 猪窝
 </h1>
 
-
 <p>
-陪你记录家的成长 🌸
+你的装修施工管家 🌸
 </p>
-
 
 </div>
 
@@ -61,7 +57,9 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <!-- 首页 -->
 
+
 <section id="home" class="page active">
+
 
 
 <div class="welcome-card">
@@ -69,21 +67,21 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <div class="big-pig">
 
-🐷
+🐷🏠
 
 </div>
 
 
 <h2>
 
-欢迎回家
+家的进度，一点点完成
 
 </h2>
 
 
 <p>
 
-你的装修小管家一直陪着你
+每天记录，装修不慌
 
 </p>
 
@@ -96,12 +94,13 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 
 
+
 <div class="home-card">
 
 
 <div class="tag">
 
-🏠 我的装修
+🏠 装修项目
 
 </div>
 
@@ -129,7 +128,7 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <p>
 
-当前阶段
+当前施工阶段
 
 </p>
 
@@ -160,11 +159,9 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 </div>
 
 
-
-
 <p class="progress-text">
 
-完成
+总体完成
 
 <span id="progressNum">
 
@@ -172,12 +169,100 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 </span>
 
-
 </p>
 
 
 
 </div>
+
+
+
+
+
+
+
+
+
+<!-- 阶段看板 -->
+
+
+<div class="diary-card">
+
+
+<h3>
+
+🔨 施工阶段
+
+</h3>
+
+
+
+
+<div class="stage-board">
+
+
+
+<div class="stage-item done">
+
+✅ 拆改
+
+</div>
+
+
+
+<div class="stage-item active">
+
+🔨 水电 60%
+
+</div>
+
+
+
+<div class="stage-item">
+
+⬜ 防水
+
+</div>
+
+
+
+<div class="stage-item">
+
+⬜ 瓦工
+
+</div>
+
+
+
+<div class="stage-item">
+
+⬜ 木工
+
+</div>
+
+
+
+<div class="stage-item">
+
+⬜ 油工
+
+</div>
+
+
+
+<div class="stage-item">
+
+⬜ 安装
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
 
 
 
@@ -196,30 +281,30 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 </h3>
 
 
-<div class="reminder">
-
-📷 记得保存施工照片
-
-</div>
-
 
 <div class="reminder">
 
-📝 记录当天施工情况
+📷 保存施工照片
 
 </div>
 
 
 <div class="reminder">
 
-⚠️ 增项先确认再付款
+✅ 完成验收检查
 
 </div>
 
 
+<div class="reminder">
+
+💰 记录付款和增项
+
 </div>
 
 
+
+</div>
 
 
 
@@ -233,6 +318,7 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <div class="menu-item"
 onclick="openPage('calendar')">
+
 
 <div>
 
@@ -250,7 +336,7 @@ onclick="openPage('calendar')">
 
 <span>
 
-每天记录
+施工记录
 
 </span>
 
@@ -261,8 +347,10 @@ onclick="openPage('calendar')">
 
 
 
+
 <div class="menu-item"
 onclick="openPage('work')">
+
 
 <div>
 
@@ -280,7 +368,7 @@ onclick="openPage('work')">
 
 <span>
 
-阶段验收
+进度验收
 
 </span>
 
@@ -291,8 +379,10 @@ onclick="openPage('work')">
 
 
 
+
 <div class="menu-item"
 onclick="openPage('money')">
+
 
 <div>
 
@@ -321,8 +411,10 @@ onclick="openPage('money')">
 
 
 
+
 <div class="menu-item"
 onclick="openPage('mine')">
+
 
 <div>
 
@@ -353,8 +445,10 @@ onclick="openPage('mine')">
 
 
 
+
 </section>
-<!-- 日历页面 -->
+
+<!-- 装修日历 -->
 
 
 <section id="calendar" class="page">
@@ -369,6 +463,7 @@ onclick="openPage('mine')">
 ‹
 
 </button>
+
 
 
 <h2>
@@ -387,7 +482,6 @@ onclick="openPage('mine')">
 
 
 <div class="calendar-card">
-
 
 
 <div class="calendar-header">
@@ -416,9 +510,7 @@ onclick="openPage('mine')">
 </button>
 
 
-
 </div>
-
 
 
 
@@ -473,13 +565,11 @@ class="record-preview">
 
 <div class="empty-state">
 
-
 🐷
-
 
 <p>
 
-选择日期查看装修记录
+选择日期查看施工记录
 
 </p>
 
@@ -494,12 +584,11 @@ class="record-preview">
 
 
 
-
 <button class="main-button"
 onclick="newDiary()">
 
 
-🐷 写今天的装修日记
+🐷 新建施工记录
 
 
 </button>
@@ -517,7 +606,7 @@ onclick="newDiary()">
 
 
 
-<!-- 每日记录 -->
+<!-- 每日施工记录 -->
 
 
 <section id="record" class="page">
@@ -534,9 +623,10 @@ onclick="newDiary()">
 </button>
 
 
+
 <h2 id="recordTitle">
 
-装修日记
+施工记录
 
 </h2>
 
@@ -549,12 +639,13 @@ onclick="newDiary()">
 
 
 
+
 <div class="diary-card">
 
 
 <h3>
 
-🔨 施工阶段
+🔨 当前阶段
 
 </h3>
 
@@ -612,10 +703,12 @@ onclick="newDiary()">
 </option>
 
 
+
 </select>
 
 
 </div>
+
 
 
 
@@ -634,14 +727,17 @@ onclick="newDiary()">
 </h3>
 
 
+
 <textarea id="recordDone"
 
-placeholder="例如：厨房水电完成">
+placeholder="例如：水电布管完成">
 
 </textarea>
 
 
+
 </div>
+
 
 
 
@@ -654,19 +750,21 @@ placeholder="例如：厨房水电完成">
 
 <h3>
 
-⚠️ 发现问题
+⚠️ 问题记录
 
 </h3>
 
 
+
 <textarea id="recordProblem"
 
-placeholder="例如：插座高度需要确认">
+placeholder="例如：插座位置需要调整">
 
 </textarea>
 
 
 </div>
+
 
 
 
@@ -684,14 +782,16 @@ placeholder="例如：插座高度需要确认">
 </h3>
 
 
+
 <textarea id="recordChat"
 
-placeholder="装修公司说了什么">
+placeholder="装修公司、工长沟通内容">
 
 </textarea>
 
 
 </div>
+
 
 
 
@@ -710,13 +810,16 @@ placeholder="装修公司说了什么">
 </h3>
 
 
+
 <input id="recordMoney"
 
 type="number"
 
 placeholder="金额">
 
+
 </div>
+
 
 
 
@@ -729,7 +832,7 @@ placeholder="金额">
 
 <h3>
 
-📷 今日照片
+📷 施工照片
 
 </h3>
 
@@ -746,11 +849,13 @@ placeholder="金额">
 </option>
 
 
+
 <option>
 
 验收照片
 
 </option>
+
 
 
 <option>
@@ -760,6 +865,7 @@ placeholder="金额">
 </option>
 
 
+
 <option>
 
 材料照片
@@ -767,7 +873,11 @@ placeholder="金额">
 </option>
 
 
+
 </select>
+
+
+
 
 
 
@@ -789,7 +899,6 @@ onchange="addDailyPhotos(event)">
 
 
 
-
 <div id="photoPreview"
 
 class="photo-grid">
@@ -806,17 +915,44 @@ class="photo-grid">
 
 
 
+
+<div class="diary-card">
+
+
+<h3>
+
+📌 今日总结
+
+</h3>
+
+
+
+<textarea id="recordSummary"
+
+placeholder="今天装修整体情况">
+
+</textarea>
+
+
+
+</div>
+
+
+
+
+
+
+
+
 <button class="save-button"
 
 onclick="saveRecord()">
 
 
-🐷 保存记录
+🐷 保存施工记录
 
 
 </button>
-
-
 
 
 
@@ -830,8 +966,7 @@ onclick="saveRecord()">
 
 
 
-
-<!-- 图片放大查看 -->
+<!-- 图片查看 -->
 
 
 <div id="photoViewer"
@@ -846,8 +981,7 @@ onclick="closePhotoViewer()">
 
 
 </div>
-
-<!-- 工地页面 -->
+<!-- 施工管理 -->
 
 
 <section id="work" class="page">
@@ -901,7 +1035,7 @@ onclick="closePhotoViewer()">
 
 <p>
 
-当前进度 45%
+当前进度：60%
 
 </p>
 
@@ -918,71 +1052,59 @@ onclick="closePhotoViewer()">
 
 
 
+<!-- 阶段任务 -->
+
+
 <div class="diary-card">
 
 
 <h3>
 
-🏗️ 装修阶段
+🔌 水电施工任务
 
 </h3>
 
 
 
 
-<div class="stage-item done">
+<div class="task-item done">
 
-✅ 拆改完成
-
-</div>
-
-
-
-<div class="stage-item active">
-
-🔨 水电施工
+☑ 开槽完成
 
 </div>
 
 
 
-<div class="stage-item">
+<div class="task-item done">
 
-⬜ 防水
-
-</div>
-
-
-
-<div class="stage-item">
-
-⬜ 瓦工
+☑ 水电布管
 
 </div>
 
 
 
-<div class="stage-item">
+<div class="task-item">
 
-⬜ 木工
-
-</div>
-
-
-
-<div class="stage-item">
-
-⬜ 油工
+☐ 水管打压
 
 </div>
 
 
 
-<div class="stage-item">
+<div class="task-item">
 
-⬜ 安装
+☐ 电路测试
 
 </div>
+
+
+
+<div class="task-item">
+
+☐ 水电验收
+
+</div>
+
 
 
 
@@ -994,6 +1116,9 @@ onclick="closePhotoViewer()">
 
 
 
+
+
+<!-- 验收 -->
 
 
 <div class="diary-card">
@@ -1017,23 +1142,16 @@ onclick="closePhotoViewer()">
 
 
 
-<div class="check-item">
-
-<input type="checkbox">
-
-水管打压
-
-</div>
-
-
 
 <div class="check-item">
 
 <input type="checkbox">
 
-插座位置确认
+水管打压完成
 
 </div>
+
+
 
 
 
@@ -1041,9 +1159,23 @@ onclick="closePhotoViewer()">
 
 <input type="checkbox">
 
-强弱电检查
+插座定位确认
 
 </div>
+
+
+
+
+
+<div class="check-item">
+
+<input type="checkbox">
+
+电箱回路检查
+
+</div>
+
+
 
 
 
@@ -1066,12 +1198,16 @@ onclick="closePhotoViewer()">
 
 
 
+
+<!-- 照片档案 -->
+
+
 <div class="diary-card">
 
 
 <h3>
 
-📷 施工照片档案
+📷 阶段照片档案
 
 </h3>
 
@@ -1079,64 +1215,76 @@ onclick="closePhotoViewer()">
 
 <div class="photo-folder">
 
+
 🔌 水电照片
 
 <span>
 
-0张
+查看
 
 </span>
+
 
 </div>
 
 
 
 
+
 <div class="photo-folder">
+
 
 💧 防水照片
 
 <span>
 
-0张
+查看
 
 </span>
+
 
 </div>
 
 
 
 
+
 <div class="photo-folder">
+
 
 🧱 瓦工照片
 
 <span>
 
-0张
+查看
 
 </span>
 
+
 </div>
+
 
 
 
 
 <div class="photo-folder">
 
+
 🚪 安装照片
 
 <span>
 
-0张
+查看
 
 </span>
 
-</div>
-
-
 
 </div>
+
+
+
+</div>
+
 
 
 
@@ -1152,7 +1300,7 @@ onclick="closePhotoViewer()">
 
 
 
-<!-- 钱包 -->
+<!-- 账本 -->
 
 
 <section id="money" class="page">
@@ -1167,6 +1315,7 @@ onclick="closePhotoViewer()">
 ‹
 
 </button>
+
 
 
 <h2>
@@ -1189,7 +1338,9 @@ onclick="closePhotoViewer()">
 
 <div>
 
+
 合同金额
+
 
 <b>
 
@@ -1197,13 +1348,18 @@ onclick="closePhotoViewer()">
 
 </b>
 
+
 </div>
+
+
 
 
 
 <div>
 
+
 已付款
+
 
 <b>
 
@@ -1211,13 +1367,37 @@ onclick="closePhotoViewer()">
 
 </b>
 
+
 </div>
+
+
 
 
 
 <div>
 
-剩余金额
+
+增项金额
+
+
+<b>
+
+¥0
+
+</b>
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+剩余预算
+
 
 <b>
 
@@ -1225,7 +1405,9 @@ onclick="closePhotoViewer()">
 
 </b>
 
+
 </div>
+
 
 
 </div>
@@ -1255,11 +1437,14 @@ onclick="closePhotoViewer()">
 </button>
 
 
+
+
 <div>
 
 暂无增项
 
 </div>
+
 
 
 </div>
@@ -1295,6 +1480,7 @@ onclick="closePhotoViewer()">
 </button>
 
 
+
 <h2>
 
 🐷 资料中心
@@ -1303,6 +1489,7 @@ onclick="closePhotoViewer()">
 
 
 </div>
+
 
 
 
@@ -1322,6 +1509,7 @@ onclick="closePhotoViewer()">
 
 <div>
 
+
 <b>
 
 合同资料
@@ -1331,7 +1519,7 @@ onclick="closePhotoViewer()">
 
 <p>
 
-装修合同、付款约定
+合同、付款约定
 
 </p>
 
@@ -1340,6 +1528,7 @@ onclick="closePhotoViewer()">
 
 
 </div>
+
 
 
 
@@ -1358,6 +1547,7 @@ onclick="closePhotoViewer()">
 
 
 <div>
+
 
 <b>
 
@@ -1384,6 +1574,7 @@ onclick="closePhotoViewer()">
 
 
 
+
 <div class="folder-card">
 
 
@@ -1395,6 +1586,7 @@ onclick="closePhotoViewer()">
 
 
 <div>
+
 
 <b>
 
@@ -1421,6 +1613,7 @@ onclick="closePhotoViewer()">
 
 
 
+
 <div class="folder-card">
 
 
@@ -1433,6 +1626,7 @@ onclick="closePhotoViewer()">
 
 <div>
 
+
 <b>
 
 沟通记录
@@ -1442,7 +1636,7 @@ onclick="closePhotoViewer()">
 
 <p>
 
-装修聊天整理
+聊天和决定事项
 
 </p>
 
@@ -1451,6 +1645,7 @@ onclick="closePhotoViewer()">
 
 
 </div>
+
 
 
 
@@ -1486,6 +1681,7 @@ onclick="closePhotoViewer()">
 
 
 
+
 <button onclick="openPage('calendar')">
 
 📅
@@ -1508,7 +1704,7 @@ onclick="closePhotoViewer()">
 
 <span>
 
-工地
+施工
 
 </span>
 
@@ -1556,7 +1752,7 @@ onclick="closePhotoViewer()">
 
 
 
-<script src="app.js?v=35"></script>
+<script src="app.js?v=36"></script>
 
 
 </body>
