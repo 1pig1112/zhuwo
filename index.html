@@ -1,0 +1,1431 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>猪窝</title>
+
+<link rel="manifest" href="manifest.json">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="pig-header">
+
+<div class="pig-avatar">
+🐷
+</div>
+
+<div>
+<h1>猪窝</h1>
+<p>陪你记录家的成长 🌸</p>
+</div>
+
+</header>
+
+
+
+
+
+<main>
+
+
+<!-- 首页 -->
+
+<section id="home" class="page active">
+
+
+<div class="welcome-card">
+
+
+<div class="big-pig">
+🐷
+</div>
+
+
+<h2>
+早上好呀，主人～
+</h2>
+
+
+<p>
+你的新家正在一点点变好
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="home-card">
+
+
+<div class="tag">
+🏠 我的小家
+</div>
+
+
+<h2>
+装修第 <span id="days">1</span> 天
+</h2>
+
+
+<div class="stage-card">
+
+<p>
+当前阶段
+</p>
+
+
+<b id="stage">
+🔨 水电施工
+</b>
+
+
+</div>
+
+
+
+
+
+<div class="progress-bg">
+
+<div id="progressBar">
+
+</div>
+
+</div>
+
+
+<p class="progress-text">
+
+🐷 完成
+<span id="progressNum">
+45%
+</span>
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="reminder-card">
+
+
+<h3>
+💗 小猪今日提醒
+</h3>
+
+
+
+<div class="reminder">
+
+🐷 今天记得拍工地照片哦
+
+</div>
+
+
+
+<div class="reminder">
+
+🐷 水电验收要保存记录
+
+</div>
+
+
+
+<div class="reminder">
+
+🐷 有变化及时记录
+
+</div>
+
+
+</div>
+
+
+
+
+
+<h3 class="section-title">
+
+今天想看看哪里？
+
+</h3>
+
+
+
+
+<div class="menu-grid">
+
+
+
+<div class="menu-item"
+onclick="openPage('calendar')">
+
+<div>
+📅
+</div>
+
+<b>
+装修日历
+</b>
+
+<span>
+每天记录
+</span>
+
+</div>
+
+
+
+
+
+<div class="menu-item"
+onclick="openPage('work')">
+
+<div>
+🔨
+</div>
+
+<b>
+工地
+</b>
+
+<span>
+施工管理
+</span>
+
+</div>
+
+
+
+
+
+<div class="menu-item"
+onclick="openPage('money')">
+
+<div>
+💰
+</div>
+
+<b>
+小猪钱包
+</b>
+
+<span>
+付款记录
+</span>
+
+</div>
+
+
+
+
+
+<div class="menu-item"
+onclick="openPage('mine')">
+
+<div>
+🐷
+</div>
+
+<b>
+资料屋
+</b>
+
+<span>
+合同材料
+</span>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+<!-- 装修日历 -->
+
+<section id="calendar" class="page">
+
+
+<div class="page-title">
+
+<button onclick="backHome()">
+‹
+</button>
+
+<h2>
+📅 装修日历
+</h2>
+
+</div>
+
+
+
+
+
+<div class="calendar-card">
+
+
+<div class="calendar-header">
+
+
+<button onclick="changeMonth(-1)">
+‹
+</button>
+
+
+<h3 id="monthTitle">
+2026年8月
+</h3>
+
+
+<button onclick="changeMonth(1)">
+›
+</button>
+
+
+</div>
+
+
+
+
+
+<div class="week">
+
+<div>日</div>
+<div>一</div>
+<div>二</div>
+<div>三</div>
+<div>四</div>
+<div>五</div>
+<div>六</div>
+
+</div>
+
+
+
+
+
+<div id="calendarDays"
+class="calendar-days">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div id="recordPreview"
+class="record-preview">
+
+
+<div class="empty-state">
+
+🐷
+
+
+<p>
+选择一天查看装修记录
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<button class="main-button"
+onclick="newDiary()">
+
+🐷 写今天的装修日记
+
+</button>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- 每日记录 -->
+
+
+<section id="record" class="page">
+
+
+<div class="page-title">
+
+
+<button onclick="openPage('calendar')">
+
+‹
+
+</button>
+
+
+
+<h2 id="recordTitle">
+
+装修日记
+
+</h2>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+🔨 施工阶段
+</h3>
+
+
+<select id="recordStage">
+
+
+<option>
+拆改
+</option>
+
+
+<option selected>
+水电施工
+</option>
+
+
+<option>
+防水
+</option>
+
+
+<option>
+瓦工
+</option>
+
+
+<option>
+木工
+</option>
+
+
+<option>
+油工
+</option>
+
+
+<option>
+安装
+</option>
+
+
+
+</select>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+✨ 今日完成
+</h3>
+
+
+<textarea
+
+id="recordDone"
+
+placeholder="例如：厨房水电布管完成">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+⚠️ 发现问题
+</h3>
+
+
+<textarea
+
+id="recordProblem"
+
+placeholder="例如：插座位置需要确认">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+💬 沟通记录
+</h3>
+
+
+<textarea
+
+id="recordChat"
+
+placeholder="装修公司说了什么">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+💰 今日费用
+</h3>
+
+
+<input
+
+id="recordMoney"
+
+type="number"
+
+placeholder="金额">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="diary-card photo-card">
+
+
+<h3>
+📷 今日工地照片
+</h3>
+
+
+<input
+
+type="file"
+
+id="dailyPhotos"
+
+accept="image/*"
+
+multiple
+
+onchange="addDailyPhotos(event)">
+
+
+<p class="photo-tip">
+
+🐷 可以一次选择多张照片
+
+</p>
+
+
+<div id="photoPreview"
+class="photo-grid">
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<button class="save-button"
+
+onclick="saveRecord()">
+
+
+🐷 保存今天记录
+
+
+</button>
+
+
+
+
+
+</section>
+<!-- 工地页面 -->
+
+<section id="work" class="page">
+
+
+<div class="page-title">
+
+
+<button onclick="backHome()">
+
+‹
+
+</button>
+
+
+<h2>
+
+🔨 小猪工地
+
+</h2>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="work-card">
+
+
+<div class="worker-pig">
+
+🐷👷
+
+</div>
+
+
+<div>
+
+<h3>
+
+水电施工中
+
+</h3>
+
+
+<p>
+
+当前进度 45%
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+
+🏗️ 装修阶段
+
+</h3>
+
+
+
+<div class="stage-item done">
+
+✅ 拆改完成
+
+</div>
+
+
+
+<div class="stage-item active">
+
+🔨 水电施工
+
+</div>
+
+
+
+<div class="stage-item">
+
+⬜ 防水
+
+</div>
+
+
+
+<div class="stage-item">
+
+⬜ 瓦工
+
+</div>
+
+
+
+<div class="stage-item">
+
+⬜ 木工
+
+</div>
+
+
+
+<div class="stage-item">
+
+⬜ 油工
+
+</div>
+
+
+
+<div class="stage-item">
+
+⬜ 安装
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+
+🐷 水电验收助手
+
+</h3>
+
+
+
+<div class="check-item">
+
+<input type="checkbox">
+
+管线照片保存
+
+</div>
+
+
+
+<div class="check-item">
+
+<input type="checkbox">
+
+水电图保存
+
+</div>
+
+
+
+<div class="check-item">
+
+<input type="checkbox">
+
+水管打压完成
+
+</div>
+
+
+
+<div class="check-item">
+
+<input type="checkbox">
+
+插座位置确认
+
+</div>
+
+
+
+<div class="check-item">
+
+<input type="checkbox">
+
+强弱电检查
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+
+📷 施工照片档案
+
+</h3>
+
+
+
+<div class="photo-folder">
+
+
+🔌 水电照片
+
+
+<span>
+0张
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="photo-folder">
+
+
+💧 防水照片
+
+
+<span>
+0张
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="photo-folder">
+
+
+🧱 瓦工照片
+
+
+<span>
+0张
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="photo-folder">
+
+
+🚪 安装照片
+
+
+<span>
+0张
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- 钱包页面 -->
+
+
+<section id="money" class="page">
+
+
+
+<div class="page-title">
+
+
+<button onclick="backHome()">
+
+‹
+
+</button>
+
+
+<h2>
+
+💰 小猪钱包
+
+</h2>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="wallet-card">
+
+
+<div>
+
+合同金额
+
+<b>
+¥95000
+</b>
+
+
+</div>
+
+
+
+
+<div>
+
+已付款
+
+<b>
+¥30000
+</b>
+
+
+</div>
+
+
+
+
+<div>
+
+剩余金额
+
+<b>
+¥65000
+</b>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+
+📌 下一付款节点
+
+</h3>
+
+
+
+<div class="payment-box">
+
+🔨 水电验收后
+
+
+<br><br>
+
+
+预计：
+
+¥20000
+
+
+<br><br>
+
+
+状态：
+
+等待验收
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="diary-card">
+
+
+<h3>
+
+➕ 增项记录
+
+</h3>
+
+
+
+<button class="main-button">
+
+添加增项
+
+</button>
+
+
+<div id="changeList">
+
+暂无增项
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</section>
+<!-- 资料屋 -->
+
+<section id="mine" class="page">
+
+
+<div class="page-title">
+
+
+<button onclick="backHome()">
+
+‹
+
+</button>
+
+
+
+<h2>
+
+🐷 小猪资料屋
+
+</h2>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="folder-card">
+
+
+<div class="folder-icon">
+
+📑
+
+</div>
+
+
+<div>
+
+<b>
+合同资料
+</b>
+
+
+<p>
+装修合同、付款约定
+</p>
+
+
+</div>
+
+
+<span>
+＞
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="folder-card">
+
+
+<div class="folder-icon">
+
+📋
+
+</div>
+
+
+<div>
+
+<b>
+报价资料
+</b>
+
+
+<p>
+报价单、价格记录
+</p>
+
+
+</div>
+
+
+<span>
+＞
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="folder-card">
+
+
+<div class="folder-icon">
+
+📦
+
+</div>
+
+
+<div>
+
+<b>
+材料小仓库
+</b>
+
+
+<p>
+品牌、型号、购买记录
+</p>
+
+
+</div>
+
+
+<span>
+＞
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="folder-card">
+
+
+<div class="folder-icon">
+
+💬
+
+</div>
+
+
+<div>
+
+<b>
+沟通记录
+</b>
+
+
+<p>
+装修公司聊天记录
+</p>
+
+
+</div>
+
+
+<span>
+＞
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="folder-card">
+
+
+<div class="folder-icon">
+
+⚙️
+
+</div>
+
+
+<div>
+
+<b>
+设置
+</b>
+
+
+<p>
+项目资料、备份
+</p>
+
+
+</div>
+
+
+<span>
+＞
+</span>
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+<!-- 底部导航 -->
+
+<nav class="bottom-nav">
+
+
+<button onclick="openPage('home')">
+
+🏠
+
+<span>
+首页
+</span>
+
+</button>
+
+
+
+
+
+<button onclick="openPage('calendar')">
+
+📅
+
+<span>
+日历
+</span>
+
+</button>
+
+
+
+
+
+<button onclick="openPage('work')">
+
+🔨
+
+<span>
+工地
+</span>
+
+</button>
+
+
+
+
+
+<button onclick="openPage('money')">
+
+💰
+
+<span>
+钱包
+</span>
+
+</button>
+
+
+
+
+
+<button onclick="openPage('mine')">
+
+🐷
+
+<span>
+资料
+</span>
+
+</button>
+
+
+
+</nav>
+
+
+
+
+
+
+<script src="app.js"></script>
+
+
+</body>
+
+</html>
