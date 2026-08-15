@@ -21,9 +21,8 @@ progress:45
 records:{},
 
 
-photos:{}
-
-};
+photos:
+data.records[date].photos || [],
 
 
 
