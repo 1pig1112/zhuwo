@@ -20,10 +20,13 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 <body>
 
 
-<header class="header">
+<header class="pig-header">
 
-<div class="pig-avatar">
+
+<div class="pig-character">
+
 🐷
+
 </div>
 
 
@@ -33,8 +36,9 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 猪窝
 </h1>
 
+
 <p>
-我的装修小管家 🌸
+陪你记录家的成长 🌸
 </p>
 
 
@@ -46,25 +50,40 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 
 
+
 <main>
+
 
 
 
 <!-- 首页 -->
 
+
 <section id="home" class="page active">
 
 
-<div class="welcome card">
+
+<div class="welcome-card">
+
+
+<div class="small-pig">
+
+🐷
+
+</div>
 
 
 <h2>
-早上好呀，主人 🌸
+
+早上好呀，主人～
+
 </h2>
 
 
-<p id="dayText">
-今天也要让新家慢慢变好
+<p id="welcomeText">
+
+今天也一起让新家慢慢变好吧
+
 </p>
 
 
@@ -74,69 +93,71 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 
 
-<div class="home-card house-card">
 
 
-<div class="title-row">
-
-<h2>
-🏠 我的新家
-</h2>
+<div class="home-house-card">
 
 
-<span>
-🐷
-</span>
+
+<div class="sticker">
+
+🏠 我的小家
 
 </div>
 
 
 
-<div class="info">
+<h3>
 
-<div>
+装修第 <span id="days">
+18
+</span> 天
 
-装修天数
-
-<b id="days">
-18天
-</b>
-
-</div>
+</h3>
 
 
 
-<div>
-
-当前阶段
-
-<b id="stage">
-水电施工
-</b>
-
-</div>
-
-
-</div>
-
-
-
-<div class="progress-box">
-
-
-<div class="progress">
-
-<div id="progress">
-</div>
-
-</div>
+<div class="stage-box">
 
 
 <p>
 
-装修进度
+现在正在：
 
-<span id="progressText">
+</p>
+
+
+<b id="stage">
+
+🔨 水电施工
+
+</b>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="pig-progress">
+
+
+<div id="progressBar">
+
+</div>
+
+
+</div>
+
+
+<p class="progress-text">
+
+🐷 已完成
+<span id="progressNum">
+
 45%
 
 </span>
@@ -144,39 +165,6 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 </p>
 
 
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="card reminder">
-
-
-<h2>
-💗 今日提醒
-</h2>
-
-
-<div class="bubble">
-🐷 记得拍水电管线照片哦
-</div>
-
-
-<div class="bubble">
-🐷 确认厨房插座位置
-</div>
-
-
-<div class="bubble">
-🐷 准备下一次验收
-</div>
-
 
 </div>
 
@@ -187,9 +175,41 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 
 
-<div class="quick-title">
+<div class="task-card">
 
-常用功能
+
+<h3>
+
+💗 小猪今日提醒
+
+</h3>
+
+
+
+<div class="task-item">
+
+🐷 拍水电管线照片
+
+</div>
+
+
+
+<div class="task-item">
+
+🐷 确认插座位置
+
+</div>
+
+
+
+
+<div class="task-item">
+
+🐷 保存今天施工记录
+
+</div>
+
+
 
 </div>
 
@@ -197,24 +217,47 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 
 
-<div class="quick-grid">
 
 
 
-<div class="quick-card"
+
+<h3 class="section-title">
+
+今天去哪里看看？
+
+</h3>
+
+
+
+
+
+<div class="home-grid">
+
+
+
+<div class="home-button"
 onclick="openPage('calendar')">
 
+
 <div>
+
 📅
+
 </div>
+
 
 <b>
+
 装修日历
+
 </b>
 
-<p>
-每天记录
-</p>
+
+<span>
+
+记录每天变化
+
+</span>
 
 
 </div>
@@ -223,21 +266,30 @@ onclick="openPage('calendar')">
 
 
 
-<div class="quick-card"
+
+<div class="home-button"
 onclick="openPage('work')">
 
 
 <div>
+
 🔨
+
 </div>
+
 
 <b>
-我的工地
+
+工地
+
 </b>
 
-<p>
+
+<span>
+
 施工进度
-</p>
+
+</span>
 
 
 </div>
@@ -246,22 +298,29 @@ onclick="openPage('work')">
 
 
 
-
-<div class="quick-card"
+<div class="home-button"
 onclick="openPage('money')">
 
 
 <div>
+
 💰
+
 </div>
+
 
 <b>
-装修账本
+
+小猪钱包
+
 </b>
 
-<p>
-付款记录
-</p>
+
+<span>
+
+装修花费
+
+</span>
 
 
 </div>
@@ -270,21 +329,29 @@ onclick="openPage('money')">
 
 
 
-<div class="quick-card"
+<div class="home-button"
 onclick="openPage('mine')">
 
 
 <div>
+
 🐷
+
 </div>
+
 
 <b>
-我的资料
+
+资料
+
 </b>
 
-<p>
-文件管理
-</p>
+
+<span>
+
+合同材料
+
+</span>
 
 
 </div>
@@ -295,10 +362,14 @@ onclick="openPage('mine')">
 
 
 
-</section>
-<!-- 日历页面 -->
+
+
+
+</section><!-- 装修日历 -->
+
 
 <section id="calendar" class="page">
+
 
 
 <div class="page-title">
@@ -307,15 +378,27 @@ onclick="openPage('mine')">
 ‹
 </button>
 
+
 <h2>
 📅 装修日历
 </h2>
+
 
 </div>
 
 
 
-<div class="card calendar-card">
+
+
+<div class="calendar-card">
+
+
+<div class="calendar-head">
+
+
+<button onclick="changeMonth(-1)">
+‹
+</button>
 
 
 <h3 id="monthTitle">
@@ -323,8 +406,20 @@ onclick="openPage('mine')">
 </h3>
 
 
+<button onclick="changeMonth(1)">
+›
+</button>
 
-<div class="calendar-grid">
+
+
+</div>
+
+
+
+
+
+
+<div class="week-row">
 
 <div>日</div>
 <div>一</div>
@@ -334,12 +429,47 @@ onclick="openPage('mine')">
 <div>五</div>
 <div>六</div>
 
-
 </div>
+
+
+
+
 
 
 <div id="calendarDays"
-class="calendar-days">
+class="calendar-grid">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="record-preview"
+id="recordPreview">
+
+
+
+<div class="empty-pig">
+
+
+🐷
+
+
+<p>
+
+点击日期查看装修记录
+
+</p>
+
 
 </div>
 
@@ -351,31 +481,17 @@ class="calendar-days">
 
 
 
-<div class="card">
 
 
-<h3>
-🐷 今日记录
-</h3>
-
-
-<button class="pink-btn"
+<button class="pink-main-btn"
 onclick="newDiary()">
 
-+ 新建今天记录
+
+🐷 写今天的装修日记
+
 
 </button>
 
-
-</div>
-
-
-
-
-<div id="historyList">
-
-
-</div>
 
 
 
@@ -387,9 +503,14 @@ onclick="newDiary()">
 
 
 
-<!-- 单日记录详情 -->
+
+
+
+<!-- 当日装修记录 -->
+
 
 <section id="record" class="page">
+
 
 
 <div class="page-title">
@@ -401,7 +522,7 @@ onclick="newDiary()">
 
 <h2 id="recordTitle">
 
-今日装修记录
+装修日记
 
 </h2>
 
@@ -412,39 +533,59 @@ onclick="newDiary()">
 
 
 
-<div class="card">
+
+
+<div class="diary-card">
+
+
+<div class="date-tag">
+
+🌸 今日装修
+
+</div>
+
+
+
 
 
 <h3>
-🔨 施工阶段
+
+施工阶段
+
 </h3>
 
 
 <select id="recordStage">
 
+
 <option>
 拆改
 </option>
 
-<option>
+<option selected>
 水电施工
 </option>
+
 
 <option>
 防水
 </option>
 
+
 <option>
 瓦工
 </option>
+
 
 <option>
 木工
 </option>
 
+
 <option>
 油工
 </option>
+
 
 <option>
 安装
@@ -454,6 +595,8 @@ onclick="newDiary()">
 </select>
 
 
+
+
 </div>
 
 
@@ -461,22 +604,24 @@ onclick="newDiary()">
 
 
 
-<div class="card">
+
+<div class="diary-card">
 
 
 <h3>
-✅ 今日完成
+
+✨ 今天完成
 
 </h3>
 
 
-<textarea id="recordDone"
-placeholder="例如：厨房水电布管完成">
+<textarea
+id="recordDone"
+placeholder="例如：厨房水管安装完成">
 
 </textarea>
 
 
-
 </div>
 
 
@@ -485,16 +630,18 @@ placeholder="例如：厨房水电布管完成">
 
 
 
-<div class="card">
+<div class="diary-card">
 
 
 <h3>
-⚠️ 发现问题
+
+⚠️ 小猪发现问题
 
 </h3>
 
 
-<textarea id="recordProblem"
+<textarea
+id="recordProblem"
 placeholder="例如：插座高度需要确认">
 
 </textarea>
@@ -507,16 +654,19 @@ placeholder="例如：插座高度需要确认">
 
 
 
-<div class="card">
+
+<div class="diary-card">
 
 
 <h3>
-💬 沟通记录
+
+💬 今天沟通
 
 </h3>
 
 
-<textarea id="recordChat"
+<textarea
+id="recordChat"
 placeholder="装修公司说了什么">
 
 </textarea>
@@ -530,18 +680,20 @@ placeholder="装修公司说了什么">
 
 
 
-<div class="card">
+<div class="diary-card">
 
 
 <h3>
-💰 今日费用
+
+💰 今日花费
 
 </h3>
 
 
-<input id="recordMoney"
+<input
+id="recordMoney"
 type="number"
-placeholder="输入金额">
+placeholder="金额">
 
 
 </div>
@@ -552,36 +704,39 @@ placeholder="输入金额">
 
 
 
-<div class="card">
+
+<div class="diary-card">
 
 
 <h3>
-📷 现场照片
+
+📷 工地照片
 
 </h3>
 
 
-<button class="pink-btn">
+<button class="pink-main-btn">
 
 添加照片
 
 </button>
 
 
-<div id="photoBox">
-
-</div>
+<div id="photoPreview">
 
 
 </div>
 
 
+</div>
 
 
 
 
 
-<button class="save-btn"
+
+
+<button class="save-record-btn"
 onclick="saveRecord()">
 
 🐷 保存今天记录
@@ -590,82 +745,94 @@ onclick="saveRecord()">
 
 
 
+
 </section>
 <!-- 工地页面 -->
+
 
 <section id="work" class="page">
 
 
 <div class="page-title">
 
+
 <button onclick="backHome()">
 ‹
 </button>
 
+
 <h2>
-🔨 我的工地
+🔨 小猪工地
 </h2>
+
 
 </div>
 
 
 
 
-<div class="card">
+
+
+<div class="work-banner">
+
+
+<div class="work-pig">
+
+🐷👷
+
+</div>
+
+
+<div>
 
 
 <h3>
-当前施工阶段
+
+水电施工中
+
 </h3>
 
 
-<div class="stage-big">
-
-🐷 水电施工中
-
-</div>
-
-
-<div class="progress">
-
-<div style="width:45%">
-
-</div>
-
-</div>
-
-
 <p>
-完成度：45%
+
+当前完成 45%
+
 </p>
 
 
 </div>
 
 
+</div>
 
 
 
 
 
 
-<div class="card">
+
+
+<div class="diary-card">
 
 
 <h3>
-施工节点
+
+🏗️ 装修进度
+
 </h3>
 
 
 
-<div class="task done">
+
+<div class="progress-item done">
 
 ✅ 拆改完成
 
 </div>
 
 
-<div class="task doing">
+
+<div class="progress-item doing">
 
 🔨 水电施工
 
@@ -673,35 +840,40 @@ onclick="saveRecord()">
 
 
 
-<div class="task">
+
+<div class="progress-item">
 
 ⬜ 防水
 
 </div>
 
 
-<div class="task">
+
+<div class="progress-item">
 
 ⬜ 瓦工
 
 </div>
 
 
-<div class="task">
+
+<div class="progress-item">
 
 ⬜ 木工
 
 </div>
 
 
-<div class="task">
+
+<div class="progress-item">
 
 ⬜ 油工
 
 </div>
 
 
-<div class="task">
+
+<div class="progress-item">
 
 ⬜ 安装
 
@@ -717,15 +889,18 @@ onclick="saveRecord()">
 
 
 
-<div class="card">
+<div class="diary-card">
 
 
 <h3>
-🐷 小猪验收助手
+
+🐷 水电验收清单
+
 </h3>
 
 
-<div class="check-item">
+
+<div class="check-line">
 
 <input type="checkbox">
 
@@ -735,35 +910,77 @@ onclick="saveRecord()">
 
 
 
-<div class="check-item">
+<div class="check-line">
 
 <input type="checkbox">
 
-强弱电分离确认
+冷热水方向确认
 
 </div>
 
 
 
-<div class="check-item">
+<div class="check-line">
 
 <input type="checkbox">
 
-水管打压记录
+强弱电距离确认
 
 </div>
 
 
 
-<div class="check-item">
+<div class="check-line">
 
 <input type="checkbox">
 
-插座位置确认
+打压测试记录
 
 </div>
 
 
+
+<div class="check-line">
+
+<input type="checkbox">
+
+水电图纸保存
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="pig-tip">
+
+
+🐷 小猪提醒：
+
+<br><br>
+
+水电阶段很重要哦～
+
+记得：
+
+<br>
+
+① 拍全屋管线照片
+
+<br>
+
+② 保存施工图
+
+<br>
+
+③ 验收后再付款
 
 </div>
 
@@ -788,13 +1005,14 @@ onclick="saveRecord()">
 
 <div class="page-title">
 
+
 <button onclick="backHome()">
 ‹
 </button>
 
 
 <h2>
-💰 装修账本
+💰 小猪钱包
 </h2>
 
 
@@ -805,7 +1023,8 @@ onclick="saveRecord()">
 
 
 
-<div class="money-summary">
+
+<div class="wallet-card">
 
 
 <div>
@@ -813,11 +1032,13 @@ onclick="saveRecord()">
 合同金额
 
 <b>
+
 ¥95000
+
 </b>
 
-
 </div>
+
 
 
 
@@ -826,11 +1047,13 @@ onclick="saveRecord()">
 已付款
 
 <b>
+
 ¥30000
+
 </b>
 
-
 </div>
+
 
 
 
@@ -839,36 +1062,39 @@ onclick="saveRecord()">
 剩余
 
 <b>
+
 ¥65000
+
 </b>
 
-
-</div>
-
-
 </div>
 
 
 
+</div>
 
 
 
 
 
-<div class="card">
+
+
+
+
+<div class="diary-card">
 
 
 <h3>
+
 📌 下一付款节点
 
 </h3>
 
 
+<div class="payment-box">
 
-<div class="payment-card">
 
-
-水电验收
+🔨 水电验收后
 
 
 <br>
@@ -882,35 +1108,32 @@ onclick="saveRecord()">
 <br>
 
 
-条件：
+状态：
 
-完成验收后付款
+等待完成验收
 
+
+</div>
 
 
 </div>
 
 
 
-</div>
 
 
 
-
-
-
-
-<div class="card">
+<div class="diary-card">
 
 
 <h3>
+
 ➕ 增项记录
 
 </h3>
 
 
-
-<button class="pink-btn">
+<button class="pink-main-btn">
 
 添加增项
 
@@ -920,7 +1143,6 @@ onclick="saveRecord()">
 
 <div id="changeList">
 
-暂无增项
 
 </div>
 
@@ -935,10 +1157,13 @@ onclick="saveRecord()">
 </section>
 <!-- 我的资料 -->
 
+
 <section id="mine" class="page">
 
 
+
 <div class="page-title">
+
 
 <button onclick="backHome()">
 ‹
@@ -946,7 +1171,7 @@ onclick="saveRecord()">
 
 
 <h2>
-🐷 我的资料
+🐷 小猪资料屋
 </h2>
 
 
@@ -957,10 +1182,11 @@ onclick="saveRecord()">
 
 
 
-<div class="menu-card">
+
+<div class="folder-card">
 
 
-<div class="icon">
+<div class="folder-icon">
 📑
 </div>
 
@@ -973,10 +1199,9 @@ onclick="saveRecord()">
 
 
 <p>
-保存装修合同和重要条款
+装修合同、付款约定
 
 </p>
-
 
 </div>
 
@@ -994,10 +1219,11 @@ onclick="saveRecord()">
 
 
 
-<div class="menu-card">
+
+<div class="folder-card">
 
 
-<div class="icon">
+<div class="folder-icon">
 📋
 </div>
 
@@ -1010,7 +1236,7 @@ onclick="saveRecord()">
 
 
 <p>
-查看报价和项目明细
+报价单、价格分析
 
 </p>
 
@@ -1031,10 +1257,10 @@ onclick="saveRecord()">
 
 
 
-<div class="menu-card">
+<div class="folder-card">
 
 
-<div class="icon">
+<div class="folder-icon">
 📦
 </div>
 
@@ -1042,12 +1268,12 @@ onclick="saveRecord()">
 <div>
 
 <b>
-材料清单
+材料小仓库
 </b>
 
 
 <p>
-品牌、型号、购买状态
+品牌、型号、购买记录
 
 </p>
 
@@ -1068,10 +1294,10 @@ onclick="saveRecord()">
 
 
 
-<div class="menu-card">
+<div class="folder-card">
 
 
-<div class="icon">
+<div class="folder-icon">
 💬
 </div>
 
@@ -1080,12 +1306,11 @@ onclick="saveRecord()">
 
 <b>
 沟通记录
-
 </b>
 
 
 <p>
-装修公司聊天和承诺
+装修聊天和承诺
 
 </p>
 
@@ -1106,10 +1331,11 @@ onclick="saveRecord()">
 
 
 
-<div class="menu-card">
+
+<div class="folder-card">
 
 
-<div class="icon">
+<div class="folder-icon">
 ⚙️
 </div>
 
@@ -1123,7 +1349,7 @@ onclick="saveRecord()">
 
 
 <p>
-项目资料和数据备份
+项目设置、数据备份
 
 </p>
 
@@ -1137,6 +1363,8 @@ onclick="saveRecord()">
 
 
 </div>
+
+
 
 
 
@@ -1160,7 +1388,9 @@ onclick="saveRecord()">
 
 <!-- 底部导航 -->
 
+
 <nav class="bottom-nav">
+
 
 
 <button onclick="openPage('home')">
@@ -1172,6 +1402,7 @@ onclick="saveRecord()">
 </span>
 
 </button>
+
 
 
 
@@ -1189,6 +1420,7 @@ onclick="saveRecord()">
 
 
 
+
 <button onclick="openPage('work')">
 
 🔨
@@ -1202,15 +1434,17 @@ onclick="saveRecord()">
 
 
 
+
 <button onclick="openPage('money')">
 
 💰
 
 <span>
-账本
+钱包
 </span>
 
 </button>
+
 
 
 
@@ -1220,10 +1454,11 @@ onclick="saveRecord()">
 🐷
 
 <span>
-我的
+资料
 </span>
 
 </button>
+
 
 
 </nav>
@@ -1231,7 +1466,11 @@ onclick="saveRecord()">
 
 
 
+
+
+
 <script src="app.js"></script>
+
 
 
 </body>
