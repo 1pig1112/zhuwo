@@ -1,11 +1,16 @@
-const KEY = "zhuwo36";
+
+const KEY = "zhuwo37";
+
 
 
 let data =
+
 JSON.parse(
 localStorage.getItem(KEY)
 )
+
 ||
+
 {
 
 
@@ -18,7 +23,7 @@ start:"2026-08-01",
 stage:"水电施工",
 
 
-progress:45
+progress:60
 
 
 },
@@ -29,7 +34,11 @@ records:{},
 
 
 
-checks:{},
+problems:[],
+
+
+
+photos:[],
 
 
 
@@ -57,7 +66,10 @@ extra:0
 
 
 
+
+
 function saveData(){
+
 
 
 localStorage.setItem(
@@ -67,6 +79,7 @@ KEY,
 JSON.stringify(data)
 
 );
+
 
 
 }
@@ -103,18 +116,21 @@ page.classList.remove("active");
 
 
 
-let target =
+
+let page =
 document.getElementById(id);
 
 
 
-if(target){
+if(page){
 
 
-target.classList.add("active");
+page.classList.add("active");
 
 
 }
+
+
 
 
 
@@ -129,13 +145,28 @@ renderCalendar();
 
 
 
-if(id==="work"){
+
+if(id==="photo"){
 
 
-renderChecks();
+renderAllPhotos();
 
 
 }
+
+
+
+
+if(id==="problem"){
+
+
+renderProblems();
+
+
+}
+
+
+
 
 
 
@@ -143,7 +174,6 @@ window.scrollTo(0,0);
 
 
 }
-
 
 
 
@@ -167,7 +197,7 @@ openPage("home");
 
 
 // =====================
-// 首页
+// 初始化首页
 // =====================
 
 
@@ -197,16 +227,17 @@ Math.floor(
 
 
 
-
-let d =
-document.getElementById("days");
-
-
-
-if(d){
+let dayBox =
+document.getElementById(
+"days"
+);
 
 
-d.innerText =
+
+if(dayBox){
+
+
+dayBox.innerText =
 days;
 
 
@@ -218,8 +249,11 @@ days;
 
 
 
+
 let stage =
-document.getElementById("stage");
+document.getElementById(
+"stage"
+);
 
 
 
@@ -238,9 +272,10 @@ data.project.stage;
 
 
 
-
 let bar =
-document.getElementById("progressBar");
+document.getElementById(
+"progressBar"
+);
 
 
 
@@ -257,21 +292,26 @@ data.project.progress+"%";
 
 
 
+let progress =
+document.getElementById(
+"progressNum"
+);
 
 
-let num =
-document.getElementById("progressNum");
+
+if(progress){
 
 
-
-if(num){
-
-
-num.innerText =
+progress.innerText =
 data.project.progress+"%";
 
 
 }
+
+
+
+
+
 
 
 
@@ -286,7 +326,7 @@ data.project.progress+"%";
 
 
 // =====================
-// 日期
+// 日期工具
 // =====================
 
 
@@ -296,10 +336,15 @@ function formatDate(y,m,d){
 
 
 return y+
+
 "-"+
+
 String(m).padStart(2,"0")
+
 +
+
 "-"+
+
 String(d).padStart(2,"0");
 
 
@@ -328,8 +373,8 @@ new Date();
 
 
 
-
 function changeMonth(num){
+
 
 
 currentMonth.setMonth(
@@ -344,6 +389,8 @@ renderCalendar();
 
 
 }
+
+
 
 
 
@@ -367,7 +414,9 @@ if(!box)return;
 
 
 
+
 box.innerHTML="";
+
 
 
 
@@ -380,6 +429,7 @@ currentMonth.getFullYear();
 
 let m =
 currentMonth.getMonth();
+
 
 
 
@@ -418,7 +468,6 @@ m,
 
 
 
-
 let total =
 new Date(
 y,
@@ -426,6 +475,7 @@ m+1,
 0
 )
 .getDate();
+
 
 
 
@@ -443,12 +493,7 @@ i++
 box.innerHTML +=
 "<div></div>";
 
-
 }
-
-
-
-
 
 
 
@@ -469,20 +514,20 @@ d
 
 
 
-
-let record =
+let has =
 data.records[date];
 
 
 
 
 
+box.innerHTML +=
 
-box.innerHTML += `
+`
 
 <div
 
-class="${record?'has-record':''}"
+class="${has?'has-record':''}"
 
 onclick="openRecord('${date}')"
 
@@ -495,41 +540,326 @@ ${d}
 `;
 
 
-}
-
-
 
 }
 
 
-// =====================
-// 施工记录
-// =====================
+
+}
+
+const KEY = "zhuwo37";
 
 
 
-function newDiary(){
+let data =
+
+JSON.parse(
+localStorage.getItem(KEY)
+)
+
+||
+
+{
 
 
-let now =
-new Date();
+project:{
+
+
+start:"2026-08-01",
+
+
+stage:"水电施工",
+
+
+progress:60
+
+
+},
 
 
 
-let date =
-formatDate(
+records:{},
 
-now.getFullYear(),
 
-now.getMonth()+1,
 
-now.getDate()
+problems:[],
+
+
+
+photos:[],
+
+
+
+money:{
+
+
+contract:95000,
+
+
+paid:30000,
+
+
+extra:0
+
+
+}
+
+
+
+};
+
+
+
+
+
+
+
+
+
+function saveData(){
+
+
+
+localStorage.setItem(
+
+KEY,
+
+JSON.stringify(data)
 
 );
 
 
 
-openRecord(date);
+}
+
+
+
+
+
+
+
+
+
+// =====================
+// 页面切换
+// =====================
+
+
+
+function openPage(id){
+
+
+
+document
+.querySelectorAll(".page")
+.forEach(function(page){
+
+
+page.classList.remove("active");
+
+
+});
+
+
+
+
+
+
+let page =
+document.getElementById(id);
+
+
+
+if(page){
+
+
+page.classList.add("active");
+
+
+}
+
+
+
+
+
+
+if(id==="calendar"){
+
+
+renderCalendar();
+
+
+}
+
+
+
+
+if(id==="photo"){
+
+
+renderAllPhotos();
+
+
+}
+
+
+
+
+if(id==="problem"){
+
+
+renderProblems();
+
+
+}
+
+
+
+
+
+
+window.scrollTo(0,0);
+
+
+}
+
+
+
+
+
+
+function backHome(){
+
+
+openPage("home");
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================
+// 初始化首页
+// =====================
+
+
+
+function init(){
+
+
+
+let start =
+new Date(
+data.project.start
+);
+
+
+
+let today =
+new Date();
+
+
+
+let days =
+Math.floor(
+(today-start)/86400000
+)+1;
+
+
+
+
+
+let dayBox =
+document.getElementById(
+"days"
+);
+
+
+
+if(dayBox){
+
+
+dayBox.innerText =
+days;
+
+
+}
+
+
+
+
+
+
+
+
+let stage =
+document.getElementById(
+"stage"
+);
+
+
+
+if(stage){
+
+
+stage.innerText =
+data.project.stage;
+
+
+}
+
+
+
+
+
+
+
+let bar =
+document.getElementById(
+"progressBar"
+);
+
+
+
+if(bar){
+
+
+bar.style.width =
+data.project.progress+"%";
+
+
+}
+
+
+
+
+
+let progress =
+document.getElementById(
+"progressNum"
+);
+
+
+
+if(progress){
+
+
+progress.innerText =
+data.project.progress+"%";
+
+
+}
+
+
+
+
+
 
 
 
@@ -542,16 +872,112 @@ openRecord(date);
 
 
 
-function openRecord(date){
+
+// =====================
+// 日期工具
+// =====================
 
 
 
-window.currentRecord =
-date;
+function formatDate(y,m,d){
 
 
 
-openPage("record");
+return y+
+
+"-"+
+
+String(m).padStart(2,"0")
+
++
+
+"-"+
+
+String(d).padStart(2,"0");
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================
+// 日历
+// =====================
+
+
+
+let currentMonth =
+new Date();
+
+
+
+
+
+
+function changeMonth(num){
+
+
+
+currentMonth.setMonth(
+
+currentMonth.getMonth()+num
+
+);
+
+
+
+renderCalendar();
+
+
+}
+
+
+
+
+
+
+
+
+
+function renderCalendar(){
+
+
+
+let box =
+document.getElementById(
+"calendarDays"
+);
+
+
+
+if(!box)return;
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+
+let y =
+currentMonth.getFullYear();
+
+
+
+let m =
+currentMonth.getMonth();
+
 
 
 
@@ -559,7 +985,7 @@ openPage("record");
 
 let title =
 document.getElementById(
-"recordTitle"
+"monthTitle"
 );
 
 
@@ -568,7 +994,7 @@ if(title){
 
 
 title.innerText =
-date+" 施工记录";
+y+"年"+(m+1)+"月";
 
 
 }
@@ -579,455 +1005,83 @@ date+" 施工记录";
 
 
 
-if(!data.records[date]){
-
-
-data.records[date]={
-
-
-stage:"水电施工",
-
-
-done:"",
-
-
-problem:"",
-
-
-chat:"",
-
-
-money:0,
-
-
-summary:"",
-
-
-photos:[]
+let first =
+new Date(
+y,
+m,
+1
+)
+.getDay();
 
 
 
-};
 
-
-
-saveData();
-
-
-}
+let total =
+new Date(
+y,
+m+1,
+0
+)
+.getDate();
 
 
 
 
 
 
-let r =
-data.records[date];
 
 
+for(
+let i=0;
+i<first;
+i++
+){
 
 
-
-document.getElementById(
-"recordStage"
-).value =
-r.stage || "水电施工";
-
-
-
-
-document.getElementById(
-"recordDone"
-).value =
-r.done || "";
-
-
-
-
-
-document.getElementById(
-"recordProblem"
-).value =
-r.problem || "";
-
-
-
-
-
-document.getElementById(
-"recordChat"
-).value =
-r.chat || "";
-
-
-
-
-
-document.getElementById(
-"recordMoney"
-).value =
-r.money || "";
-
-
-
-
-
-let summary =
-document.getElementById(
-"recordSummary"
-);
-
-
-
-if(summary){
-
-summary.value =
-r.summary || "";
+box.innerHTML +=
+"<div></div>";
 
 }
 
 
 
-
-
-
-
-setTimeout(function(){
-
-
-renderPhotos(date);
-
-
-},300);
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// 保存施工记录
-
-
-
-function saveRecord(){
+for(
+let d=1;
+d<=total;
+d++
+){
 
 
 
 let date =
-window.currentRecord;
-
-
-
-if(!date)return;
-
-
-
-
-
-
-
-let oldPhotos =
-[];
-
-
-
-if(data.records[date]
-&&
-data.records[date].photos){
-
-
-oldPhotos =
-data.records[date].photos;
-
-
-}
-
-
-
-
-
-
-let money =
-Number(
-document.getElementById(
-"recordMoney"
-).value
-||0
+formatDate(
+y,
+m+1,
+d
 );
 
 
 
-
-
-
-data.records[date]={
-
-
-
-stage:
-
-document.getElementById(
-"recordStage"
-).value,
-
-
-
-
-
-done:
-
-document.getElementById(
-"recordDone"
-).value,
-
-
-
-
-
-problem:
-
-document.getElementById(
-"recordProblem"
-).value,
-
-
-
-
-
-chat:
-
-document.getElementById(
-"recordChat"
-).value,
-
-
-
-
-
-money:money,
-
-
-
-
-
-summary:
-
-document.getElementById(
-"recordSummary"
-).value,
-
-
-
-
-
-photos:
-
-oldPhotos,
-
-
-
-
-
-time:
-
-new Date()
-.toLocaleString()
-
-
-
-};
-
-
-
-
-
-
-
-// 同步账本增项
-
-
-
-data.money.extra += money;
-
-
-
-saveData();
-
-
-
-
-alert(
-"🐷 今日施工记录保存成功"
-);
-
-
-
-
-
-renderCalendar();
-
-
-
-openPage("calendar");
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// =====================
-// 日历预览
-// =====================
-
-
-
-function showPreview(date){
-
-
-
-let box =
-document.getElementById(
-"recordPreview"
-);
-
-
-
-if(!box)return;
-
-
-
-
-
-let r =
+let has =
 data.records[date];
 
 
 
 
 
-if(!r){
-
-
-box.innerHTML=
+box.innerHTML +=
 
 `
 
-<div class="empty-state">
+<div
 
-🐷
+class="${has?'has-record':''}"
 
-<p>
+onclick="openRecord('${date}')"
 
-暂无记录
+>
 
-</p>
-
-</div>
-
-`;
-
-
-return;
-
-}
-
-
-
-
-
-
-
-
-box.innerHTML=
-
-`
-
-<div class="diary-card">
-
-
-<h3>
-
-🌸 ${date}
-
-</h3>
-
-
-
-<p>
-
-🔨 阶段：
-
-${r.stage}
-
-</p>
-
-
-
-
-<p>
-
-✨ 完成：
-
-${r.done || "暂无"}
-
-</p>
-
-
-
-
-
-<p>
-
-⚠️ 问题：
-
-${r.problem || "暂无"}
-
-</p>
-
-
-
-
-
-<p>
-
-💰 花费：
-
-${r.money} 元
-
-</p>
-
-
-
-
-
-<p>
-
-📷照片：
-
-${r.photos.length} 张
-
-</p>
-
-
-
+${d}
 
 </div>
 
@@ -1039,230 +1093,11 @@ ${r.photos.length} 张
 
 
 
-
-
-
-
-
-
-
-// =====================
-// 图片上传
-// =====================
-
-
-
-function addDailyPhotos(event){
-
-
-
-let files =
-event.target.files;
-
-
-
-let date =
-window.currentRecord;
-
-
-
-
-
-if(!date)return;
-
-
-
-
-
-
-if(!data.records[date]){
-
-
-data.records[date]={
-
-stage:"水电施工",
-
-done:"",
-
-problem:"",
-
-chat:"",
-
-money:0,
-
-summary:"",
-
-photos:[]
-
-};
-
-
-
-}
-
-
-
-
-
-
-
-let type =
-document.getElementById(
-"photoType"
-).value;
-
-
-
-
-
-
-
-
-Array.from(files)
-.forEach(function(file){
-
-
-
-let reader =
-new FileReader();
-
-
-
-
-
-reader.onload=function(e){
-
-
-
-data.records[date]
-.photos
-.push({
-
-
-src:e.target.result,
-
-
-type:type,
-
-
-time:new Date()
-.toLocaleString()
-
-
-
-});
-
-
-
-
-
-
-saveData();
-
-
-
-
-renderPhotos(date);
-
-
-
-
-};
-
-
-
-
-
-
-reader.readAsDataURL(file);
-
-
-
-});
-
-
-
 }
 
 
 // =====================
-// 图片显示
-// =====================
-
-
-function renderPhotos(date){
-
-
-
-let box =
-document.getElementById(
-"photoPreview"
-);
-
-
-
-if(!box)return;
-
-
-
-box.innerHTML="";
-
-
-
-let photos =
-data.records[date]?.photos || [];
-
-
-
-
-
-photos.forEach(function(item){
-
-
-
-let img =
-document.createElement("img");
-
-
-
-img.src =
-item.src;
-
-
-
-
-
-img.onclick=function(){
-
-
-openPhoto(item.src);
-
-
-};
-
-
-
-
-
-box.appendChild(img);
-
-
-
-});
-
-
-
-}
-
-
-
-
-
-
-
-
-// =====================
-// 图片查看
+// 图片放大
 // =====================
 
 
@@ -1287,7 +1122,9 @@ document.getElementById(
 
 
 
+
 if(viewer && img){
+
 
 
 img.src =
@@ -1299,11 +1136,13 @@ viewer.style.display =
 "flex";
 
 
-}
-
-
 
 }
+
+
+
+}
+
 
 
 
@@ -1344,76 +1183,33 @@ viewer.style.display =
 
 
 // =====================
-// 验收系统
+// 问题添加
 // =====================
 
 
 
-let checkItems=[
-
-
-"管线照片保存",
-
-"水管打压完成",
-
-"插座定位确认",
-
-"电箱回路检查",
-
-"水电图保存"
-
-
-];
+function addProblem(title){
 
 
 
+data.problems.push({
 
 
+title:title,
 
 
-function renderChecks(){
-
-
-
-let box =
-document.querySelector(
-"#work .diary-card:nth-of-type(2)"
-);
-
-
-
-if(!box)return;
-
-
-
-}
-
-
-
-
-
-function saveCheck(index,status){
-
-
-
-if(!data.checks[index]){
-
-
-data.checks[index]={};
-
-
-}
-
-
-
-data.checks[index].done =
-status;
-
-
-
-data.checks[index].time =
+date:
 new Date()
-.toLocaleString();
+.toLocaleDateString(),
+
+
+status:"🟡 待处理"
+
+
+
+});
+
+
 
 
 
@@ -1421,6 +1217,10 @@ saveData();
 
 
 
+renderProblems();
+
+
+
 }
 
 
@@ -1432,7 +1232,91 @@ saveData();
 
 
 // =====================
-// 初始化
+// 更新阶段
+// =====================
+
+
+
+function updateStage(stage,progress){
+
+
+
+data.project.stage =
+stage;
+
+
+
+data.project.progress =
+progress;
+
+
+
+saveData();
+
+
+
+init();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================
+// 更新费用
+// =====================
+
+
+
+function updateMoney(num){
+
+
+
+data.money.extra += Number(num);
+
+
+
+saveData();
+
+
+
+let box =
+document.getElementById(
+"extraMoney"
+);
+
+
+
+if(box){
+
+
+box.innerText =
+"¥"+data.money.extra;
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================
+// 页面启动
 // =====================
 
 
@@ -1441,6 +1325,7 @@ window.onload=function(){
 
 
 init();
+
 
 
 };
