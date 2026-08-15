@@ -1,28 +1,35 @@
-const KEY = "zhuwo_v2";
+const KEY = "zhuwo_v3";
+
 
 let data = JSON.parse(
 localStorage.getItem(KEY)
 ) || {
 
 project:{
-name:"我的装修",
-budget:95000,
-spent:0
+name:"我的新家",
+start:"2026-08-01",
+stage:"水电施工",
+progress:45
 },
 
-changes:[],
 
-quotes:[],
+diary:[],
 
-chats:[],
 
-checks:[]
+money:{
+total:95000,
+paid:30000
+},
+
+
+work:[]
 
 };
 
 
 
-// 保存
+
+// 保存数据
 
 function save(){
 
@@ -35,27 +42,37 @@ JSON.stringify(data)
 
 
 
-
-
 // 页面切换
 
 function openPage(id){
 
-document.querySelectorAll(".page")
-.forEach(p=>{
 
-p.classList.remove("active");
+document
+.querySelectorAll(".page")
+.forEach(page=>{
+
+page.classList.remove("active");
 
 });
 
 
-document.getElementById(id)
-.classList.add("active");
+
+let target =
+document.getElementById(id);
+
+
+
+if(target){
+
+target.classList.add("active");
+
+}
 
 
 window.scrollTo(0,0);
 
 }
+
 
 
 
@@ -69,114 +86,58 @@ openPage("home");
 
 
 
-// 初始化
+
+
+// 初始化首页
+
 
 function init(){
 
 
-document.getElementById("projectName")
+document
+.getElementById("currentStage")
 .innerText =
-data.project.name;
+data.project.stage;
 
 
 
-document.getElementById("budget")
+document
+.getElementById("progressNum")
 .innerText =
-"¥"+data.project.budget;
+data.project.progress;
 
 
 
-document.getElementById("spent")
+document
+.getElementById("progressBar")
+.style.width =
+data.project.progress+"%";
+
+
+
+// 装修天数
+
+let start =
+new Date(data.project.start);
+
+
+let today =
+new Date();
+
+
+let days =
+Math.floor(
+(today-start)
+/86400000
+)+1;
+
+
+
+document
+.getElementById("dayText")
 .innerText =
-"¥"+data.project.spent;
+"你的新家正在慢慢变好 ❤️ 已装修 "+days+" 天";
 
-
-
-document.getElementById("risk")
-.innerText =
-data.quotes.length+
-"项";
-
-
-
-renderChanges();
-
-
-}
-
-
-
-
-// 合同折叠
-
-document.querySelectorAll(".collapse-head")
-.forEach(head=>{
-
-
-head.onclick=function(){
-
-
-this.parentElement.classList.toggle("open");
-
-
-let s=this.querySelector("span");
-
-
-s.innerText =
-s.innerText==="+"?
-"-":
-"+";
-
-
-}
-
-
-});
-
-
-
-
-
-
-
-// 增项
-
-
-function addChange(){
-
-
-let name =
-prompt(
-"请输入增项名称"
-);
-
-
-if(!name)return;
-
-
-let money =
-prompt(
-"请输入金额"
-);
-
-
-data.changes.push({
-
-name:name,
-
-money:Number(money)||0,
-
-status:"待确认",
-
-date:new Date()
-.toLocaleDateString()
-
-});
-
-
-save();
-
-renderChanges();
 
 
 }
@@ -185,155 +146,12 @@ renderChanges();
 
 
 
-function renderChanges(){
+// 修改进度
 
+function updateProgress(num){
 
-let box =
-document.getElementById(
-"changeList"
-);
 
-
-if(!box)return;
-
-
-
-if(data.changes.length===0){
-
-box.innerHTML=
-`
-<div class="empty">
-暂无增项记录
-</div>
-`;
-
-return;
-
-}
-
-
-
-box.innerHTML="";
-
-
-
-data.changes.forEach((item,index)=>{
-
-
-box.innerHTML+=
-
-`
-
-<div class="card">
-
-
-<h3>
-
-${item.name}
-
-</h3>
-
-
-<p>
-
-金额：
-¥${item.money}
-
-</p>
-
-
-<p>
-
-状态：
-${item.status}
-
-</p>
-
-
-
-<button 
-class="secondary"
-onclick="deleteChange(${index})">
-
-删除
-
-</button>
-
-
-</div>
-
-`;
-
-
-
-});
-
-
-
-}
-
-
-
-
-function deleteChange(i){
-
-
-if(confirm("删除这条增项？")){
-
-
-data.changes.splice(i,1);
-
-
-save();
-
-
-renderChanges();
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-// 设置保存
-
-
-function saveSetting(){
-
-
-let name =
-document.getElementById(
-"setProject"
-).value;
-
-
-
-let budget =
-document.getElementById(
-"setBudget"
-).value;
-
-
-
-if(name){
-
-data.project.name=name;
-
-}
-
-
-if(budget){
-
-data.project.budget=
-Number(budget);
-
-}
+data.project.progress=num;
 
 
 save();
@@ -342,17 +160,144 @@ save();
 init();
 
 
-alert("保存成功");
+}
+
+
+
+
+
+
+// 添加施工记录
+
+
+function addWork(){
+
+
+let text =
+prompt(
+"今天施工完成了什么？"
+);
+
+
+
+if(!text)return;
+
+
+
+data.work.push({
+
+date:
+new Date()
+.toLocaleDateString(),
+
+
+content:text
+
+});
+
+
+
+save();
+
+
+
+alert(
+"已记录 🐷"
+);
+
 
 }
 
 
 
 
-// 导出数据
+
+// 添加日记
 
 
-function exportData(){
+function addDiary(){
+
+
+let text =
+prompt(
+"记录今天装修变化"
+);
+
+
+
+if(!text)return;
+
+
+
+data.diary.push({
+
+date:
+new Date()
+.toLocaleDateString(),
+
+
+text:text
+
+});
+
+
+
+save();
+
+
+
+alert(
+"装修日记保存成功 🌸"
+);
+
+
+}
+
+
+
+
+
+
+// 添加付款
+
+
+function addMoney(){
+
+
+let money =
+prompt(
+"输入付款金额"
+);
+
+
+
+if(!money)return;
+
+
+
+data.money.paid +=
+Number(money);
+
+
+
+save();
+
+
+alert(
+"付款已记录"
+);
+
+
+}
+
+
+
+
+
+// 数据备份
+
+
+function backup(){
 
 
 let blob =
@@ -383,9 +328,8 @@ a.href =
 URL.createObjectURL(blob);
 
 
-
-a.download =
-"猪窝备份.json";
+a.download=
+"猪窝装修备份.json";
 
 
 a.click();
@@ -397,29 +341,8 @@ a.click();
 
 
 
-// 清空
 
-
-function clearData(){
-
-
-if(confirm(
-"确定删除全部装修数据？"
-)){
-
-
-localStorage.removeItem(KEY);
-
-
-location.reload();
-
-
-}
-
-
-}
-
-
+// 页面启动
 
 
 init();
