@@ -1120,3 +1120,38 @@ border-radius:15px;
 
 
 }
+.photo-viewer{
+
+display:none;
+
+position:fixed;
+
+left:0;
+
+right:0;
+
+top:0;
+
+bottom:0;
+
+background:rgba(0,0,0,.75);
+
+z-index:999;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+
+.photo-viewer img{
+
+max-width:92%;
+
+max-height:85%;
+
+border-radius:20px;
+
+}
