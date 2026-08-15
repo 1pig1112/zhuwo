@@ -830,6 +830,13 @@ img.src =
 src;
 
 
+img.onclick=function(){
+
+openPhoto(src);
+
+};
+
+
 
 box.appendChild(img);
 
