@@ -1,17 +1,21 @@
-// ===============================
-// 猪窝 3.7.2 app.js
-// 装修进度管家修正版
-// ===============================
+
+// =================================
+// 猪窝 3.8 验收管家版
+// =================================
 
 
-const KEY = "zhuwo372";
+const KEY = "zhuwo38";
 
 
 
 let data = JSON.parse(
+
 localStorage.getItem(KEY)
+
 )
+
 ||
+
 {
 
 
@@ -31,7 +35,11 @@ progress:60
 
 
 
+
+
 records:{},
+
+
 
 
 
@@ -39,7 +47,181 @@ photos:[],
 
 
 
+
+
 problems:[],
+
+
+
+
+
+checks:{
+
+
+
+
+
+water:{
+
+
+title:"🔌 水电验收",
+
+
+items:[
+
+"水管打压记录",
+
+"管线照片保存",
+
+"电路测试",
+
+"插座定位确认",
+
+"强弱电检查",
+
+"水电图保存",
+
+"回路标识",
+
+"封槽前检查"
+
+]
+
+
+},
+
+
+
+
+
+waterproof:{
+
+
+title:"💧 防水验收",
+
+
+items:[
+
+"防水高度检查",
+
+"阴角处理",
+
+"闭水48小时",
+
+"门槛防水",
+
+"验收照片保存"
+
+]
+
+
+},
+
+
+
+
+
+
+tile:{
+
+
+title:"🧱 瓦工验收",
+
+
+items:[
+
+"瓷砖空鼓检查",
+
+"平整度检查",
+
+"阴阳角检查",
+
+"砖缝检查",
+
+"保护措施",
+
+"验收照片"
+
+]
+
+
+},
+
+
+
+
+
+
+paint:{
+
+
+title:"🎨 油工验收",
+
+
+items:[
+
+"墙面平整",
+
+"阴阳角",
+
+"开裂检查",
+
+"颜色确认",
+
+"成品保护"
+
+]
+
+
+},
+
+
+
+
+
+
+install:{
+
+
+title:"🚪 安装验收",
+
+
+items:[
+
+"门安装",
+
+"柜体安装",
+
+"五金检查",
+
+"电器安装",
+
+"灯具检查",
+
+"卫浴检查",
+
+"开关检查",
+
+"整体检查"
+
+]
+
+
+}
+
+
+
+
+
+},
+
+
+
+
+
+checkPhotos:[],
+
+
 
 
 
@@ -59,7 +241,12 @@ extra:0
 
 
 
+
+
 };
+
+
+
 
 
 
@@ -86,9 +273,11 @@ JSON.stringify(data)
 
 
 
-// ===============================
-// 页面切换（修复日志空白）
-// ===============================
+
+
+// =================================
+// 页面切换
+// =================================
 
 
 function openPage(id){
@@ -109,15 +298,15 @@ p.classList.remove("active");
 
 
 
-let target =
+let page =
 document.getElementById(id);
 
 
 
-if(target){
+if(page){
 
 
-target.classList.add("active");
+page.classList.add("active");
 
 
 }
@@ -127,8 +316,8 @@ target.classList.add("active");
 
 
 
-if(id==="calendar"){
 
+if(id==="calendar"){
 
 
 setTimeout(function(){
@@ -140,8 +329,20 @@ renderCalendar();
 },100);
 
 
+}
+
+
+
+
+
+if(id==="check"){
+
+
+renderCheckSummary();
+
 
 }
+
 
 
 
@@ -153,6 +354,8 @@ renderAllPhotos();
 
 
 }
+
+
 
 
 
@@ -168,12 +371,13 @@ renderProblems();
 
 
 
+
+
 window.scrollTo(0,0);
 
 
 
 }
-
 
 
 
@@ -197,9 +401,10 @@ openPage("home");
 
 
 
-// ===============================
+
+// =================================
 // 首页初始化
-// ===============================
+// =================================
 
 
 
@@ -220,11 +425,13 @@ new Date();
 
 
 
+
 let days =
 Math.floor(
-(today-start)/86400000
-)+1;
 
+(today-start)/86400000
+
+)+1;
 
 
 
@@ -249,7 +456,6 @@ days;
 
 
 
-
 let stage =
 document.getElementById("stage");
 
@@ -268,8 +474,6 @@ data.project.stage;
 
 
 
-
-
 let bar =
 document.getElementById("progressBar");
 
@@ -283,8 +487,6 @@ data.project.progress+"%";
 
 
 }
-
-
 
 
 
@@ -309,15 +511,577 @@ data.project.progress+"%";
 }
 
 
+// =================================
+// 验收中心
+// =================================
+
+
+
+let currentCheck = "";
 
 
 
 
 
 
-// ===============================
-// 日期格式
-// ===============================
+
+function openCheck(type){
+
+
+
+currentCheck = type;
+
+
+
+openPage("checkDetail");
+
+
+
+
+
+let check =
+data.checks[type];
+
+
+
+if(!check){
+
+
+check={};
+
+
+data.checks[type]=check;
+
+
+saveData();
+
+
+}
+
+
+
+
+
+
+let config =
+data.checksConfig ?
+data.checksConfig[type]
+:
+null;
+
+
+
+
+
+
+
+let title =
+document.getElementById(
+"checkTitle"
+);
+
+
+
+if(title){
+
+
+title.innerText =
+data.checks[type]?.title
+||
+data.checks[type]?.name
+||
+"验收项目";
+
+
+}
+
+
+
+
+
+
+renderCheckItems(type);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =================================
+// 渲染验收项目
+// =================================
+
+
+
+function renderCheckItems(type){
+
+
+
+let box =
+document.getElementById(
+"checkItems"
+);
+
+
+
+if(!box)return;
+
+
+
+box.innerHTML="";
+
+
+
+
+
+
+
+let allItems =
+getCheckItems(type);
+
+
+
+
+
+let checked =
+data.checks[type]?.done
+||
+[];
+
+
+
+
+
+
+
+
+allItems.forEach(function(item,index){
+
+
+
+let isDone =
+checked.includes(index);
+
+
+
+
+
+
+box.innerHTML +=
+
+`
+
+<div class="check-item ${isDone?'done':''}">
+
+
+<input
+
+type="checkbox"
+
+${isDone?'checked':''}
+
+onclick="toggleCheck('${type}',${index})">
+
+
+<span>
+
+${item}
+
+</span>
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+
+
+
+
+updateDetailProgress(type);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =================================
+// 获取检查列表
+// =================================
+
+
+
+function getCheckItems(type){
+
+
+
+let map={
+
+
+
+
+water:[
+
+"水管打压记录",
+
+"管线照片保存",
+
+"电路测试",
+
+"插座定位确认",
+
+"强弱电检查",
+
+"水电图保存",
+
+"回路标识",
+
+"封槽前检查"
+
+],
+
+
+
+
+waterproof:[
+
+"防水高度检查",
+
+"阴角处理",
+
+"闭水48小时",
+
+"门槛防水",
+
+"验收照片保存"
+
+],
+
+
+
+
+tile:[
+
+"瓷砖空鼓检查",
+
+"平整度检查",
+
+"阴阳角检查",
+
+"砖缝检查",
+
+"保护措施",
+
+"验收照片"
+
+],
+
+
+
+
+
+paint:[
+
+"墙面平整",
+
+"阴阳角",
+
+"开裂检查",
+
+"颜色确认",
+
+"成品保护"
+
+],
+
+
+
+
+
+install:[
+
+"门安装",
+
+"柜体安装",
+
+"五金检查",
+
+"电器安装",
+
+"灯具检查",
+
+"卫浴检查",
+
+"开关检查",
+
+"整体检查"
+
+]
+
+
+
+};
+
+
+
+return map[type] || [];
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =================================
+// 勾选保存
+// =================================
+
+
+
+function toggleCheck(type,index){
+
+
+
+if(!data.checks[type]){
+
+
+data.checks[type]={
+
+done:[]
+
+};
+
+
+}
+
+
+
+
+
+let done =
+data.checks[type].done;
+
+
+
+
+
+
+
+if(done.includes(index)){
+
+
+
+done.splice(
+
+done.indexOf(index),
+
+1
+
+);
+
+
+
+}else{
+
+
+
+done.push(index);
+
+
+
+}
+
+
+
+
+
+
+saveData();
+
+
+
+
+
+renderCheckItems(type);
+
+
+
+renderCheckSummary();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =================================
+// 详情进度
+// =================================
+
+
+
+function updateDetailProgress(type){
+
+
+
+let total =
+getCheckItems(type).length;
+
+
+
+let done =
+data.checks[type]?.done?.length || 0;
+
+
+
+
+
+
+let percent =
+total===0
+?
+0
+:
+Math.round(done/total*100);
+
+
+
+
+
+
+let bar =
+document.getElementById(
+"detailProgress"
+);
+
+
+
+if(bar){
+
+
+bar.style.width =
+percent+"%";
+
+
+}
+
+
+
+
+
+
+
+let count =
+document.getElementById(
+"detailCount"
+);
+
+
+
+if(count){
+
+
+count.innerText =
+done+" / "+total;
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =================================
+// 总验收进度
+// =================================
+
+
+
+function renderCheckSummary(){
+
+
+
+let total=0;
+
+let complete=0;
+
+
+
+
+
+
+Object.keys(data.checks)
+.forEach(function(key){
+
+
+
+let all =
+getCheckItems(key).length;
+
+
+
+let done =
+data.checks[key]?.done?.length || 0;
+
+
+
+
+
+total++;
+
+
+
+if(all>0 && done===all){
+
+
+complete
+  
+
+// =================================
+// 施工日志
+// =================================
+
 
 
 function formatDate(y,m,d){
@@ -336,13 +1100,6 @@ String(d).padStart(2,"0");
 
 
 
-
-
-// ===============================
-// 日历
-// ===============================
-
-
 let currentMonth =
 new Date();
 
@@ -352,8 +1109,8 @@ new Date();
 
 
 
-function changeMonth(num){
 
+function changeMonth(num){
 
 
 currentMonth.setMonth(
@@ -376,6 +1133,7 @@ renderCalendar();
 
 
 
+
 function renderCalendar(){
 
 
@@ -387,15 +1145,7 @@ document.getElementById(
 
 
 
-
-
-if(!box){
-
-
-return;
-
-
-}
+if(!box)return;
 
 
 
@@ -412,8 +1162,6 @@ currentMonth.getFullYear();
 
 let m =
 currentMonth.getMonth();
-
-
 
 
 
@@ -467,6 +1215,7 @@ m+1,
 
 
 
+
 for(
 let i=0;
 i<first;
@@ -477,11 +1226,7 @@ i++
 box.innerHTML +=
 "<div></div>";
 
-
 }
-
-
-
 
 
 
@@ -503,8 +1248,6 @@ d
 
 
 
-
-
 let has =
 data.records[date];
 
@@ -517,12 +1260,9 @@ box.innerHTML +=
 
 `
 
-<div 
-class="${has?'has-record':''}"
+<div class="${has?'has-record':''}"
 
-onclick="openRecord('${date}')"
-
->
+onclick="openRecord('${date}')">
 
 ${d}
 
@@ -539,16 +1279,20 @@ ${d}
 }
 
 
-// ===============================
-// 新建施工记录
-// ===============================
+
+
+
+
 
 
 function newDiary(){
 
 
+
 let now =
 new Date();
+
+
 
 
 
@@ -565,6 +1309,8 @@ now.getDate()
 
 
 
+
+
 openRecord(date);
 
 
@@ -577,10 +1323,6 @@ openRecord(date);
 
 
 
-
-// ===============================
-// 打开施工日志
-// ===============================
 
 
 function openRecord(date){
@@ -609,21 +1351,13 @@ done:"",
 problem:"",
 
 
-chat:"",
-
-
 money:0,
-
-
-summary:"",
 
 
 photos:[]
 
 
-
 };
-
 
 
 saveData();
@@ -635,19 +1369,7 @@ saveData();
 
 
 
-
 openPage("record");
-
-
-
-
-
-
-let r =
-data.records[date];
-
-
-
 
 
 
@@ -662,136 +1384,10 @@ if(title){
 
 
 title.innerText =
-date+" 施工日志";
+date+"施工日志";
 
 
 }
-
-
-
-
-
-let stage =
-document.getElementById(
-"recordStage"
-);
-
-
-
-if(stage){
-
-
-stage.value =
-r.stage;
-
-
-}
-
-
-
-
-
-let done =
-document.getElementById(
-"recordDone"
-);
-
-
-
-if(done){
-
-
-done.value =
-r.done;
-
-
-}
-
-
-
-
-
-let problem =
-document.getElementById(
-"recordProblem"
-);
-
-
-
-if(problem){
-
-
-problem.value =
-r.problem;
-
-
-}
-
-
-
-
-
-let chat =
-document.getElementById(
-"recordChat"
-);
-
-
-
-if(chat){
-
-
-chat.value =
-r.chat || "";
-
-
-}
-
-
-
-
-
-let money =
-document.getElementById(
-"recordMoney"
-);
-
-
-
-if(money){
-
-
-money.value =
-r.money;
-
-
-}
-
-
-
-
-
-let summary =
-document.getElementById(
-"recordSummary"
-);
-
-
-
-if(summary){
-
-
-summary.value =
-r.summary || "";
-
-
-}
-
-
-
-
-
-renderPhotos(date);
 
 
 
@@ -803,10 +1399,6 @@ renderPhotos(date);
 
 
 
-
-// ===============================
-// 保存记录
-// ===============================
 
 
 function saveRecord(){
@@ -824,40 +1416,14 @@ if(!date)return;
 
 
 
-let oldPhotos =
-data.records[date]?.photos || [];
-
-
-
-
-
-
-let money =
-Number(
-
-document.getElementById(
-"recordMoney"
-)?.value || 0
-
-);
-
-
-
-
-
-
-
 data.records[date]={
-
 
 
 stage:
 
 document.getElementById(
 "recordStage"
-)?.value || "水电施工",
-
-
+)?.value || "",
 
 
 
@@ -869,9 +1435,6 @@ document.getElementById(
 
 
 
-
-
-
 problem:
 
 document.getElementById(
@@ -880,36 +1443,9 @@ document.getElementById(
 
 
 
+photos:
 
-
-chat:
-
-document.getElementById(
-"recordChat"
-)?.value || "",
-
-
-
-
-
-money:money,
-
-
-
-
-
-summary:
-
-document.getElementById(
-"recordSummary"
-)?.value || "",
-
-
-
-
-
-photos:oldPhotos
-
+data.records[date]?.photos || []
 
 
 };
@@ -919,22 +1455,7 @@ photos:oldPhotos
 
 
 
-
-if(money>0){
-
-
-data.money.extra += money;
-
-
-}
-
-
-
-
-
-
 saveData();
-
 
 
 
@@ -944,9 +1465,7 @@ alert(
 
 
 
-
-
-openPage("home");
+openPage("calendar");
 
 
 
@@ -959,86 +1478,34 @@ openPage("home");
 
 
 
-// ===============================
-// 上传照片
-// ===============================
 
-
-function addDailyPhotos(event){
-
-
-
-let files =
-event.target.files;
+// =================================
+// 问题中心
+// =================================
 
 
 
-let date =
-window.currentRecord;
+function addProblem(title){
 
 
 
-if(!date)return;
+data.problems.push({
+
+
+title:title,
+
+
+date:
+
+new Date()
+.toLocaleDateString(),
 
 
 
+status:"🟡 待整改"
 
 
-
-
-Array.from(files)
-.forEach(function(file){
-
-
-
-let reader =
-new FileReader();
-
-
-
-
-
-
-reader.onload=function(e){
-
-
-
-let photo={
-
-
-src:e.target.result,
-
-
-type:
-
-document.getElementById(
-"photoType"
-)?.value || "施工照片",
-
-
-
-date:date
-
-
-
-};
-
-
-
-
-
-
-
-data.records[date]
-.photos
-.push(photo);
-
-
-
-
-
-data.photos.push(photo);
-
+});
 
 
 
@@ -1048,28 +1515,7 @@ saveData();
 
 
 
-
-
-
-renderPhotos(date);
-
-
-
-
-
-
-};
-
-
-
-
-
-
-reader.readAsDataURL(file);
-
-
-
-});
+renderProblems();
 
 
 
@@ -1082,19 +1528,13 @@ reader.readAsDataURL(file);
 
 
 
-
-// ===============================
-// 显示照片
-// ===============================
-
-
-function renderPhotos(date){
+function renderProblems(){
 
 
 
 let box =
-document.getElementById(
-"photoPreview"
+document.querySelector(
+".problem-list"
 );
 
 
@@ -1110,47 +1550,42 @@ box.innerHTML="";
 
 
 
-let photos =
-data.records[date]?.photos || [];
+data.problems.forEach(function(item){
 
 
 
+box.innerHTML +=
+
+`
+
+<div class="problem-item">
 
 
+<h3>
 
-photos.forEach(function(item){
+${item.title}
 
-
-
-let img =
-document.createElement("img");
+</h3>
 
 
+<p>
+
+${item.date}
+
+</p>
 
 
+<span>
 
-img.src =
-item.src;
+${item.status}
 
-
-
-
+</span>
 
 
-img.onclick=function(){
+</div>
 
 
-openPhoto(item.src);
-
-
-};
-
-
-
-
-
-
-box.appendChild(img);
+`;
 
 
 
@@ -1167,79 +1602,11 @@ box.appendChild(img);
 
 
 
-// ===============================
-// 全部照片
-// ===============================
 
+// =================================
+// 图片
+// =================================
 
-function renderAllPhotos(){
-
-
-
-let box =
-document.getElementById(
-"allPhotos"
-);
-
-
-
-if(!box)return;
-
-
-
-box.innerHTML="";
-
-
-
-
-
-
-
-data.photos
-.forEach(function(item){
-
-
-
-let img =
-document.createElement("img");
-
-
-
-img.src =
-item.src;
-
-
-
-
-
-
-img.onclick=function(){
-
-
-openPhoto(item.src);
-
-
-};
-
-
-
-
-
-
-box.appendChild(img);
-
-
-
-});
-
-
-
-}
-
-
-// ===============================
-// 图片放大
-// ===============================
 
 
 function openPhoto(src){
@@ -1260,14 +1627,11 @@ document.getElementById(
 
 
 
-
-
 if(viewer && img){
 
 
 img.src =
 src;
-
 
 
 viewer.style.display =
@@ -1319,247 +1683,9 @@ viewer.style.display =
 
 
 
-// ===============================
-// 问题中心
-// ===============================
-
-
-
-function renderProblems(){
-
-
-
-let box =
-document.querySelector(
-".problem-list"
-);
-
-
-
-if(!box)return;
-
-
-
-box.innerHTML="";
-
-
-
-
-
-
-if(data.problems.length===0){
-
-
-box.innerHTML=
-
-`
-
-<div class="empty-state">
-
-🐷
-
-<p>
-
-暂无问题记录
-
-</p>
-
-</div>
-
-`;
-
-return;
-
-
-}
-
-
-
-
-
-
-
-
-data.problems.forEach(function(item){
-
-
-
-box.innerHTML +=
-
-
-`
-
-<div class="problem-item">
-
-
-<h3>
-
-${item.title}
-
-</h3>
-
-
-<p>
-
-发现时间：
-
-${item.date}
-
-</p>
-
-
-
-<span>
-
-${item.status}
-
-</span>
-
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function addProblem(title){
-
-
-
-data.problems.push({
-
-
-title:title,
-
-
-date:
-
-new Date()
-.toLocaleDateString(),
-
-
-
-status:"🟡 待处理"
-
-
-
-});
-
-
-
-
-saveData();
-
-
-
-renderProblems();
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// ===============================
-// 更新阶段
-// ===============================
-
-
-
-function updateStage(stage,progress){
-
-
-
-data.project.stage =
-stage;
-
-
-
-data.project.progress =
-progress;
-
-
-
-saveData();
-
-
-
-init();
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// ===============================
-// 更新费用
-// ===============================
-
-
-
-function refreshMoney(){
-
-
-
-let box =
-document.getElementById(
-"extraMoney"
-);
-
-
-
-if(box){
-
-
-box.innerText =
-"¥"+data.money.extra;
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// ===============================
+// =================================
 // 启动
-// ===============================
+// =================================
 
 
 
@@ -1570,7 +1696,7 @@ init();
 
 
 
-refreshMoney();
+renderCheckSummary();
 
 
 
