@@ -1,8 +1,12 @@
 <!doctype html>
 <html lang="zh-CN">
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <title>猪窝 1PIG'S</title>
 
@@ -11,82 +15,109 @@
 <link rel="manifest" href="manifest.json">
 
 <meta name="theme-color" content="#111111">
+
 </head>
+
 
 <body>
 
+
 <!-- 启动画面 -->
+
 <section id="splash" class="splash">
 
-    <div class="logo-area">
+<div class="logo-area">
 
-        <img src="assets/logo.png" class="logo">
+<img src="assets/logo.png" class="logo">
 
-        <div class="brand-cn">
-            猪窝
-        </div>
 
-        <div class="brand-en">
-            1PIG'S
-        </div>
+<div class="brand-cn">
+猪窝
+</div>
 
-        <div class="line"></div>
 
-        <div class="slogan">
-            记录家的每一步
-        </div>
+<div class="brand-en">
+1PIG'S
+</div>
 
-        <div class="sub">
-            BUILDING OUR HOME
-        </div>
 
-        <div class="year">
-            2026
-        </div>
+<div class="line"></div>
 
-    </div>
+
+<div class="slogan">
+记录家的每一步
+</div>
+
+
+<div class="sub">
+BUILDING OUR HOME
+</div>
+
+
+<div class="year">
+2026
+</div>
+
+
+</div>
 
 </section>
 
 
-<!-- 主程序 -->
+
+<!-- APP主体 -->
 
 <div id="app" class="hidden">
 
 
 <header>
 
-    <div class="title">
-        猪窝
-    </div>
+<div class="title">
+猪窝
+</div>
 
-    <div class="subtitle">
-        我的家
-    </div>
+
+<div class="subtitle">
+我的家
+</div>
 
 </header>
 
 
+
 <main>
+
 
 
 <!-- 首页 -->
 
 <section id="home" class="page active">
 
-<div class="card project">
 
-<h2>我的家</h2>
+<div class="card project-card">
+
+
+<h2>
+我的家
+</h2>
+
 
 <div class="stage">
-    泥瓦施工阶段
+
+准备装修
+
 </div>
+
 
 <div class="days">
-    装修第 0 天
-</div>
+
+装修第 0 天
 
 </div>
+
+
+</div>
+
 
 
 
@@ -96,11 +127,18 @@
 装修进度
 </div>
 
-<div class="progress">
+
+<div id="progress"
+class="big-number">
+
 0%
-</div>
 
 </div>
+
+
+</div>
+
+
 
 
 
@@ -110,167 +148,502 @@
 已花费金额
 </div>
 
-<div class="money">
+
+<div id="totalMoney"
+class="big-number">
+
 ¥0
-</div>
 
 </div>
+
+
+</div>
+
+
 
 
 
 <div class="card">
 
+
 <h3>
 最近动态
 </h3>
 
-<div class="empty">
+
+<div id="recentLog"
+class="empty">
+
 暂无装修记录
-</div>
 
 </div>
+
+
+</div>
+
+
 
 
 
 <div class="grid">
 
 
-<button>
+<button onclick="openPage('logs')">
+
 📅
+
 <br>
+
 施工日志
+
 </button>
 
 
-<button>
+
+<button onclick="openPage('issues')">
+
 ⚠️
+
 <br>
+
 问题清单
+
 </button>
 
 
-<button>
+
+<button onclick="openPage('archive')">
+
 📦
+
 <br>
+
 材料档案
+
 </button>
 
 
-<button>
+
+<button onclick="openPage('archive')">
+
 📄
+
 <br>
+
 合同档案
+
 </button>
 
 
 </div>
 
 
+
+
+
+<button class="primary"
+onclick="showLogForm()">
+
+＋ 新增施工日志
+
+</button>
+
+
+
 </section>
 
 
 
-<!-- 日志 -->
 
-<section id="logs" class="page">
 
-<div class="card">
+<!-- 施工日志 -->
 
-<h2>
+<section id="logs"
+class="page">
+
+
+<div class="page-title">
+
 施工日志
-</h2>
+
+</div>
+
+
+
+<div id="logList">
+
 
 <div class="empty">
-暂无记录
-</div>
+
+暂无施工记录
 
 </div>
+
+
+</div>
+
+
 
 </section>
 
 
 
-<!-- 问题 -->
+
+
+<!-- 新增施工日志 -->
+
+<div id="logForm"
+class="modal hidden">
+
+
+<div class="modal-box">
+
+
+<h2>
+
+新增施工日志
+
+</h2>
+
+
+
+<label>
+
+施工阶段
+
+</label>
+
+
+<select id="logStage">
+
+
+<option>
+拆改
+</option>
+
+
+<option>
+水电
+</option>
+
+
+<option>
+防水
+</option>
+
+
+<option>
+泥瓦
+</option>
+
+
+<option>
+木工
+</option>
+
+
+<option>
+油漆
+</option>
+
+
+<option>
+安装
+</option>
+
+
+<option>
+软装
+</option>
+
+
+</select>
+
+
+
+
+
+<label>
+
+施工内容
+
+</label>
+
+
+<textarea id="logContent"
+placeholder="记录今天发生了什么">
+
+</textarea>
+
+
+
+
+
+<label>
+
+现场照片
+
+</label>
+
+
+<input
+id="logImages"
+type="file"
+accept="image/*"
+multiple>
+
+
+
+
+
+<div id="imagePreview"
+class="image-preview">
+
+</div>
+
+
+
+
+<button class="primary"
+onclick="saveLog()">
+
+保存记录
+
+</button>
+
+
+
+<button class="secondary"
+onclick="hideLogForm()">
+
+取消
+
+</button>
+
+
+
+</div>
+
+</div>
+<!-- 问题清单 -->
 
 <section id="issues" class="page">
 
+
+<div class="page-title">
+
+问题清单
+
+</div>
+
+
+
 <div class="card">
 
-<h2>
-问题清单
-</h2>
+
+<div class="status-row">
+
+<span>
+待处理
+</span>
+
+
+<span>
+0
+</span>
+
+</div>
+
+
+
+<div class="status-row">
+
+<span>
+处理中
+</span>
+
+
+<span>
+0
+</span>
+
+</div>
+
+
+
+<div class="status-row">
+
+<span>
+已完成
+</span>
+
+
+<span>
+0
+</span>
+
+</div>
+
+
+
+</div>
+
+
 
 <div class="empty">
-暂无问题
-</div>
+
+暂无问题记录
 
 </div>
+
+
 
 </section>
+
+
 
 
 
 <!-- 档案 -->
 
-<section id="archive" class="page">
+<section id="archive"
+class="page">
 
-<div class="card">
 
-<h2>
+<div class="page-title">
+
 档案
-</h2>
+
+</div>
 
 
-<div class="archive-item">
-📦 材料档案
+
+<div class="card archive-card"
+onclick="">
+
+📦
+
+<div>
+
+<h3>
+材料档案
+</h3>
+
+<p>
+记录品牌、型号、价格、保修
+</p>
+
 </div>
 
 
-<div class="archive-item">
-📄 合同档案
 </div>
 
 
-<div class="archive-item">
-💰 财务流水
+
+
+
+<div class="card archive-card">
+
+
+📄
+
+<div>
+
+<h3>
+合同档案
+</h3>
+
+<p>
+保存合同、附件、付款信息
+</p>
+
 </div>
 
 
 </div>
+
+
+
+
+
+<div class="card archive-card">
+
+
+💰
+
+<div>
+
+<h3>
+财务流水
+</h3>
+
+
+<p>
+记录装修支出与发票
+</p>
+
+
+</div>
+
+
+</div>
+
+
 
 </section>
+
+
+
+
 
 
 
 <!-- 我的 -->
 
-<section id="me" class="page">
+<section id="me"
+class="page">
 
-<div class="card">
 
-<h2>
+<div class="page-title">
+
 我的
-</h2>
+
+</div>
 
 
-<div class="archive-item">
+
+<div class="card menu-card">
+
 🏠 房屋管理
+
 </div>
 
 
-<div class="archive-item">
+<div class="card menu-card">
+
 ☁️ 数据同步
+
 </div>
 
 
-<div class="archive-item">
+<div class="card menu-card">
+
 📦 备份恢复
+
 </div>
 
 
+<div class="card menu-card">
+
+关于猪窝
+
 </div>
+
+
 
 </section>
+
+
 
 
 
@@ -278,39 +651,72 @@
 
 
 
+
+
+
+
+<!-- 底部导航 -->
+
 <nav>
 
-<button data-page="home">
+
+<button data-page="home"
+class="active">
+
 首页
+
 </button>
+
 
 
 <button data-page="logs">
+
 日志
+
 </button>
+
 
 
 <button data-page="issues">
+
 问题
+
 </button>
+
 
 
 <button data-page="archive">
+
 档案
+
 </button>
+
 
 
 <button data-page="me">
+
 我的
+
 </button>
 
+
+
 </nav>
+
+
+
+
 
 
 </div>
 
 
+
+
 <script src="app.js"></script>
 
+
 </body>
+
+
 </html>
