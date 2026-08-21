@@ -2,30 +2,43 @@
     box-sizing:border-box;
 }
 
+
 body{
+
     margin:0;
+
     background:#111;
+
     color:#e8e2d8;
+
     font-family:
     -apple-system,
     BlinkMacSystemFont,
     "PingFang SC",
     "Microsoft YaHei",
     sans-serif;
+
 }
 
 
-/* 启动画面 */
+
+/* ===== 启动画面 ===== */
+
 
 .splash{
 
     height:100vh;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     background:#111;
 
 }
+
 
 
 .logo-area{
@@ -35,42 +48,55 @@ body{
 }
 
 
+
 .logo{
 
     width:90px;
+
     height:90px;
+
     object-fit:contain;
+
     margin-bottom:18px;
 
 }
 
 
+
 .brand-cn{
 
     font-size:30px;
+
     letter-spacing:8px;
-    margin-left:8px;
 
 }
 
 
+
 .brand-en{
 
-    margin-top:8px;
+    margin-top:10px;
+
     font-size:16px;
+
     letter-spacing:5px;
 
 }
 
 
+
 .line{
 
     width:80px;
+
     height:1px;
-    background:#887b68;
+
+    background:#817563;
+
     margin:25px auto;
 
 }
+
 
 
 .slogan{
@@ -80,54 +106,69 @@ body{
 }
 
 
+
 .sub{
 
     margin-top:8px;
+
     font-size:12px;
+
     letter-spacing:2px;
-    opacity:.6;
+
+    opacity:.55;
 
 }
+
 
 
 .year{
 
-    margin-top:22px;
+    margin-top:20px;
+
     font-size:12px;
-    opacity:.5;
+
+    opacity:.45;
 
 }
+
 
 
 
 .hidden{
 
-    display:none;
+    display:none!important;
 
 }
 
 
-/* APP */
+
+/* ===== 主体 ===== */
+
 
 header{
 
-    padding:22px 20px 10px;
+    padding:22px 18px 8px;
 
 }
+
 
 
 .title{
 
     font-size:26px;
-    letter-spacing:4px;
+
+    letter-spacing:5px;
 
 }
+
 
 
 .subtitle{
 
     margin-top:8px;
+
     color:#aaa093;
+
     font-size:14px;
 
 }
@@ -136,7 +177,7 @@ header{
 
 main{
 
-    padding:10px 16px 90px;
+    padding:10px 16px 100px;
 
 }
 
@@ -149,6 +190,7 @@ main{
 }
 
 
+
 .page.active{
 
     display:block;
@@ -157,64 +199,99 @@ main{
 
 
 
-/* 卡片 */
+.page-title{
+
+    font-size:22px;
+
+    letter-spacing:3px;
+
+    margin:10px 0 18px;
+
+}
+
+
+
+
+/* ===== 卡片 ===== */
+
 
 .card{
 
-    background:#1b1b1a;
-    border:1px solid #2c2924;
+    background:#1a1917;
+
+    border:1px solid #302c26;
+
     border-radius:18px;
+
     padding:18px;
+
     margin-bottom:14px;
 
 }
 
 
+
+.project-card{
+
+    padding:22px;
+
+}
+
+
+
 h2{
 
     margin:0 0 14px;
+
     font-size:18px;
 
 }
 
 
+
 h3{
 
-    font-size:15px;
+    margin:0 0 10px;
+
+    font-size:16px;
 
 }
 
 
-.stage{
 
-    font-size:15px;
+.stage{
 
     color:#d2c1a8;
 
 }
 
 
+
 .days{
 
     margin-top:10px;
+
     color:#aaa093;
+
     font-size:13px;
 
 }
+
 
 
 .label{
 
     color:#aaa093;
+
     font-size:13px;
 
 }
 
 
-.progress,
-.money{
 
-    margin-top:12px;
+.big-number{
+
+    margin-top:10px;
 
     font-size:34px;
 
@@ -224,21 +301,10 @@ h3{
 
 
 
-/* 空状态 */
-
-.empty{
-
-    color:#777;
-
-    font-size:14px;
-
-    padding:20px 0;
-
-}
 
 
+/* ===== 首页按钮 ===== */
 
-/* 首页按钮 */
 
 .grid{
 
@@ -256,13 +322,13 @@ h3{
 
     height:90px;
 
-    border-radius:18px;
+    background:#191816;
+
+    color:#e8e2d8;
 
     border:1px solid #302c26;
 
-    background:#191817;
-
-    color:#e8e2d8;
+    border-radius:18px;
 
     font-size:15px;
 
@@ -270,18 +336,292 @@ h3{
 
 
 
-.archive-item{
+.primary{
 
-    padding:18px 0;
+    width:100%;
 
-    border-bottom:1px solid #2a2722;
+    margin-top:12px;
+
+    padding:13px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#d6c4a8;
+
+    color:#111;
+
+    font-size:15px;
+
+}
+
+
+
+.secondary{
+
+    width:100%;
+
+    margin-top:10px;
+
+    padding:12px;
+
+    border-radius:14px;
+
+    border:1px solid #3b352c;
+
+    background:none;
+
+    color:#ddd;
+
+}
+
+
+
+
+/* ===== 空状态 ===== */
+
+
+.empty{
+
+    text-align:center;
+
+    padding:25px 0;
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+
+
+
+/* ===== 日志 ===== */
+
+
+.log-card{
+
+    background:#1a1917;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    margin-bottom:12px;
+
+}
+
+
+
+.log-date{
+
+    color:#aaa093;
+
+    font-size:13px;
+
+}
+
+
+
+.log-stage{
+
+    margin-top:8px;
+
+    color:#d2c1a8;
 
     font-size:16px;
 
 }
 
 
-.archive-item:last-child{
+
+.log-content{
+
+    margin-top:12px;
+
+    line-height:1.6;
+
+}
+
+
+
+
+/* ===== 弹窗 ===== */
+
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:center;
+
+    z-index:20;
+
+}
+
+
+
+.modal-box{
+
+    width:100%;
+
+    max-width:600px;
+
+    background:#191816;
+
+    border-radius:24px 24px 0 0;
+
+    padding:22px;
+
+}
+
+
+
+
+label{
+
+    display:block;
+
+    color:#aaa093;
+
+    font-size:13px;
+
+    margin-top:15px;
+
+    margin-bottom:6px;
+
+}
+
+
+
+select,
+textarea,
+input{
+
+    width:100%;
+
+    background:#111;
+
+    border:1px solid #383229;
+
+    color:#eee;
+
+    border-radius:12px;
+
+    padding:12px;
+
+    font-size:15px;
+
+}
+
+
+
+textarea{
+
+    height:100px;
+
+    resize:none;
+
+}
+
+
+
+
+
+.image-preview{
+
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin-top:12px;
+
+}
+
+
+
+.image-preview img{
+
+    width:75px;
+
+    height:75px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+}
+
+
+
+
+
+/* ===== 档案 ===== */
+
+
+.archive-card{
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:center;
+
+}
+
+
+
+.archive-card p{
+
+    margin:5px 0 0;
+
+    color:#aaa093;
+
+    font-size:13px;
+
+}
+
+
+
+
+.menu-card{
+
+    font-size:16px;
+
+}
+
+
+
+
+
+/* ===== 状态 ===== */
+
+
+.status-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #302c26;
+
+}
+
+
+.status-row:last-child{
 
     border:none;
 
@@ -289,7 +629,8 @@ h3{
 
 
 
-/* 底部导航 */
+/* ===== 底部 ===== */
+
 
 nav{
 
@@ -301,17 +642,19 @@ nav{
 
     right:0;
 
-    height:70px;
+    height:72px;
 
     background:#151515;
 
-    border-top:1px solid #2b2823;
+    border-top:1px solid #302c26;
 
     display:flex;
 
     justify-content:space-around;
 
     align-items:center;
+
+    z-index:10;
 
 }
 
@@ -323,7 +666,7 @@ nav button{
 
     border:none;
 
-    color:#aaa093;
+    color:#888;
 
     font-size:13px;
 
@@ -339,22 +682,14 @@ nav button.active{
 
 
 
-/* 手机适配 */
 
 @media(max-width:430px){
 
-    .title{
-
-        font-size:24px;
-
-    }
-
-
-    .progress,
-    .money{
+    .big-number{
 
         font-size:30px;
 
     }
+
 
 }
