@@ -3,7 +3,7 @@
 // app.js
 // =====================
 
-
+alert("app.js加载成功");
 
 document.addEventListener("DOMContentLoaded",()=>{
 
