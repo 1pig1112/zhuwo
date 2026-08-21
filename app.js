@@ -133,7 +133,24 @@ function saveStorage(){
 // 打开新增日志
 // =====================
 
+const addLogBtn =
+document.getElementById("addLogBtn");
 
+
+if(addLogBtn){
+
+    addLogBtn.addEventListener(
+        "click",
+        ()=>{
+
+            document
+            .getElementById("logForm")
+            .classList.remove("hidden");
+
+        }
+    );
+
+}
 window.showLogForm=function(){
 
 
