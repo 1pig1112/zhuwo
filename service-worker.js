@@ -1,4 +1,4 @@
-const CACHE_NAME = "pignest-v1";
+const CACHE_NAME = "pignest-v2";
 
 
 const FILES_TO_CACHE = [
