@@ -151,13 +151,13 @@ if(addLogBtn){
     );
 
 }
-window.showLogForm=function(){
 
+
+window.showLogForm=function(){
 
     document
     .getElementById("logForm")
     .classList.remove("hidden");
-
 
 };
 
