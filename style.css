@@ -693,3 +693,11 @@ nav button.active{
 
 
 }
+.primary{
+    position:relative;
+    z-index:5;
+}
+
+main{
+    padding-bottom:140px;
+}
