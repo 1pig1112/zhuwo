@@ -4,7 +4,17 @@
 // =====================
 
 
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("click",(e)=>{
+
+    if(e.target.id==="addLogBtn"){
+
+        document
+        .getElementById("logForm")
+        .classList.remove("hidden");
+
+    }
+
+});
 
 
 // 启动画面
