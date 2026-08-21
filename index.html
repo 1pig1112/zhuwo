@@ -1,1422 +1,166 @@
 <!doctype html>
 <html lang="zh-CN">
-
 <head>
-
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1,viewport-fit=cover">
-
-<title>猪窝</title>
-
-<link rel="manifest" href="manifest.json">
+<title>猪窝 1PIG'S</title>
 
 <link rel="stylesheet" href="style.css">
 
-</head>
+<link rel="manifest" href="manifest.json">
 
+<meta name="theme-color" content="#111111">
+</head>
 
 <body>
 
+<!-- 启动画面 -->
+<section id="splash" class="splash">
 
-<header class="pig-header">
+    <div class="logo-area">
 
-<div class="pig-avatar">
+        <img src="assets/logo.png" class="logo">
 
-🐷
+        <div class="brand-cn">
+            猪窝
+        </div>
 
-</div>
+        <div class="brand-en">
+            1PIG'S
+        </div>
+
+        <div class="line"></div>
+
+        <div class="slogan">
+            记录家的每一步
+        </div>
+
+        <div class="sub">
+            BUILDING OUR HOME
+        </div>
+
+        <div class="year">
+            2026
+        </div>
+
+    </div>
+
+</section>
 
 
-<div>
+<!-- 主程序 -->
 
-<h1>
-猪窝
-</h1>
+<div id="app" class="hidden">
 
 
-<p>
-装修进度 · 验收管家 🌸
-</p>
+<header>
 
+    <div class="title">
+        猪窝
+    </div>
 
-</div>
-
+    <div class="subtitle">
+        我的家
+    </div>
 
 </header>
-
-
-
 
 
 <main>
 
 
-
-
-
 <!-- 首页 -->
-
 
 <section id="home" class="page active">
 
+<div class="card project">
 
-<div class="welcome-card">
+<h2>我的家</h2>
 
-
-<div class="big-pig">
-
-🐷🏠
-
+<div class="stage">
+    泥瓦施工阶段
 </div>
 
-
-<h2>
-
-我的家正在成长
-
-</h2>
-
-
-<p>
-
-施工记录 + 验收管理
-
-</p>
-
+<div class="days">
+    装修第 0 天
+</div>
 
 </div>
 
 
 
+<div class="card">
 
-
-
-
-
-<div class="home-card">
-
-
-<div class="tag">
-
-🏠 当前装修状态
-
-</div>
-
-
-
-<h2>
-
-装修第
-
-<span id="days">
-
-1
-
-</span>
-
-天
-
-</h2>
-
-
-
-
-
-
-
-<div class="current-stage">
-
-
-<p>
-
-当前阶段
-
-</p>
-
-
-<h3 id="stage">
-
-🔌 水电施工
-
-</h3>
-
-
-
-
-
-<div class="progress-bg">
-
-
-<div id="progressBar">
-
-</div>
-
-
-</div>
-
-
-
-
-
-<p>
-
-完成度：
-
-<span id="progressNum">
-
-60%
-
-</span>
-
-
-</p>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- 今日提醒 -->
-
-
-<div class="reminder-card">
-
-
-<h3>
-
-🐷 今日提醒
-
-</h3>
-
-
-
-<div class="problem-card">
-
-🔍 水电完成前记得验收拍照
-
-</div>
-
-
-
-
-<div class="problem-card">
-
-📷 隐蔽工程必须保存照片
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- 功能入口 -->
-
-
-<div class="menu-grid">
-
-
-
-
-
-<div class="menu-item"
-
-onclick="openPage('calendar')">
-
-
-<div>
-
-📅
-
-</div>
-
-
-<b>
-
-施工日志
-
-</b>
-
-
-<span>
-
-每日记录
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="menu-item"
-
-onclick="openPage('progress')">
-
-
-<div>
-
-🔨
-
-</div>
-
-
-<b>
-
+<div class="label">
 装修进度
+</div>
 
-</b>
-
-
-<span>
-
-阶段管理
-
-</span>
-
+<div class="progress">
+0%
+</div>
 
 </div>
 
 
 
+<div class="card">
 
-
-
-
-<div class="menu-item"
-
-onclick="openPage('check')">
-
-
-<div>
-
-🔍
-
+<div class="label">
+已花费金额
 </div>
 
-
-<b>
-
-验收中心
-
-</b>
-
-
-<span>
-
-质量检查
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="menu-item"
-
-onclick="openPage('photo')">
-
-
-<div>
-
-📷
-
-</div>
-
-
-<b>
-
-工地照片
-
-</b>
-
-
-<span>
-
-施工档案
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-<div class="menu-item"
-
-onclick="openPage('problem')">
-
-
-<div>
-
-⚠️
-
-</div>
-
-
-<b>
-
-问题中心
-
-</b>
-
-
-<span>
-
-整改跟踪
-
-</span>
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-</section>
-
-
-<!-- 验收中心 -->
-
-
-<section id="check" class="page">
-
-
-
-<div class="page-title">
-
-
-<button onclick="backHome()">
-
-‹
-
-</button>
-
-
-<h2>
-
-🔍 验收中心
-
-</h2>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="check-summary">
-
-
-<h3>
-
-🐷 装修验收进度
-
-</h3>
-
-
-
-<div class="check-progress">
-
-
-<div id="checkProgressBar">
-
-</div>
-
-
-</div>
-
-
-
-<p>
-
-已完成：
-
-<span id="checkCount">
-
-0
-
-</span>
-
-/ 5 个阶段
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- 水电 -->
-
-
-<div class="check-card"
-
-onclick="openCheck('water')">
-
-
-<div class="check-icon">
-
-🔌
-
-</div>
-
-
-<div>
-
-
-<h3>
-
-水电验收
-
-</h3>
-
-
-<p>
-
-8项检查
-
-</p>
-
-
-</div>
-
-
-
-<span>
-
-进入 ›
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- 防水 -->
-
-
-<div class="check-card"
-
-onclick="openCheck('waterproof')">
-
-
-<div class="check-icon">
-
-💧
-
-</div>
-
-
-<div>
-
-
-<h3>
-
-防水验收
-
-</h3>
-
-
-<p>
-
-5项检查
-
-</p>
-
-
-</div>
-
-
-
-<span>
-
-进入 ›
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- 瓦工 -->
-
-
-<div class="check-card"
-
-onclick="openCheck('tile')">
-
-
-<div class="check-icon">
-
-🧱
-
-</div>
-
-
-<div>
-
-
-<h3>
-
-瓦工验收
-
-</h3>
-
-
-<p>
-
-6项检查
-
-</p>
-
-
-</div>
-
-
-
-<span>
-
-进入 ›
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- 油工 -->
-
-
-<div class="check-card"
-
-onclick="openCheck('paint')">
-
-
-<div class="check-icon">
-
-🎨
-
-</div>
-
-
-<div>
-
-
-<h3>
-
-油工验收
-
-</h3>
-
-
-<p>
-
-5项检查
-
-</p>
-
-
-</div>
-
-
-
-<span>
-
-进入 ›
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- 安装 -->
-
-
-<div class="check-card"
-
-onclick="openCheck('install')">
-
-
-<div class="check-icon">
-
-🚪
-
-</div>
-
-
-<div>
-
-
-<h3>
-
-安装验收
-
-</h3>
-
-
-<p>
-
-8项检查
-
-</p>
-
-
-</div>
-
-
-
-<span>
-
-进入 ›
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- 单阶段验收详情 -->
-
-
-<section id="checkDetail"
-
-class="page">
-
-
-
-<div class="page-title">
-
-
-<button onclick="openPage('check')">
-
-‹
-
-</button>
-
-
-
-<h2 id="checkTitle">
-
-验收项目
-
-</h2>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="check-card">
-
-
-<h3>
-
-检查进度
-
-</h3>
-
-
-
-<div class="progress-bg">
-
-
-<div id="detailProgress">
-
-</div>
-
-
-</div>
-
-
-
-<p id="detailCount">
-
-0 / 0
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-<div id="checkItems">
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="diary-card">
-
-
-<h3>
-
-📷 验收照片
-
-</h3>
-
-
-
-<input
-
-type="file"
-
-accept="image/*"
-
-multiple
-
-id="checkPhotos"
-
-onchange="addCheckPhotos(event)">
-
-
-<div id="checkPhotoPreview"
-
-class="photo-grid">
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="diary-card">
-
-
-<h3>
-
-⚠️ 验收问题
-
-</h3>
-
-
-
-<textarea
-
-id="checkProblem"
-
-placeholder="记录发现的问题，例如：卫生间闭水发现渗水">
-
-</textarea>
-
-
-<button class="main-button"
-
-onclick="saveCheckProblem()">
-
-
-保存问题
-
-</button>
-
-
-</div>
-
-
-
-
-
-</section>
-<!-- 施工日志 -->
-
-
-<section id="calendar" class="page">
-
-
-<div class="page-title">
-
-
-<button onclick="backHome()">
-
-‹
-
-</button>
-
-
-<h2>
-
-📅 施工日志
-
-</h2>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="calendar-card">
-
-
-<div class="calendar-header">
-
-
-<button onclick="changeMonth(-1)">
-
-‹
-
-</button>
-
-
-
-<h3 id="monthTitle">
-
-2026年8月
-
-</h3>
-
-
-
-<button onclick="changeMonth(1)">
-
-›
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-
-
-<div class="week">
-
-<div>日</div>
-<div>一</div>
-<div>二</div>
-<div>三</div>
-<div>四</div>
-<div>五</div>
-<div>六</div>
-
-</div>
-
-
-
-
-
-
-
-<div id="calendarDays"
-
-class="calendar-days">
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-<button class="main-button"
-
-onclick="newDiary()">
-
-
-🐷 记录今天施工
-
-
-</button>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- 施工记录 -->
-
-
-<section id="record" class="page">
-
-
-
-<div class="page-title">
-
-
-<button onclick="openPage('calendar')">
-
-‹
-
-</button>
-
-
-<h2 id="recordTitle">
-
-施工日志
-
-</h2>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="diary-card">
-
-
-<h3>
-
-🔨 当前阶段
-
-</h3>
-
-
-<select id="recordStage">
-
-
-<option>拆改</option>
-
-<option selected>水电施工</option>
-
-<option>防水</option>
-
-<option>瓦工</option>
-
-<option>木工</option>
-
-<option>油工</option>
-
-<option>安装</option>
-
-
-</select>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="diary-card">
-
-
-<h3>
-
-✨ 今日完成
-
-</h3>
-
-
-<textarea id="recordDone"
-
-placeholder="今天完成了什么">
-
-</textarea>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="diary-card">
-
-
-<h3>
-
-⚠️ 问题记录
-
-</h3>
-
-
-<textarea id="recordProblem"
-
-placeholder="发现的问题">
-
-</textarea>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="diary-card">
-
-
-<h3>
-
-📷 施工照片
-
-</h3>
-
-
-<input
-
-type="file"
-
-id="dailyPhotos"
-
-accept="image/*"
-
-multiple
-
-onchange="addDailyPhotos(event)">
-
-
-
-<div id="photoPreview"
-
-class="photo-grid">
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<button class="save-button"
-
-onclick="saveRecord()">
-
-
-🐷 保存施工记录
-
-
-</button>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- 照片中心 -->
-
-
-<section id="photo" class="page">
-
-
-<div class="page-title">
-
-
-<button onclick="backHome()">
-
-‹
-
-</button>
-
-
-<h2>
-
-📷 工地照片
-
-</h2>
-
-
-</div>
-
-
-
-
-
-<div class="diary-card">
-
-
-<div id="allPhotos"
-
-class="photo-grid">
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- 问题中心 -->
-
-
-<section id="problem" class="page">
-
-
-<div class="page-title">
-
-
-<button onclick="backHome()">
-
-‹
-
-</button>
-
-
-<h2>
-
-⚠️ 问题中心
-
-</h2>
-
-
-</div>
-
-
-
-
-
-<div class="problem-list">
-
-</div>
-
-
-<button class="main-button"
-
-onclick="addProblem('新问题')">
-
-
-➕ 添加问题
-
-
-</button>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- 费用 -->
-
-
-<section id="money" class="page">
-
-
-<div class="page-title">
-
-
-<button onclick="backHome()">
-
-‹
-
-</button>
-
-
-<h2>
-
-💰 装修费用
-
-</h2>
-
-
-</div>
-
-
-
-
-
-<div class="wallet-card">
-
-
-<div>
-
-合同预算
-
-<b>
-
-¥95000
-
-</b>
-
-</div>
-
-
-
-<div>
-
-已付款
-
-<b>
-
-¥30000
-
-</b>
-
-</div>
-
-
-
-<div>
-
-增项
-
-<b id="extraMoney">
-
+<div class="money">
 ¥0
-
-</b>
+</div>
 
 </div>
+
+
+
+<div class="card">
+
+<h3>
+最近动态
+</h3>
+
+<div class="empty">
+暂无装修记录
+</div>
+
+</div>
+
+
+
+<div class="grid">
+
+
+<button>
+📅
+<br>
+施工日志
+</button>
+
+
+<button>
+⚠️
+<br>
+问题清单
+</button>
+
+
+<button>
+📦
+<br>
+材料档案
+</button>
+
+
+<button>
+📄
+<br>
+合同档案
+</button>
 
 
 </div>
@@ -1426,216 +170,147 @@ onclick="addProblem('新问题')">
 
 
 
+<!-- 日志 -->
 
+<section id="logs" class="page">
 
-
-
-
-
-<!-- 资料中心 -->
-
-
-<section id="mine" class="page">
-
-
-<div class="page-title">
-
-
-<button onclick="backHome()">
-
-‹
-
-</button>
-
+<div class="card">
 
 <h2>
+施工日志
+</h2>
 
-🐷 资料中心
+<div class="empty">
+暂无记录
+</div>
 
+</div>
+
+</section>
+
+
+
+<!-- 问题 -->
+
+<section id="issues" class="page">
+
+<div class="card">
+
+<h2>
+问题清单
+</h2>
+
+<div class="empty">
+暂无问题
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- 档案 -->
+
+<section id="archive" class="page">
+
+<div class="card">
+
+<h2>
+档案
 </h2>
 
 
+<div class="archive-item">
+📦 材料档案
 </div>
 
 
-
-
-
-<div class="folder-card">
-
-<div class="folder-icon">
-
-📄
-
+<div class="archive-item">
+📄 合同档案
 </div>
 
 
-<div>
-
-<b>
-
-合同资料
-
-</b>
-
+<div class="archive-item">
+💰 财务流水
 </div>
 
 
 </div>
-
-
-
-
-
-
-<div class="folder-card">
-
-<div class="folder-icon">
-
-📋
-
-</div>
-
-
-<div>
-
-<b>
-
-报价资料
-
-</b>
-
-</div>
-
-
-</div>
-
-
-
-
-
 
 </section>
 
 
 
+<!-- 我的 -->
+
+<section id="me" class="page">
+
+<div class="card">
+
+<h2>
+我的
+</h2>
 
 
-
-
-
-
-<!-- 图片放大 -->
-
-
-<div id="photoViewer"
-
-class="photo-viewer"
-
-onclick="closePhotoViewer()">
-
-
-
-<img id="bigPhoto">
-
+<div class="archive-item">
+🏠 房屋管理
 </div>
 
 
+<div class="archive-item">
+☁️ 数据同步
+</div>
+
+
+<div class="archive-item">
+📦 备份恢复
+</div>
+
+
+</div>
+
+</section>
 
 
 
+</main>
 
 
 
+<nav>
 
-<!-- 底部导航 -->
-
-
-<nav class="bottom-nav">
-
-
-<button onclick="openPage('home')">
-
-🏠
-
-<span>
-
+<button data-page="home">
 首页
-
-</span>
-
 </button>
 
 
-
-<button onclick="openPage('calendar')">
-
-📅
-
-<span>
-
+<button data-page="logs">
 日志
-
-</span>
-
 </button>
 
 
-
-<button onclick="openPage('progress')">
-
-🔨
-
-<span>
-
-进度
-
-</span>
-
-</button>
-
-
-
-<button onclick="openPage('check')">
-
-🔍
-
-<span>
-
-验收
-
-</span>
-
-</button>
-
-
-
-<button onclick="openPage('problem')">
-
-⚠️
-
-<span>
-
+<button data-page="issues">
 问题
-
-</span>
-
 </button>
 
+
+<button data-page="archive">
+档案
+</button>
+
+
+<button data-page="me">
+我的
+</button>
 
 </nav>
 
 
+</div>
 
 
-
-
-
-
-
-<script src="app.js?v=38"></script>
-
+<script src="app.js"></script>
 
 </body>
-
 </html>
