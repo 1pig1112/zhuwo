@@ -464,10 +464,9 @@ h3{
 
     justify-content:center;
 
-    z-index:20;
+    z-index:999;
 
 }
-
 
 
 .modal-box{
