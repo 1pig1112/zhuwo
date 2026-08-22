@@ -2,9 +2,9 @@
 
 
 // ======================
-// 猪窝 V2.0
+// 猪窝 V2.1
 // app.js
-// 页面控制中心
+// 主控制中心
 // ======================
 
 
@@ -15,9 +15,9 @@ document.addEventListener(
 
 
 
-// ----------------------
+
+
 // 启动页
-// ----------------------
 
 
 setTimeout(()=>{
@@ -29,7 +29,6 @@ document.getElementById(
 );
 
 
-
 const app =
 document.getElementById(
 "app"
@@ -37,37 +36,31 @@ document.getElementById(
 
 
 
-if(splash){
-
+if(splash)
 splash.classList.add(
 "hidden"
 );
 
-}
 
 
-
-if(app){
-
+if(app)
 app.classList.remove(
 "hidden"
 );
 
-}
 
 
-
-},1500);
-
-
+},1200);
 
 
 
 
 
-// ----------------------
+
+
+
+
 // 页面切换
-// ----------------------
 
 
 window.showPage=function(id){
@@ -76,20 +69,20 @@ window.showPage=function(id){
 
 document
 .querySelectorAll(".page")
-.forEach(page=>{
+.forEach(
+p=>{
 
-
-page.classList.remove(
+p.classList.remove(
 "active"
 );
 
+}
 
-});
+);
 
 
 
-
-const target =
+let target =
 document.getElementById(
 id
 );
@@ -105,7 +98,6 @@ target.classList.add(
 }
 
 
-
 };
 
 
@@ -115,10 +107,8 @@ target.classList.add(
 
 
 
-// ----------------------
-// 所有页面按钮
-// ----------------------
 
+// 所有页面按钮
 
 
 document
@@ -127,8 +117,7 @@ document
 e=>{
 
 
-
-const btn =
+let btn =
 e.target.closest(
 "[data-page]"
 );
@@ -143,14 +132,15 @@ btn.dataset.page
 );
 
 
-
 }
 
 
 
 
 
-const back =
+
+
+let back =
 e.target.closest(
 "[data-back]"
 );
@@ -165,9 +155,7 @@ back.dataset.back
 );
 
 
-
 }
-
 
 
 
@@ -181,47 +169,46 @@ back.dataset.back
 
 
 
-// ----------------------
-// 日志保存
-// ----------------------
 
 
 
-const saveLog =
+// 保存日志
+
+
+let save =
 document.getElementById(
 "saveLog"
 );
 
 
 
-if(saveLog){
+if(save){
 
 
-
-saveLog.addEventListener(
+save.addEventListener(
 "click",
 ()=>{
 
 
 
-const stage =
+let stage =
 document.getElementById(
 "logStage"
-)?.value;
+).value;
 
 
 
-const title =
+let title =
 document.getElementById(
 "logTitle"
-)?.value;
+).value;
 
 
 
-const content =
+let content =
 document.getElementById(
 "logContent"
-)?.value;
+).value.trim();
 
 
 
@@ -229,11 +216,14 @@ document.getElementById(
 
 if(!content){
 
+
 alert(
 "请输入施工内容"
 );
 
+
 return;
+
 
 }
 
@@ -242,35 +232,73 @@ return;
 
 
 
+let input =
+document.getElementById(
+"logImages"
+);
+
+
+
+
+let files =
+input.files;
+
+
+
 let photos=[];
 
 
-const files =
-document.getElementById(
-"logImages"
-)?.files;
+
+
+if(files.length===0){
+
+
+finishSave();
+
+
+}
+else{
 
 
 
-if(files){
+let count=0;
+
 
 
 Array.from(files)
-.forEach(file=>{
+.forEach(
+file=>{
 
 
-const reader =
+let reader=
 new FileReader();
 
 
-reader.onload=e=>{
+
+reader.onload=function(e){
+
 
 photos.push(
 e.target.result
 );
 
 
+
+count++;
+
+
+
+if(count===files.length){
+
+
+finishSave();
+
+
+}
+
+
 };
+
 
 
 reader.readAsDataURL(
@@ -278,7 +306,9 @@ file
 );
 
 
+
 });
+
 
 
 }
@@ -288,20 +318,25 @@ file
 
 
 
-setTimeout(()=>{
+
+
+function finishSave(){
 
 
 
 addLog({
 
-
 title:title,
+
 
 stage:stage,
 
+
 content:content,
 
+
 photos:photos,
+
 
 date:
 new Date()
@@ -315,9 +350,28 @@ new Date()
 
 
 
-document.getElementById(
+
+document
+.getElementById(
+"logTitle"
+).value="";
+
+
+
+document
+.getElementById(
 "logContent"
 ).value="";
+
+
+
+input.value="";
+
+
+
+
+
+renderLogs();
 
 
 
@@ -327,13 +381,7 @@ showPage(
 
 
 
-renderLogs();
-
-
-
-},500);
-
-
+}
 
 
 
@@ -349,9 +397,84 @@ renderLogs();
 
 
 
-// ----------------------
-// 初始渲染
-// ----------------------
+
+
+// 日志列表点击详情
+
+
+let list =
+document.getElementById(
+"logList"
+);
+
+
+
+if(list){
+
+
+list.addEventListener(
+"click",
+e=>{
+
+
+
+let card =
+e.target.closest(
+".log-card"
+);
+
+
+
+if(
+card
+&&
+!e.target.closest("button")
+){
+
+
+
+let index =
+[
+...list.children
+]
+.indexOf(card);
+
+
+
+let logs =
+getLogs();
+
+
+
+if(logs[index]){
+
+
+showLogDetail(
+logs[index].id
+);
+
+
+}
+
+
+
+}
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+// 初始化
 
 
 if(typeof renderLogs==="function"){
@@ -359,16 +482,6 @@ if(typeof renderLogs==="function"){
 renderLogs();
 
 }
-
-
-
-if(typeof renderIssues==="function"){
-
-renderIssues();
-
-}
-
-
 
 
 
