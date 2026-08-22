@@ -48,24 +48,30 @@ BUILDING OUR HOME
 
 
 
-
-<div id="app" class="app hidden">
-
+<div id="app" class="hidden">
 
 
 <header>
 
-<h1>猪窝</h1>
+<h1>
+猪窝
+</h1>
 
-<p>我的家</p>
+<p>
+我的家
+</p>
 
 </header>
+
+
 
 
 
 <main>
 
 
+
+<!-- 首页 -->
 
 <section id="home" class="page active">
 
@@ -76,15 +82,19 @@ BUILDING OUR HOME
 我的家
 </h2>
 
+
 <div class="stage">
 准备装修
 </div>
+
 
 <div class="muted">
 装修第0天
 </div>
 
+
 </div>
+
 
 
 
@@ -95,9 +105,11 @@ BUILDING OUR HOME
 已花费金额
 </div>
 
+
 <div class="number">
 ¥0
 </div>
+
 
 </div>
 
@@ -106,6 +118,7 @@ BUILDING OUR HOME
 
 
 <div class="card">
+
 
 <h3>
 最近动态
@@ -133,6 +146,7 @@ class="primary">
 </button>
 
 
+
 </section>
 
 
@@ -141,12 +155,42 @@ class="primary">
 
 
 
+
+<!-- 施工日志列表 -->
+
 <section id="logs" class="page">
+
+
+<div class="top-bar">
+
+<button class="back-btn"
+data-back="home">
+
+← 返回
+
+</button>
 
 
 <h2>
 施工日志
 </h2>
+
+
+</div>
+
+
+
+
+
+<button id="newLog"
+class="primary">
+
+＋ 新建记录
+
+</button>
+
+
+
 
 
 <div id="logList">
@@ -156,6 +200,7 @@ class="primary">
 </div>
 
 
+
 </section>
 
 
@@ -165,32 +210,194 @@ class="primary">
 
 
 
-<section id="archive" class="page">
+<!-- 新增日志页面 -->
+
+<section id="newLogPage"
+class="page">
 
 
-<div class="card">
+<div class="top-bar">
+
+<button class="back-btn"
+data-back="logs">
+
+← 返回
+
+</button>
+
+
+<h2>
+新增日志
+</h2>
+
+
+</div>
+
+
+
+
+
+<select id="stage">
+
+
+<option>
+拆改
+</option>
+
+
+<option>
+水电
+</option>
+
+
+<option>
+防水
+</option>
+
+
+<option>
+泥瓦
+</option>
+
+
+<option>
+木工
+</option>
+
+
+<option>
+安装
+</option>
+
+
+<option>
+软装
+</option>
+
+
+</select>
+
+
+
+
+
+<textarea id="content"
+placeholder="记录施工内容">
+
+</textarea>
+
+
+
+
+
+<input id="photos"
+type="file"
+accept="image/*"
+multiple>
+
+
+
+
+
+<button id="saveLog"
+class="primary">
+
+保存记录
+
+</button>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- 日志详情 -->
+
+<section id="detail"
+class="page">
+
+
+<div class="top-bar">
+
+
+<button class="back-btn"
+data-back="logs">
+
+← 返回
+
+</button>
+
+
+<h2>
+日志详情
+</h2>
+
+
+</div>
+
+
+
+
+<div id="detailContent"
+class="card">
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- 档案 -->
+
+<section id="archive"
+class="page">
+
+
+<div class="top-bar">
+
 
 <h2>
 档案
 </h2>
 
 
-<p>
+</div>
+
+
+
+<div class="card">
+
 📦 材料档案
-</p>
-
-
-<p>
-📄 合同档案
-</p>
-
-
-<p>
-💰 财务流水
-</p>
-
 
 </div>
+
+
+<div class="card">
+
+📄 合同档案
+
+</div>
+
+
+<div class="card">
+
+💰 财务流水
+
+</div>
+
 
 
 </section>
@@ -200,27 +407,39 @@ class="primary">
 
 
 
-<section id="me" class="page">
 
 
-<div class="card">
+<!-- 我的 -->
+
+<section id="me"
+class="page">
+
+
+<div class="top-bar">
+
 
 <h2>
 我的
 </h2>
 
 
-<p>
+</div>
+
+
+
+<div class="card">
+
 房屋管理
-</p>
-
-
-<p>
-数据备份
-</p>
-
 
 </div>
+
+
+<div class="card">
+
+数据备份
+
+</div>
+
 
 
 </section>
@@ -237,26 +456,35 @@ class="primary">
 
 
 
+
 <nav>
 
 
 <button data-page="home">
+
 首页
+
 </button>
 
 
 <button data-page="logs">
+
 日志
+
 </button>
 
 
 <button data-page="archive">
+
 档案
+
 </button>
 
 
 <button data-page="me">
+
 我的
+
 </button>
 
 
@@ -266,95 +494,14 @@ class="primary">
 
 
 
-
-<!-- 日志弹窗 -->
-
-
-<div id="logModal" class="modal hidden">
-
-
-<div class="modal-box">
-
-
-<h2>
-新增施工日志
-</h2>
-
-
-
-<select id="stage">
-
-<option>
-拆改
-</option>
-
-<option>
-水电
-</option>
-
-<option>
-防水
-</option>
-
-<option>
-泥瓦
-</option>
-
-<option>
-安装
-</option>
-
-</select>
-
-
-
-
-<textarea id="content"
-placeholder="记录施工内容">
-
-</textarea>
-
-
-
-<input id="photos"
-type="file"
-accept="image/*"
-multiple>
-
-
-
-<button id="saveLog"
-class="primary">
-
-保存
-
-</button>
-
-
-
-<button id="closeLog">
-
-取消
-
-</button>
-
-
-
 </div>
 
-
-</div>
-
-
-
-
-
-</div>
 
 
 <script src="app.js"></script>
 
 
 </body>
+
 
 </html>
