@@ -1,33 +1,44 @@
 "use strict";
 
-
-// ======================
-// 猪窝 V2.1
-// logs.js
-// 施工日志增强版
-// ======================
+/*
+猪窝 V2.0
+施工日志模块
+*/
 
 
+const LOG_KEY = "zhuwo_logs";
+
+
+
+
+// 获取日志
 
 function getLogs(){
 
-    return getData(
-        ZHUWO_DB.logs
-    );
+return JSON.parse(
+localStorage.getItem(LOG_KEY)
+|| "[]"
+);
 
 }
 
 
 
+
+
+
+// 保存日志
 
 function saveLogs(data){
 
-    saveData(
-        ZHUWO_DB.logs,
-        data
-    );
+localStorage.setItem(
+LOG_KEY,
+JSON.stringify(data)
+);
 
 }
+
+
 
 
 
@@ -35,60 +46,49 @@ function saveLogs(data){
 
 // 新增日志
 
-function addLog(data){
+function addLog(log){
 
 
-    let logs=getLogs();
+const logs =
+getLogs();
 
 
+logs.unshift({
 
-    data.id=createId();
-
-
-    data.created=
-    new Date()
-    .toLocaleDateString();
+id:
+Date.now(),
 
 
-
-    logs.unshift(data);
-
-
-
-    saveLogs(logs);
+date:
+log.date ||
+new Date().toLocaleDateString(),
 
 
-
-}
-
-
-
+stage:
+log.stage ||
+"施工记录",
 
 
+title:
+log.title ||
+"",
 
 
-
-// 删除
-
-function deleteLog(id){
-
-
-    let logs=getLogs();
+content:
+log.content ||
+"",
 
 
+photos:
+log.photos ||
+[]
 
-    logs =
-    logs.filter(
-        item=>item.id!==id
-    );
+
+});
 
 
 
-    saveLogs(logs);
-
-
-
-    renderLogs();
+saveLogs(logs);
 
 
 }
@@ -99,55 +99,9 @@ function deleteLog(id){
 
 
 
-
-// 编辑
-
-function updateLog(id,data){
-
-
-    let logs=getLogs();
-
-
-
-    let item =
-    logs.find(
-        x=>x.id===id
-    );
-
-
-
-    if(item){
-
-
-        Object.assign(
-            item,
-            data
-        );
-
-
-    }
-
-
-
-    saveLogs(logs);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-// 渲染列表
+// 渲染日志列表
 
 function renderLogs(){
-
 
 
 const box =
@@ -161,11 +115,8 @@ if(!box)return;
 
 
 
-
-
-let logs=getLogs();
-
-
+const logs =
+getLogs();
 
 
 
@@ -174,127 +125,43 @@ if(logs.length===0){
 
 box.innerHTML=
 `
-
 <div class="empty">
-
 暂无施工记录
-
 </div>
-
 `;
-
 
 return;
 
-
 }
 
 
 
 
 
+box.innerHTML =
+logs.map(item=>`
 
-
-box.innerHTML=
-logs.map(log=>{
-
-
-
-let photos="";
-
-
-
-if(log.photos
-&&
-log.photos.length){
-
-
-
-photos=
-`
-
-<div class="photos">
-
-${
-log.photos.map(
-p=>
-`
-<img 
-src="${p}"
-onclick="openPhoto('${p}')"
->
-`
-).join("")
-}
-
-</div>
-
-`;
-
-
-
-}
-
-
-
-
-
-
-return`
 
 <div class="log-card">
 
 
-<div class="log-date">
-
-${log.created}
-
-</div>
-
-
-<h3>
-
-${log.title||"施工记录"}
-
-</h3>
-
-
+<div class="log-head">
 
 <div>
 
-阶段：
+<h3>
+${item.title || "施工记录"}
+</h3>
 
-${log.stage||""}
+<span>
+${item.date}
+</span>
 
 </div>
 
 
-
-
-<p>
-
-${log.content}
-
-</p>
-
-
-
-${photos}
-
-
-
-<div class="log-actions">
-
-
-<button onclick="editLog(${log.id})">
-
-编辑
-
-</button>
-
-
-
-<button onclick="deleteLog(${log.id})">
+<button
+onclick="deleteLog(${item.id})">
 
 删除
 
@@ -305,170 +172,52 @@ ${photos}
 
 
 
+
+
+<div class="log-stage">
+
+${item.stage}
+
 </div>
 
 
-`;
-
-
-
-}).join("");
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// 查看详情
-
-
-function showLogDetail(id){
-
-
-
-let log =
-getLogs()
-.find(
-x=>x.id===id
-);
-
-
-
-if(!log)return;
-
-
-
-
-let box =
-document.getElementById(
-"detailBox"
-);
-
-
-
-if(!box)return;
-
-
-
-
-box.innerHTML=
-`
-
-<h2>
-
-${log.title}
-
-</h2>
 
 
 
 <p>
 
-${log.created}
+${item.content}
 
 </p>
 
-
-
-<p>
-
-阶段：
-
-${log.stage}
-
-</p>
-
-
-
-<p>
-
-${log.content}
-
-</p>
 
 
 
 
 <div class="photos">
 
+
 ${
-(log.photos||[])
+(item.photos||[])
 .map(
-p=>
+img=>
 `
-<img src="${p}">
+<img src="${img}">
 `
 )
 .join("")
 }
 
+
 </div>
 
 
-`;
 
 
-
-showPage(
-"detail"
-);
+</div>
 
 
-
-}
-
-
-
-
-
-
-
-
-
-// 编辑入口
-
-
-function editLog(id){
-
-
-let log =
-getLogs()
-.find(
-x=>x.id===id
-);
-
-
-
-if(!log)return;
-
-
-
-showPage(
-"newLog"
-);
-
-
-
-document
-.getElementById(
-"logTitle"
-).value =
-log.title||"";
-
-
-
-document
-.getElementById(
-"logContent"
-).value =
-log.content||"";
+`).join("");
 
 
 
@@ -481,61 +230,96 @@ log.content||"";
 
 
 
-// 图片放大
+// 删除日志
 
 
-function openPhoto(src){
+window.deleteLog=function(id){
+
+
+let logs =
+getLogs();
 
 
 
-let viewer =
+logs =
+logs.filter(
+item=>item.id!==id
+);
+
+
+
+saveLogs(logs);
+
+
+renderLogs();
+
+
+}
+
+
+
+
+
+
+
+// 图片预览
+
+window.previewImages=function(input){
+
+
+const preview =
+document.getElementById(
+"imagePreview"
+);
+
+
+if(!preview)return;
+
+
+
+preview.innerHTML="";
+
+
+
+Array.from(input.files)
+.forEach(file=>{
+
+
+const reader =
+new FileReader();
+
+
+
+reader.onload=e=>{
+
+
+const img =
 document.createElement(
-"div"
+"img"
 );
 
 
-
-viewer.className=
-"photo-viewer";
+img.src=e.target.result;
 
 
+preview.appendChild(img);
 
-viewer.innerHTML=
-`
-
-<img src="${src}">
-
-`;
-
-
-
-viewer.onclick=
-()=>{
-
-viewer.remove();
 
 };
 
 
 
-document.body.appendChild(
-viewer
-);
+reader.readAsDataURL(file);
 
+
+
+});
 
 
 }
 
 
 
-
-
-
-window.deleteLog=deleteLog;
-
-window.editLog=editLog;
-
-window.openPhoto=openPhoto;
 
 
 
