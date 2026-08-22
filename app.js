@@ -1,194 +1,122 @@
-*{
-box-sizing:border-box;
-}
+"use strict";
 
 
-html,
-body{
-
-margin:0;
-
-padding:0;
-
-background:#141414;
-
-color:#d4c5b3;
-
-font-family:
--apple-system,
-BlinkMacSystemFont,
-"PingFang SC",
-"Microsoft YaHei",
-sans-serif;
-
-}
-
-
-body{
-
-min-height:100vh;
-
-}
+// ======================
+// 猪窝 V2.0
+// app.js
+// ======================
 
 
 
-/* =================
-启动页
-================= */
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
 
 
-#splash{
 
-position:fixed;
+// 启动页
 
-inset:0;
-
-background:#b9a38a;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-z-index:9999;
-
-}
+setTimeout(()=>{
 
 
-.splash-logo{
-
-text-align:center;
-
-color:#fff;
-
-}
+const splash =
+document.getElementById("splash");
 
 
-.logo-cn{
-
-font-size:42px;
-
-letter-spacing:8px;
-
-font-weight:600;
-
-}
+const app =
+document.getElementById("app");
 
 
-.logo-en{
 
-margin-top:15px;
+if(splash){
 
-font-size:14px;
-
-letter-spacing:6px;
+splash.classList.add("hidden");
 
 }
 
 
 
-.line{
+if(app){
 
-width:80px;
-
-height:1px;
-
-background:#eee;
-
-margin:30px auto;
+app.classList.remove("hidden");
 
 }
 
 
 
-.home-en{
-
-font-size:12px;
-
-letter-spacing:3px;
-
-margin-top:12px;
-
-}
-
-
-
-
-.hidden{
-
-display:none!important;
-
-}
+},1200);
 
 
 
 
 
-/* =================
-整体
-================= */
 
 
-#app{
+// 页面切换
 
-min-height:100vh;
 
-padding-bottom:90px;
-
-}
+window.showPage=function(id){
 
 
 
-header{
-
-padding:25px 20px;
-
-}
+document
+.querySelectorAll(".page")
+.forEach(page=>{
 
 
-header h1{
-
-margin:0;
-
-font-size:28px;
-
-color:#e0d2c1;
-
-}
+page.classList.remove("active");
 
 
-header p{
+});
 
-margin-top:8px;
 
-font-size:13px;
 
-color:#888;
+
+
+const target =
+document.getElementById(id);
+
+
+
+if(target){
+
+target.classList.add("active");
 
 }
 
 
 
-
-main{
-
-padding:0 16px;
-
-}
+};
 
 
 
-.page{
-
-display:none;
-
-}
 
 
-.page.active{
 
-display:block;
+
+
+
+// 全局点击
+
+
+document.addEventListener(
+"click",
+e=>{
+
+
+
+const pageBtn =
+e.target.closest(
+"[data-page]"
+);
+
+
+
+if(pageBtn){
+
+showPage(
+pageBtn.dataset.page
+);
 
 }
 
@@ -196,401 +124,90 @@ display:block;
 
 
 
+const backBtn =
+e.target.closest(
+"[data-back]"
+);
 
-/* =================
-卡片
-================= */
 
 
-.card{
+if(backBtn){
 
-background:#1d1d1d;
-
-border:
-
-1px solid #302b25;
-
-border-radius:20px;
-
-padding:18px;
-
-margin-bottom:14px;
+showPage(
+backBtn.dataset.back
+);
 
 }
 
 
 
-.card h2{
+});
 
-margin:12px 0;
 
-font-size:24px;
 
-}
 
 
 
-.card h3{
 
-margin-top:0;
 
-}
 
+// 保存施工日志
 
 
+const saveBtn =
+document.getElementById(
+"saveLog"
+);
 
 
-.small{
 
-font-size:13px;
+if(saveBtn){
 
-color:#999;
 
-}
 
+saveBtn.addEventListener(
+"click",
+()=>{
 
 
 
+const stage =
+document.getElementById(
+"logStage"
+).value;
 
-.progress-box{
 
-display:flex;
 
-justify-content:space-between;
 
-align-items:center;
+const title =
+document.getElementById(
+"logTitle"
+).value;
 
-margin-top:20px;
 
-}
 
 
 
-.progress-box strong{
+const content =
+document.getElementById(
+"logContent"
+).value.trim();
 
-font-size:28px;
 
-font-weight:400;
 
-}
 
 
 
+if(!content){
 
-.progress{
 
-height:6px;
+alert(
+"请输入施工内容"
+);
 
-background:#333;
 
-border-radius:10px;
+return;
 
-margin-top:15px;
-
-overflow:hidden;
-
-}
-
-
-.progress-inner{
-
-height:100%;
-
-width:58%;
-
-background:#c7b092;
-
-}
-
-
-
-
-
-/* =================
-入口
-================= */
-
-
-.grid{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:12px;
-
-margin-bottom:15px;
-
-}
-
-
-
-.menu{
-
-height:100px;
-
-background:#1d1d1d;
-
-border:
-
-1px solid #302b25;
-
-border-radius:18px;
-
-color:#d4c5b3;
-
-font-size:16px;
-
-}
-
-
-
-
-
-/* =================
-标题
-================= */
-
-
-.page-title{
-
-display:flex;
-
-align-items:center;
-
-gap:15px;
-
-margin-bottom:18px;
-
-}
-
-
-.page-title h2{
-
-margin:0;
-
-font-size:24px;
-
-}
-
-
-.page-title button{
-
-width:38px;
-
-height:38px;
-
-border-radius:50%;
-
-background:#202020;
-
-border:1px solid #3b342c;
-
-color:#d4c5b3;
-
-font-size:25px;
-
-}
-
-
-
-
-
-/* =================
-按钮
-================= */
-
-
-.add-btn,
-.save-btn{
-
-width:100%;
-
-height:46px;
-
-border:none;
-
-border-radius:15px;
-
-background:#c7b092;
-
-color:#161616;
-
-font-size:15px;
-
-margin-bottom:15px;
-
-}
-
-
-
-
-
-/* =================
-输入
-================= */
-
-
-input,
-textarea,
-select{
-
-
-width:100%;
-
-background:#191919;
-
-border:1px solid #39332c;
-
-border-radius:14px;
-
-padding:14px;
-
-color:#ddd;
-
-font-size:15px;
-
-margin-bottom:15px;
-
-}
-
-
-
-textarea{
-
-height:120px;
-
-}
-
-
-
-
-
-/* =================
-日志
-================= */
-
-
-.log-card{
-
-background:#1d1d1d;
-
-border:1px solid #302b25;
-
-border-radius:18px;
-
-padding:16px;
-
-margin-bottom:14px;
-
-}
-
-
-
-.log-date{
-
-font-size:12px;
-
-color:#888;
-
-}
-
-
-
-
-.log-card h3{
-
-margin:10px 0;
-
-}
-
-
-
-
-.photos{
-
-display:flex;
-
-gap:10px;
-
-flex-wrap:wrap;
-
-margin-top:15px;
-
-}
-
-
-
-.photos img{
-
-width:85px;
-
-height:85px;
-
-object-fit:cover;
-
-border-radius:12px;
-
-}
-
-
-
-
-.log-actions{
-
-display:flex;
-
-gap:10px;
-
-margin-top:15px;
-
-}
-
-
-.log-actions button{
-
-flex:1;
-
-height:36px;
-
-border-radius:12px;
-
-background:#181818;
-
-border:1px solid #4a4035;
-
-color:#d4c5b3;
-
-}
-
-
-
-
-.photo-viewer{
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.9);
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-z-index:99999;
-
-}
-
-
-
-.photo-viewer img{
-
-max-width:95%;
-
-max-height:90%;
 
 }
 
@@ -600,46 +217,159 @@ max-height:90%;
 
 
 
-/* =================
-底部
-================= */
+const input =
+document.getElementById(
+"logImages"
+);
 
 
-nav{
 
-position:fixed;
 
-left:0;
+const files =
+Array.from(
+input.files
+);
 
-right:0;
 
-bottom:0;
 
-height:70px;
+let photos=[];
 
-background:#171717;
 
-border-top:1px solid #302b25;
 
-display:flex;
 
-justify-content:space-around;
 
-align-items:center;
+if(files.length===0){
+
+
+save();
+
+}
+
+
+else{
+
+
+
+let count=0;
+
+
+
+files.forEach(file=>{
+
+
+const reader =
+new FileReader();
+
+
+
+reader.onload=function(e){
+
+
+photos.push(
+e.target.result
+);
+
+
+
+count++;
+
+
+
+if(count===files.length){
+
+save();
 
 }
 
 
 
-nav button{
+};
 
-background:none;
 
-border:none;
 
-color:#aaa;
+reader.readAsDataURL(
+file
+);
 
-font-size:13px;
+
+
+});
+
+
+
+}
+
+
+
+
+
+function save(){
+
+
+
+addLog({
+
+title:title,
+
+
+stage:stage,
+
+
+content:content,
+
+
+photos:photos,
+
+
+date:
+new Date()
+.toLocaleDateString()
+
+
+});
+
+
+
+
+
+
+document
+.getElementById(
+"logTitle"
+).value="";
+
+
+
+document
+.getElementById(
+"logContent"
+).value="";
+
+
+
+input.value="";
+
+
+
+
+
+renderLogs();
+
+
+
+showPage(
+"logs"
+);
+
+
+
+}
+
+
+
+});
+
+
 
 }
 
@@ -648,12 +378,16 @@ font-size:13px;
 
 
 
-@media(max-width:430px){
+// 初始化日志
 
-.grid{
 
-grid-template-columns:1fr 1fr;
+if(typeof renderLogs==="function"){
+
+renderLogs();
 
 }
 
-}
+
+
+
+});
