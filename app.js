@@ -1,7 +1,5 @@
 "use strict";
 
-alert("app.js运行了");
-
 
 document.addEventListener(
 "DOMContentLoaded",
