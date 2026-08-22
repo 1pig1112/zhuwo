@@ -1,63 +1,110 @@
-// ===============================
-// 猪窝 PWA app.js V1.0.2
-// ===============================
-
-
-(function(){
-
-
 "use strict";
 
 
 
-// ===============================
-// 启动
-// ===============================
-
-
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener(
+"DOMContentLoaded",
+function(){
 
 
 
-    // 启动画面
-
-    setTimeout(function(){
-
-        const splash =
-        document.getElementById("splash");
+// =====================
+// 启动页
+// =====================
 
 
-        const app =
-        document.getElementById("app");
+setTimeout(function(){
 
 
-        if(splash){
-
-            splash.classList.add("hidden");
-
-        }
+const splash =
+document.getElementById("splash");
 
 
-        if(app){
-
-            app.classList.remove("hidden");
-
-        }
-
-
-    },1500);
+const app =
+document.getElementById("app");
 
 
 
+if(splash){
+
+splash.classList.add("hidden");
+
+}
 
 
-    // 初始化
 
-    initNavigation();
+if(app){
 
-    initLog();
+app.classList.remove("hidden");
 
-    renderLogs();
+}
+
+
+
+},1500);
+
+
+
+
+
+
+// =====================
+// 页面切换
+// =====================
+
+
+const navButtons =
+document.querySelectorAll(
+"nav button"
+);
+
+
+
+const pages =
+document.querySelectorAll(
+".page"
+);
+
+
+
+
+
+navButtons.forEach(
+function(btn){
+
+
+btn.addEventListener(
+"click",
+function(){
+
+
+const target =
+btn.dataset.page;
+
+
+
+pages.forEach(
+function(page){
+
+page.classList.remove(
+"active"
+);
+
+
+if(page.id===target){
+
+page.classList.add(
+"active"
+);
+
+}
+
+
+});
+
+
+
+});
 
 
 
@@ -67,304 +114,115 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
 
-// ===============================
-// 页面导航
-// ===============================
 
 
-function initNavigation(){
+// =====================
+// 新增日志弹窗
+// =====================
 
 
-    const buttons =
-    document.querySelectorAll("nav button");
+const openLog =
+document.getElementById(
+"openLog"
+);
 
 
 
-    buttons.forEach(function(btn){
+const closeLog =
+document.getElementById(
+"closeLog"
+);
 
 
-        btn.addEventListener("click",function(){
 
+const modal =
+document.getElementById(
+"logModal"
+);
 
-            openPage(
-                btn.dataset.page
-            );
 
 
-        });
 
 
-    });
+openLog.addEventListener(
+"click",
+function(){
 
 
+modal.classList.remove(
+"hidden"
+);
 
-}
 
+});
 
 
 
 
-window.openPage=function(id){
 
+closeLog.addEventListener(
+"click",
+function(){
 
-    document
-    .querySelectorAll(".page")
-    .forEach(function(page){
 
-        page.classList.remove("active");
+modal.classList.add(
+"hidden"
+);
 
-    });
 
+});
 
 
-    const target =
-    document.getElementById(id);
 
 
 
-    if(target){
 
-        target.classList.add("active");
 
-    }
 
+// =====================
+// 保存日志
+// =====================
 
 
-    document
-    .querySelectorAll("nav button")
-    .forEach(function(btn){
+const saveBtn =
+document.getElementById(
+"saveLog"
+);
 
 
-        btn.classList.remove("active");
 
+saveBtn.addEventListener(
+"click",
+function(){
 
-        if(btn.dataset.page===id){
 
-            btn.classList.add("active");
 
-        }
+const stage =
+document.getElementById(
+"stage"
+).value;
 
 
-    });
 
 
+const content =
+document.getElementById(
+"content"
+).value.trim();
 
-};
 
 
 
 
+if(!content){
 
 
+alert(
+"请输入施工内容"
+);
 
-// ===============================
-// 施工日志
-// ===============================
 
-
-
-let logs = [];
-
-
-
-function initLog(){
-
-
-
-    try{
-
-
-        logs =
-        JSON.parse(
-            localStorage.getItem(
-                "pig_logs"
-            )
-        ) || [];
-
-
-    }catch(e){
-
-        logs=[];
-
-    }
-
-
-
-
-
-
-
-    // 新增按钮
-
-    const addBtn =
-    document.getElementById(
-        "addLogBtn"
-    );
-
-
-
-    if(addBtn){
-
-
-        addBtn.addEventListener(
-            "click",
-            function(){
-
-
-                showLogForm();
-
-
-            }
-        );
-
-
-    }
-
-
-
-
-
-
-    // 图片选择
-
-    const imageInput =
-    document.getElementById(
-        "logImages"
-    );
-
-
-    if(imageInput){
-
-
-        imageInput.addEventListener(
-            "change",
-            previewImages
-        );
-
-
-    }
-
-
-
-
-}
-
-
-
-
-
-window.showLogForm=function(){
-
-
-    const form =
-    document.getElementById(
-        "logForm"
-    );
-
-
-    if(form){
-
-        form.classList.remove(
-            "hidden"
-        );
-
-    }
-
-
-};
-
-
-
-
-
-
-window.hideLogForm=function(){
-
-
-    const form =
-    document.getElementById(
-        "logForm"
-    );
-
-
-    if(form){
-
-        form.classList.add(
-            "hidden"
-        );
-
-    }
-
-
-};
-
-
-
-
-
-
-
-let images=[];
-
-
-
-function previewImages(e){
-
-
-    images=[];
-
-
-    const box =
-    document.getElementById(
-        "imagePreview"
-    );
-
-
-    if(box){
-
-        box.innerHTML="";
-
-    }
-
-
-
-
-    Array.from(
-        e.target.files
-    )
-    .forEach(function(file){
-
-
-        const url =
-        URL.createObjectURL(
-            file
-        );
-
-
-        images.push(url);
-
-
-
-        if(box){
-
-
-            const img =
-            document.createElement(
-                "img"
-            );
-
-
-            img.src=url;
-
-
-            box.appendChild(img);
-
-
-        }
-
-
-    });
-
+return;
 
 
 }
@@ -374,234 +232,117 @@ function previewImages(e){
 
 
 
-
-window.saveLog=function(){
-
-
-
-    const stage =
-    document.getElementById(
-        "logStage"
-    ).value;
-
-
-
-    const content =
-    document.getElementById(
-        "logContent"
-    ).value.trim();
+const logs =
+JSON.parse(
+localStorage.getItem(
+"pig_logs"
+)
+|| "[]"
+);
 
 
 
 
 
-    if(!content){
+logs.unshift({
 
 
-        alert(
-            "请输入施工内容"
-        );
+date:
+new Date()
+.toLocaleDateString(),
 
 
-        return;
-
-    }
+stage:stage,
 
 
-
-
-
-    const item={
-
-
-        id:Date.now(),
-
-
-        date:
-        new Date()
-        .toISOString()
-        .slice(0,10),
-
-
-        stage:stage,
-
-
-        content:content,
-
-
-        images:images
+content:content
 
 
 
-    };
+});
 
 
 
 
 
-    logs.unshift(item);
-
-
-
-    localStorage.setItem(
-        "pig_logs",
-        JSON.stringify(logs)
-    );
-
-
-
-    renderLogs();
-
-
-
-    document.getElementById(
-        "logContent"
-    ).value="";
-
-
-
-    hideLogForm();
-
-
-
-};
+localStorage.setItem(
+"pig_logs",
+JSON.stringify(logs)
+);
 
 
 
 
 
+renderLogs();
+
+
+
+
+
+document.getElementById(
+"content"
+).value="";
+
+
+
+modal.classList.add(
+"hidden"
+);
+
+
+
+});
+
+
+
+
+
+
+
+// =====================
+// 渲染日志
+// =====================
 
 
 function renderLogs(){
 
 
-    const list =
-    document.getElementById(
-        "logList"
-    );
+
+const box =
+document.getElementById(
+"logList"
+);
 
 
 
-    const recent =
-    document.getElementById(
-        "recentLog"
-    );
-
-
-
-    if(!list){
-
-        return;
-
-    }
+const recent =
+document.getElementById(
+"recent"
+);
 
 
 
 
-    if(logs.length===0){
-
-
-        list.innerHTML=
-        `
-        <div class="empty">
-        暂无施工记录
-        </div>
-        `;
-
-
-        if(recent){
-
-            recent.innerHTML=
-            "暂无装修记录";
-
-        }
-
-
-        return;
-
-    }
+const logs =
+JSON.parse(
+localStorage.getItem(
+"pig_logs"
+)
+|| "[]"
+);
 
 
 
 
 
+if(logs.length===0){
 
-    list.innerHTML="";
-
-
-
-
-
-    logs.forEach(function(log){
+box.innerHTML=
+"暂无记录";
 
 
-        const div =
-        document.createElement(
-            "div"
-        );
-
-
-        div.className=
-        "log-card";
-
-
-
-        div.innerHTML=
-        `
-        <div class="log-date">
-        ${log.date}
-        </div>
-
-        <div class="log-stage">
-        ${log.stage}
-        </div>
-
-        <div class="log-content">
-        ${log.content}
-        </div>
-
-        ${
-            log.images.length
-            ?
-            `<div>📷 ${log.images.length}张照片</div>`
-            :
-            ""
-        }
-
-        `;
-
-
-
-        list.appendChild(div);
-
-
-
-    });
-
-
-
-
-
-
-    if(recent){
-
-
-        const last =
-        logs[0];
-
-
-        recent.innerHTML=
-        `
-        ${last.date}
-        <br>
-        ${last.stage}
-        <br>
-        ${last.content}
-        `;
-
-
-    }
-
+return;
 
 
 }
@@ -611,24 +352,92 @@ function renderLogs(){
 
 
 
-
-// ===============================
-// Service Worker
-// ===============================
+box.innerHTML="";
 
 
-if(
-"serviceWorker" in navigator
-){
 
 
-    navigator.serviceWorker.register(
-        "./service-worker.js"
-    );
+
+logs.forEach(
+function(item){
+
+
+
+const div =
+document.createElement(
+"div"
+);
+
+
+
+div.className=
+"log-item";
+
+
+
+div.innerHTML=
+`
+
+<div>
+${item.date}
+</div>
+
+<div>
+${item.stage}
+</div>
+
+<p>
+${item.content}
+</p>
+
+`;
+
+
+
+box.appendChild(div);
+
+
+
+});
+
+
+
+
+
+const first =
+logs[0];
+
+
+
+if(recent){
+
+recent.innerHTML=
+`
+
+${first.date}
+
+<br>
+
+${first.stage}
+
+<br>
+
+${first.content}
+
+`;
+
+}
+
 
 
 }
 
 
 
-})();
+
+renderLogs();
+
+
+
+
+});
