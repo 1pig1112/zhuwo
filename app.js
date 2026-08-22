@@ -1,45 +1,63 @@
 "use strict";
 
 
+// ======================
+// 猪窝 V2.0
+// app.js
+// 页面控制中心
+// ======================
+
+
 
 document.addEventListener(
 "DOMContentLoaded",
-function(){
+()=>{
 
 
 
-// =====================
-// 启动
-// =====================
+// ----------------------
+// 启动页
+// ----------------------
 
 
-setTimeout(function(){
+setTimeout(()=>{
 
 
 const splash =
-document.getElementById("splash");
+document.getElementById(
+"splash"
+);
+
 
 
 const app =
-document.getElementById("app");
+document.getElementById(
+"app"
+);
 
 
 
 if(splash){
 
-splash.classList.add("hidden");
+splash.classList.add(
+"hidden"
+);
 
 }
+
 
 
 if(app){
 
-app.classList.remove("hidden");
+app.classList.remove(
+"hidden"
+);
 
 }
 
 
-},1200);
+
+},1500);
 
 
 
@@ -47,56 +65,77 @@ app.classList.remove("hidden");
 
 
 
-// =====================
-// 页面系统
-// =====================
+// ----------------------
+// 页面切换
+// ----------------------
 
 
-const pages =
-document.querySelectorAll(".page");
+window.showPage=function(id){
 
 
 
-function showPage(id){
+document
+.querySelectorAll(".page")
+.forEach(page=>{
 
 
-pages.forEach(function(page){
+page.classList.remove(
+"active"
+);
 
-page.classList.remove("active");
 
 });
 
 
 
+
 const target =
-document.getElementById(id);
+document.getElementById(
+id
+);
 
 
 
 if(target){
 
-target.classList.add("active");
+target.classList.add(
+"active"
+);
 
 }
 
 
-}
+
+};
 
 
 
 
 
-// 底部导航
+
+
+
+// ----------------------
+// 所有页面按钮
+// ----------------------
+
 
 
 document
-.querySelectorAll("nav button")
-.forEach(function(btn){
-
-
-btn.addEventListener(
+.addEventListener(
 "click",
-function(){
+e=>{
+
+
+
+const btn =
+e.target.closest(
+"[data-page]"
+);
+
+
+
+if(btn){
 
 
 showPage(
@@ -104,107 +143,27 @@ btn.dataset.page
 );
 
 
-});
-
-
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// =====================
-// 日志
-// =====================
-
-
-let logs =
-JSON.parse(
-localStorage.getItem(
-"pig_logs"
-)
-||
-"[]"
-);
-
-
-
-
-
-
-
-// 首页进入日志
-
-
-document.addEventListener(
-"click",
-function(e){
-
-
-if(
-e.target.id==="openLog"
-||
-e.target.closest("#openLog")
-){
-
-showPage("newLogPage");
 
 }
 
 
 
-if(
-e.target.classList.contains("back-btn")
-){
-
-showPage(
-e.target.dataset.back
-);
-
-}
 
 
-
-});
-
-
-
-
-
-
-// 新建日志按钮
-
-
-const newLog =
-document.getElementById(
-"newLog"
+const back =
+e.target.closest(
+"[data-back]"
 );
 
 
 
-if(newLog){
-
-
-newLog.addEventListener(
-"click",
-function(){
+if(back){
 
 
 showPage(
-"newLogPage"
+back.dataset.back
 );
 
-
-});
 
 
 }
@@ -213,39 +172,56 @@ showPage(
 
 
 
+});
 
 
-// 保存
 
 
-const save =
+
+
+
+
+// ----------------------
+// 日志保存
+// ----------------------
+
+
+
+const saveLog =
 document.getElementById(
 "saveLog"
 );
 
 
 
-if(save){
+if(saveLog){
 
 
-save.addEventListener(
+
+saveLog.addEventListener(
 "click",
-function(){
+()=>{
 
 
 
 const stage =
 document.getElementById(
-"stage"
-).value;
+"logStage"
+)?.value;
 
+
+
+const title =
+document.getElementById(
+"logTitle"
+)?.value;
 
 
 
 const content =
 document.getElementById(
-"content"
-).value.trim();
+"logContent"
+)?.value;
 
 
 
@@ -266,52 +242,82 @@ return;
 
 
 
-const item={
+let photos=[];
 
 
-id:Date.now(),
+const files =
+document.getElementById(
+"logImages"
+)?.files;
 
 
-date:
-new Date()
-.toLocaleDateString(),
+
+if(files){
 
 
-stage:stage,
+Array.from(files)
+.forEach(file=>{
 
 
-content:content
+const reader =
+new FileReader();
 
+
+reader.onload=e=>{
+
+photos.push(
+e.target.result
+);
 
 
 };
 
 
-
-
-
-
-logs.unshift(item);
-
-
-
-
-
-localStorage.setItem(
-"pig_logs",
-JSON.stringify(logs)
+reader.readAsDataURL(
+file
 );
 
+
+});
+
+
+}
+
+
+
+
+
+
+setTimeout(()=>{
+
+
+
+addLog({
+
+
+title:title,
+
+stage:stage,
+
+content:content,
+
+photos:photos,
+
+date:
+new Date()
+.toLocaleDateString()
+
+
+
+});
 
 
 
 
 
 document.getElementById(
-"content"
+"logContent"
 ).value="";
-
-
 
 
 
@@ -321,156 +327,13 @@ showPage(
 
 
 
-
 renderLogs();
 
 
 
+},500);
 
 
-});
-
-
-}
-
-
-
-
-
-
-
-
-// =====================
-// 渲染日志
-// =====================
-
-
-function renderLogs(){
-
-
-
-const list =
-document.getElementById(
-"logList"
-);
-
-
-
-const recent =
-document.getElementById(
-"recent"
-);
-
-
-
-
-if(!list){
-
-return;
-
-}
-
-
-
-
-if(logs.length===0){
-
-
-list.innerHTML=
-`
-<div class="muted">
-暂无记录
-</div>
-`;
-
-
-
-return;
-
-}
-
-
-
-
-
-
-
-list.innerHTML="";
-
-
-
-
-
-
-logs.forEach(function(log){
-
-
-
-const box =
-document.createElement(
-"div"
-);
-
-
-
-box.className=
-"log-item";
-
-
-
-
-
-box.innerHTML=
-`
-
-<div class="log-date">
-
-${log.date}
-
-</div>
-
-
-<div class="log-stage">
-
-${log.stage}
-
-</div>
-
-
-<div class="log-content">
-
-${log.content}
-
-</div>
-
-
-<button>
-查看详情
-</button>
-
-
-`;
-
-
-
-
-
-
-box.querySelector("button")
-.addEventListener(
-"click",
-function(){
-
-
-
-showDetail(log);
-
-
-
-});
-
-
-list.appendChild(box);
 
 
 
@@ -478,36 +341,6 @@ list.appendChild(box);
 
 
 
-
-
-
-if(recent){
-
-
-const last =
-logs[0];
-
-
-recent.innerHTML=
-`
-
-${last.date}
-
-<br>
-
-${last.stage}
-
-<br>
-
-${last.content}
-
-`;
-
-
-}
-
-
-
 }
 
 
@@ -516,54 +349,24 @@ ${last.content}
 
 
 
+// ----------------------
+// 初始渲染
+// ----------------------
 
 
-function showDetail(log){
-
-
-
-const detail =
-document.getElementById(
-"detailContent"
-);
-
-
-
-detail.innerHTML=
-`
-
-<h3>
-${log.stage}
-</h3>
-
-
-<p>
-${log.date}
-</p>
-
-
-<p>
-${log.content}
-</p>
-
-
-`;
-
-
-
-showPage(
-"detail"
-);
-
-
-
-}
-
-
-
-
+if(typeof renderLogs==="function"){
 
 renderLogs();
+
+}
+
+
+
+if(typeof renderIssues==="function"){
+
+renderIssues();
+
+}
 
 
 
