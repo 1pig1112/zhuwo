@@ -1,6 +1,7 @@
 "use strict";
 
 
+
 document.addEventListener(
 "DOMContentLoaded",
 function(){
@@ -8,10 +9,9 @@ function(){
 
 
 // =====================
-// 启动页
+// 启动
 // =====================
 
- 
 
 setTimeout(function(){
 
@@ -32,7 +32,6 @@ splash.classList.add("hidden");
 }
 
 
-
 if(app){
 
 app.classList.remove("hidden");
@@ -40,8 +39,8 @@ app.classList.remove("hidden");
 }
 
 
+},1200);
 
-},1500);
 
 
 
@@ -49,28 +48,50 @@ app.classList.remove("hidden");
 
 
 // =====================
-// 页面切换
+// 页面系统
 // =====================
-
-
-const navButtons =
-document.querySelectorAll(
-"nav button"
-);
-
 
 
 const pages =
-document.querySelectorAll(
-".page"
-);
+document.querySelectorAll(".page");
+
+
+
+function showPage(id){
+
+
+pages.forEach(function(page){
+
+page.classList.remove("active");
+
+});
+
+
+
+const target =
+document.getElementById(id);
+
+
+
+if(target){
+
+target.classList.add("active");
+
+}
+
+
+}
 
 
 
 
 
-navButtons.forEach(
-function(btn){
+// 底部导航
+
+
+document
+.querySelectorAll("nav button")
+.forEach(function(btn){
 
 
 btn.addEventListener(
@@ -78,37 +99,45 @@ btn.addEventListener(
 function(){
 
 
-const target =
-btn.dataset.page;
-
-
-
-pages.forEach(
-function(page){
-
-page.classList.remove(
-"active"
+showPage(
+btn.dataset.page
 );
 
 
-if(page.id===target){
+});
 
-page.classList.add(
-"active"
+
+});
+
+
+
+
+
+
+// 返回按钮
+
+
+document
+.querySelectorAll(".back-btn")
+.forEach(function(btn){
+
+
+btn.addEventListener(
+"click",
+function(){
+
+
+showPage(
+btn.dataset.back
 );
 
-}
+
+});
 
 
 });
 
 
-
-});
-
-
-
-});
 
 
 
@@ -117,8 +146,26 @@ page.classList.add(
 
 
 // =====================
-// 新增日志弹窗
+// 日志
 // =====================
+
+
+let logs =
+JSON.parse(
+localStorage.getItem(
+"pig_logs"
+)
+||
+"[]"
+);
+
+
+
+
+
+
+
+// 首页进入日志
 
 
 const openLog =
@@ -128,20 +175,7 @@ document.getElementById(
 
 
 
-const closeLog =
-document.getElementById(
-"closeLog"
-);
-
-
-
-const modal =
-document.getElementById(
-"logModal"
-);
-
-
-
+if(openLog){
 
 
 openLog.addEventListener(
@@ -149,49 +183,70 @@ openLog.addEventListener(
 function(){
 
 
-modal.classList.remove(
-"hidden"
+showPage(
+"newLogPage"
 );
 
 
 });
 
 
+}
 
 
 
-closeLog.addEventListener(
+
+
+
+
+// 新建日志按钮
+
+
+const newLog =
+document.getElementById(
+"newLog"
+);
+
+
+
+if(newLog){
+
+
+newLog.addEventListener(
 "click",
 function(){
 
 
-modal.classList.add(
-"hidden"
+showPage(
+"newLogPage"
 );
 
 
 });
 
 
+}
 
 
 
 
 
 
-// =====================
-// 保存日志
-// =====================
+
+// 保存
 
 
-const saveBtn =
+const save =
 document.getElementById(
 "saveLog"
 );
 
 
 
-saveBtn.addEventListener(
+if(save){
+
+
+save.addEventListener(
 "click",
 function(){
 
@@ -216,14 +271,11 @@ document.getElementById(
 
 if(!content){
 
-
 alert(
 "请输入施工内容"
 );
 
-
 return;
-
 
 }
 
@@ -232,19 +284,10 @@ return;
 
 
 
-const logs =
-JSON.parse(
-localStorage.getItem(
-"pig_logs"
-)
-|| "[]"
-);
+const item={
 
 
-
-
-
-logs.unshift({
+id:Date.now(),
 
 
 date:
@@ -259,7 +302,14 @@ content:content
 
 
 
-});
+};
+
+
+
+
+
+
+logs.unshift(item);
 
 
 
@@ -274,11 +324,6 @@ JSON.stringify(logs)
 
 
 
-renderLogs();
-
-
-
-
 
 document.getElementById(
 "content"
@@ -286,13 +331,26 @@ document.getElementById(
 
 
 
-modal.classList.add(
-"hidden"
+
+
+showPage(
+"logs"
 );
 
 
 
+
+renderLogs();
+
+
+
+
+
 });
+
+
+}
+
 
 
 
@@ -309,7 +367,7 @@ function renderLogs(){
 
 
 
-const box =
+const list =
 document.getElementById(
 "logList"
 );
@@ -324,26 +382,28 @@ document.getElementById(
 
 
 
-const logs =
-JSON.parse(
-localStorage.getItem(
-"pig_logs"
-)
-|| "[]"
-);
+if(!list){
 
+return;
+
+}
 
 
 
 
 if(logs.length===0){
 
-box.innerHTML=
-"暂无记录";
+
+list.innerHTML=
+`
+<div class="muted">
+暂无记录
+</div>
+`;
+
 
 
 return;
-
 
 }
 
@@ -352,49 +412,83 @@ return;
 
 
 
-box.innerHTML="";
+
+list.innerHTML="";
 
 
 
 
 
-logs.forEach(
-function(item){
+
+logs.forEach(function(log){
 
 
 
-const div =
+const box =
 document.createElement(
 "div"
 );
 
 
 
-div.className=
+box.className=
 "log-item";
 
 
 
-div.innerHTML=
+
+
+box.innerHTML=
 `
 
-<div>
-${item.date}
+<div class="log-date">
+
+${log.date}
+
 </div>
 
-<div>
-${item.stage}
+
+<div class="log-stage">
+
+${log.stage}
+
 </div>
 
-<p>
-${item.content}
-</p>
+
+<div class="log-content">
+
+${log.content}
+
+</div>
+
+
+<button>
+查看详情
+</button>
+
 
 `;
 
 
 
-box.appendChild(div);
+
+
+
+box.querySelector("button")
+.addEventListener(
+"click",
+function(){
+
+
+
+showDetail(log);
+
+
+
+});
+
+
+list.appendChild(box);
 
 
 
@@ -404,38 +498,91 @@ box.appendChild(div);
 
 
 
-const first =
-logs[0];
-
-
 
 if(recent){
+
+
+const last =
+logs[0];
+
 
 recent.innerHTML=
 `
 
-${first.date}
+${last.date}
 
 <br>
 
-${first.stage}
+${last.stage}
 
 <br>
 
-${first.content}
+${last.content}
 
 `;
 
+
+}
+
+
+
 }
 
 
 
+
+
+
+
+
+
+function showDetail(log){
+
+
+
+const detail =
+document.getElementById(
+"detailContent"
+);
+
+
+
+detail.innerHTML=
+`
+
+<h3>
+${log.stage}
+</h3>
+
+
+<p>
+${log.date}
+</p>
+
+
+<p>
+${log.content}
+</p>
+
+
+`;
+
+
+
+showPage(
+"detail"
+);
+
+
+
 }
+
 
 
 
 
 renderLogs();
+
 
 
 
