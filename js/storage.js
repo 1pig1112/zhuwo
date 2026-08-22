@@ -1,48 +1,78 @@
-"use strict";
-
-/*
- 猪窝 V2.0
- 数据存储核心
-*/
-
-
-const PigStorage = {
+// ======================
+// 猪窝 V2.0
+// storage.js
+// 本地数据中心
+// ======================
 
 
-    get(key){
+const ZHUWO_DB = {
 
-        try{
+    logs:"zhuwo_logs",
 
-            return JSON.parse(
-                localStorage.getItem(key)
-            ) || [];
+    issues:"zhuwo_issues",
 
-        }catch(e){
+    archive:"zhuwo_archive",
 
-            return [];
+    settings:"zhuwo_settings"
 
-        }
-
-    },
+};
 
 
+// 保存
 
-    set(key,data){
+function saveData(key,data){
 
-        localStorage.setItem(
-            key,
-            JSON.stringify(data)
-        );
+    localStorage.setItem(
+        key,
+        JSON.stringify(data)
+    );
 
-    },
+}
 
 
+//读取
 
-    remove(key){
+function getData(key){
 
-        localStorage.removeItem(key);
+    let data = localStorage.getItem(key);
+
+    if(!data){
+
+        return [];
 
     }
 
 
-};
+    try{
+
+        return JSON.parse(data);
+
+    }
+
+    catch(e){
+
+        return [];
+
+    }
+
+}
+
+
+//删除
+
+function removeData(key){
+
+    localStorage.removeItem(key);
+
+}
+
+
+//生成ID
+
+function createId(){
+
+    return Date.now()
+    +
+    Math.floor(Math.random()*999);
+
+}
