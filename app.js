@@ -1,136 +1,123 @@
-"use strict";
-
-
-// ======================
-// 猪窝 V2.1
-// app.js
-// 主控制中心
-// ======================
-
-
-
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
-
-
-
-
-
-// 启动页
-
-
-setTimeout(()=>{
-
-
-const splash =
-document.getElementById(
-"splash"
-);
-
-
-const app =
-document.getElementById(
-"app"
-);
-
-
-
-if(splash)
-splash.classList.add(
-"hidden"
-);
-
-
-
-if(app)
-app.classList.remove(
-"hidden"
-);
-
-
-
-},1200);
-
-
-
-
-
-
-
-
-
-// 页面切换
-
-
-window.showPage=function(id){
-
-
-
-document
-.querySelectorAll(".page")
-.forEach(
-p=>{
-
-p.classList.remove(
-"active"
-);
-
+*{
+box-sizing:border-box;
 }
 
-);
 
+html,
+body{
 
+margin:0;
 
-let target =
-document.getElementById(
-id
-);
+padding:0;
 
+background:#141414;
 
+color:#d4c5b3;
 
-if(target){
-
-target.classList.add(
-"active"
-);
+font-family:
+-apple-system,
+BlinkMacSystemFont,
+"PingFang SC",
+"Microsoft YaHei",
+sans-serif;
 
 }
 
 
-};
+body{
+
+min-height:100vh;
+
+}
+
+
+
+/* =================
+启动页
+================= */
+
+
+#splash{
+
+position:fixed;
+
+inset:0;
+
+background:#b9a38a;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+z-index:9999;
+
+}
+
+
+.splash-logo{
+
+text-align:center;
+
+color:#fff;
+
+}
+
+
+.logo-cn{
+
+font-size:42px;
+
+letter-spacing:8px;
+
+font-weight:600;
+
+}
+
+
+.logo-en{
+
+margin-top:15px;
+
+font-size:14px;
+
+letter-spacing:6px;
+
+}
+
+
+
+.line{
+
+width:80px;
+
+height:1px;
+
+background:#eee;
+
+margin:30px auto;
+
+}
+
+
+
+.home-en{
+
+font-size:12px;
+
+letter-spacing:3px;
+
+margin-top:12px;
+
+}
 
 
 
 
+.hidden{
 
-
-
-
-
-// 所有页面按钮
-
-
-document
-.addEventListener(
-"click",
-e=>{
-
-
-let btn =
-e.target.closest(
-"[data-page]"
-);
-
-
-
-if(btn){
-
-
-showPage(
-btn.dataset.page
-);
-
+display:none!important;
 
 }
 
@@ -138,92 +125,70 @@ btn.dataset.page
 
 
 
+/* =================
+整体
+================= */
 
 
-let back =
-e.target.closest(
-"[data-back]"
-);
+#app{
+
+min-height:100vh;
+
+padding-bottom:90px;
+
+}
 
 
 
-if(back){
+header{
+
+padding:25px 20px;
+
+}
 
 
-showPage(
-back.dataset.back
-);
+header h1{
 
+margin:0;
+
+font-size:28px;
+
+color:#e0d2c1;
+
+}
+
+
+header p{
+
+margin-top:8px;
+
+font-size:13px;
+
+color:#888;
 
 }
 
 
 
 
-});
+main{
+
+padding:0 16px;
+
+}
 
 
 
+.page{
+
+display:none;
+
+}
 
 
+.page.active{
 
-
-
-
-
-
-// 保存日志
-
-
-let save =
-document.getElementById(
-"saveLog"
-);
-
-
-
-if(save){
-
-
-save.addEventListener(
-"click",
-()=>{
-
-
-
-let stage =
-document.getElementById(
-"logStage"
-).value;
-
-
-
-let title =
-document.getElementById(
-"logTitle"
-).value;
-
-
-
-let content =
-document.getElementById(
-"logContent"
-).value.trim();
-
-
-
-
-
-if(!content){
-
-
-alert(
-"请输入施工内容"
-);
-
-
-return;
-
+display:block;
 
 }
 
@@ -232,84 +197,42 @@ return;
 
 
 
-let input =
-document.getElementById(
-"logImages"
-);
+/* =================
+卡片
+================= */
 
 
+.card{
 
+background:#1d1d1d;
 
-let files =
-input.files;
+border:
 
+1px solid #302b25;
 
+border-radius:20px;
 
-let photos=[];
+padding:18px;
 
-
-
-
-if(files.length===0){
-
-
-finishSave();
-
-
-}
-else{
-
-
-
-let count=0;
-
-
-
-Array.from(files)
-.forEach(
-file=>{
-
-
-let reader=
-new FileReader();
-
-
-
-reader.onload=function(e){
-
-
-photos.push(
-e.target.result
-);
-
-
-
-count++;
-
-
-
-if(count===files.length){
-
-
-finishSave();
-
+margin-bottom:14px;
 
 }
 
 
-};
+
+.card h2{
+
+margin:12px 0;
+
+font-size:24px;
+
+}
 
 
 
-reader.readAsDataURL(
-file
-);
+.card h3{
 
-
-
-});
-
-
+margin-top:0;
 
 }
 
@@ -317,77 +240,11 @@ file
 
 
 
+.small{
 
+font-size:13px;
 
-
-function finishSave(){
-
-
-
-addLog({
-
-title:title,
-
-
-stage:stage,
-
-
-content:content,
-
-
-photos:photos,
-
-
-date:
-new Date()
-.toLocaleDateString()
-
-
-
-});
-
-
-
-
-
-
-document
-.getElementById(
-"logTitle"
-).value="";
-
-
-
-document
-.getElementById(
-"logContent"
-).value="";
-
-
-
-input.value="";
-
-
-
-
-
-renderLogs();
-
-
-
-showPage(
-"logs"
-);
-
-
-
-}
-
-
-
-});
-
-
+color:#999;
 
 }
 
@@ -395,76 +252,53 @@ showPage(
 
 
 
+.progress-box{
 
+display:flex;
 
+justify-content:space-between;
 
+align-items:center;
 
-// 日志列表点击详情
-
-
-let list =
-document.getElementById(
-"logList"
-);
-
-
-
-if(list){
-
-
-list.addEventListener(
-"click",
-e=>{
-
-
-
-let card =
-e.target.closest(
-".log-card"
-);
-
-
-
-if(
-card
-&&
-!e.target.closest("button")
-){
-
-
-
-let index =
-[
-...list.children
-]
-.indexOf(card);
-
-
-
-let logs =
-getLogs();
-
-
-
-if(logs[index]){
-
-
-showLogDetail(
-logs[index].id
-);
-
+margin-top:20px;
 
 }
 
 
 
+.progress-box strong{
+
+font-size:28px;
+
+font-weight:400;
+
 }
 
 
 
-});
+
+.progress{
+
+height:6px;
+
+background:#333;
+
+border-radius:10px;
+
+margin-top:15px;
+
+overflow:hidden;
+
+}
 
 
+.progress-inner{
+
+height:100%;
+
+width:58%;
+
+background:#c7b092;
 
 }
 
@@ -472,17 +306,354 @@ logs[index].id
 
 
 
+/* =================
+入口
+================= */
 
 
-// 初始化
+.grid{
 
+display:grid;
 
-if(typeof renderLogs==="function"){
+grid-template-columns:1fr 1fr;
 
-renderLogs();
+gap:12px;
+
+margin-bottom:15px;
 
 }
 
 
 
-});
+.menu{
+
+height:100px;
+
+background:#1d1d1d;
+
+border:
+
+1px solid #302b25;
+
+border-radius:18px;
+
+color:#d4c5b3;
+
+font-size:16px;
+
+}
+
+
+
+
+
+/* =================
+标题
+================= */
+
+
+.page-title{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+margin-bottom:18px;
+
+}
+
+
+.page-title h2{
+
+margin:0;
+
+font-size:24px;
+
+}
+
+
+.page-title button{
+
+width:38px;
+
+height:38px;
+
+border-radius:50%;
+
+background:#202020;
+
+border:1px solid #3b342c;
+
+color:#d4c5b3;
+
+font-size:25px;
+
+}
+
+
+
+
+
+/* =================
+按钮
+================= */
+
+
+.add-btn,
+.save-btn{
+
+width:100%;
+
+height:46px;
+
+border:none;
+
+border-radius:15px;
+
+background:#c7b092;
+
+color:#161616;
+
+font-size:15px;
+
+margin-bottom:15px;
+
+}
+
+
+
+
+
+/* =================
+输入
+================= */
+
+
+input,
+textarea,
+select{
+
+
+width:100%;
+
+background:#191919;
+
+border:1px solid #39332c;
+
+border-radius:14px;
+
+padding:14px;
+
+color:#ddd;
+
+font-size:15px;
+
+margin-bottom:15px;
+
+}
+
+
+
+textarea{
+
+height:120px;
+
+}
+
+
+
+
+
+/* =================
+日志
+================= */
+
+
+.log-card{
+
+background:#1d1d1d;
+
+border:1px solid #302b25;
+
+border-radius:18px;
+
+padding:16px;
+
+margin-bottom:14px;
+
+}
+
+
+
+.log-date{
+
+font-size:12px;
+
+color:#888;
+
+}
+
+
+
+
+.log-card h3{
+
+margin:10px 0;
+
+}
+
+
+
+
+.photos{
+
+display:flex;
+
+gap:10px;
+
+flex-wrap:wrap;
+
+margin-top:15px;
+
+}
+
+
+
+.photos img{
+
+width:85px;
+
+height:85px;
+
+object-fit:cover;
+
+border-radius:12px;
+
+}
+
+
+
+
+.log-actions{
+
+display:flex;
+
+gap:10px;
+
+margin-top:15px;
+
+}
+
+
+.log-actions button{
+
+flex:1;
+
+height:36px;
+
+border-radius:12px;
+
+background:#181818;
+
+border:1px solid #4a4035;
+
+color:#d4c5b3;
+
+}
+
+
+
+
+.photo-viewer{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.9);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+z-index:99999;
+
+}
+
+
+
+.photo-viewer img{
+
+max-width:95%;
+
+max-height:90%;
+
+}
+
+
+
+
+
+
+
+/* =================
+底部
+================= */
+
+
+nav{
+
+position:fixed;
+
+left:0;
+
+right:0;
+
+bottom:0;
+
+height:70px;
+
+background:#171717;
+
+border-top:1px solid #302b25;
+
+display:flex;
+
+justify-content:space-around;
+
+align-items:center;
+
+}
+
+
+
+nav button{
+
+background:none;
+
+border:none;
+
+color:#aaa;
+
+font-size:13px;
+
+}
+
+
+
+
+
+
+@media(max-width:430px){
+
+.grid{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+}
