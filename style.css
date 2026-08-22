@@ -7,9 +7,9 @@ body{
 
 margin:0;
 
-background:#111;
+background:#151515;
 
-color:#e8e2d8;
+color:#d0c1ae;
 
 font-family:
 -apple-system,
@@ -30,12 +30,17 @@ display:none!important;
 
 
 
-/* 启动画面 */
+
+/* ===== 启动页 ===== */
 
 
-.splash{
+#splash{
 
-height:100vh;
+position:fixed;
+
+inset:0;
+
+background:#151515;
 
 display:flex;
 
@@ -43,78 +48,110 @@ align-items:center;
 
 justify-content:center;
 
-background:#111;
+z-index:999;
 
 }
 
 
 
-.logo-box{
+
+.splash-logo{
 
 text-align:center;
 
+color:#b9a48c;
+
+}
+
+
+
+
+.logo-image{
+
+font-size:38px;
+
+letter-spacing:8px;
+
+font-weight:500;
+
 }
 
 
-
-.logo-text{
-
-font-size:34px;
-
-letter-spacing:10px;
-
-}
 
 
 
 .logo-en{
 
-margin-top:10px;
+margin-top:12px;
 
-font-size:18px;
+font-size:15px;
 
-letter-spacing:6px;
+letter-spacing:5px;
 
 }
 
 
 
-.line{
+.logo-line{
 
 width:70px;
 
 height:1px;
 
-background:#887b68;
+background:#806f5d;
 
-margin:25px auto;
+margin:22px auto;
 
 }
 
 
 
-.small{
+.slogan{
 
-font-size:12px;
+font-size:15px;
+
+}
+
+
+
+.english{
+
+margin-top:10px;
+
+font-size:11px;
+
+letter-spacing:3px;
 
 opacity:.6;
 
-letter-spacing:2px;
-
 }
 
 
 
 
 
-/* APP */
+
+
+/* ===== APP ===== */
+
+
+#app{
+
+min-height:100vh;
+
+padding-bottom:80px;
+
+}
+
+
 
 
 header{
 
-padding:25px 20px 10px;
+padding:25px 20px 15px;
 
 }
+
 
 
 header h1{
@@ -123,26 +160,33 @@ margin:0;
 
 font-size:28px;
 
-letter-spacing:5px;
+color:#d0c1ae;
 
 }
 
 
-header p{
 
-margin:8px 0;
+.header-sub{
 
-color:#999;
+margin-top:8px;
+
+font-size:13px;
+
+color:#888;
 
 }
+
+
 
 
 
 main{
 
-padding:10px 16px 100px;
+padding:0 16px;
 
 }
+
+
 
 
 
@@ -162,10 +206,168 @@ display:block;
 
 
 
-/* 顶部返回 */
 
 
-.top-bar{
+
+
+
+/* ===== 卡片 ===== */
+
+
+.home-card,
+.form-card,
+.archive-card,
+.log-card,
+.issue-card{
+
+
+background:#202020;
+
+border-radius:18px;
+
+padding:18px;
+
+margin-bottom:14px;
+
+
+border:1px solid #2b2926;
+
+
+}
+
+
+
+
+
+
+.small-title{
+
+font-size:13px;
+
+color:#888;
+
+}
+
+
+
+.big-title{
+
+font-size:24px;
+
+margin:12px 0;
+
+color:#d0c1ae;
+
+}
+
+
+
+
+
+.days{
+
+font-size:13px;
+
+color:#888;
+
+}
+
+
+
+
+
+
+
+/* 进度条 */
+
+
+.progress{
+
+height:5px;
+
+background:#333;
+
+border-radius:5px;
+
+overflow:hidden;
+
+margin-top:10px;
+
+}
+
+
+.progress-inner{
+
+height:100%;
+
+width:58%;
+
+background:#9c8872;
+
+}
+
+
+
+
+
+/* 首页入口 */
+
+
+.menu-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:12px;
+
+margin:15px 0;
+
+}
+
+
+
+.menu-card{
+
+
+background:#202020;
+
+border-radius:18px;
+
+padding:22px 10px;
+
+text-align:center;
+
+color:#c8b59d;
+
+border:1px solid #2b2926;
+
+}
+
+
+
+.menu-card span{
+
+display:block;
+
+font-size:22px;
+
+margin-bottom:10px;
+
+}
+
+
+
+
+
+
+
+
+
+/* 页面顶部 */
+
+
+.page-header{
 
 display:flex;
 
@@ -179,11 +381,11 @@ margin-bottom:18px;
 
 
 
-.top-bar h2{
+.page-header h2{
 
 margin:0;
 
-font-size:20px;
+font-size:22px;
 
 }
 
@@ -191,86 +393,23 @@ font-size:20px;
 
 .back-btn{
 
-border:none;
+width:36px;
 
-background:none;
+height:36px;
 
-color:#d5c3a7;
+border-radius:50%;
 
-font-size:15px;
+border:1px solid #403b35;
 
-padding:8px 0;
+background:#202020;
 
-}
+color:#c8b59d;
 
-
-
-
-
-/* 卡片 */
-
-
-.card{
-
-background:#1b1a18;
-
-border:1px solid #302c26;
-
-border-radius:18px;
-
-padding:18px;
-
-margin-bottom:14px;
+font-size:22px;
 
 }
 
 
-
-h2{
-
-font-size:20px;
-
-}
-
-
-
-h3{
-
-font-size:16px;
-
-}
-
-
-
-.stage{
-
-color:#d5c3a7;
-
-font-size:16px;
-
-}
-
-
-
-.muted{
-
-color:#999;
-
-font-size:14px;
-
-}
-
-
-
-.number{
-
-font-size:36px;
-
-font-weight:600;
-
-margin-top:10px;
-
-}
 
 
 
@@ -279,21 +418,23 @@ margin-top:10px;
 /* 按钮 */
 
 
-.primary{
+.add-btn,
+.save-btn{
+
 
 width:100%;
 
-height:52px;
+height:48px;
 
-border:none;
+border-radius:14px;
 
-border-radius:15px;
+border:0;
 
-background:#d5c3a7;
+background:#9c8872;
 
-color:#111;
+color:#151515;
 
-font-size:16px;
+font-size:15px;
 
 margin-bottom:15px;
 
@@ -302,28 +443,28 @@ margin-bottom:15px;
 
 
 
-/* 输入 */
 
-
-select,
+input,
 textarea,
-input{
+select{
+
 
 width:100%;
 
-background:#111;
+background:#171717;
 
-color:#eee;
+border:1px solid #38332d;
 
-border:1px solid #38342d;
+color:#ddd;
 
-border-radius:12px;
+padding:14px;
 
-padding:12px;
+border-radius:14px;
 
-margin-bottom:15px;
+margin-bottom:14px;
 
 font-size:15px;
+
 
 }
 
@@ -331,9 +472,7 @@ font-size:15px;
 
 textarea{
 
-height:140px;
-
-resize:none;
+height:130px;
 
 }
 
@@ -341,70 +480,34 @@ resize:none;
 
 
 
-/* 日志 */
 
 
-.log-item{
-
-background:#1b1a18;
-
-border-radius:18px;
-
-padding:18px;
-
-margin-bottom:14px;
-
-border:1px solid #302c26;
-
-}
+/* 图片 */
 
 
+.photos{
 
-.log-date{
+display:flex;
 
-font-size:13px;
-
-color:#999;
-
-}
-
-
-
-.log-stage{
-
-margin-top:8px;
-
-font-size:16px;
-
-color:#d5c3a7;
-
-}
-
-
-
-.log-content{
+gap:8px;
 
 margin-top:12px;
 
-line-height:1.6;
+flex-wrap:wrap;
 
 }
 
 
 
-.log-item button{
+.photos img{
 
-margin-top:15px;
+width:80px;
 
-background:none;
+height:80px;
 
-border:1px solid #555;
+object-fit:cover;
 
-color:#ddd;
-
-border-radius:10px;
-
-padding:8px 15px;
+border-radius:12px;
 
 }
 
@@ -412,30 +515,69 @@ padding:8px 15px;
 
 
 
-/* 底部导航 */
+
+
+/* 档案 */
+
+
+.archive-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:12px;
+
+}
+
+
+
+.archive-card{
+
+text-align:center;
+
+font-size:16px;
+
+line-height:2;
+
+}
+
+
+
+
+
+
+
+/* 底部 */
 
 
 nav{
 
+
 position:fixed;
+
+bottom:0;
 
 left:0;
 
 right:0;
 
-bottom:0;
 
 height:70px;
 
-background:#161514;
 
-border-top:1px solid #302c26;
+background:#181818;
+
+
+border-top:1px solid #292522;
+
 
 display:flex;
 
 justify-content:space-around;
 
 align-items:center;
+
 
 }
 
@@ -445,27 +587,49 @@ nav button{
 
 background:none;
 
-border:none;
+border:0;
 
-color:#999;
+color:#8d8174;
 
-font-size:14px;
+font-size:13px;
+
+}
+
+
+
+nav button:active{
+
+color:#c8b59d;
 
 }
 
 
 
-/* 手机 */
 
 
-@media(max-width:430px){
 
 
-.number{
+.empty{
 
-font-size:32px;
+text-align:center;
+
+padding:30px;
+
+color:#777;
 
 }
 
+
+
+
+@media(min-width:700px){
+
+main{
+
+max-width:700px;
+
+margin:auto;
+
+}
 
 }
