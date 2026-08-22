@@ -1,555 +1,176 @@
-"use strict";
-
-
-const LogManager = {
-
-
-key:"pig_logs",
-
-
-
-getAll(){
-
-return PigStorage.get(
-this.key
-);
-
-},
-
-
-
-
-
-save(data){
-
-PigStorage.set(
-this.key,
-data
-);
-
-},
-
-
-
-
-
-add(item){
-
-let logs=this.getAll();
-
-
-logs.unshift(item);
-
-
-this.save(logs);
-
-
-},
-
-
-
-
-
-delete(id){
-
-let logs=this.getAll();
-
-
-logs =
-logs.filter(
-item=>item.id!==id
-);
-
-
-this.save(logs);
-
-
-}
-
-
-
-};
-
-
-
-
-
-
-
 // ======================
-// 页面加载后绑定
+// 猪窝 V2.0
+// logs.js
+// 施工日志系统
 // ======================
 
 
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
+function getLogs(){
 
-
-
-let selectedImages=[];
-
-
-
-
-
-// 图片读取
-
-
-const imageInput =
-document.getElementById(
-"logImages"
-);
-
-
-
-if(imageInput){
-
-
-imageInput.addEventListener(
-"change",
-function(e){
-
-
-selectedImages=[];
-
-
-
-const files =
-Array.from(
-e.target.files
-);
-
-
-
-files.forEach(file=>{
-
-
-const reader =
-new FileReader();
-
-
-
-reader.onload=function(evt){
-
-
-selectedImages.push(
-evt.target.result
-);
-
-
-};
-
-
-
-reader.readAsDataURL(
-file
-);
-
-
-
-});
-
-
-
-});
-
-
+    return getData(ZHUWO_DB.logs);
 
 }
 
 
 
+//新增施工日志
+
+function addLog(data){
+
+    let logs=getLogs();
 
 
+    data.id=createId();
+
+    data.time=new Date()
+    .toLocaleDateString();
 
 
-
-// 保存日志
-
-
-const saveBtn =
-document.getElementById(
-"saveLog"
-);
+    logs.unshift(data);
 
 
-
-if(saveBtn){
-
-
-saveBtn.addEventListener(
-"click",
-()=>{
+    saveData(
+        ZHUWO_DB.logs,
+        logs
+    );
 
 
-const stage =
-document.getElementById(
-"logStage"
-).value;
-
-
-
-const content =
-document.getElementById(
-"logContent"
-).value.trim();
-
-
-
-
-
-if(!content){
-
-alert(
-"请输入施工内容"
-);
-
-return;
+    return data;
 
 }
 
 
 
+//删除日志
+
+function deleteLog(id){
+
+    let logs=getLogs();
 
 
-LogManager.add({
-
-id:Date.now(),
-
-
-date:
-new Date()
-.toLocaleDateString(),
+    logs=logs.filter(
+        item=>item.id!==id
+    );
 
 
-stage:stage,
-
-
-content:content,
-
-
-images:selectedImages
-
-
-});
-
-
-
-
-
-document.getElementById(
-"logContent"
-).value="";
-
-
-
-selectedImages=[];
-
-
-
-renderLogs();
-
-
-
-showPage(
-"logs"
-);
-
-
-
-}
-
-);
+    saveData(
+        ZHUWO_DB.logs,
+        logs
+    );
 
 }
 
 
 
+//获取单条日志
 
-renderLogs();
+function getLog(id){
 
-
-
-});
-
+    let logs=getLogs();
 
 
+    return logs.find(
+        item=>item.id===id
+    );
+
+}
 
 
 
-
-
-// ======================
-// 渲染日志
-// ======================
-
+//渲染日志列表
 
 function renderLogs(){
 
+    let box=document.getElementById(
+        "logList"
+    );
 
 
-const list =
-document.getElementById(
-"logList"
-);
+    if(!box)return;
 
 
+    let logs=getLogs();
 
-if(!list){
 
-return;
 
-}
+    if(logs.length===0){
 
+        box.innerHTML=
+        `
+        <div class="empty">
+        暂无施工记录
+        </div>
+        `;
 
+        return;
 
+    }
 
-const logs =
-LogManager.getAll();
 
 
+    box.innerHTML=
+    logs.map(log=>{
 
 
+        let imgs="";
 
-if(logs.length===0){
 
+        if(log.photos){
 
-list.innerHTML=
-`
-<div class="card">
-暂无记录
-</div>
-`;
+            imgs=
+            log.photos.map(p=>
+            `
+            <img src="${p}">
+            `
+            ).join("");
 
+        }
 
-return;
 
 
-}
+        return`
 
+        <div class="log-card">
 
 
+        <div class="log-date">
 
+        ${log.date||""}
 
+        </div>
 
 
-list.innerHTML="";
+        <h3>
 
+        ${log.title||"施工记录"}
 
+        </h3>
 
 
 
+        <p>
 
+        ${log.content||""}
 
-logs.forEach(log=>{
+        </p>
 
 
-const div =
-document.createElement(
-"div"
-);
 
+        <div class="photos">
 
+        ${imgs}
 
-div.className=
-"log-item";
+        </div>
 
 
 
-let photos="";
+        </div>
 
 
+        `;
 
-if(log.images
-&&
-log.images.length){
 
-
-
-photos=
-`
-<div class="photos">
-
-${
-
-log.images.map(
-img=>
-`
-<img src="${img}">
-`
-).join("")
-
-}
-
-</div>
-
-`;
-
-
-
-}
-
-
-
-
-
-
-div.innerHTML=
-`
-
-<div class="log-date">
-
-${log.date}
-
-</div>
-
-
-<div class="log-stage">
-
-${log.stage}
-
-</div>
-
-
-<div class="log-content">
-
-${log.content}
-
-</div>
-
-
-${photos}
-
-
-`;
-
-
-
-
-
-
-div.addEventListener(
-"click",
-()=>{
-
-
-showDetail(
-log
-);
-
-
-}
-
-);
-
-
-
-
-
-list.appendChild(div);
-
-
-
-});
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// ======================
-// 详情
-// ======================
-
-
-function showDetail(log){
-
-
-
-const box =
-document.getElementById(
-"detailBox"
-);
-
-
-
-if(!box){
-
-return;
-
-}
-
-
-
-let photos="";
-
-
-
-if(log.images
-&&
-log.images.length){
-
-
-photos=
-`
-
-<div class="photos">
-
-${
-log.images.map(
-img=>
-`
-<img src="${img}">
-`
-).join("")
-}
-
-</div>
-
-`;
-
-}
-
-
-
-
-box.innerHTML=
-`
-
-<h3>
-${log.stage}
-</h3>
-
-
-<p>
-${log.date}
-</p>
-
-
-<p>
-${log.content}
-</p>
-
-
-${photos}
-
-
-`;
-
-
-
-showPage(
-"detail"
-);
+    }).join("");
 
 
 
