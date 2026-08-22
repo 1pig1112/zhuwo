@@ -1,3 +1,5 @@
+alert("app.js运行了");
+
 "use strict";
 
 
