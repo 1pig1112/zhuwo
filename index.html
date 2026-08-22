@@ -12,7 +12,7 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>猪窝 1PIG'S</title>
 
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="style.css">
 
 
 </head>
@@ -24,34 +24,57 @@ content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <!-- 启动页 -->
 
-<div id="splash"
-class="splash">
+<div id="splash">
 
 
-<div class="logo-box">
+<div class="splash-logo">
 
-<div class="logo">
+
+<!-- 这里放你的手写logo -->
+
+<div class="logo-image">
+
 猪窝
+
 </div>
 
 
-<div class="en">
+
+<div class="logo-en">
+
 1PIG'S
+
 </div>
 
 
-<div class="line"></div>
+
+<div class="logo-line"></div>
 
 
-<div>
+
+<div class="slogan">
+
 记录家的每一步
-</div>
-
 
 </div>
 
 
+
+<div class="english">
+
+BUILDING OUR HOME
+
 </div>
+
+
+
+</div>
+
+
+
+</div>
+
+
 
 
 
@@ -66,17 +89,24 @@ class="hidden">
 
 
 
+<!-- 顶部 -->
+
+
 <header>
 
 
 <h1>
-猪窝
+
+我的家
+
 </h1>
 
 
-<p>
-我的装修管家
-</p>
+<div class="header-sub">
+
+装修管理中心
+
+</div>
 
 
 </header>
@@ -95,64 +125,87 @@ class="hidden">
 
 <!-- 首页 -->
 
-<section id="home"
+
+<section
+id="home"
 class="page active">
 
 
-<div class="card">
-
-<h2>
-我的家
-</h2>
 
 
-<div class="stage">
-准备装修
-</div>
+
+<div class="home-card">
 
 
-<div class="muted">
-装修第0天
-</div>
+<div class="small-title">
 
+当前阶段
 
 </div>
 
 
 
+<div class="big-title">
 
-
-<div class="card">
-
-
-<div class="muted">
-已花费金额
-</div>
-
-
-<div class="money">
-¥0
-</div>
-
+泥瓦施工阶段
 
 </div>
 
 
 
+<div class="progress-box">
+
+
+<div class="progress-text">
+
+整体进度 58%
+
+</div>
+
+
+<div class="progress">
+
+<div class="progress-inner"></div>
+
+</div>
+
+
+</div>
 
 
 
-<div class="card">
+<div class="days">
+
+装修第42天
+
+</div>
 
 
-<h3>
+</div>
+
+
+
+
+
+
+
+
+<div class="home-card">
+
+
+<div class="small-title">
+
 最近动态
-</h3>
+
+</div>
+
 
 
 <div id="recent">
 
-暂无记录
+
+暂无施工记录
+
 
 </div>
 
@@ -164,14 +217,167 @@ class="page active">
 
 
 
-<button class="primary"
+
+
+
+<div class="menu-grid">
+
+
+
+<div class="menu-card"
 data-page="logs">
 
 
-📅 查看施工日志
+<span>
+
+📒
+
+</span>
 
 
-</button>
+施工日志
+
+
+</div>
+
+
+
+
+
+<div class="menu-card"
+data-page="issues">
+
+
+<span>
+
+⚠️
+
+</span>
+
+
+问题清单
+
+
+</div>
+
+
+
+
+
+<div class="menu-card"
+data-page="archive">
+
+
+<span>
+
+📦
+
+</span>
+
+
+材料档案
+
+
+</div>
+
+
+
+
+
+<div class="menu-card"
+data-page="contract">
+
+
+<span>
+
+📄
+
+</span>
+
+
+合同档案
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="stage-card">
+
+
+<div>
+
+装修进程
+
+</div>
+
+
+
+<ul>
+
+
+<li class="done">
+
+拆改完成
+
+</li>
+
+
+<li class="done">
+
+水电完成
+
+</li>
+
+
+<li class="active">
+
+泥瓦施工
+
+</li>
+
+
+<li>
+
+木工
+
+</li>
+
+
+<li>
+
+油漆
+
+</li>
+
+
+<li>
+
+安装
+
+</li>
+
+
+</ul>
+
+
+
+</div>
+
+
+
 
 
 
@@ -182,30 +388,29 @@ data-page="logs">
 
 
 
-
-
-
-
-
 <!-- 施工日志 -->
 
-<section id="logs"
+<section
+id="logs"
 class="page">
 
 
-<div class="top">
+
+<div class="page-header">
 
 
-<button class="back"
-data-back="home">
+<button class="back-btn"
+data-page="home">
 
-← 返回
+‹
 
 </button>
 
 
 <h2>
+
 施工日志
+
 </h2>
 
 
@@ -214,14 +419,32 @@ data-back="home">
 
 
 
-<button class="primary"
+
+
+<div class="toolbar">
+
+
+<button class="add-btn"
 data-page="newLog">
 
-
-＋ 新增施工日志
-
+＋ 新增记录
 
 </button>
+
+
+</div>
+
+
+
+
+
+
+<div class="filter">
+
+
+2026年8月
+
+</div>
 
 
 
@@ -230,10 +453,8 @@ data-page="newLog">
 <div id="logList">
 
 
-暂无记录
-
-
 </div>
+
 
 
 
@@ -249,25 +470,30 @@ data-page="newLog">
 
 
 
-<!-- 新增日志 -->
+<!-- 新增施工日志 -->
 
-<section id="newLog"
+
+<section
+id="newLog"
 class="page">
 
 
-<div class="top">
+
+<div class="page-header">
 
 
-<button class="back"
-data-back="logs">
+<button class="back-btn"
+data-page="logs">
 
-← 返回
+‹
 
 </button>
 
 
 <h2>
-新增施工日志
+
+新增日志
+
 </h2>
 
 
@@ -277,39 +503,67 @@ data-back="logs">
 
 
 
+
+
+<div class="form-card">
+
+
+<label>
+
+施工阶段
+
+</label>
+
+
 <select id="logStage">
 
 
 <option>
+
 拆改
+
 </option>
 
+
 <option>
+
 水电
+
 </option>
 
+
 <option>
+
 防水
+
 </option>
 
+
 <option>
+
 泥瓦
+
 </option>
 
+
 <option>
+
 木工
+
 </option>
 
+
 <option>
+
 油漆
+
 </option>
 
+
 <option>
+
 安装
-</option>
 
-<option>
-软装
 </option>
 
 
@@ -319,14 +573,49 @@ data-back="logs">
 
 
 
+
+
+<label>
+
+施工标题
+
+</label>
+
+
+<input
+id="logTitle"
+placeholder="例如：卫生间防水完成">
+
+
+
+
+
+
+
+<label>
+
+施工内容
+
+</label>
+
+
 <textarea
 id="logContent"
-placeholder="记录施工内容">
+placeholder="记录施工情况">
+
 </textarea>
 
 
 
 
+
+
+
+<label>
+
+现场照片
+
+</label>
 
 
 <input
@@ -340,12 +629,22 @@ multiple>
 
 
 
-<button id="saveLog"
-class="primary">
+
+<button
+id="saveLog"
+class="save-btn">
+
 
 保存日志
 
+
 </button>
+
+
+
+</div>
+
+
 
 
 
@@ -360,131 +659,146 @@ class="primary">
 
 
 
-<!-- 日志详情 -->
+<!-- 问题清单 -->
 
-<section id="detail"
+
+<section
+id="issues"
 class="page">
 
 
-<div class="top">
 
 
-<button class="back"
-data-back="logs">
 
-← 返回
+<div class="page-header">
+
+
+<button class="back-btn"
+data-page="home">
+
+‹
 
 </button>
 
 
-<h2>
-日志详情
-</h2>
-
-
-</div>
-
-
-
-
-
-<div id="detailBox"
-class="card">
-
-</div>
-
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- 档案 -->
-
-<section id="archive"
-class="page">
-
-
-<div class="top">
-
-
-<button class="back"
-data-back="home">
-
-← 返回
-
-</button>
-
 
 <h2>
-档案
-</h2>
 
-
-</div>
-
-
-
-
-
-<div class="card">
-
-📦 材料档案
-
-</div>
-
-
-<div class="card">
-
-📄 合同档案
-
-</div>
-
-
-<div class="card">
-
-💰 财务记录
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- 问题 -->
-
-<section id="issues"
-class="page">
-
-
-<div class="top">
-
-
-<button class="back"
-data-back="home">
-
-← 返回
-
-</button>
-
-
-<h2>
 问题清单
+
+</h2>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="status-box">
+
+
+<div>
+
+待处理
+
+<span id="pendingCount">
+
+0
+
+</span>
+
+
+</div>
+
+
+
+<div>
+
+处理中
+
+<span id="doingCount">
+
+0
+
+</span>
+
+
+</div>
+
+
+
+<div>
+
+已完成
+
+<span id="doneCount">
+
+0
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<button
+class="add-btn">
+
+＋ 新增问题
+
+</button>
+
+
+
+
+
+
+<div id="issueList">
+
+
+</div>
+
+
+
+
+
+
+
+</section>
+<!-- 档案首页 -->
+
+<section
+id="archive"
+class="page">
+
+
+<div class="page-header">
+
+
+<button class="back-btn"
+data-page="home">
+
+‹
+
+</button>
+
+
+<h2>
+
+档案
+
 </h2>
 
 
@@ -492,9 +806,240 @@ data-back="home">
 
 
 
-<div class="card">
 
-暂无问题
+
+<div class="archive-grid">
+
+
+
+<div class="archive-card"
+data-page="materials">
+
+
+📦
+
+<br>
+
+材料档案
+
+
+</div>
+
+
+
+
+
+<div class="archive-card"
+data-page="contract">
+
+
+📄
+
+<br>
+
+合同档案
+
+
+</div>
+
+
+
+
+
+<div class="archive-card"
+data-page="finance">
+
+
+💰
+
+<br>
+
+财务记录
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- 材料档案 -->
+
+<section
+id="materials"
+class="page">
+
+
+<div class="page-header">
+
+
+<button class="back-btn"
+data-page="archive">
+
+‹
+
+</button>
+
+
+<h2>
+
+材料档案
+
+</h2>
+
+
+</div>
+
+
+
+
+
+<div id="materialList">
+
+
+暂无材料记录
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- 合同档案 -->
+
+<section
+id="contract"
+class="page">
+
+
+<div class="page-header">
+
+
+<button class="back-btn"
+data-page="archive">
+
+‹
+
+</button>
+
+
+<h2>
+
+合同档案
+
+</h2>
+
+
+</div>
+
+
+
+
+
+<div class="form-card">
+
+
+<div>
+
+合同金额
+
+</div>
+
+
+<input
+placeholder="请输入金额">
+
+
+<div>
+
+合同照片
+
+</div>
+
+
+<input
+type="file"
+accept="image/*">
+
+
+</div>
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- 财务记录 -->
+
+
+<section
+id="finance"
+class="page">
+
+
+<div class="page-header">
+
+
+<button class="back-btn"
+data-page="archive">
+
+‹
+
+</button>
+
+
+<h2>
+
+财务记录
+
+</h2>
+
+
+</div>
+
+
+
+
+
+<div id="financeList">
+
+
+暂无流水
+
 
 </div>
 
@@ -512,23 +1057,18 @@ data-back="home">
 
 <!-- 我的 -->
 
-<section id="mine"
+<section
+id="mine"
 class="page">
 
 
-<div class="top">
-
-
-<button class="back"
-data-back="home">
-
-← 返回
-
-</button>
+<div class="page-header">
 
 
 <h2>
+
 我的
+
 </h2>
 
 
@@ -536,16 +1076,32 @@ data-back="home">
 
 
 
-<div class="card">
 
-项目设置
+
+<div class="form-card">
+
+
+<div>
+
+项目名称
 
 </div>
 
 
-<div class="card">
+<input
+placeholder="我的家">
 
-数据备份
+
+<div>
+
+预算金额
+
+</div>
+
+
+<input
+placeholder="请输入预算">
+
 
 </div>
 
@@ -558,15 +1114,11 @@ data-back="home">
 
 
 
-</main>
-
-
-
-
 
 
 
 <!-- 底部导航 -->
+
 
 <nav>
 
@@ -585,16 +1137,16 @@ data-back="home">
 </button>
 
 
-<button data-page="archive">
+<button data-page="issues">
 
-档案
+问题
 
 </button>
 
 
-<button data-page="issues">
+<button data-page="archive">
 
-问题
+档案
 
 </button>
 
@@ -614,7 +1166,17 @@ data-back="home">
 
 
 
+</main>
+
+
+
+
+
+
+
 </div>
+
+
 
 
 
@@ -624,11 +1186,14 @@ data-back="home">
 
 <script src="js/logs.js"></script>
 
-<script src="js/app.js"></script>
+<script src="js/issues.js"></script>
+
+<script src="js/archive.js"></script>
+
+<script src="app.js"></script>
 
 
 
 </body>
-
 
 </html>
