@@ -114,29 +114,6 @@ btn.dataset.page
 
 
 
-// 返回按钮
-
-
-document
-.querySelectorAll(".back-btn")
-.forEach(function(btn){
-
-
-btn.addEventListener(
-"click",
-function(){
-
-
-showPage(
-btn.dataset.back
-);
-
-
-});
-
-
-});
-
 
 
 
@@ -168,31 +145,36 @@ localStorage.getItem(
 // 首页进入日志
 
 
-const openLog =
-document.getElementById(
-"openLog"
-);
-
-
-
-if(openLog){
-
-
-openLog.addEventListener(
+document.addEventListener(
 "click",
-function(){
+function(e){
 
 
-showPage(
-"newLogPage"
-);
+if(
+e.target.id==="openLog"
+||
+e.target.closest("#openLog")
+){
 
-
-});
-
+showPage("newLogPage");
 
 }
 
+
+
+if(
+e.target.classList.contains("back-btn")
+){
+
+showPage(
+e.target.dataset.back
+);
+
+}
+
+
+
+});
 
 
 
