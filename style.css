@@ -1,85 +1,78 @@
 *{
-    box-sizing:border-box;
+box-sizing:border-box;
 }
 
 
 body{
 
-    margin:0;
+margin:0;
 
-    background:#111;
+background:#111;
 
-    color:#e8e2d8;
+color:#e8e2d8;
 
-    font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "PingFang SC",
-    "Microsoft YaHei",
-    sans-serif;
+font-family:
+-apple-system,
+BlinkMacSystemFont,
+"PingFang SC",
+"Microsoft YaHei",
+sans-serif;
 
 }
 
 
 
-/* ===== 启动画面 ===== */
+.hidden{
 
+display:none!important;
+
+}
+
+
+
+/* 启动页 */
 
 .splash{
 
-    height:100vh;
+height:100vh;
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
-    justify-content:center;
+justify-content:center;
 
-    background:#111;
-
-}
-
-
-
-.logo-area{
-
-    text-align:center;
+background:#111;
 
 }
 
 
 
-.logo{
+.logo-box{
 
-    width:90px;
-
-    height:90px;
-
-    object-fit:contain;
-
-    margin-bottom:18px;
+text-align:center;
 
 }
 
 
 
-.brand-cn{
+.logo-text{
 
-    font-size:30px;
+font-size:34px;
 
-    letter-spacing:8px;
+letter-spacing:10px;
 
 }
 
 
 
-.brand-en{
+.logo-en{
 
-    margin-top:10px;
+margin-top:10px;
 
-    font-size:16px;
+font-size:18px;
 
-    letter-spacing:5px;
+letter-spacing:6px;
 
 }
 
@@ -87,89 +80,60 @@ body{
 
 .line{
 
-    width:80px;
+width:70px;
 
-    height:1px;
+height:1px;
 
-    background:#817563;
+background:#887b68;
 
-    margin:25px auto;
-
-}
-
-
-
-.slogan{
-
-    font-size:16px;
+margin:25px auto;
 
 }
 
 
 
-.sub{
+.small{
 
-    margin-top:8px;
+font-size:12px;
 
-    font-size:12px;
+opacity:.6;
 
-    letter-spacing:2px;
+letter-spacing:2px;
 
-    opacity:.55;
-
-}
-
-
-
-.year{
-
-    margin-top:20px;
-
-    font-size:12px;
-
-    opacity:.45;
+margin-top:10px;
 
 }
 
 
 
 
-.hidden{
 
-    display:none!important;
-
-}
-
-
-
-/* ===== 主体 ===== */
-
+/* APP */
 
 header{
 
-    padding:22px 18px 8px;
+padding:25px 20px 10px;
 
 }
 
 
 
-.title{
+header h1{
 
-    font-size:26px;
+margin:0;
 
-    letter-spacing:5px;
+font-size:28px;
+
+letter-spacing:5px;
 
 }
 
 
+header p{
 
-.subtitle{
+margin:8px 0;
 
-    margin-top:8px;
-
-    color:#aaa093;
-
-    font-size:14px;
+color:#aaa;
 
 }
 
@@ -177,7 +141,7 @@ header{
 
 main{
 
-    padding:10px 16px 100px;
+padding:10px 16px 100px;
 
 }
 
@@ -185,7 +149,7 @@ main{
 
 .page{
 
-    display:none;
+display:none;
 
 }
 
@@ -193,47 +157,25 @@ main{
 
 .page.active{
 
-    display:block;
+display:block;
 
 }
 
 
 
-.page-title{
-
-    font-size:22px;
-
-    letter-spacing:3px;
-
-    margin:10px 0 18px;
-
-}
-
-
-
-
-/* ===== 卡片 ===== */
-
+/* 卡片 */
 
 .card{
 
-    background:#1a1917;
+background:#1b1a18;
 
-    border:1px solid #302c26;
+border:1px solid #302c26;
 
-    border-radius:18px;
+border-radius:18px;
 
-    padding:18px;
+padding:18px;
 
-    margin-bottom:14px;
-
-}
-
-
-
-.project-card{
-
-    padding:22px;
+margin-bottom:14px;
 
 }
 
@@ -241,9 +183,9 @@ main{
 
 h2{
 
-    margin:0 0 14px;
+margin:0 0 15px;
 
-    font-size:18px;
+font-size:20px;
 
 }
 
@@ -251,9 +193,7 @@ h2{
 
 h3{
 
-    margin:0 0 10px;
-
-    font-size:16px;
+font-size:16px;
 
 }
 
@@ -261,242 +201,133 @@ h3{
 
 .stage{
 
-    color:#d2c1a8;
+color:#d3c2a8;
+
+font-size:16px;
 
 }
 
 
 
-.days{
+.muted{
 
-    margin-top:10px;
+color:#999;
 
-    color:#aaa093;
-
-    font-size:13px;
+font-size:14px;
 
 }
 
 
 
-.label{
+.number{
 
-    color:#aaa093;
+font-size:36px;
 
-    font-size:13px;
+font-weight:600;
 
-}
-
-
-
-.big-number{
-
-    margin-top:10px;
-
-    font-size:34px;
-
-    font-weight:600;
+margin-top:10px;
 
 }
 
 
 
-
-
-/* ===== 首页按钮 ===== */
-
-
-.grid{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:12px;
-
-}
-
-
-
-.grid button{
-
-    height:90px;
-
-    background:#191816;
-
-    color:#e8e2d8;
-
-    border:1px solid #302c26;
-
-    border-radius:18px;
-
-    font-size:15px;
-
-}
-
-
+/* 按钮 */
 
 .primary{
 
-    width:100%;
+width:100%;
 
-    margin-top:12px;
+height:52px;
 
-    padding:13px;
+border:none;
 
-    border:none;
+border-radius:15px;
 
-    border-radius:14px;
+background:#d5c3a7;
 
-    background:#d6c4a8;
+color:#111;
 
-    color:#111;
-
-    font-size:15px;
+font-size:16px;
 
 }
 
 
 
-.secondary{
+/* 底部 */
 
-    width:100%;
+nav{
 
-    margin-top:10px;
+position:fixed;
 
-    padding:12px;
+left:0;
 
-    border-radius:14px;
+right:0;
 
-    border:1px solid #3b352c;
+bottom:0;
 
-    background:none;
+height:70px;
 
-    color:#ddd;
+background:#161514;
 
-}
+border-top:1px solid #302c26;
 
+display:flex;
 
+justify-content:space-around;
 
-
-/* ===== 空状态 ===== */
-
-
-.empty{
-
-    text-align:center;
-
-    padding:25px 0;
-
-    color:#777;
-
-    font-size:14px;
+align-items:center;
 
 }
 
 
 
+nav button{
 
-/* ===== 日志 ===== */
+background:none;
 
+border:none;
 
-.log-card{
+color:#999;
 
-    background:#1a1917;
-
-    border-radius:18px;
-
-    padding:18px;
-
-    margin-bottom:12px;
+font-size:14px;
 
 }
 
 
 
-.log-date{
-
-    color:#aaa093;
-
-    font-size:13px;
-
-}
-
-
-
-.log-stage{
-
-    margin-top:8px;
-
-    color:#d2c1a8;
-
-    font-size:16px;
-
-}
-
-
-
-.log-content{
-
-    margin-top:12px;
-
-    line-height:1.6;
-
-}
-
-
-
-
-/* ===== 弹窗 ===== */
-
+/* 弹窗 */
 
 .modal{
 
-    position:fixed;
+position:fixed;
 
-    inset:0;
+top:0;
 
-    background:rgba(0,0,0,.65);
+left:0;
 
-    display:flex;
+right:0;
 
-    align-items:flex-end;
+bottom:0;
 
-    justify-content:center;
+background:rgba(0,0,0,.7);
 
-    z-index:999;
+display:flex;
+
+align-items:flex-end;
 
 }
+
 
 
 .modal-box{
 
-    width:100%;
+width:100%;
 
-    max-width:600px;
+background:#1b1a18;
 
-    background:#191816;
+border-radius:25px 25px 0 0;
 
-    border-radius:24px 24px 0 0;
-
-    padding:22px;
-
-}
-
-
-
-
-label{
-
-    display:block;
-
-    color:#aaa093;
-
-    font-size:13px;
-
-    margin-top:15px;
-
-    margin-bottom:6px;
+padding:25px;
 
 }
 
@@ -506,19 +337,21 @@ select,
 textarea,
 input{
 
-    width:100%;
+width:100%;
 
-    background:#111;
+background:#111;
 
-    border:1px solid #383229;
+color:#eee;
 
-    color:#eee;
+border:1px solid #38342d;
 
-    border-radius:12px;
+border-radius:12px;
 
-    padding:12px;
+padding:12px;
 
-    font-size:15px;
+margin:10px 0;
+
+font-size:15px;
 
 }
 
@@ -526,177 +359,57 @@ input{
 
 textarea{
 
-    height:100px;
+height:120px;
 
-    resize:none;
+resize:none;
+
+}
+
+
+
+#closeLog{
+
+width:100%;
+
+margin-top:12px;
+
+height:48px;
+
+border-radius:14px;
+
+background:none;
+
+border:1px solid #555;
+
+color:#ddd;
 
 }
 
 
 
 
+/* 日志 */
 
-.image-preview{
+.log-item{
 
-    display:flex;
+background:#1b1a18;
 
-    gap:8px;
+border-radius:16px;
 
-    flex-wrap:wrap;
+padding:16px;
 
-    margin-top:12px;
-
-}
-
-
-
-.image-preview img{
-
-    width:75px;
-
-    height:75px;
-
-    object-fit:cover;
-
-    border-radius:12px;
+margin-bottom:12px;
 
 }
-
-
-
-
-
-/* ===== 档案 ===== */
-
-
-.archive-card{
-
-    display:flex;
-
-    gap:15px;
-
-    align-items:center;
-
-}
-
-
-
-.archive-card p{
-
-    margin:5px 0 0;
-
-    color:#aaa093;
-
-    font-size:13px;
-
-}
-
-
-
-
-.menu-card{
-
-    font-size:16px;
-
-}
-
-
-
-
-
-/* ===== 状态 ===== */
-
-
-.status-row{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    padding:12px 0;
-
-    border-bottom:1px solid #302c26;
-
-}
-
-
-.status-row:last-child{
-
-    border:none;
-
-}
-
-
-
-/* ===== 底部 ===== */
-
-
-nav{
-
-    position:fixed;
-
-    bottom:0;
-
-    left:0;
-
-    right:0;
-
-    height:72px;
-
-    background:#151515;
-
-    border-top:1px solid #302c26;
-
-    display:flex;
-
-    justify-content:space-around;
-
-    align-items:center;
-
-    z-index:10;
-
-}
-
-
-
-nav button{
-
-    background:none;
-
-    border:none;
-
-    color:#888;
-
-    font-size:13px;
-
-}
-
-
-
-nav button.active{
-
-    color:#e8e2d8;
-
-}
-
 
 
 
 @media(max-width:430px){
 
-    .big-number{
+.number{
 
-        font-size:30px;
-
-    }
-
+font-size:32px;
 
 }
-.primary{
-    position:relative;
-    z-index:5;
-}
 
-main{
-    padding-bottom:140px;
 }
