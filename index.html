@@ -3,13 +3,17 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,viewport-fit=cover">
+
 
 <title>猪窝 1PIG'S</title>
 
-<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="css/style.css">
+
 
 </head>
 
@@ -17,51 +21,67 @@
 <body>
 
 
+
 <!-- 启动页 -->
 
-<div id="splash" class="splash">
+<div id="splash"
+class="splash">
+
 
 <div class="logo-box">
 
-<div class="logo-text">
+<div class="logo">
 猪窝
 </div>
 
-<div class="logo-en">
+
+<div class="en">
 1PIG'S
 </div>
 
+
 <div class="line"></div>
+
 
 <div>
 记录家的每一步
 </div>
 
-<div class="small">
-BUILDING OUR HOME
-</div>
-
-</div>
 
 </div>
 
 
+</div>
 
 
-<div id="app" class="hidden">
+
+
+
+
+
+<div id="app"
+class="hidden">
+
+
+
 
 
 <header>
+
 
 <h1>
 猪窝
 </h1>
 
+
 <p>
-我的家
+我的装修管家
 </p>
 
+
 </header>
+
+
 
 
 
@@ -71,9 +91,12 @@ BUILDING OUR HOME
 
 
 
+
+
 <!-- 首页 -->
 
-<section id="home" class="page active">
+<section id="home"
+class="page active">
 
 
 <div class="card">
@@ -101,17 +124,19 @@ BUILDING OUR HOME
 
 <div class="card">
 
+
 <div class="muted">
 已花费金额
 </div>
 
 
-<div class="number">
+<div class="money">
 ¥0
 </div>
 
 
 </div>
+
 
 
 
@@ -138,12 +163,17 @@ BUILDING OUR HOME
 
 
 
-<button id="openLog"
-class="primary">
 
-＋ 新增施工日志
+<button class="primary"
+data-page="logs">
+
+
+📅 查看施工日志
+
 
 </button>
+
+
 
 
 
@@ -156,14 +186,17 @@ class="primary">
 
 
 
-<!-- 施工日志列表 -->
 
-<section id="logs" class="page">
+<!-- 施工日志 -->
+
+<section id="logs"
+class="page">
 
 
-<div class="top-bar">
+<div class="top">
 
-<button class="back-btn"
+
+<button class="back"
 data-back="home">
 
 ← 返回
@@ -181,11 +214,12 @@ data-back="home">
 
 
 
+<button class="primary"
+data-page="newLog">
 
-<button id="newLog"
-class="primary">
 
-＋ 新建记录
+＋ 新增施工日志
+
 
 </button>
 
@@ -195,9 +229,13 @@ class="primary">
 
 <div id="logList">
 
+
 暂无记录
 
+
 </div>
+
+
 
 
 
@@ -210,15 +248,17 @@ class="primary">
 
 
 
-<!-- 新增日志页面 -->
 
-<section id="newLogPage"
+<!-- 新增日志 -->
+
+<section id="newLog"
 class="page">
 
 
-<div class="top-bar">
+<div class="top">
 
-<button class="back-btn"
+
+<button class="back"
 data-back="logs">
 
 ← 返回
@@ -227,7 +267,7 @@ data-back="logs">
 
 
 <h2>
-新增日志
+新增施工日志
 </h2>
 
 
@@ -237,38 +277,36 @@ data-back="logs">
 
 
 
-<select id="stage">
+<select id="logStage">
 
 
 <option>
 拆改
 </option>
 
-
 <option>
 水电
 </option>
-
 
 <option>
 防水
 </option>
 
-
 <option>
 泥瓦
 </option>
-
 
 <option>
 木工
 </option>
 
+<option>
+油漆
+</option>
 
 <option>
 安装
 </option>
-
 
 <option>
 软装
@@ -281,16 +319,18 @@ data-back="logs">
 
 
 
-<textarea id="content"
+<textarea
+id="logContent"
 placeholder="记录施工内容">
-
 </textarea>
 
 
 
 
 
-<input id="photos"
+
+<input
+id="logImages"
 type="file"
 accept="image/*"
 multiple>
@@ -299,16 +339,19 @@ multiple>
 
 
 
+
 <button id="saveLog"
 class="primary">
 
-保存记录
+保存日志
 
 </button>
 
 
 
+
 </section>
+
 
 
 
@@ -323,10 +366,10 @@ class="primary">
 class="page">
 
 
-<div class="top-bar">
+<div class="top">
 
 
-<button class="back-btn"
+<button class="back"
 data-back="logs">
 
 ← 返回
@@ -344,14 +387,17 @@ data-back="logs">
 
 
 
-<div id="detailContent"
+
+<div id="detailBox"
 class="card">
 
 </div>
 
 
 
+
 </section>
+
 
 
 
@@ -366,7 +412,15 @@ class="card">
 class="page">
 
 
-<div class="top-bar">
+<div class="top">
+
+
+<button class="back"
+data-back="home">
+
+← 返回
+
+</button>
 
 
 <h2>
@@ -375,6 +429,8 @@ class="page">
 
 
 </div>
+
+
 
 
 
@@ -394,7 +450,7 @@ class="page">
 
 <div class="card">
 
-💰 财务流水
+💰 财务记录
 
 </div>
 
@@ -409,13 +465,66 @@ class="page">
 
 
 
-<!-- 我的 -->
 
-<section id="me"
+<!-- 问题 -->
+
+<section id="issues"
 class="page">
 
 
-<div class="top-bar">
+<div class="top">
+
+
+<button class="back"
+data-back="home">
+
+← 返回
+
+</button>
+
+
+<h2>
+问题清单
+</h2>
+
+
+</div>
+
+
+
+<div class="card">
+
+暂无问题
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- 我的 -->
+
+<section id="mine"
+class="page">
+
+
+<div class="top">
+
+
+<button class="back"
+data-back="home">
+
+← 返回
+
+</button>
 
 
 <h2>
@@ -429,7 +538,7 @@ class="page">
 
 <div class="card">
 
-房屋管理
+项目设置
 
 </div>
 
@@ -457,6 +566,8 @@ class="page">
 
 
 
+<!-- 底部导航 -->
+
 <nav>
 
 
@@ -481,7 +592,14 @@ class="page">
 </button>
 
 
-<button data-page="me">
+<button data-page="issues">
+
+问题
+
+</button>
+
+
+<button data-page="mine">
 
 我的
 
@@ -494,7 +612,11 @@ class="page">
 
 
 
+
+
 </div>
+
+
 
 
 
@@ -503,6 +625,7 @@ class="page">
 <script src="js/logs.js"></script>
 
 <script src="js/app.js"></script>
+
 
 
 </body>
